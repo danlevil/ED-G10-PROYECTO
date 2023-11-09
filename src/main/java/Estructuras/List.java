@@ -14,5 +14,11 @@ public interface List<E> {
     public boolean addFirst(E e);
     public E remove(int index);
     public E removeLast();
+    public int size();
+    public void clear();
+    public void moverFavorito();
+    public void recorrer();
+    public void encontrarElemento();
+    
     
 }
