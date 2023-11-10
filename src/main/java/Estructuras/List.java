@@ -4,21 +4,28 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+import java.util.Comparator;
+
 /**
  *
  * @author danlevil
+ * @param <E>
  */
-public interface List<E> {
+public abstract class List<E> implements Serializable{
     
-    public boolean add(E e);
-    public boolean addFirst(E e);
-    public E remove(int index);
-    public E removeLast();
-    public int size();
-    public void clear();
-    public void moverFavorito();
-    public void recorrer();
-    public void encontrarElemento();
+    public abstract E getStart(); 
+    public abstract boolean add(E e);
+    public abstract boolean addFirst(E e);
+    public abstract void add(int index, E e);
+    public abstract E remove(int index);
+    public abstract E remove(E e, Comparator cmp);
+    public abstract E removeLast();
+    public abstract int size();
+    public abstract void clear();
+    public abstract void moverFavorito();
+    public abstract void recorrer();
+    public abstract int encontrarElemento();
     
     
 }

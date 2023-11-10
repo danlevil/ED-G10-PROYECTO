@@ -4,11 +4,16 @@
  */
 package Modelo;
 
+import Estructuras.LinkedCircularDE;
+import Estructuras.List;
+
 /**
  *
  * @author danlevil
  */
 public class Agenda {
+    
+    List<Contacto> contactos=new LinkedCircularDE<Contacto>();
     
     
     public void agregarContacto(){}

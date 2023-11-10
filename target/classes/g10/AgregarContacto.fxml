@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="600.0" style="-fx-background-color: #FFF8F7;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoController">
+   <children>
+      <Button fx:id="btnAdd" layoutX="206.0" layoutY="315.0" mnemonicParsing="false" onAction="#agregarContacto" text="agregar contacto" />
+      <TextField fx:id="txtNombre" layoutX="200.0" layoutY="145.0" />
+      <TextField fx:id="txtApellido" layoutX="200.0" layoutY="180.0" />
+      <Label layoutX="117.0" layoutY="149.0" style="-fx-background-color: #FFF8F7;" text="Nombre" />
+      <Label layoutX="117.0" layoutY="184.0" prefHeight="16.0" prefWidth="64.0" style="-fx-background-color: #FFF8F7;" text="Apellido" />
+      <Label layoutX="123.0" layoutY="232.0" style="-fx-background-color: #FFF8F7;" text="Fecha" />
+      <Button fx:id="btnAdd1" layoutX="221.0" layoutY="392.0" mnemonicParsing="false" onAction="#agregarContacto" text="Agregar foto" />
+      <TextField fx:id="txtTelefono1" layoutX="200.0" layoutY="272.0" />
+      <Label layoutX="124.0" layoutY="276.0" style="-fx-background-color: #FFF8F7;" text="Phone" />
+      <DatePicker layoutX="201.0" layoutY="228.0" />
+   </children>
+</Pane>
