@@ -4,6 +4,7 @@
 /home/danlevil/Escritorio/ED-G10/src/main/java/Estructuras/ArrayList.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/Modelo/ContactoPersona.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/Modelo/ContactoEmpresa.java
+/home/danlevil/Escritorio/ED-G10/src/main/java/Fields/RedSocial.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/Modelo/Agenda.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/Estructuras/List.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/Modelo/IngresoDatos.java
@@ -12,5 +13,6 @@
 /home/danlevil/Escritorio/ED-G10/src/main/java/g10/AgregarContactoController.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/module-info.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/Fields/Email.java
+/home/danlevil/Escritorio/ED-G10/src/main/java/Comparadores/ComparadorPersona.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/g10/App.java
 /home/danlevil/Escritorio/ED-G10/src/main/java/g10/PrimaryController.java

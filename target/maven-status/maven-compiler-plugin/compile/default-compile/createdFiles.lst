@@ -11,7 +11,9 @@ g10/PrimaryController.class
 module-info.class
 Modelo/ContactoEmpresa.class
 g10/App.class
+Fields/RedSocial.class
 Modelo/Agenda.class
 Fields/Telefono.class
 Modelo/Contacto.class
+Comparadores/ComparadorPersona.class
 g10/AgregarContactoController.class

@@ -16,9 +16,14 @@ public class Agenda {
     List<Contacto> contactos=new LinkedCircularDE<Contacto>();
     
     
-    public void agregarContacto(){}
+    public void agregarContacto(Contacto c){
+        contactos.add(c);
+        
+    }
     
-    public void eliminarContacto(){}
+    public void eliminarContacto(Contacto c){
+        //contactos.remove(c, cmp);
+    }
     
     public void editarContacto(){}
     

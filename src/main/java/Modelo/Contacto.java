@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author danlevil
  */
-import Estructuras.ArrayList;
+import Estructuras.*;
 import Estructuras.List;
 import Fields.*;
 import java.io.Serializable;
@@ -26,8 +26,18 @@ public abstract class Contacto implements Serializable {
     List<Foto>  fotos;
     List<LocalDate> fechasImportantes;
     List<Contacto> contactosRelacionados;
-    List<String> redesSociales;
+    List<RedSocial> redesSociales;
     List<String> etiquetas;
+    
+    
+    public Contacto(){
+        direcciones=new ArrayList<Direccion>();
+        emails=new ArrayList<Email>();
+        telefonos=new ArrayList<Telefono>();
+        fotos=new LinkedCircularDE<Foto>();
+        redesSociales=new ArrayList<RedSocial>();
+        etiquetas=new ArrayList<String>();
+    }
 
     public String getNombre() {
         return nombre;
@@ -36,6 +46,8 @@ public abstract class Contacto implements Serializable {
     public abstract void editarMe();
     
     public abstract ArrayList<String> mostrarInformacionAdicional();
+    
+    
     
     
     

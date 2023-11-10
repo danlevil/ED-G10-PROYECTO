@@ -6,7 +6,6 @@ package Modelo;
 
 import Estructuras.ArrayList;
 import java.time.LocalDate;
-import java.util.Scanner;
 
 /**
  *
@@ -22,6 +21,7 @@ public class ContactoPersona extends Contacto {
     public ContactoPersona(){};
     public ContactoPersona(String name, String apellido, 
             LocalDate cumpleaños){
+        super();
         this.nombre= name+" "+apellido;
         this.isEmpresa=false;
         

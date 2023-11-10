@@ -8,9 +8,8 @@ package Fields;
  *
  * @author danlevil
  */
-public class Telefono {
+public class RedSocial {
     String descripcion;
-    String numero;
-    
+    String cuenta;
     
 }

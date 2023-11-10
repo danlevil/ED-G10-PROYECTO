@@ -16,6 +16,7 @@ public class ContactoEmpresa extends Contacto{
     
    
     public ContactoEmpresa(String name){
+        super();
         this.isEmpresa= true;
         this.nombre=name;
     }
