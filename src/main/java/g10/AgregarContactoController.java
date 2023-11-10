@@ -16,7 +16,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 /**
  * FXML Controller class
  *
@@ -26,15 +30,35 @@ public class AgregarContactoController implements Initializable {
 
 
     @FXML
-    private Button btnAdd;
+    private Label labelRegistarContacto;
     @FXML
-    private TextField txtNombre;
+    private ImageView iconoImage;
     @FXML
-    private TextField txtApellido;
+    private TextField TxtnombreUsuario;
     @FXML
-    private Button btnAdd1;
+    private TextField TxtcorreoUsuario;
     @FXML
-    private TextField txtTelefono1;
+    private TextField TxtcelularUsuario;
+    @FXML
+    private TextField TxtcelTrabajoUsuario;
+    @FXML
+    private TextField TxtdireccionUsuario;
+    @FXML
+    private TextField TxtdirTrabajoUsuario;
+    @FXML
+    private DatePicker fechaImportante;
+    @FXML
+    private TextField TxtfechaImpUsuario;
+    @FXML
+    private TextField TxtnacionalidadUsuario;
+    @FXML
+    private ComboBox<?> contactosBarraRegistro;
+    @FXML
+    private TextField TxtcontAsociadoUsuario;
+    @FXML
+    private TextField TxtlinkGMUsuario;
+    @FXML
+    private TextField TxtNotasUsuario;
     /**
      * Initializes the controller class.
      */
@@ -43,7 +67,6 @@ public class AgregarContactoController implements Initializable {
         // TODO
     }    
     
-    @FXML
     private void agregarContacto(ActionEvent event) throws IOException {
         App.setRoot("primary");
     }
