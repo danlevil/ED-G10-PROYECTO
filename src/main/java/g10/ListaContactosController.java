@@ -4,10 +4,12 @@
  */
 package g10;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -71,6 +73,8 @@ public class ListaContactosController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private static Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -81,7 +85,8 @@ public class ListaContactosController implements Initializable {
     }
 
     @FXML
-    private void añadirContacto(MouseEvent event) {
+    private void añadirContacto(MouseEvent event) throws IOException {
+       App.setRoot("TipoContactos");
     }
 
     @FXML
