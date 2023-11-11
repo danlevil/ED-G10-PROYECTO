@@ -18,7 +18,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="239.0" prefWidth="250.0">
          <children>
-            <Button fx:id="btFiltroNombre" mnemonicParsing="false" prefHeight="48.0" prefWidth="198.0" text="Cumpleaños cercanos">
+            <Button fx:id="btFiltroNombre" mnemonicParsing="false" onAction="#filtarFechaCumpleaños" prefHeight="48.0" prefWidth="198.0" text="Cumpleaños cercanos">
                <font>
                   <Font size="16.0" />
                </font>
@@ -27,14 +27,14 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="92.0" prefWidth="250.0">
                      <children>
-                        <Button fx:id="btFiltroNacionalidad" mnemonicParsing="false" prefHeight="45.0" prefWidth="196.0" text="Empresas">
+                        <Button fx:id="btFiltroNacionalidad" mnemonicParsing="false" onAction="#filtrarEmpresas" prefHeight="45.0" prefWidth="196.0" text="Empresas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                      </children>
                   </VBox>
-                  <Button fx:id="btFiltroFavoritos" mnemonicParsing="false" prefHeight="19.0" prefWidth="199.0" text="Favoritos">
+                  <Button fx:id="btFiltroFavoritos" mnemonicParsing="false" onAction="#filtrarFavoritos" prefHeight="19.0" prefWidth="199.0" text="Favoritos">
                      <font>
                         <Font size="18.0" />
                      </font>

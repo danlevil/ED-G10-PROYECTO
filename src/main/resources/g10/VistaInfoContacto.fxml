@@ -18,7 +18,7 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                <children>
-                  <ImageView fx:id="iconoRegresar" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iconoRegresar" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/Volver.png" />
                      </image>
@@ -28,7 +28,7 @@
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="iconoEditar" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iconoEditar" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#editarContacto" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/editar.png" />
                      </image>
@@ -200,12 +200,12 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="btVermasinfo" mnemonicParsing="false" text="Ver más información" GridPane.rowIndex="5">
+            <Button fx:id="btVermasinfo" mnemonicParsing="false" onAction="#mostrarInfoExtra" text="Ver más información" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btContactAsoci" mnemonicParsing="false" text="Mostrar Contactos asociados" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <Button fx:id="btContactAsoci" mnemonicParsing="false" onAction="#mostrarVentanAsociados" text="Mostrar Contactos asociados" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
