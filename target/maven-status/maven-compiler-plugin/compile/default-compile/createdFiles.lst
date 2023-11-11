@@ -5,6 +5,7 @@ Fields\Foto.class
 Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
 Modelo\ContactoPersona.class
+g10\ListaContactosController.class
 module-info.class
 Estructuras\LinkedCircularDE$Nodo.class
 Fields\Direccion.class
@@ -15,6 +16,7 @@ g10\AgregarContactoEmpresaController.class
 Modelo\IngresoDatos.class
 Modelo\Contacto.class
 g10\AgregarContactoController.class
+g10\TipoContactoController.class
 g10\App.class
 Fields\Email.class
 Comparadores\ComparadorPersona.class

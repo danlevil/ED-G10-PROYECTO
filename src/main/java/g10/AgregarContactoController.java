@@ -52,10 +52,6 @@ public class AgregarContactoController implements Initializable {
     @FXML
     private TextField TxtnacionalidadUsuario;
     @FXML
-    private ComboBox<?> contactosBarraRegistro;
-    @FXML
-    private TextField TxtcontAsociadoUsuario;
-    @FXML
     private TextField TxtlinkGMUsuario;
     @FXML
     private TextField TxtNotasUsuario;
