@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
@@ -17,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -102,6 +106,8 @@ public class ListaContactosController implements Initializable {
         setMouseEvent(hboxContact4);
         setMouseEvent(hboxContact5);
         setMouseEvent(hboxContact6);
+        
+        
     }    
     
     @FXML
@@ -124,7 +130,30 @@ public class ListaContactosController implements Initializable {
 
     @FXML
     private void abrirContactoInfo(MouseEvent event) throws IOException {
-        App.setRoot("VistaInfoContacto");
+        // Obtener la Stage actual
+       // Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
+        Parent root = loader.load();
+
+        // Configurar el controlador 
+        VistaInfoContactoController vic = loader.getController();
+        // pasando datos al controlador de la nueva ventana aquí, si es necesario
+
+        // Crear una nueva escena
+        Scene scene = new Scene(root, 900, 700);
+
+        // Configurar el tamaño fijo de la ventana
+        Stage nuevaVentana = new Stage();
+        nuevaVentana.setTitle("Nueva Ventana");
+        nuevaVentana.setScene(scene);
+        nuevaVentana.setResizable(false);
+
+        // Mostrar la nueva ventana
+        nuevaVentana.show();
+        
+        //stage.close();
+        
+        
     }
     
      private void setMouseEvents(VBox vbox) {

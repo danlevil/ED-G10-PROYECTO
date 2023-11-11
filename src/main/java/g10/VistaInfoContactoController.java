@@ -4,16 +4,19 @@
  */
 package g10;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -60,10 +63,7 @@ public class VistaInfoContactoController implements Initializable {
         // TODO
     }    
     
-    @FXML
-    private void regresar(MouseEvent event) {
-    }
-
+    
     @FXML
     private void editarContacto(MouseEvent event) {
     }
@@ -74,6 +74,14 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void mostrarVentanAsociados(ActionEvent event) {
+    }
+
+    @FXML
+    private void regresarAListaContactos(MouseEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
     }
 
 }
