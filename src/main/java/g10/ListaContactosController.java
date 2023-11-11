@@ -14,6 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+
 /**
  * FXML Controller class
  *
@@ -75,9 +79,29 @@ public class ListaContactosController implements Initializable {
      */
     
     private static Scene scene;
+    @FXML
+    private VBox contacto1Vbox;
+    @FXML
+    private HBox hboxContact1;
+    @FXML
+    private HBox hboxContact2;
+    @FXML
+    private HBox hboxContact3;
+    @FXML
+    private HBox hboxContact4;
+    @FXML
+    private HBox hboxContact5;
+    @FXML
+    private HBox hboxContact6;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        setMouseEvent(hboxContact1);
+        setMouseEvent(hboxContact2);
+        setMouseEvent(hboxContact3);
+        setMouseEvent(hboxContact4);
+        setMouseEvent(hboxContact5);
+        setMouseEvent(hboxContact6);
     }    
     
     @FXML
@@ -96,5 +120,27 @@ public class ListaContactosController implements Initializable {
     @FXML
     private void avanzarDerecha(MouseEvent event) {
     }
+
+    @FXML
+    private void abrirContactoInfo(MouseEvent event) throws IOException {
+        App.setRoot("VistaInfoContacto");
+    }
+    
+     private void setMouseEvents(VBox vbox) {
+       
+    }
+
+    private void setMouseEvent(HBox hboxContact) {
+         // Manejador para el evento de ratón al entrar en la sección
+        hboxContact.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
+            hboxContact.setStyle("-fx-background-color: lightblue;");
+        });
+
+        // Manejador para el evento de ratón al salir de la sección
+        hboxContact.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
+            hboxContact.setStyle("-fx-background-color: ;");
+        });
+    }
+
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ListaContactosController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ListaContactosController">
    <children>
       <VBox prefHeight="67.0" prefWidth="400.0">
          <children>
@@ -57,7 +57,7 @@
       </VBox>
       <VBox prefHeight="572.0" prefWidth="400.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hboxContact1" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -68,7 +68,7 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="302.0">
+                  <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="310.0">
                      <children>
                         <Label fx:id="lbcontactonombre1" text="Label">
                            <font>
@@ -84,7 +84,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hboxContact2" layoutX="10.0" layoutY="10.0" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -111,7 +111,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hboxContact3" layoutX="10.0" layoutY="110.0" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -138,7 +138,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hboxContact4" layoutX="10.0" layoutY="210.0" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -165,7 +165,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hboxContact5" layoutX="10.0" layoutY="310.0" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -192,7 +192,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hboxContact6" layoutX="10.0" layoutY="410.0" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
