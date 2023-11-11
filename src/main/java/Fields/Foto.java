@@ -14,4 +14,10 @@ import java.time.LocalDate;
 public class Foto implements Serializable{
     String archivo;
     LocalDate creacion;
+
+    public Foto(String archivo) {
+        this.archivo = archivo;
+    }
+    
+    
 }

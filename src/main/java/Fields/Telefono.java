@@ -11,6 +11,11 @@ package Fields;
 public class Telefono {
     String descripcion;
     String numero;
+
+    public Telefono(String descripcion, String numero) {
+        this.descripcion = descripcion;
+        this.numero = numero;
+    }
     
     
 }

@@ -1,6 +1,7 @@
 package g10;
 
 import Modelo.Contacto;
+import Modelo.ContactoEmpresa;
 import Modelo.ContactoPersona;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,9 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+        Contacto c1= new ContactoEmpresa();
+        
+
  
     }
 

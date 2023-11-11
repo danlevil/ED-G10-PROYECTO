@@ -12,5 +12,12 @@ public class Direccion {
     
     String nombreDireccion;
     String ubicacion;
+
+    public Direccion(String nombreDireccion, String ubicacion) {
+        this.nombreDireccion = nombreDireccion;
+        this.ubicacion = ubicacion;
+    }
+    
+    
     
 }
