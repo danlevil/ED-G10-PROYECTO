@@ -13,18 +13,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoController">
    <top>
       <VBox prefHeight="71.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                <children>
+                  <ImageView fx:id="iconoRegresar" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/Volver.png" />
+                     </image>
+                  </ImageView>
                   <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="778.0" text="Registrar Contacto" textAlignment="CENTER">
                      <font>
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="iconoImage" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="guardarContacto" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/guardar.png" />
                      </image>
@@ -64,7 +69,7 @@
          <children>
             <VBox prefHeight="103.0" prefWidth="368.0">
                <children>
-                  <Label text="Nombre:">
+                  <Label text="Nombre">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -74,7 +79,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Correo:">
+                  <Label text="Correo Principal">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -84,7 +89,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                <children>
-                  <Label text="Celular personal:">
+                  <Label text="Celular personal">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -94,7 +99,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                <children>
-                  <Label text="Número de celular de trabajo">
+                  <Label text="Celular de trabajo">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -109,7 +114,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtdireccionUsuario" />
+                  <TextField fx:id="TxtdireccionUsuario" promptText="Enlace google maps" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
@@ -119,55 +124,22 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtdirTrabajoUsuario" />
+                  <TextField fx:id="TxtdirTrabajoUsuario" promptText="Enlace google maps" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Label text="Fecha importante:">
+                  <Label text="Fecha importante">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <DatePicker fx:id="fechaImportante" />
-                  <TextField fx:id="TxtfechaImpUsuario" />
+                  <TextField fx:id="TxtfechaImpUsuario" promptText="Label" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <children>
-                  <Label text="Nacionalidad:">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="TxtnacionalidadUsuario" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Enlace google maps:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="TxtlinkGMUsuario" />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
-               <children>
-                  <Label text="Notas de contacto:">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="TxtNotasUsuario" />
-               </children>
-            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
-</BorderPane>
+</fx:root>

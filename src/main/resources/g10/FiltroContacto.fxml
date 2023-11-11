@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.FiltroContactoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.FiltroContactoController">
    <children>
       <VBox alignment="CENTER" prefHeight="51.0" prefWidth="250.0">
          <children>
@@ -18,9 +18,9 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="239.0" prefWidth="250.0">
          <children>
-            <Button fx:id="btFiltroNombre" mnemonicParsing="false" prefHeight="43.0" prefWidth="198.0" text="Cumpleaños cercanos">
+            <Button fx:id="btFiltroNombre" mnemonicParsing="false" prefHeight="48.0" prefWidth="198.0" text="Cumpleaños cercanos">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
             <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="250.0">

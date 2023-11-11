@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="g10.AgregarContactoEmpresaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoEmpresaController">
     <stylesheets>
         <URL value="@/styles/agregarcontactoempresa.css" />
     </stylesheets>
@@ -26,12 +25,17 @@
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                      <children>
+                        <ImageView fx:id="iconoRegresar" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/Volver.png" />
+                           </image>
+                        </ImageView>
                         <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="778.0" text="Registrar Contacto Empresa" textAlignment="CENTER">
                            <font>
                               <Font size="41.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="iconoImageEmpresa" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="guardarEmpresa" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/guardar.png" />
                            </image>
@@ -71,7 +75,7 @@
                <children>
                   <VBox prefHeight="103.0" prefWidth="368.0">
                      <children>
-                        <Label text="Nombre:">
+                        <Label text="Nombre">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -81,7 +85,7 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                      <children>
-                        <Label text="Correo:">
+                        <Label text="Correo Principal">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -91,7 +95,7 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                      <children>
-                        <Label text="Celular personal:">
+                        <Label text="Celular personal">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -101,22 +105,12 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                      <children>
-                        <Label text="Número de celular de trabajo">
+                        <Label text="Celular de trabajo">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                         <TextField fx:id="TxtcelTrabajoEmpresa" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
-                     <children>
-                        <Label text="Dirección de casa">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="TxtdireccionCEmpresa" />
                      </children>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
@@ -129,55 +123,33 @@
                         <TextField fx:id="TxtTituloEnEmpresa" />
                      </children>
                   </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <Label text="Nacionalidad:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="TxtnacionalidadEmpresa" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Dirección de empresa">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtdirecciónEmpresa" promptText="Enlace google maps" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <children>
-                        <Label text="Contacto asociado:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="contactosBarraRegistro" prefWidth="150.0" />
-                        <TextField fx:id="TxtcontAsociadoEmpresa" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <children>
-                        <Label text="Enlace google maps:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="TxtlinkGMEmpresa" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                     <children>
-                        <Label text="Notas de contacto:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="TxtNotasEmpresas" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
-                     <children>
-                        <Label text="Dirección de empresa:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtdirecciónEmpresa" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Cargo">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtCargoEmpresa1" promptText="Enlace google maps" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>

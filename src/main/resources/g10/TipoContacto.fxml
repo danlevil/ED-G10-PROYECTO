@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.TipoContactoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.TipoContactoController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="44.0" prefWidth="250.0">
          <children>
@@ -14,12 +14,15 @@
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
             </Label>
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button fx:id="btContactPersona" mnemonicParsing="false" text="Persona">
+            <Button fx:id="btContactPersona" mnemonicParsing="false" prefHeight="46.0" prefWidth="138.0" text="Persona">
                <font>
                   <Font size="23.0" />
                </font>
@@ -28,7 +31,7 @@
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="161.0" prefWidth="250.0">
          <children>
-            <Button fx:id="btContactEmpresa" mnemonicParsing="false" prefHeight="37.0" prefWidth="118.0" text="Empresa">
+            <Button fx:id="btContactEmpresa" mnemonicParsing="false" prefHeight="46.0" prefWidth="137.0" text="Empresa">
                <font>
                   <Font size="23.0" />
                </font>
