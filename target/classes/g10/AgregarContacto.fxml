@@ -19,7 +19,7 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                <children>
-                  <ImageView fx:id="iconoRegresar" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iconoRegresar" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/Volver.png" />
                      </image>
@@ -29,7 +29,7 @@
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="guardarContacto" fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="guardarContacto" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#agregarContacto" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/guardar.png" />
                      </image>
