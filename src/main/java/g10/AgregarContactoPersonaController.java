@@ -9,19 +9,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 /**
  * FXML Controller class
  *
  * @author Charlie
  */
-public class AgregarContactoController implements Initializable {
-
+public class AgregarContactoPersonaController implements Initializable {
 
     @FXML
     private ImageView iconoRegresar;
@@ -40,11 +41,14 @@ public class AgregarContactoController implements Initializable {
     @FXML
     private TextField TxtdireccionUsuario;
     @FXML
+    private Label Direccion;
+    @FXML
     private TextField TxtdirTrabajoUsuario;
     @FXML
     private DatePicker fechaImportante;
     @FXML
     private TextField TxtfechaImpUsuario;
+
     /**
      * Initializes the controller class.
      */
@@ -52,14 +56,19 @@ public class AgregarContactoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
     @FXML
     private void regresar(MouseEvent event) throws IOException {
-        App.setRoot("ListaContactos");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        App.setRoot("TipoContacto");
     }
 
     @FXML
     private void agregarContacto(MouseEvent event) {
+        
     }
-
+    
 }

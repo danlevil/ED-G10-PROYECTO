@@ -4,18 +4,21 @@
  */
 package Fields;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author danlevil
  */
-public class RedSocial {
+public class Fecha {
     String descripcion;
-    String cuenta;
+    LocalDate fecha;
 
-    public RedSocial(String descripcion, String cuenta) {
+    public Fecha(String descripcion, LocalDate fecha) {
         this.descripcion = descripcion;
-        this.cuenta = cuenta;
+        this.fecha = fecha;
     }
+    
     
     
 }

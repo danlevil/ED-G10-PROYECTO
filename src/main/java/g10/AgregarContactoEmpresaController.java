@@ -9,11 +9,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -52,7 +54,10 @@ public class AgregarContactoEmpresaController implements Initializable {
     
     @FXML
     private void regresar(MouseEvent event) throws IOException {
-        App.setRoot("ListaContactos");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+        
+        App.setRoot("TipoContacto");
     }
 
     @FXML

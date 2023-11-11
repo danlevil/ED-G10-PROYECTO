@@ -4,6 +4,9 @@
  */
 package Fields;
 
+import Modelo.Contacto;
+import Modelo.ContactoEmpresa;
+
 /**
  *
  * @author danlevil
@@ -11,5 +14,13 @@ package Fields;
 public class Email {
     String descripcion;
     String direccionCorreo;
+
+    public Email(String descripcion, String direccionCorreo) {
+        this.descripcion = descripcion;
+        this.direccionCorreo = direccionCorreo;
+    }
+    
+    
+    
     
 }

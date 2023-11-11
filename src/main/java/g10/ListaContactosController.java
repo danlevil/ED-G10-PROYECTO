@@ -131,7 +131,7 @@ public class ListaContactosController implements Initializable {
     @FXML
     private void abrirContactoInfo(MouseEvent event) throws IOException {
         // Obtener la Stage actual
-       // Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+       //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
         Parent root = loader.load();
 

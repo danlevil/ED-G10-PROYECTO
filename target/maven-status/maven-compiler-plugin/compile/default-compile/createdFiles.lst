@@ -10,15 +10,15 @@ Fields\Direccion.class
 Modelo\ContactoEmpresa.class
 g10\AgregarContactoEmpresaController.class
 Modelo\IngresoDatos.class
-g10\AgregarContactoController.class
 Comparadores\ComparadorPersona.class
 Fields\Foto.class
 Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
 module-info.class
 Modelo\Agenda.class
-g10\PrimaryController.class
 Modelo\Contacto.class
 g10\TipoContactoController.class
+g10\AgregarContactoPersonaController.class
 g10\App.class
 Fields\Email.class
+Fields\Fecha.class
