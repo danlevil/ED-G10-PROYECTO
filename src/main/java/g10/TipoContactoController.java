@@ -37,11 +37,14 @@ public class TipoContactoController implements Initializable {
     }    
     
     @FXML
-    private void irVentanPersonas(ActionEvent event) {
+    private void irVentanPersonas(ActionEvent event) throws IOException {
+        App.setRoot("AgregarContacto");
+        //Error al cargar el archivo.No abre la ventana
     }
 
     @FXML
-    private void irVentanEmpresas(ActionEvent event) {
+    private void irVentanEmpresas(ActionEvent event) throws IOException {
+        App.setRoot("AgregarContactoEmpresa");
     }
 
     @FXML

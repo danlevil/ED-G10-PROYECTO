@@ -4,6 +4,7 @@
  */
 package g10;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -50,7 +51,8 @@ public class AgregarContactoEmpresaController implements Initializable {
     }    
     
     @FXML
-    private void regresar(MouseEvent event) {
+    private void regresar(MouseEvent event) throws IOException {
+        App.setRoot("ListaContactos");
     }
 
     @FXML

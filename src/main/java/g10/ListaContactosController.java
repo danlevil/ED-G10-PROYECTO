@@ -105,7 +105,8 @@ public class ListaContactosController implements Initializable {
     }    
     
     @FXML
-    private void filtrar(MouseEvent event) {
+    private void filtrar(MouseEvent event) throws IOException {
+        App.setRoot("FiltroContacto");
     }
 
     @FXML

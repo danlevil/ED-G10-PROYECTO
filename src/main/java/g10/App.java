@@ -36,7 +36,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-        ContactoPersona c1= new ContactoPersona();
  
     }
 
