@@ -86,7 +86,7 @@ public class ListaContactosController implements Initializable {
 
     @FXML
     private void añadirContacto(MouseEvent event) throws IOException {
-       App.setRoot("TipoContactos");
+       App.setRoot("TipoContacto");
     }
 
     @FXML

@@ -4,6 +4,7 @@
  */
 package g10;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -11,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
@@ -23,6 +26,8 @@ public class TipoContactoController implements Initializable {
     private Button btContactPersona;
     @FXML
     private Button btContactEmpresa;
+    @FXML
+    private ImageView imgVolver;
     /**
      * Initializes the controller class.
      */
@@ -37,6 +42,11 @@ public class TipoContactoController implements Initializable {
 
     @FXML
     private void irVentanEmpresas(ActionEvent event) {
+    }
+
+    @FXML
+    private void irVentanaContactos(MouseEvent event) throws IOException {
+        App.setRoot("ListaContactos");
     }
 
 }
