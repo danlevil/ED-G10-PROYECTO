@@ -47,6 +47,7 @@ public class App extends Application {
     }
     static void changeRoot(Parent rootNode) {
         scene.setRoot(rootNode);
+        System.out.println();
     }
 
 }

@@ -30,25 +30,8 @@ public abstract class List<E> implements Serializable, Collection<E>{
     public abstract int encontrarElemento();
     public abstract E get(int i);
     
-    public  List<E> unirListas(Collection<? extends E> lista){
-        
-        //NO UNIR, IR GUARDANDO EN AMBAS LISTAS RESPECTIVAMENTE
-        
-        LinkedCircularDE<E> primera= (LinkedCircularDE<E>) this.copiarList();
-        LinkedCircularDE<E> otra= (LinkedCircularDE<E>) lista;
-        LinkedCircularDE<E> segunda= (LinkedCircularDE<E>) otra.copiarList();
 
-        LinkedCircularDE.Nodo<E> ultimoPrimera = primera.start.getPrevio();
-        LinkedCircularDE.Nodo<E> primeroSegunda= segunda.start ;
-        
-        ultimoPrimera.setSiguiente(primeroSegunda);
-        primeroSegunda.setPrevio(ultimoPrimera);
-        
-        return primera;
-        
-        
-    }
-    }
+    
     
     
 }

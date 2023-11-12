@@ -3,14 +3,13 @@ Fields/Foto.class
 Fields/Direccion.class
 Estructuras/LinkedCircularDE$Nodo.class
 Estructuras/LinkedCircularDE.class
-g10/TipoContactoController.class
 Fields/Email.class
+g10/TipoContactoController.class
 g10/ListaContactosController.class
 Modelo/ContactoEmpresa.class
 g10/App.class
 Modelo/Agenda.class
 g10/AgregarContactoEmpresaController.class
-Modelo/IngresoDatos.class
 Estructuras/ArrayList.class
 Comparadores/ComparadorPersona.class
 g10/VistaInfoContactoController.class
@@ -18,8 +17,9 @@ Estructuras/List.class
 g10/AgregarContactoPersonaController.class
 module-info.class
 g10/ContactoController.class
+Modelo/Serializador.class
 Fields/Fecha.class
 Fields/RedSocial.class
 g10/FiltroContactoController.class
-Modelo/Contacto.class
 Fields/Telefono.class
+Modelo/Contacto.class

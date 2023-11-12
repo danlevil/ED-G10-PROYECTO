@@ -49,21 +49,7 @@ private Nodo<E> start;
     }
 
     
-    public List<E> unirListas(Collection<? extends E >lista) {
-        LinkedCircularDE<E> primera= (LinkedCircularDE<E>) this.copiarList();
-        LinkedCircularDE<E> otra= (LinkedCircularDE<E>) lista;
-        LinkedCircularDE<E> segunda= (LinkedCircularDE<E>) otra.copiarList();
 
-        Nodo<E> ultimoPrimera = primera.start.getPrevio();
-        Nodo<E> primeroSegunda= segunda.start ;
-        
-        ultimoPrimera.setSiguiente(primeroSegunda);
-        primeroSegunda.setPrevio(ultimoPrimera);
-        
-        return primera;
-        
-        
-    }
     private LinkedCircularDE<E> copiarList(){
         LinkedCircularDE<E> copia= new LinkedCircularDE<E>();
         copia.add(this.start.contenido);

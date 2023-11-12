@@ -16,10 +16,11 @@ public class Agenda {
     
     public static List<ContactoPersona> contactosPersonas=new LinkedCircularDE<ContactoPersona>();
     public static List<ContactoEmpresa> contactosEmpresas=new LinkedCircularDE<ContactoEmpresa>();
+    public static List<Contacto> contactosMaster= new LinkedCircularDE<Contacto>();
     
-    public static List<Contacto> contactos= contactosPersonas.unirListas(
-    contactosEmpresas);
-    
+    public static void agregarGeneral(Contacto c){
+        contactosMaster.add(c);
+    }
     public static void agregarContactoEmpresa(ContactoEmpresa c){
         contactosEmpresas.add(c);
         
@@ -29,7 +30,15 @@ public class Agenda {
         
     }
     
-    
+    public static void serializarGeneral(List<Contacto> listaGeneral){
+        
+    }
+    public static void serializarContactosEmpresa(List<Contacto> listaEmpresas){
+        
+    }
+    public static void serializarContactosPersona(List<Contacto> listaPersonas){
+        
+    }
     
     public void eliminarContacto(Contacto c){
         //contactos.remove(c, cmp);

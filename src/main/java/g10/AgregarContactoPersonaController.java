@@ -12,6 +12,7 @@ import Fields.Fecha;
 import Fields.Foto;
 import Fields.RedSocial;
 import Fields.Telefono;
+import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoPersona;
 import java.io.BufferedWriter;
@@ -79,6 +80,7 @@ public class AgregarContactoPersonaController implements Initializable {
         // TODO
         ObservableList<String> list = FXCollections.observableArrayList("S", "N");
         CboxFav.setItems(list);
+        
     }    
 
     
@@ -146,28 +148,21 @@ public class AgregarContactoPersonaController implements Initializable {
             favorito=false;
         }
         
-       Contacto contactoPersonaNuevo = new ContactoPersona(TxtnombreUsuario.getText(), false, favorito, direcciones, direccionPersonales, emails, telefonos,telefonosPersonales, fotos, redesSociales, etiquetas, fechasImportantes, cumpleaños);
-        try{
-            BufferedWriter escritor = new BufferedWriter(new FileWriter("src/main/resources/Contactos/listaContactos.csv",true));
-            escritor.write(contactoPersonaNuevo.toString()+"\n");
-            escritor.flush();
-            escritor.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText("Resultado de la operación");
-            alert.setContentText("Nuevo contacto agregado exitosamente");
+        ContactoPersona contactoPersonaNuevo = new ContactoPersona(TxtnombreUsuario.getText(), false, favorito, direcciones, direccionPersonales, emails, telefonos,telefonosPersonales, fotos, redesSociales, etiquetas, fechasImportantes, cumpleaños);
+        Agenda.agregarContactoPersona(contactoPersonaNuevo); 
+        Agenda.agregarGeneral(contactoPersonaNuevo);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText("Resultado de la operación");
+        alert.setContentText("Nuevo contacto agregado exitosamente");
             alert.showAndWait();
-            
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-           stage.close();
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
-           Parent root = loader.load();
-           Scene scene = new Scene(root);
-           Stage listaContactoStage = new Stage();
-           listaContactoStage.setScene(scene);
-           listaContactoStage.show();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage listaContactoStage = new Stage();
+        listaContactoStage.setScene(scene);
+        listaContactoStage.show();
 
     }
     
