@@ -19,5 +19,10 @@ public class Foto implements Serializable{
         this.archivo = archivo;
     }
     
+    @Override
+    public String toString() {
+        return archivo +": "+creacion;
+    }
+
     
 }

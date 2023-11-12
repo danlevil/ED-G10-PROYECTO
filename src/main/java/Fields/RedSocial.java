@@ -17,5 +17,9 @@ public class RedSocial {
         this.cuenta = cuenta;
     }
     
+     @Override
+    public String toString() {
+        return descripcion +": "+cuenta;
+    }
     
 }

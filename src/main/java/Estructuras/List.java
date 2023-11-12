@@ -26,6 +26,7 @@ public abstract class List<E> implements Serializable{
     public abstract void moverFavorito();
     public abstract void recorrer();
     public abstract int encontrarElemento();
+    public abstract E get(int i);
     
     
 }

@@ -20,5 +20,6 @@ Modelo\Contacto.class
 g10\TipoContactoController.class
 g10\AgregarContactoPersonaController.class
 g10\App.class
+g10\ContactoController.class
 Fields\Email.class
 Fields\Fecha.class

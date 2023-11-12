@@ -41,6 +41,11 @@ private Nodo<E> start;
         return null;
     }
 
+    @Override
+    public E get(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
     public class Nodo<E>{
         E contenido;
@@ -159,6 +164,9 @@ private Nodo<E> start;
     }
     @Override
     public E getStart() {
+        if(start == null){
+            return (E) "[]";
+        }
         return start.getContenido();
     }
     @Override

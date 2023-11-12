@@ -19,5 +19,8 @@ public class Direccion {
     }
     
     
-    
+    @Override
+    public String toString() {
+        return nombreDireccion +": "+ubicacion;
+    }
 }

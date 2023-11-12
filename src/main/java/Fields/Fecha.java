@@ -19,6 +19,9 @@ public class Fecha {
         this.fecha = fecha;
     }
     
-    
+    @Override
+    public String toString() {
+        return descripcion +": "+fecha;
+    }
     
 }

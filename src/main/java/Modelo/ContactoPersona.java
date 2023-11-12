@@ -5,6 +5,14 @@
 package Modelo;
 
 import Estructuras.ArrayList;
+import Estructuras.LinkedCircularDE;
+import Fields.Direccion;
+import Fields.Email;
+import Fields.Fecha;
+import Fields.Foto;
+import Fields.RedSocial;
+import Fields.Telefono;
+
 import java.time.LocalDate;
 
 /**
@@ -12,28 +20,42 @@ import java.time.LocalDate;
  * @author danlevil
  */
 public class ContactoPersona extends Contacto {
-    private String name;
+    //private String name;
     private LocalDate fechaCumpleaños;
+    private ArrayList<Direccion> direccionPersonal;
+    private ArrayList<Telefono> telefonoPersonal;
     
     
     
-    public ContactoPersona(){};
-    public ContactoPersona(String name, String apellido, 
-            LocalDate cumpleaños){
-        super();
-        this.nombre= name+" "+apellido;
-        this.isEmpresa=false;
-        
-        
+    //public ContactoPersona(){};
+    public ContactoPersona(String nombre, boolean isEmpresa, boolean favorito, ArrayList<Direccion> direcciones,ArrayList<Direccion> direccionPersonal, ArrayList<Email> emails, ArrayList<Telefono> telefonos, ArrayList<Telefono> telefonoPersonal, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes, LocalDate fechaCumpleaños){
+        super(nombre, isEmpresa, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
+        this.nombre= nombre;
+        this.isEmpresa=false;  
+        this.telefonoPersonal = telefonoPersonal;
+        this.fechaCumpleaños = fechaCumpleaños;
+        this.direccionPersonal = direccionPersonal;
     }
     
     
+     @Override
+    public String toString() {
+        return super.toString() + ";" + fechaCumpleaños + ";"+direccionPersonal.get(0)+";"+ telefonoPersonal.get(0) ;
+    }
+    
+    public String getEstadoFavorito(){
+        if(favorito){
+            return "S";
+        }else{
+            return "N";
+        }
+    }
     public String getName() {
-        return name;
+        return nombre;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nombre = name;
     }
 
 
@@ -47,10 +69,10 @@ public class ContactoPersona extends Contacto {
 
     
     
-    @Override
+   /* @Override
     public void editarMe() {
        
-    }
+    }*/
 
 
     

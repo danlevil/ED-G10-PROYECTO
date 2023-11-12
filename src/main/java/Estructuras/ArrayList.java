@@ -9,6 +9,7 @@ import java.util.Comparator;
 /**
  *
  * @author danlevil
+ * @param <E>
  */
 public class ArrayList<E> extends List<E> {
     private int capacidad=10;
@@ -120,12 +121,10 @@ public class ArrayList<E> extends List<E> {
         
     }
     
-    private E get(int index) {
-        return elementos[index];
-    }
+   
     @Override
     public E getStart() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -139,5 +138,10 @@ public class ArrayList<E> extends List<E> {
         }
         return null;
         
+    }
+
+    @Override
+    public E get(int i) {
+       return elementos[i];
     }
 }

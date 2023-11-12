@@ -19,8 +19,27 @@ public class Email {
         this.descripcion = descripcion;
         this.direccionCorreo = direccionCorreo;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getDireccionCorreo() {
+        return direccionCorreo;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setDireccionCorreo(String direccionCorreo) {
+        this.direccionCorreo = direccionCorreo;
+    }
     
-    
+    @Override
+    public String toString() {
+        return descripcion +": "+direccionCorreo;
+    }
     
     
 }

@@ -5,6 +5,14 @@
 package Modelo;
 
 import Estructuras.ArrayList;
+import Estructuras.LinkedCircularDE;
+import Fields.Direccion;
+import Fields.Email;
+import Fields.Fecha;
+import Fields.Foto;
+import Fields.RedSocial;
+import Fields.Telefono;
+import java.time.LocalDate;
 
 /**
  *
@@ -14,13 +22,20 @@ public class ContactoEmpresa extends Contacto{
     String Titulo;
     String puestoTrabajo;
     
-    public ContactoEmpresa(){}
-    public ContactoEmpresa(String name){
-        super();
+    //public ContactoEmpresa(){}
+    public ContactoEmpresa(String nombre,String Titulo,String puestoTrabajo, boolean isEmpresa, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
+        super(nombre, isEmpresa, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
+        this. Titulo= Titulo;
+        this.puestoTrabajo=puestoTrabajo;
         this.isEmpresa= true;
-        this.nombre=name;
+        this.nombre=nombre;
     }
 
+     @Override
+    public String toString() {
+        return super.toString() + ";" + isEmpresa;
+    }
+    
     public String getTitulo() {
         return Titulo;
     }
@@ -38,9 +53,9 @@ public class ContactoEmpresa extends Contacto{
     }
     
     
-    @Override
+    /*@Override
     public void editarMe() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    }*/
 
 }

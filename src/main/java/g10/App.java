@@ -16,6 +16,9 @@ import java.util.Scanner;
  * JavaFX App
  */
 public class App extends Application {
+    
+    
+    public static String pathClientes = "";
 
     private static Scene scene;
 
@@ -37,7 +40,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-        Contacto c1= new ContactoEmpresa();
+        //Contacto c1= new ContactoEmpresa("Carlos", "Salazar", "Director General", "Jefe", true, );
         
 
  

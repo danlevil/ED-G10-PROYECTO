@@ -14,9 +14,12 @@ import Fields.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Contacto implements Serializable {
+public class Contacto implements Serializable {
+    private static int contadorIds = 1;
+    private int id;
 
     String nombre;
+    
     boolean isEmpresa;
     boolean favorito;
     
@@ -31,18 +34,33 @@ public abstract class Contacto implements Serializable {
     List<String> etiquetas;
     
     
-    public Contacto(){
-        direcciones=new ArrayList<Direccion>();
-        emails=new ArrayList<Email>();
-        telefonos=new ArrayList<Telefono>();
-        fotos=new LinkedCircularDE<Foto>();
-        redesSociales=new ArrayList<RedSocial>();
-        etiquetas=new ArrayList<String>();
-        fechasImportantes= new LinkedCircularDE<Fecha>();
+    public Contacto(String nombre,boolean isEmpresa, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
+        this.id = contadorIds++;
+        this.nombre = nombre;
+        this.isEmpresa = isEmpresa;
+        this.favorito = favorito;
+        this.direcciones= direcciones;
+        this.emails=emails;
+        this.telefonos= telefonos;
+        this.fotos= fotos;
+        this.redesSociales= redesSociales;
+        this.etiquetas= etiquetas;
+        this.fechasImportantes= fechasImportantes;
+    }
+    
+    
+   
+       @Override
+    public String toString() {
+        return id +";"+ nombre + ";" + isEmpresa + ";" + favorito + ";" + direcciones.get(0)+ ";"+emails.get(0)+";"+telefonos.get(0)+";"+fotos.getStart()+";"+redesSociales.get(0)+";"+etiquetas.get(0)+";"+fechasImportantes.getStart();
     }
 
     public String getNombre() {
         return nombre;
+    }
+    
+     public Email getCorreo() {
+        return emails.get(0);
     }
 
     public boolean isIsEmpresa() {
@@ -54,7 +72,7 @@ public abstract class Contacto implements Serializable {
     }
     
     
-    public abstract void editarMe();
+    //public abstract void editarMe();
     
     public boolean agregarEmail(String descripcion, String cuenta){
         if(descripcion==null && cuenta == null){

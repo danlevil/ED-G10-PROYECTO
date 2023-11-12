@@ -18,4 +18,9 @@ public class Telefono {
     }
     
     
+     @Override
+    public String toString() {
+        return descripcion +": "+numero;
+    }
+    
 }

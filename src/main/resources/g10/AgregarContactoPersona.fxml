@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -138,7 +140,20 @@
                   <TextField fx:id="TxtfechaImpUsuario" promptText="Label" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Es favorito?: Si o No">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Accordion />
+                        <ComboBox fx:id="CboxFav" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+               </children></VBox>
          </children>
       </GridPane>
    </center>

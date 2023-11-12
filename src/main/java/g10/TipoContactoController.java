@@ -43,24 +43,11 @@ public class TipoContactoController implements Initializable {
     
     @FXML
     private void irVentanPersonas(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarContactoPersona.fxml"));
-        Parent root = loader.load();
-
-        // Configurar el controlador 
-        AgregarContactoPersonaController agp = loader.getController();
-        // pasando datos al controlador de la nueva ventana aquí, si es necesario
-
-        // Crear una nueva escena
-        Scene scene = new Scene(root, 900, 700);
-
-        // Configurar el tamaño fijo de la ventana
-        Stage nuevaVentana = new Stage();
-        nuevaVentana.setTitle("Nueva Ventana");
-        nuevaVentana.setScene(scene);
-        nuevaVentana.setResizable(false);
-
-        // Mostrar la nueva ventana
-        nuevaVentana.show();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(AgregarContactoPersonaController.class.getResource("AgregarContactoPersona.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -84,7 +71,7 @@ public class TipoContactoController implements Initializable {
 
         // Mostrar la nueva ventana
         nuevaVentana.show();
-       // stage.close();
+        stage.close();
     }
 
     @FXML
