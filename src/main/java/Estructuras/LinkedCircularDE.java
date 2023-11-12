@@ -4,7 +4,9 @@
  */
 package Estructuras;
 
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  *
@@ -46,6 +48,84 @@ private Nodo<E> start;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    
+    public List<E> unirListas(Collection<? extends E >lista) {
+        LinkedCircularDE<E> primera= (LinkedCircularDE<E>) this.copiarList();
+        LinkedCircularDE<E> otra= (LinkedCircularDE<E>) lista;
+        LinkedCircularDE<E> segunda= (LinkedCircularDE<E>) otra.copiarList();
+
+        Nodo<E> ultimoPrimera = primera.start.getPrevio();
+        Nodo<E> primeroSegunda= segunda.start ;
+        
+        ultimoPrimera.setSiguiente(primeroSegunda);
+        primeroSegunda.setPrevio(ultimoPrimera);
+        
+        return primera;
+        
+        
+    }
+    private LinkedCircularDE<E> copiarList(){
+        LinkedCircularDE<E> copia= new LinkedCircularDE<E>();
+        copia.add(this.start.contenido);
+        Nodo<E> n;
+        for(n=this.start.getSiguiente(); n!=null; n= n.getSiguiente()){
+            if(n==this.start){break;}
+            copia.add(n.getContenido());
+        }
+        return copia;
+    }
+
+
+
+    @Override
+    public boolean isEmpty() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object[] toArray() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public class Nodo<E>{
         E contenido;

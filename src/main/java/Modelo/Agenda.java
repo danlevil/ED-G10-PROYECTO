@@ -13,13 +13,23 @@ import Estructuras.List;
  */
 public class Agenda {
     
-    List<Contacto> contactos=new LinkedCircularDE<Contacto>();
     
+    public static List<ContactoPersona> contactosPersonas=new LinkedCircularDE<ContactoPersona>();
+    public static List<ContactoEmpresa> contactosEmpresas=new LinkedCircularDE<ContactoEmpresa>();
     
-    public void agregarContacto(Contacto c){
-        contactos.add(c);
+    public static List<Contacto> contactos= contactosPersonas.unirListas(
+    contactosEmpresas);
+    
+    public static void agregarContactoEmpresa(ContactoEmpresa c){
+        contactosEmpresas.add(c);
         
     }
+    public static void agregarContactoPersona(ContactoPersona c){
+        contactosPersonas.add(c);
+        
+    }
+    
+    
     
     public void eliminarContacto(Contacto c){
         //contactos.remove(c, cmp);
