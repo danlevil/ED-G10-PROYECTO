@@ -20,7 +20,8 @@ import java.util.Scanner;
  */
 public class App extends Application {
     
-    
+    private static final long serialVersionUID=1L;
+   
     public static String pathClientes = "";
 
     private static Scene scene;
@@ -50,7 +51,13 @@ public class App extends Application {
         CargadorDeArchivos.cargarListasDesdeArchivos();
         
         for(Contacto contacto : Agenda.contactosMaster){
+<<<<<<< HEAD
             System.out.println(contacto.getId());  
+=======
+            System.out.println(
+                    contacto.getId()+" "+
+                    contacto.getNombre());  
+>>>>>>> e5393fa71360e85f3e1c18b7503c70c736428298
         }
         launch();
         

@@ -40,7 +40,7 @@ import javafx.stage.Stage;
  * @author Charlie
  */
 public class AgregarContactoEmpresaController implements Initializable {
-
+    private static final long serialVersionUID=1L;
 
     @FXML
     private ImageView iconoRegresar;
@@ -73,6 +73,7 @@ public class AgregarContactoEmpresaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
         ObservableList<String> list = FXCollections.observableArrayList("S", "N");
         CboxFav.setItems(list);

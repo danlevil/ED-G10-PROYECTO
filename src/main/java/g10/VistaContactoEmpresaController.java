@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
  * @author Charlie
  */
 public class VistaContactoEmpresaController implements Initializable {
+    private static final long serialVersionUID=1L;
 
     @FXML
     private ImageView iconoRegresar;

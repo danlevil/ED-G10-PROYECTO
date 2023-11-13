@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
  * @author Charlie
  */
 public class FiltroContactoController implements Initializable {
+    private static final long serialVersionUID=1L;
 
 
     @FXML

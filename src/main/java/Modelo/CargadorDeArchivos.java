@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
  * @author danlevil
  */
 public class CargadorDeArchivos {
+    private static final long serialVersionUID=1L;
 
     private static final String RUTA = "src/main/resources/Contactos/";
     public static void cargarListasDesdeArchivos() {

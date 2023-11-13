@@ -25,6 +25,7 @@ import javafx.stage.Stage;
  * @author Charlie
  */
 public class TipoContactoController implements Initializable {
+    private static final long serialVersionUID=1L;
 
     private static Scene escenaTipoContacto;
     @FXML

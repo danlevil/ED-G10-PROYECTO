@@ -34,6 +34,7 @@ import javafx.stage.Stage;
  * @author Charlie
  */
 public class ListaContactosController implements Initializable {
+    private static final long serialVersionUID=1L;
 
 
     @FXML
