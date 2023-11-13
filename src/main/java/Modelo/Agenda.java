@@ -6,17 +6,30 @@ package Modelo;
 
 import Estructuras.LinkedCircularDE;
 import Estructuras.List;
+import java.io.Serializable;
 
 /**
  *
  * @author danlevil
  */
-public class Agenda {
+public class Agenda implements Serializable{
     
     
-    public static List<ContactoPersona> contactosPersonas=new LinkedCircularDE<ContactoPersona>();
-    public static List<ContactoEmpresa> contactosEmpresas=new LinkedCircularDE<ContactoEmpresa>();
-    public static List<Contacto> contactosMaster= new LinkedCircularDE<Contacto>();
+    public static List<ContactoPersona> contactosPersonas;//=new LinkedCircularDE<ContactoPersona>();
+    public static List<ContactoEmpresa> contactosEmpresas;//=new LinkedCircularDE<ContactoEmpresa>();
+    public static List<Contacto> contactosMaster;//=new LinkedCircularDE<Contacto>();
+    
+    public static void inicializador(){
+        if(contactosPersonas==null){
+            contactosPersonas=new LinkedCircularDE<ContactoPersona>();
+        }
+        if(contactosEmpresas==null){
+            contactosEmpresas=new LinkedCircularDE<ContactoEmpresa>();
+        }
+        if(contactosMaster==null){
+            contactosMaster= new LinkedCircularDE<Contacto>();
+        }
+    }
     
     public static void agregarGeneral(Contacto c){
         contactosMaster.add(c);
@@ -52,6 +65,7 @@ public class Agenda {
     
     public void filtrarFechaCumpleaños(){}
     
-    
+    public static void print(){
+    }
     
 }

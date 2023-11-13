@@ -29,6 +29,7 @@ public abstract class List<E> implements Serializable, Collection<E>{
     public abstract void recorrer();
     public abstract int encontrarElemento();
     public abstract E get(int i);
+    public abstract boolean isEmpty();
     
 
     

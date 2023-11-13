@@ -4,11 +4,13 @@
  */
 package Fields;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danlevil
  */
-public class Telefono {
+public class Telefono implements Serializable {
     String descripcion;
     String numero;
 

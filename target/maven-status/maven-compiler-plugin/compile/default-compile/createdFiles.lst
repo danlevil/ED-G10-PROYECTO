@@ -16,6 +16,7 @@ Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
 module-info.class
 Modelo\Agenda.class
+Modelo\CargadorDeArchivos.class
 Modelo\Contacto.class
 g10\TipoContactoController.class
 g10\AgregarContactoPersonaController.class

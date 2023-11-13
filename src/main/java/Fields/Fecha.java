@@ -4,13 +4,14 @@
  */
 package Fields;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author danlevil
  */
-public class Fecha {
+public class Fecha implements Serializable {
     String descripcion;
     LocalDate fecha;
 

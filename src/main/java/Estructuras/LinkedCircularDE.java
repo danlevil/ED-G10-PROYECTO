@@ -4,6 +4,7 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -65,7 +66,9 @@ private Nodo<E> start;
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(tamaño==0){return true;}
+        if (this.start==null){return true;}
+        return false;
     }
 
     @Override
@@ -113,7 +116,7 @@ private Nodo<E> start;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public class Nodo<E>{
+    public class Nodo<E> implements Serializable{
         E contenido;
         Nodo<E> siguiente;
         Nodo<E> previo;

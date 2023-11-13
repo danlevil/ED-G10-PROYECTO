@@ -6,12 +6,13 @@ package Fields;
 
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
+import java.io.Serializable;
 
 /**
  *
  * @author danlevil
  */
-public class Email {
+public class Email implements Serializable{
     String descripcion;
     String direccionCorreo;
 
