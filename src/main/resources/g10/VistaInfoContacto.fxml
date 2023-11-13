@@ -19,16 +19,11 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                <children>
-                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="778.0" text="Contacto Persona" textAlignment="CENTER">
+                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="906.0" text="Contacto Persona" textAlignment="CENTER">
                      <font>
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="iconoEditar" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#editarContacto" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../imagenes/editar.png" />
-                     </image>
-                  </ImageView>
                </children>
             </HBox>
          </children>

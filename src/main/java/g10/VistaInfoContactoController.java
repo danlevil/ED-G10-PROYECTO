@@ -32,8 +32,6 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private Label labelRegistarContacto;
     @FXML
-    private ImageView iconoEditar;
-    @FXML
     private ImageView imgFotoContacto;
     @FXML
     private Label lbnombreCP;
@@ -80,7 +78,6 @@ public class VistaInfoContactoController implements Initializable {
       
      }
     
-    @FXML
     private void editarContacto(MouseEvent event) {
         System.out.println("Contacto Editado");
     }

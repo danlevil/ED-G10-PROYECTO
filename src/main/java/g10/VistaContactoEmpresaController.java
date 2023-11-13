@@ -26,8 +26,6 @@ public class VistaContactoEmpresaController implements Initializable {
     @FXML
     private Label labelRegistarContacto;
     @FXML
-    private ImageView iconoEditar;
-    @FXML
     private ImageView imgFotoContactoE;
     @FXML
     private Label lbnombreCE;
@@ -73,16 +71,16 @@ public class VistaContactoEmpresaController implements Initializable {
         LblDescrFecha.setText(contacto.getFechaImportante().getFechaDescripcion());
         lbcelularTCE.setText(contacto.getTelefono().getNumero());
         lblCargo.setText(contacto.getPuestoTrabajo());
+        lblTitulo.setText(contacto.getTitulo());
         //falta poner etiquetas y link para google maps   
       
      }
     
     
 
-    @FXML
-    private void editarContacto(MouseEvent event) {
+    /*private void editarContacto(MouseEvent event) {
         System.out.println("Contacto Editado");
-    }
+    }*/
 
     @FXML
     private void mostrarInfoExtra(ActionEvent event) {

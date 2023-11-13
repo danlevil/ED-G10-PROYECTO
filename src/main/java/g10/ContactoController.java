@@ -98,9 +98,10 @@ public class ContactoController implements Initializable {
             VistaContactoEmpresaController controller = loader.getController();
             controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
 
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,780,700);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.setTitle("Vista de Contacto para Empresas");
             stage.show();
            
@@ -122,10 +123,12 @@ public class ContactoController implements Initializable {
             
             
             
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 780,700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Vista de Contacto para Personas");
+            
+            stage.setResizable(false);
           
             stage.show();
            
