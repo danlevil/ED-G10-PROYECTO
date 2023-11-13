@@ -58,6 +58,10 @@ public class Contacto implements Serializable {
     public String getNombre() {
         return nombre;
     }
+
+    public int getId() {
+        return id;
+    }
     
      public Email getCorreo() {
         return emails.get(0);

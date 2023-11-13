@@ -25,6 +25,7 @@
                   <Font size="19.0" />
                </font>
             </Label>
+            <Label fx:id="Lblid" text="Label" visible="false" />
             <Label fx:id="lbcontactocorreo" text="Label">
                <font>
                   <Font size="19.0" />

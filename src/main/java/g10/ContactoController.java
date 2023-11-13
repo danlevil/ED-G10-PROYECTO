@@ -35,6 +35,8 @@ public class ContactoController implements Initializable {
     private Label lbcontactonombre;
     @FXML
     private Label lbcontactocorreo;
+    @FXML
+    private Label Lblid;
 
     /**
      * Initializes the controller class.
@@ -54,7 +56,7 @@ public class ContactoController implements Initializable {
     public void configurar(Contacto contacto) {
         lbcontactonombre.setText(contacto.getNombre());
         lbcontactocorreo.setText(contacto.getCorreo().getDireccionCorreo());
-        
+        Lblid.setText(String.valueOf(contacto.getId())); 
     }
     
     
