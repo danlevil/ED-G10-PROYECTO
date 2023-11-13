@@ -28,13 +28,13 @@ public class ContactoPersona extends Contacto {
     
     
     //public ContactoPersona(){};
-    public ContactoPersona(String nombre, boolean isEmpresa, boolean favorito, ArrayList<Direccion> direcciones,ArrayList<Direccion> direccionPersonal, ArrayList<Email> emails, ArrayList<Telefono> telefonos, ArrayList<Telefono> telefonoPersonal, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes, LocalDate fechaCumpleaños){
-        super(nombre, isEmpresa, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
+    public ContactoPersona(String nombre,  boolean favorito, ArrayList<Direccion> direcciones,ArrayList<Direccion> direccionPersonal, ArrayList<Email> emails, ArrayList<Telefono> telefonos, ArrayList<Telefono> telefonoPersonal, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes, LocalDate fechaCumpleaños){
+        super(nombre,  favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
         this.nombre= nombre;
-        this.isEmpresa=false;  
         this.telefonoPersonal = telefonoPersonal;
         this.fechaCumpleaños = fechaCumpleaños;
         this.direccionPersonal = direccionPersonal;
+        this.isEmpresa=false;
     }
     
     

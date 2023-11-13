@@ -18,19 +18,19 @@ import javafx.scene.control.Alert.AlertType;
 public class Serializador {
     private static final String RUTA = "src/main/resources/Contactos/";
     
-    public static void serializarTodosLosContactos(List<Contacto> contactosPersonas, 
+    public static void serializarTodosLosContactos(List<Contacto> contactosMaster, 
             List<ContactoEmpresa> contactosEmpresas, 
-            List<ContactoPersona> contactosMaster) {
+            List<ContactoPersona> contactosPersonas) {
         if (!Agenda.contactosPersonas.isEmpty()) {
-            serializarLista(contactosPersonas, "listaGeneral.ser");
+            serializarListaPersonas(contactosPersonas, "listaContactosComunes.ser");
         }
 
         if (!Agenda.contactosEmpresas.isEmpty()) {
             serializarListaEmpresa(contactosEmpresas, "listaContactosEmpresas.ser");
         }
 
-        if (!Agenda.contactosPersonas.isEmpty()) {
-            serializarListaPersonas(contactosMaster, "listaContactosComunes.ser");
+        if (!Agenda.contactosMaster.isEmpty()) {
+            serializarLista(contactosMaster, "listaGeneral.ser");
         }
 
         mostrarAlerta("Serialización completa", "Todos los contactos han sido serializados y guardados correctamente.");

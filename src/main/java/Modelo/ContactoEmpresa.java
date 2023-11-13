@@ -23,12 +23,12 @@ public class ContactoEmpresa extends Contacto{
     String puestoTrabajo;
     
     //public ContactoEmpresa(){}
-    public ContactoEmpresa(String nombre,String Titulo,String puestoTrabajo, boolean isEmpresa, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
-        super(nombre, isEmpresa, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
+    public ContactoEmpresa(String nombre,String Titulo,String puestoTrabajo, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
+        super(nombre, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
         this. Titulo= Titulo;
         this.puestoTrabajo=puestoTrabajo;
-        this.isEmpresa= true;
         this.nombre=nombre;
+        this.isEmpresa=true;
     }
 
      @Override

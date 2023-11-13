@@ -44,8 +44,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        CargadorDeArchivos.cargarListasDesdeArchivos();
         Agenda.inicializador();
+        CargadorDeArchivos.cargarListasDesdeArchivos();
         launch();
         
         
@@ -63,9 +63,9 @@ public class App extends Application {
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
                 Agenda.contactosPersonas);
-        System.out.println(Agenda.contactosMaster.size());
-        System.out.println(Agenda.contactosPersonas.size());
-        System.out.println(Agenda.contactosEmpresas.size());
+        System.out.println("master: "+Agenda.contactosMaster.size());
+        System.out.println("persona: "+Agenda.contactosPersonas.size());
+        System.out.println("empresa: "+Agenda.contactosEmpresas.size());
         
     }
 }

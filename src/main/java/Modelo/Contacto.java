@@ -34,7 +34,7 @@ public class Contacto implements Serializable {
     List<String> etiquetas;
     
     
-    public Contacto(String nombre,boolean isEmpresa, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
+    public Contacto(String nombre, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
         this.id = contadorIds++;
         this.nombre = nombre;
         this.isEmpresa = isEmpresa;

@@ -37,9 +37,11 @@ public class Agenda implements Serializable{
     public static void agregarContactoEmpresa(ContactoEmpresa c){
         contactosEmpresas.add(c);
         
+        
     }
     public static void agregarContactoPersona(ContactoPersona c){
         contactosPersonas.add(c);
+        
         
     }
     

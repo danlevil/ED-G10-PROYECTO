@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Estructuras\ArrayList.class
 Fields\Telefono.class
 Estructuras\List.class
@@ -15,14 +16,32 @@ Estructuras\LinkedCircularDE$1.class
 Fields\Foto.class
 Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
+=======
+Modelo/ContactoPersona.class
+Fields/Foto.class
+Fields/Direccion.class
+Estructuras/LinkedCircularDE$Nodo.class
+Estructuras/LinkedCircularDE.class
+Fields/Email.class
+g10/TipoContactoController.class
+g10/ListaContactosController.class
+Modelo/ContactoEmpresa.class
+g10/App.class
+Modelo/Agenda.class
+g10/AgregarContactoEmpresaController.class
+Estructuras/ArrayList.class
+Modelo/CargadorDeArchivos.class
+Comparadores/ComparadorPersona.class
+g10/VistaInfoContactoController.class
+Estructuras/List.class
+g10/AgregarContactoPersonaController.class
+>>>>>>> cff1c5c55cf541e6aebcfca2254168f27bfc553c
 module-info.class
-Modelo\Agenda.class
-Modelo\CargadorDeArchivos.class
-Modelo\Contacto.class
-g10\TipoContactoController.class
-g10\AgregarContactoPersonaController.class
-g10\App.class
-g10\ContactoController.class
-Fields\Email.class
-Modelo\Serializador.class
-Fields\Fecha.class
+g10/VistaContactoEmpresaController.class
+g10/ContactoController.class
+Modelo/Serializador.class
+Fields/Fecha.class
+Fields/RedSocial.class
+g10/FiltroContactoController.class
+Fields/Telefono.class
+Modelo/Contacto.class
