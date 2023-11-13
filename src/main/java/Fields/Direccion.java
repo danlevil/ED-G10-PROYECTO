@@ -4,11 +4,13 @@
  */
 package Fields;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danlevil
  */
-public class Direccion {
+public class Direccion implements Serializable {
     
     String nombreDireccion;
     String ubicacion;

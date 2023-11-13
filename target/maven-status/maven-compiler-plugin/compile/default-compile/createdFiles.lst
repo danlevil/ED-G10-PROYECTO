@@ -11,6 +11,7 @@ g10/App.class
 Modelo/Agenda.class
 g10/AgregarContactoEmpresaController.class
 Estructuras/ArrayList.class
+Modelo/CargadorDeArchivos.class
 Comparadores/ComparadorPersona.class
 g10/VistaInfoContactoController.class
 Estructuras/List.class

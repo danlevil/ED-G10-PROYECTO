@@ -4,11 +4,13 @@
  */
 package Fields;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danlevil
  */
-public class RedSocial {
+public class RedSocial implements Serializable{
     String descripcion;
     String cuenta;
 

@@ -5,20 +5,68 @@
 package Modelo;
 
 import Estructuras.List;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  *
  * @author danlevil
  */
 public class Serializador {
+    private static final String RUTA = "src/main/resources/Contactos/";
     
-    public static void serializarGeneral(List<Contacto> listaGeneral){
-        
+    public static void serializarTodosLosContactos(List<Contacto> contactosPersonas, 
+            List<ContactoEmpresa> contactosEmpresas, 
+            List<ContactoPersona> contactosMaster) {
+        if (!Agenda.contactosPersonas.isEmpty()) {
+            serializarLista(contactosPersonas, "listaGeneral.ser");
+        }
+
+        if (!Agenda.contactosEmpresas.isEmpty()) {
+            serializarListaEmpresa(contactosEmpresas, "listaContactosEmpresas.ser");
+        }
+
+        if (!Agenda.contactosPersonas.isEmpty()) {
+            serializarListaPersonas(contactosMaster, "listaContactosComunes.ser");
+        }
+
+        mostrarAlerta("Serialización completa", "Todos los contactos han sido serializados y guardados correctamente.");
     }
-    public static void serializarContactosEmpresa(List<Contacto> listaEmpresas){
-        
+    private static void serializarLista(List<Contacto> listaContactos, String nombreArchivo) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RUTA + nombreArchivo))) {
+            oos.writeObject(listaContactos);
+            oos.flush();
+            System.out.println("Lista serializada y guardada correctamente en: " + RUTA + nombreArchivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    public static void serializarContactosPersona(List<Contacto> listaPersonas){
-        
+    private static void serializarListaEmpresa(List<ContactoEmpresa> listaContactos, String nombreArchivo) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RUTA + nombreArchivo))) {
+            oos.writeObject(listaContactos);
+            oos.flush();
+            System.out.println("Lista serializada y guardada correctamente en: " + RUTA + nombreArchivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void serializarListaPersonas(List<ContactoPersona> listaContactos, String nombreArchivo) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RUTA + nombreArchivo))) {
+            oos.writeObject(listaContactos);
+            oos.flush();
+            System.out.println("Lista serializada y guardada correctamente en: " + RUTA + nombreArchivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+       private static void mostrarAlerta(String titulo, String contenido) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
     }
 }

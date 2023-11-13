@@ -1,8 +1,11 @@
 package g10;
 
+import Modelo.Agenda;
+import Modelo.CargadorDeArchivos;
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
 import Modelo.ContactoPersona;
+import Modelo.Serializador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,8 +42,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        CargadorDeArchivos.cargarListasDesdeArchivos();
+        Agenda.inicializador();
         launch();
-        //Contacto c1= new ContactoEmpresa("Carlos", "Salazar", "Director General", "Jefe", true, );
+        
         
 
  
@@ -49,5 +54,16 @@ public class App extends Application {
         scene.setRoot(rootNode);
         System.out.println();
     }
-
+    @Override
+    public void stop() throws Exception{
+        
+        Serializador.serializarTodosLosContactos(
+                Agenda.contactosMaster,
+                Agenda.contactosEmpresas,
+                Agenda.contactosPersonas);
+        System.out.println(Agenda.contactosMaster.size());
+        System.out.println(Agenda.contactosPersonas.size());
+        System.out.println(Agenda.contactosEmpresas.size());
+        
+    }
 }
