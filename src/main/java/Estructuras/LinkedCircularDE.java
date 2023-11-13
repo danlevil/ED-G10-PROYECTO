@@ -14,6 +14,8 @@ import java.util.Iterator;
  * @author danlevil
  */
 public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
+    private static final long serialVersionUID=1L;
+
 private Nodo<E> start;
     private int tamaño=0;
     public LinkedCircularDE(){

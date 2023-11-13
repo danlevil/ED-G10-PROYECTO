@@ -19,6 +19,8 @@ import java.time.LocalDate;
  * @author danlevil
  */
 public class ContactoEmpresa extends Contacto{
+    private static final long serialVersionUID=1L;
+
     String Titulo;
     String puestoTrabajo;
     

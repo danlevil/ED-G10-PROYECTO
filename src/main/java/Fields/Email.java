@@ -13,6 +13,7 @@ import java.io.Serializable;
  * @author danlevil
  */
 public class Email implements Serializable{
+    private static final long serialVersionUID=1L;
     String descripcion;
     String direccionCorreo;
 

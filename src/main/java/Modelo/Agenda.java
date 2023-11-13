@@ -14,7 +14,8 @@ import java.io.Serializable;
  */
 public class Agenda implements Serializable{
     
-    
+    private static final long serialVersionUID=1L;
+
     public static List<ContactoPersona> contactosPersonas;//=new LinkedCircularDE<ContactoPersona>();
     public static List<ContactoEmpresa> contactosEmpresas;//=new LinkedCircularDE<ContactoEmpresa>();
     public static List<Contacto> contactosMaster;//=new LinkedCircularDE<Contacto>();

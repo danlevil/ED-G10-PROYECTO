@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Contacto implements Serializable {
+    private static final long serialVersionUID=1L;
     private static int contadorIds = 1;
     private int id;
 

@@ -12,6 +12,7 @@ import java.time.LocalDate;
  * @author danlevil
  */
 public class Foto implements Serializable{
+    private static final long serialVersionUID=1L;
     String archivo;
     LocalDate creacion;
 
