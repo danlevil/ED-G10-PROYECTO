@@ -32,8 +32,10 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        
+        
     }
-
+                        
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -46,6 +48,10 @@ public class App extends Application {
     public static void main(String[] args) {
         Agenda.inicializador();
         CargadorDeArchivos.cargarListasDesdeArchivos();
+        
+        for(Contacto contacto : Agenda.contactosMaster){
+            System.out.println(contacto.getNombre());  
+        }
         launch();
         
         

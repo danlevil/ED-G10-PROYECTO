@@ -39,7 +39,7 @@ public class Email implements Serializable{
     
     @Override
     public String toString() {
-        return descripcion +": "+direccionCorreo;
+        return direccionCorreo;
     }
     
     

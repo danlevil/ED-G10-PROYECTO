@@ -42,7 +42,7 @@ public class ContactoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+       setMouseEvent(hboxContact1);
     }
     
     
@@ -65,6 +65,18 @@ public class ContactoController implements Initializable {
     private void abrirContactoInfo(MouseEvent event) {
         
         
+    }
+    
+      private void setMouseEvent(HBox hboxContact) {
+         // Manejador para el evento de ratón al entrar en la sección
+        hboxContact.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
+            hboxContact.setStyle("-fx-background-color: lightblue;");
+        });
+
+        // Manejador para el evento de ratón al salir de la sección
+        hboxContact.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
+            hboxContact.setStyle("-fx-background-color: ;");
+        });
     }
     
 }

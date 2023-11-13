@@ -55,7 +55,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox prefHeight="700.0" prefWidth="900.0" />
+      <VBox fx:id="VboxContactos" prefHeight="700.0" prefWidth="900.0" />
       <HBox alignment="CENTER" prefHeight="43.0" prefWidth="900.0">
          <children>
             <ImageView fx:id="imgBotonant" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#avanzarIzquierda" pickOnBounds="true" preserveRatio="true">

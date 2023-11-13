@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hboxContact1" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ContactoController">
+<HBox fx:id="hboxContact1" onMouseClicked="#abrirContactoInfo" prefHeight="100.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ContactoController">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
@@ -18,7 +18,7 @@
             </ImageView>
          </children>
       </VBox>
-      <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="128.0">
+      <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="762.0">
          <children>
             <Label fx:id="lbcontactonombre" text="Label">
                <font>
