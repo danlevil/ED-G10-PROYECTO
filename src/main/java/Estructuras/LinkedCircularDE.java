@@ -22,123 +22,6 @@ private Nodo<E> start;
         start=null;
     }
 
-
-    
-    
-    
-    @Override
-    public E remove(E e, Comparator cmp) {
-        Nodo<E>n;
-        Nodo<E>eliminado;
-        for(n=this.start;n!=null;n=n.getSiguiente()){
-            if(cmp.compare(n, e)==0){
-                eliminado=n;
-                
-                Nodo<E>previo=n.getPrevio();
-                Nodo<E>sig= n.getSiguiente();
-                
-                previo.setSiguiente(sig);
-                sig.setPrevio(previo);
-                if(n==start){this.start=sig;}
-                n.setPrevio(null);
-                n.setSiguiente(null);
-                tamaño--;
-                return eliminado.getContenido();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public E get(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    
-
-    private LinkedCircularDE<E> copiarList(){
-        LinkedCircularDE<E> copia= new LinkedCircularDE<E>();
-        copia.add(this.start.contenido);
-        Nodo<E> n;
-        for(n=this.start.getSiguiente(); n!=null; n= n.getSiguiente()){
-            if(n==this.start){break;}
-            copia.add(n.getContenido());
-        }
-        return copia;
-    }
-
-
-
-    @Override
-    public boolean isEmpty() {
-        if(tamaño==0){return true;}
-        if (this.start==null){return true;}
-        return false;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-       return new Iterator<E>(){
-            Nodo<E> actual = start;
-            Nodo<E> sig = start;
-
-            @Override
-            public boolean hasNext() {
-               return sig != null;
-            }
-
-            @Override
-            public E next() {
-              E elemento = sig.contenido; 
-              sig = sig.siguiente;
-              if(sig == actual){
-                  sig = null;
-              }
-              return elemento;
-            }          
-        };    
-    }
-
-    @Override
-    public Object[] toArray() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends E> c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     public class Nodo<E> implements Serializable{
         E contenido;
         Nodo<E> siguiente;
@@ -169,6 +52,81 @@ private Nodo<E> start;
             return contenido;
         }
     }
+
+    
+    
+    
+    @Override
+    public E remove(E e, Comparator cmp) {
+        Nodo<E>n;
+        Nodo<E>eliminado;
+        for(n=this.start;n!=null;n=n.getSiguiente()){
+            if(cmp.compare(n, e)==0){
+                eliminado=n;
+                
+                Nodo<E>previo=n.getPrevio();
+                Nodo<E>sig= n.getSiguiente();
+                
+                previo.setSiguiente(sig);
+                sig.setPrevio(previo);
+                if(n==start){this.start=sig;}
+                n.setPrevio(null);
+                n.setSiguiente(null);
+                tamaño--;
+                return eliminado.getContenido();
+            }
+        }
+        return null;
+    }
+
+
+
+    private LinkedCircularDE<E> copiarList(){
+        LinkedCircularDE<E> copia= new LinkedCircularDE<E>();
+        copia.add(this.start.contenido);
+        Nodo<E> n;
+        for(n=this.start.getSiguiente(); n!=null; n= n.getSiguiente()){
+            if(n==this.start){break;}
+            copia.add(n.getContenido());
+        }
+        return copia;
+    }
+
+
+
+    @Override
+    public boolean isEmpty() {
+        if(tamaño==0){return true;}
+        if (this.start==null){return true;}
+        return false;
+    }
+
+
+
+    @Override
+    public Iterator<E> iterator() {
+       return new Iterator<E>(){
+            Nodo<E> actual = start;
+            Nodo<E> sig = start;
+
+            @Override
+            public boolean hasNext() {
+               return sig != null;
+            }
+
+            @Override
+            public E next() {
+              E elemento = sig.contenido; 
+              sig = sig.siguiente;
+              if(sig == actual){
+                  sig = null;
+              }
+              return elemento;
+            }          
+        };    
+    }
+
+    
     
     @Override
     public boolean add(E e) {
@@ -272,25 +230,7 @@ private Nodo<E> start;
     public int size() {
         return getTamaño();
     }
-    @Override
-    public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
-    @Override
-    public void moverFavorito() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void recorrer() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public int encontrarElemento() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public void add(int index, E element) {
@@ -318,6 +258,75 @@ private Nodo<E> start;
         nuevoNodo.setSiguiente(encontrado);
         if(index==0){this.start=nuevoNodo;}
         tamaño++;
+    }
+    @Override
+    public E get(int index) {
+        if(index==0){return this.start.contenido;}
+        else if (index<0){
+            throw new IndexOutOfBoundsException(
+                    "Indice fuera de los límites del LinkedLIst");
+        }
+        Nodo <E> encontrado=findNode(index);
+        return (encontrado!=null)?encontrado.getContenido():null;
+    }
+
+    
+    @Override
+    public Object[] toArray() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+        @Override
+    public void clear() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void moverFavorito() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void recorrer() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int encontrarElemento() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    @Override
+    public boolean contains(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

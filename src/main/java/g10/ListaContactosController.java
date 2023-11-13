@@ -59,12 +59,13 @@ public class ListaContactosController implements Initializable {
     @FXML
     private VBox VboxContactos;
     
+    private static final int ELEMENTOS_POR_PAGINA=6;
+    private static int paginaActual=1;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cargarContactosDesdeArchivo();
-        // TODO
-        //setMouseEvent(hboxContact1);
-        lbnumpag.setText(String.valueOf(1));
+
+        mostrarElementos();
         
     }
     
@@ -74,17 +75,17 @@ public class ListaContactosController implements Initializable {
     
     public void cargarContactosDesdeArchivo() {
         
-            // Agrega cada contacto al VBox usando el método agregarHBox
-            
-            int contador = 0;
-            for (Contacto contacto : Agenda.contactosMaster) {
-                agregarHBox(contacto);
-                contador ++;
-                if(contador == 6){
-                    break;
-                    
-                }
-            }  
+        // Agrega cada contacto al VBox usando el método agregarHBox
+
+        int contador = 0;
+        for (Contacto contacto : Agenda.contactosMaster) {
+            agregarHBox(contacto);
+            contador ++;
+            if(contador == 6){
+                break;
+
+            }
+        }  
     }
     
     private void agregarHBox(Contacto contacto) {
@@ -104,25 +105,7 @@ public class ListaContactosController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    
-    
-   /* public void agregarContacto(Contacto contacto){
-      try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Contacto.fxml"));
-        Parent contactoNode = loader.load(); 
-      
-        ContactoController controladorDeContacto = loader.getController();
-        controladorDeContacto.configurarContacto(nombre, correo);
-        contacto1Vbox.getChildren().add(contactoNode);
-      }catch (IOException e) {
-            e.printStackTrace();
-        }
-      
-        
-    }*/
-    
-    
+ 
     
     @FXML
     private void filtrar(MouseEvent event) throws IOException {
@@ -133,31 +116,51 @@ public class ListaContactosController implements Initializable {
     private void añadirContacto(MouseEvent event) throws IOException {
        App.setRoot("TipoContacto");
     }
+    
+    private void mostrarElementos() {
+        VboxContactos.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
 
-    @FXML
-    private void avanzarIzquierda(MouseEvent event) {
-        
-        int valorActual = Integer.parseInt(lbnumpag.getText());
-        if (valorActual == 1){
-            lbnumpag.setText(String.valueOf(1));  
-        }else{
-            numeroPag--;
-            lbnumpag.setText(String.valueOf(numeroPag));
-            
+        for (int i = inicio; i < fin; i++) {
+            agregarHBox(Agenda.contactosMaster.get(i));
         }
 
+        lbnumpag.setText( String.valueOf(paginaActual));
+    }    
+    @FXML
+    private void avanzarIzquierda(MouseEvent event) {
+
+        int totalPaginas = (int) Math.ceil((double) Agenda.contactosMaster.size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual > 1) {
+            paginaActual--;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+        mostrarElementos();
     }
-    
     
     @FXML
     private void avanzarDerecha(MouseEvent event) {
-        numeroPag ++;
-       lbnumpag.setText(String.valueOf(numeroPag));
+
+        int totalPaginas = (int) Math.ceil((double) Agenda.contactosMaster.size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual < totalPaginas) {
+            paginaActual++;
+        } else {
+            // Si llegamos al final, regresamos a la primera página
+            paginaActual = 1;
+        }
+
+        mostrarElementos();
        
     }
 
    
-     private void setMouseEvents(VBox vbox) {
+    private void setMouseEvents(VBox vbox) {
        
     }
 

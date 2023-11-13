@@ -35,7 +35,7 @@ public class Serializador {
             serializarLista(contactosMaster, "listaGeneral.ser");
         }
 
-        mostrarAlerta("Serialización completa", "Todos los contactos han sido serializados y guardados correctamente.");
+        //mostrarAlerta("Serialización completa", "Todos los contactos han sido serializados y guardados correctamente.");
     }
     private static void serializarLista(List<Contacto> listaContactos, String nombreArchivo) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RUTA + nombreArchivo))) {
