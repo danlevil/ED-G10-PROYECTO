@@ -149,8 +149,7 @@ public class AgregarContactoPersonaController implements Initializable {
             favorito=false;
         }
         
-        ContactoPersona contactoPersonaNuevo = new ContactoPersona(TxtnombreUsuario.getText(), false, favorito, direcciones, direccionPersonales, emails, telefonos,telefonosPersonales, fotos, redesSociales, etiquetas, fechasImportantes, cumpleaños);
-        //Agenda.inicializador();
+        ContactoPersona contactoPersonaNuevo = new ContactoPersona(TxtnombreUsuario.getText(), favorito, direcciones, direccionPersonales, emails, telefonos,telefonosPersonales, fotos, redesSociales, etiquetas, fechasImportantes, cumpleaños);
         
         Agenda.agregarContactoPersona(contactoPersonaNuevo); 
         Agenda.agregarGeneral(contactoPersonaNuevo);

@@ -26,7 +26,7 @@ public class CargadorDeArchivos {
         ) {
             Agenda.contactosEmpresas = (List<ContactoEmpresa>) ois2.readObject();
         } catch (Exception e) {
-            e.printStackTrace(); // Manejar la excepción de manera adecuada en tu aplicación
+            e.printStackTrace(); 
         }
         try(ObjectInputStream ois3 = new ObjectInputStream(new FileInputStream(RUTA+"listaGeneral.ser"))){
             Agenda.contactosMaster= (List<Contacto>) ois3.readObject();
