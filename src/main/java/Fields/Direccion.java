@@ -21,6 +21,14 @@ public class Direccion implements Serializable {
         this.nombreDireccion = nombreDireccion;
         this.ubicacion = ubicacion;
     }
+
+    public String getNombreDireccion() {
+        return nombreDireccion;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
     
     
     @Override

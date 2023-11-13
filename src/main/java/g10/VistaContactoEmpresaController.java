@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Modelo.ContactoEmpresa;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,8 +23,6 @@ import javafx.scene.input.MouseEvent;
 public class VistaContactoEmpresaController implements Initializable {
     private static final long serialVersionUID=1L;
 
-    @FXML
-    private ImageView iconoRegresar;
     @FXML
     private Label labelRegistarContacto;
     @FXML
@@ -54,6 +53,8 @@ public class VistaContactoEmpresaController implements Initializable {
     private Label lbDireccionTCE;
     @FXML
     private Label lblTitulo;
+    @FXML
+    private Label LblDescrFecha;
 
     /**
      * Initializes the controller class.
@@ -63,12 +64,24 @@ public class VistaContactoEmpresaController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void regresarAListaContactos(MouseEvent event) {
-    }
+    public void configurar(ContactoEmpresa contacto) {
+        lbnombreCE.setText(contacto.getNombre());
+        lbcorreoCE.setText(contacto.getCorreo().getDireccionCorreo());
+        lbcelulerCE.setText(contacto.getTelefonoPersonal().getNumero());
+        lbDireccionTCE.setText (contacto.getDireccion().getUbicacion());
+        lbFechaCE.setText(contacto.getFechaImportante().getFecha());
+        LblDescrFecha.setText(contacto.getFechaImportante().getFechaDescripcion());
+        lbcelularTCE.setText(contacto.getTelefono().getNumero());
+        lblCargo.setText(contacto.getPuestoTrabajo());
+        //falta poner etiquetas y link para google maps   
+      
+     }
+    
+    
 
     @FXML
     private void editarContacto(MouseEvent event) {
+        System.out.println("Contacto Editado");
     }
 
     @FXML

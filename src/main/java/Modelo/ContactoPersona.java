@@ -61,6 +61,13 @@ public class ContactoPersona extends Contacto {
         this.nombre = name;
     }
 
+    public Telefono getTelefonoPersonal(){
+        return telefonoPersonal.get(0);
+    }
+    
+    public Direccion getDireccionPersonal(){ 
+       return direccionPersonal.get(0); 
+    } 
 
     public LocalDate getFechaCumpleaños() {
         return fechaCumpleaños;
@@ -76,6 +83,14 @@ public class ContactoPersona extends Contacto {
     public void editarMe() {
        
     }*/
+
+    public ArrayList<Direccion> getDireccionPersonales() {
+        return direccionPersonal;
+    }
+
+    public ArrayList<Telefono> getTelefonoPersonales() {
+        return telefonoPersonal;
+    }
 
 
     

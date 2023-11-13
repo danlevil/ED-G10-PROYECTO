@@ -4,6 +4,8 @@
  */
 package g10;
 
+import Modelo.Contacto;
+import Modelo.ContactoPersona;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,8 +29,6 @@ public class VistaInfoContactoController implements Initializable {
     private static final long serialVersionUID=1L;
 
 
-    @FXML
-    private ImageView iconoRegresar;
     @FXML
     private Label labelRegistarContacto;
     @FXML
@@ -57,6 +57,8 @@ public class VistaInfoContactoController implements Initializable {
     private Button btVermasinfo;
     @FXML
     private Button btContactAsoci;
+    @FXML
+    private Label LblDescrFecha;
     /**
      * Initializes the controller class.
      */
@@ -65,12 +67,22 @@ public class VistaInfoContactoController implements Initializable {
         // TODO
     }    
     
-    private void llenarContacto(){
-        
-    }
+     public void configurar(ContactoPersona contacto) {
+        lbnombreCP.setText(contacto.getName());
+        lbcorreoCP.setText(contacto.getCorreo().getDireccionCorreo());
+        lbcelulerPCP.setText(contacto.getTelefonoPersonal().getNumero());
+        lbDireccionCP.setText (contacto.getDireccionPersonal().getUbicacion());
+        lbDireccionTCP.setText (contacto.getDireccion().getUbicacion());
+        lbFechaCP.setText(contacto.getFechaImportante().getFecha());
+        LblDescrFecha.setText(contacto.getFechaImportante().getFechaDescripcion());
+        lbcelularTCP.setText(contacto.getTelefono().getNumero());
+        //falta poner etiquetas y link para google maps   
+      
+     }
     
     @FXML
     private void editarContacto(MouseEvent event) {
+        System.out.println("Contacto Editado");
     }
 
     @FXML
@@ -81,7 +93,6 @@ public class VistaInfoContactoController implements Initializable {
     private void mostrarVentanAsociados(ActionEvent event) {
     }
 
-    @FXML
     private void regresarAListaContactos(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

@@ -138,7 +138,7 @@ public class AgregarContactoEmpresaController implements Initializable {
         }else{
             favorito=false;
         }
-        ContactoEmpresa contactoEmpresaNuevo = new ContactoEmpresa(TxtnombreEmpresa.getText(),TxtTituloEnEmpresa.getText(),txtCargoEmpresa1.getText(),  favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
+        ContactoEmpresa contactoEmpresaNuevo = new ContactoEmpresa(TxtnombreEmpresa.getText(),TxtTituloEnEmpresa.getText(),txtCargoEmpresa1.getText(),  favorito, direcciones, emails, telefonos, telefonosPersonales,fotos, redesSociales, etiquetas, fechasImportantes);
         
         Agenda.agregarContactoEmpresa(contactoEmpresaNuevo); 
         Agenda.agregarGeneral(contactoEmpresaNuevo);

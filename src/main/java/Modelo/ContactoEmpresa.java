@@ -23,11 +23,13 @@ public class ContactoEmpresa extends Contacto{
 
     String Titulo;
     String puestoTrabajo;
+    private ArrayList<Telefono> telefonoPersonal;
     
     //public ContactoEmpresa(){}
-    public ContactoEmpresa(String nombre,String Titulo,String puestoTrabajo, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
+    public ContactoEmpresa(String nombre,String Titulo,String puestoTrabajo, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, ArrayList<Telefono> telefonoPersonal,LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
         super(nombre, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
         this. Titulo= Titulo;
+        this.telefonoPersonal = telefonoPersonal;
         this.puestoTrabajo=puestoTrabajo;
         this.nombre=nombre;
         this.isEmpresa=true;
@@ -35,7 +37,11 @@ public class ContactoEmpresa extends Contacto{
 
      @Override
     public String toString() {
-        return super.toString() + ";" + isEmpresa;
+        return super.toString() + ";" + isEmpresa +";"+ telefonoPersonal.get(0)+ ";" + Titulo + ";" +puestoTrabajo;
+    }
+    
+    public Telefono getTelefonoPersonal(){
+        return telefonoPersonal.get(0);
     }
     
     public String getTitulo() {

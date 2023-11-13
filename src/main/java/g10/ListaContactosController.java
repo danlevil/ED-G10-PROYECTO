@@ -65,11 +65,12 @@ public class ListaContactosController implements Initializable {
         // TODO
         //setMouseEvent(hboxContact1);
         lbnumpag.setText(String.valueOf(1));
+        
     }
     
     
-    int numeroPag = 2;
     
+    int numeroPag = 1;
     
     public void cargarContactosDesdeArchivo() {
         
@@ -81,6 +82,7 @@ public class ListaContactosController implements Initializable {
                 contador ++;
                 if(contador == 6){
                     break;
+                    
                 }
             }  
     }
@@ -134,12 +136,14 @@ public class ListaContactosController implements Initializable {
 
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
+        
         int valorActual = Integer.parseInt(lbnumpag.getText());
         if (valorActual == 1){
             lbnumpag.setText(String.valueOf(1));  
         }else{
+            numeroPag--;
+            lbnumpag.setText(String.valueOf(numeroPag));
             
-            lbnumpag.setText(String.valueOf(numeroPag-1));  
         }
 
     }
@@ -147,36 +151,12 @@ public class ListaContactosController implements Initializable {
     
     @FXML
     private void avanzarDerecha(MouseEvent event) {
-       lbnumpag.setText(String.valueOf(numeroPag++));
+        numeroPag ++;
+       lbnumpag.setText(String.valueOf(numeroPag));
+       
     }
 
-    private void abrirContactoInfo(MouseEvent event) throws IOException {
-        // Obtener la Stage actual
-       //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
-        Parent root = loader.load();
-
-        // Configurar el controlador 
-        VistaInfoContactoController vic = loader.getController();
-        // pasando datos al controlador de la nueva ventana aquí, si es necesario
-
-        // Crear una nueva escena
-        Scene scene = new Scene(root, 900, 700);
-
-        // Configurar el tamaño fijo de la ventana
-        Stage nuevaVentana = new Stage();
-        nuevaVentana.setTitle("Nueva Ventana");
-        nuevaVentana.setScene(scene);
-        nuevaVentana.setResizable(false);
-
-        // Mostrar la nueva ventana
-        nuevaVentana.show();
-        
-        //stage.close();
-        
-        
-    }
-    
+   
      private void setMouseEvents(VBox vbox) {
        
     }

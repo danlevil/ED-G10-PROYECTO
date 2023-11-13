@@ -25,5 +25,16 @@ public class Telefono implements Serializable {
     public String toString() {
         return descripcion +": "+numero;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    
+    public String getNumero() {
+        return numero;
+    }
+    
+    
     
 }

@@ -6,6 +6,7 @@ package Fields;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -26,4 +27,16 @@ public class Fecha implements Serializable {
         return descripcion +": "+fecha;
     }
     
+    public String getFecha(){
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Convertir LocalDate a String usando el formato
+        String fechaComoString = fecha.format(formatter);
+        
+        return fechaComoString;
+    }
+    public String getFechaDescripcion(){
+        return descripcion;
+    }
+        
 }

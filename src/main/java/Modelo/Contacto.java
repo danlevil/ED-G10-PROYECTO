@@ -70,9 +70,97 @@ public class Contacto implements Serializable {
      public Email getCorreo() {
         return emails.get(0);
     }
+     
+    public Telefono getTelefono(){
+        return telefonos.get(0);
+    }
+    
+    public Direccion getDireccion(){
+        return direcciones.get(0);
+    }
+    
+    public Fecha getFechaImportante(){
+        return fechasImportantes.getStart();
+    }
 
-    public boolean isIsEmpresa() {
+    public boolean isEmpresa() {
         return isEmpresa;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setIsEmpresa(boolean isEmpresa) {
+        this.isEmpresa = isEmpresa;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
+
+    public void setDirecciones(List<Direccion> direcciones) {
+        this.direcciones = direcciones;
+    }
+
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
+    }
+
+    public void setTelefonos(List<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
+    }
+
+    public void setFechasImportantes(List<Fecha> fechasImportantes) {
+        this.fechasImportantes = fechasImportantes;
+    }
+
+    public void setContactosRelacionados(List<Contacto> contactosRelacionados) {
+        this.contactosRelacionados = contactosRelacionados;
+    }
+
+    public void setRedesSociales(List<RedSocial> redesSociales) {
+        this.redesSociales = redesSociales;
+    }
+
+    public void setEtiquetas(List<String> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+
+    public List<Direccion> getDirecciones() {
+        return direcciones;
+    }
+
+    public List<Email> getEmails() {
+        return emails;
+    }
+
+    public List<Telefono> getTelefonos() {
+        return telefonos;
+    }
+
+    public List<Foto> getFotos() {
+        return fotos;
+    }
+
+    public List<Fecha> getFechasImportantes() {
+        return fechasImportantes;
+    }
+
+    public List<Contacto> getContactosRelacionados() {
+        return contactosRelacionados;
+    }
+
+    public List<RedSocial> getRedesSociales() {
+        return redesSociales;
+    }
+
+    public List<String> getEtiquetas() {
+        return etiquetas;
     }
 
     public boolean isFavorito() {

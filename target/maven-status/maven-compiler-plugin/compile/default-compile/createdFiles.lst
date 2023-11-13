@@ -15,6 +15,7 @@ Estructuras\LinkedCircularDE$1.class
 Fields\Foto.class
 Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
+Modelo\GeneradorID.class
 module-info.class
 Modelo\Agenda.class
 Modelo\CargadorDeArchivos.class
