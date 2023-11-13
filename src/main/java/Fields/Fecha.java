@@ -12,6 +12,7 @@ import java.time.LocalDate;
  * @author danlevil
  */
 public class Fecha implements Serializable {
+    private static final long serialVersionUID=1L;
     String descripcion;
     LocalDate fecha;
 

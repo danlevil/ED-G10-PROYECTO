@@ -15,7 +15,8 @@ import java.util.Comparator;
  * @param <E>
  */
 public abstract class List<E> implements Serializable, Collection<E>, Iterable<E>{
-    
+    private static final long serialVersionUID=1L;
+
     public abstract E getStart(); 
     public abstract boolean add(E e);
     public abstract boolean addFirst(E e);

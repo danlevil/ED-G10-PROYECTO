@@ -11,6 +11,8 @@ import java.io.Serializable;
  * @author danlevil
  */
 public class Direccion implements Serializable {
+    private static final long serialVersionUID=1L;
+
     
     String nombreDireccion;
     String ubicacion;

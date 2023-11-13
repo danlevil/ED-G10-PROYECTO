@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
  * @author danlevil
  */
 public class CargadorDeArchivos {
+
     private static final String RUTA = "src/main/resources/Contactos/";
     public static void cargarListasDesdeArchivos() {
         try(ObjectInputStream ois1 = new ObjectInputStream(new FileInputStream(RUTA+"listaContactosComunes.ser"));

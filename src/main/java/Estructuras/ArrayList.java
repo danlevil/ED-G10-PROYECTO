@@ -14,6 +14,8 @@ import java.util.Iterator;
  * @param <E> 
  */
 public class ArrayList<E> extends List<E> {
+    private static final long serialVersionUID=1L;
+
     private int capacidad=10;
     private int capacidadEfectiva=0;
     private E[] elementos;
