@@ -113,15 +113,9 @@ public class AgregarContactoEmpresaController implements Initializable {
         
         
         ArrayList<RedSocial> redesSociales = new ArrayList<>();
-        /*String redsocial = .getText();
-        RedSocial redSocialPersona = new RedSocial("Redes sociales", redsocial);
-        redesSociales.add(redSocialPersona);*/
-        
+
         ArrayList<String> etiquetas = new ArrayList<>();
-        /*String etiquetatx = TxtcelularUsuario.getText();
-        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
-        telefonosPersonales.add(telefonoPersona);
-        */
+
         LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
         String descripcionFecha = TxtfechaImpUsuario.getText();
         LocalDate fecha = fechaImportante.getValue();
@@ -150,13 +144,13 @@ public class AgregarContactoEmpresaController implements Initializable {
         alert.showAndWait();
         stage.close();
         
-                // Cargar el FXML y obtener la raíz
+
         Platform.runLater(() -> {
         try {
-            // Crear una nueva instancia de la aplicación
+
             App nuevaInstancia = new App();
 
-            // Llamar al método start para iniciar la nueva instancia
+
             nuevaInstancia.start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();

@@ -69,25 +69,6 @@ public class ListaContactosController implements Initializable {
         
     }
     
-    
-    
-    int numeroPag = 1;
-    
-    public void cargarContactosDesdeArchivo() {
-        
-        // Agrega cada contacto al VBox usando el método agregarHBox
-
-        int contador = 0;
-        for (Contacto contacto : Agenda.contactosMaster) {
-            agregarHBox(contacto);
-            contador ++;
-            if(contador == 6){
-                break;
-
-            }
-        }  
-    }
-    
     private void agregarHBox(Contacto contacto) {
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo

@@ -25,7 +25,6 @@ public class ContactoEmpresa extends Contacto{
     String puestoTrabajo;
     private ArrayList<Telefono> telefonoPersonal;
     
-    //public ContactoEmpresa(){}
     public ContactoEmpresa(String nombre,String Titulo,String puestoTrabajo, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, ArrayList<Telefono> telefonoPersonal,LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
         super(nombre, favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
         this. Titulo= Titulo;
@@ -60,10 +59,5 @@ public class ContactoEmpresa extends Contacto{
         this.puestoTrabajo = puestoTrabajo;
     }
     
-    
-    /*@Override
-    public void editarMe() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }*/
 
 }

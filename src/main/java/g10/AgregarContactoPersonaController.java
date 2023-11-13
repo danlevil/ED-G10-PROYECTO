@@ -124,15 +124,10 @@ public class AgregarContactoPersonaController implements Initializable {
         
         
         ArrayList<RedSocial> redesSociales = new ArrayList<>();
-        /*String redsocial = .getText();
-        RedSocial redSocialPersona = new RedSocial("Redes sociales", redsocial);
-        redesSociales.add(redSocialPersona);*/
+ 
         
         ArrayList<String> etiquetas = new ArrayList<>();
-        /*String etiquetatx = TxtcelularUsuario.getText();
-        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
-        telefonosPersonales.add(telefonoPersona);
-        */
+
         LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
         String descripcionFecha = TxtfechaImpUsuario.getText();
         LocalDate fecha = fechaImportante.getValue();
@@ -161,35 +156,18 @@ public class AgregarContactoPersonaController implements Initializable {
         alert.showAndWait();
         stage.close();
          
-       // App.setRoot("ListaContactos");
        
 
-        // Cargar el FXML y obtener la raíz
         Platform.runLater(() -> {
         try {
-            // Crear una nueva instancia de la aplicación
-            App nuevaInstancia = new App();
 
-            // Llamar al método start para iniciar la nueva instancia
+            App nuevaInstancia = new App();
             nuevaInstancia.start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
          });
 
-       
-       
-       /* ListaContactosController lcc = new ListaContactosController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
-        loader.setController(lcc);
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setUserData(lcc);
-        stage.show();*/
-        /*Stage listaContactoStage = new Stage();
-        listaContactoStage.setScene(scene);
-        listaContactoStage.show();*/
 
     }
     

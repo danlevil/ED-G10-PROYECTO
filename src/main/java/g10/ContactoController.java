@@ -55,20 +55,11 @@ public class ContactoController implements Initializable {
        setMouseEvent(hboxContact1);
     }
     
-    
-      
-       
-       
-    
-    
     public void configurar(Contacto contacto) {
         lbcontactonombre.setText(contacto.getNombre());
         lbcontactocorreo.setText(contacto.getCorreo().getDireccionCorreo());
         Lblid.setText(String.valueOf(contacto.getId())); 
     }
-    
-    
-
     
 
     @FXML
@@ -84,9 +75,7 @@ public class ContactoController implements Initializable {
                 // Abrir la vista de contacto para personas y pasar los datos
                 abrirVistaContactoPersona(contactoSeleccionado);
             }
-        
-       // App.setRoot("VistaInfoContacto"); se comenta para que no se abra la vista
-        
+                
     }
     
     private Contacto buscarContactoPorId(int id) {
@@ -108,21 +97,15 @@ public class ContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             VistaContactoEmpresaController controller = loader.getController();
             controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
-            
-            
-            
-            // Crear la escena y configurar la Stage
+
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Vista de Contacto para Empresas");
-          
-            // Mostrar la nueva ventana
             stage.show();
            
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejar la excepción si ocurre algún error al cargar la vista
         }
         
     }
@@ -139,18 +122,15 @@ public class ContactoController implements Initializable {
             
             
             
-            // Crear la escena y configurar la Stage
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Vista de Contacto para Personas");
           
-            // Mostrar la nueva ventana
             stage.show();
            
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejar la excepción si ocurre algún error al cargar la vista
         }
     }
     

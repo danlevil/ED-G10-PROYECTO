@@ -168,7 +168,6 @@ public class Contacto implements Serializable {
     }
     
     
-    //public abstract void editarMe();
     
     public boolean agregarEmail(String descripcion, String cuenta){
         if(descripcion==null && cuenta == null){

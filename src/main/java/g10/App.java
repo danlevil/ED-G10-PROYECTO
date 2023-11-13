@@ -50,15 +50,6 @@ public class App extends Application {
         Agenda.inicializador();
         CargadorDeArchivos.cargarListasDesdeArchivos();
         
-        for(Contacto contacto : Agenda.contactosMaster){
-
-            System.out.println(contacto.getId());  
-
-            System.out.println(
-                    contacto.getId()+" "+
-                    contacto.getNombre());  
-
-        }
         launch();
         
         
@@ -76,9 +67,7 @@ public class App extends Application {
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
                 Agenda.contactosPersonas);
-        System.out.println("master: "+Agenda.contactosMaster.size());
-        System.out.println("persona: "+Agenda.contactosPersonas.size());
-        System.out.println("empresa: "+Agenda.contactosEmpresas.size());
+
         
     }
 }

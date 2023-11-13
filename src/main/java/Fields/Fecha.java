@@ -30,7 +30,6 @@ public class Fecha implements Serializable {
     public String getFecha(){
        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        // Convertir LocalDate a String usando el formato
         String fechaComoString = fecha.format(formatter);
         
         return fechaComoString;

@@ -77,12 +77,6 @@ public class ContactoPersona extends Contacto {
         this.fechaCumpleaños = fechaCumpleaños;
     }
 
-    
-    
-   /* @Override
-    public void editarMe() {
-       
-    }*/
 
     public ArrayList<Direccion> getDireccionPersonales() {
         return direccionPersonal;
