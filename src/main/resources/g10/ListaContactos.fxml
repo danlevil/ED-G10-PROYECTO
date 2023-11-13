@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ListaContactosController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ListaContactosController">
    <children>
-      <VBox prefHeight="67.0" prefWidth="400.0">
+      <VBox prefHeight="67.0" prefWidth="900.0">
          <children>
-            <HBox prefHeight="84.0" prefWidth="400.0">
+            <HBox prefHeight="84.0" prefWidth="900.0">
                <children>
-                  <Label prefHeight="46.0" prefWidth="330.0" text="Contactos">
+                  <Label prefHeight="46.0" prefWidth="820.0" text="Contactos">
                      <font>
                         <Font size="31.0" />
                      </font>
@@ -22,12 +22,12 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fx:id="imgFiltro" fitHeight="30.0" fitWidth="38.0" onMouseClicked="#filtrar" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgFiltro" fitHeight="30.0" fitWidth="43.0" onMouseClicked="#filtrar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/filtro.png" />
                      </image>
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets right="10.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
                   <ImageView fx:id="imgBotonAgregar" fitHeight="29.0" fitWidth="28.0" onMouseClicked="#añadirContacto" pickOnBounds="true" preserveRatio="true">
@@ -55,8 +55,8 @@
             </Label>
          </children>
       </VBox>
-      <VBox prefHeight="572.0" prefWidth="400.0" />
-      <HBox alignment="CENTER" prefHeight="43.0" prefWidth="400.0">
+      <VBox prefHeight="700.0" prefWidth="900.0" />
+      <HBox alignment="CENTER" prefHeight="43.0" prefWidth="900.0">
          <children>
             <ImageView fx:id="imgBotonant" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#avanzarIzquierda" pickOnBounds="true" preserveRatio="true">
                <image>

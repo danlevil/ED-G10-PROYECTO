@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -82,7 +83,7 @@ public class AgregarContactoPersonaController implements Initializable {
         CboxFav.setItems(list);
         
     }    
-
+    
     
     
     @FXML
@@ -155,15 +156,40 @@ public class AgregarContactoPersonaController implements Initializable {
         alert.setTitle("Information Dialog");
         alert.setHeaderText("Resultado de la operación");
         alert.setContentText("Nuevo contacto agregado exitosamente");
-            alert.showAndWait();
+        alert.showAndWait();
         stage.close();
+         
+       // App.setRoot("ListaContactos");
+       
+
+        // Cargar el FXML y obtener la raíz
+        Platform.runLater(() -> {
+        try {
+            // Crear una nueva instancia de la aplicación
+            App nuevaInstancia = new App();
+
+            // Llamar al método start para iniciar la nueva instancia
+            nuevaInstancia.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         });
+
+       
+       
+       /* ListaContactosController lcc = new ListaContactosController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+        loader.setController(lcc);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage listaContactoStage = new Stage();
+        stage.setScene(scene);
+        stage.setUserData(lcc);
+        stage.show();*/
+        /*Stage listaContactoStage = new Stage();
         listaContactoStage.setScene(scene);
-        listaContactoStage.show();
+        listaContactoStage.show();*/
 
     }
+    
     
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -8,47 +9,53 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.FiltroContactoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.FiltroContactoController">
    <children>
       <VBox alignment="CENTER" prefHeight="51.0" prefWidth="250.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="imgRegresar" fitHeight="40.0" fitWidth="41.0" onMouseClicked="#irVentanaContactos" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgRegresar" fitHeight="54.0" fitWidth="60.0" onMouseClicked="#irVentanaContactos" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/Volver.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="35.0" prefWidth="243.0" text="       Filtrar por" textAlignment="CENTER">
+                  <Label prefHeight="35.0" prefWidth="808.0" text="                                     Filtrar por" textAlignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="239.0" prefWidth="250.0">
+      <VBox alignment="CENTER" prefHeight="596.0" prefWidth="900.0">
          <children>
-            <Button fx:id="btFiltroNombre" mnemonicParsing="false" onAction="#filtrarFechaCumpleaños" prefHeight="48.0" prefWidth="198.0" text="Cumpleaños cercanos">
+            <Button fx:id="btFiltroNombre" mnemonicParsing="false" onAction="#filtrarFechaCumpleaños" prefHeight="122.0" prefWidth="264.0" text="Cumpleaños cercanos">
                <font>
-                  <Font size="16.0" />
+                  <Font size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </Button>
-            <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="250.0">
+            <VBox alignment="TOP_CENTER" prefHeight="339.0" prefWidth="900.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="92.0" prefWidth="250.0">
+                  <VBox alignment="CENTER" prefHeight="144.0" prefWidth="900.0">
                      <children>
-                        <Button fx:id="btFiltroNacionalidad" mnemonicParsing="false" onAction="#filtrarEmpresas" prefHeight="45.0" prefWidth="196.0" text="Empresas">
+                        <Button fx:id="btFiltroNacionalidad" mnemonicParsing="false" onAction="#filtrarEmpresas" prefHeight="118.0" prefWidth="266.0" text="Empresas">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
                   </VBox>
-                  <Button fx:id="btFiltroFavoritos" mnemonicParsing="false" onAction="#filtrarFavoritos" prefHeight="19.0" prefWidth="199.0" text="Favoritos">
+                  <Button fx:id="btFiltroFavoritos" mnemonicParsing="false" onAction="#filtrarFavoritos" prefHeight="130.0" prefWidth="266.0" text="Favoritos">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="20.0" />
                      </font>
                   </Button>
                </children>

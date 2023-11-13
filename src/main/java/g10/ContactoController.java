@@ -96,6 +96,8 @@ public class ContactoController implements Initializable {
 
     @FXML
     private void abrirContactoInfo(MouseEvent event) {
+        
+        
     }
     
 }
