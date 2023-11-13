@@ -64,6 +64,9 @@ public class VistaInfoContactoController implements Initializable {
         // TODO
     }    
     
+    private void llenarContacto(){
+        
+    }
     
     @FXML
     private void editarContacto(MouseEvent event) {

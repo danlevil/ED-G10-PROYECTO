@@ -133,6 +133,14 @@ public class ListaContactosController implements Initializable {
 
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
+        int valorActual = Integer.parseInt(lbnumpag.getText());
+        if (valorActual == 1){
+            lbnumpag.setText(String.valueOf(1));  
+        }else{
+            
+            lbnumpag.setText(String.valueOf(numeroPag-1));  
+        }
+
     }
     
     

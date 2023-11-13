@@ -18,14 +18,13 @@
             </ImageView>
          </children>
       </VBox>
-      <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="762.0">
+      <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="574.0">
          <children>
             <Label fx:id="lbcontactonombre" text="Label">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label fx:id="Lblid" text="Label" visible="false" />
             <Label fx:id="lbcontactocorreo" text="Label">
                <font>
                   <Font size="19.0" />
@@ -33,5 +32,6 @@
             </Label>
          </children>
       </VBox>
+      <Label fx:id="Lblid" text="Label" visible="false" />
    </children>
 </HBox>
