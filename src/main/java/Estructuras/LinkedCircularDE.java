@@ -13,7 +13,7 @@ import java.util.Iterator;
  *
  * @author danlevil
  */
-public class LinkedCircularDE<E> extends List<E>{
+public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
 private Nodo<E> start;
     private int tamaño=0;
     public LinkedCircularDE(){
@@ -21,6 +21,9 @@ private Nodo<E> start;
     }
 
 
+    
+    
+    
     @Override
     public E remove(E e, Comparator cmp) {
         Nodo<E>n;
@@ -78,7 +81,25 @@ private Nodo<E> start;
 
     @Override
     public Iterator<E> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return new Iterator<E>(){
+            Nodo<E> actual = start;
+            Nodo<E> sig = start;
+
+            @Override
+            public boolean hasNext() {
+               return sig != null;
+            }
+
+            @Override
+            public E next() {
+              E elemento = sig.contenido; 
+              sig = sig.siguiente;
+              if(sig == actual){
+                  sig = null;
+              }
+              return elemento;
+            }          
+        };    
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.Comparator;
  * @author danlevil
  * @param <E>
  */
-public abstract class List<E> implements Serializable, Collection<E>{
+public abstract class List<E> implements Serializable, Collection<E>, Iterable<E>{
     
     public abstract E getStart(); 
     public abstract boolean add(E e);

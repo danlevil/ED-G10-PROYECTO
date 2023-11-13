@@ -42,51 +42,18 @@ public class ContactoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         String rutaArchivo = "src/main/resources/Contactos/listaContactos.csv";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                procesarLinea(linea);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     
     
+      
        
-        
-       private void procesarLinea(String linea) {
-            String[] campos = linea.split(";");
-    
-            // Asegurarse de que haya suficientes campos antes de acceder a ellos
-            if (campos.length >= 2) {
-            String id = campos[0];
-            String nombre = campos[1];
-            String correo = obtenerCorreo(campos);
-
-            // Configurar la interfaz de Contacto
-            configurarContacto(nombre, correo);
-         }
-    }
        
-       private String obtenerCorreo(String[] campos) {
-        for (String campo : campos) {
-        if (campo.contains("Correo Principal")) {
-            String[] partes = campo.split(":");
-            if (partes.length >= 2) {
-                return partes[1].trim(); 
-            }
-        }
-    }
-    return "";
-}
     
     
-    public void configurarContacto(String nombre, String correo) {
-        lbcontactonombre.setText(nombre);
-        lbcontactocorreo.setText(correo);
+    public void configurar(Contacto contacto) {
+        lbcontactonombre.setText(contacto.getNombre());
+        lbcontactocorreo.setText(contacto.getCorreo().getDireccionCorreo());
         
     }
     

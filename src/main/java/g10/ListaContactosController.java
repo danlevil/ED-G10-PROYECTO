@@ -5,8 +5,11 @@
 package g10;
 
 import Estructuras.LinkedCircularDE;
+import Estructuras.List;
 import Modelo.Contacto;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -54,12 +57,42 @@ public class ListaContactosController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        cargarContactosDesdeArchivo();
         // TODO
         //setMouseEvent(hboxContact1);
     }
     
     
+    public void cargarContactosDesdeArchivo() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("listaGeneral.ser"))) {
+            LinkedCircularDE<Contacto> contactos = (LinkedCircularDE<Contacto>) ois.readObject();
+
+            // Agrega cada contacto al VBox usando el método agregarHBox
+            for (Contacto contacto : contactos) {
+                agregarHBox(contacto);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void agregarHBox(Contacto contacto) {
+        try {
+            // Cargar el FXML del HBox del archivo FXML respectivo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Contacto.fxml"));
+            HBox hbox = loader.load();
+
+            // Configurar el controlador del HBox
+            ContactoController controller = loader.getController();
+            controller.configurar(contacto);
+
+            // Agregar el HBox al VBox
+            contacto1Vbox.getChildren().add(hbox);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     
     
    /* public void agregarContacto(Contacto contacto){
