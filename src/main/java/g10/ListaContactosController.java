@@ -63,14 +63,24 @@ public class ListaContactosController implements Initializable {
         cargarContactosDesdeArchivo();
         // TODO
         //setMouseEvent(hboxContact1);
+        lbnumpag.setText(String.valueOf(1));
     }
+    
+    
+    int numeroPag = 2;
     
     
     public void cargarContactosDesdeArchivo() {
         
             // Agrega cada contacto al VBox usando el método agregarHBox
+            
+            int contador = 0;
             for (Contacto contacto : Agenda.contactosMaster) {
                 agregarHBox(contacto);
+                contador ++;
+                if(contador == 6){
+                    break;
+                }
             }  
     }
     
@@ -124,9 +134,11 @@ public class ListaContactosController implements Initializable {
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
     }
-
+    
+    
     @FXML
     private void avanzarDerecha(MouseEvent event) {
+       lbnumpag.setText(String.valueOf(numeroPag++));
     }
 
     private void abrirContactoInfo(MouseEvent event) throws IOException {

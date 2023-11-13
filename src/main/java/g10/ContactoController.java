@@ -62,8 +62,8 @@ public class ContactoController implements Initializable {
     
 
     @FXML
-    private void abrirContactoInfo(MouseEvent event) {
-        
+    private void abrirContactoInfo(MouseEvent event) throws IOException {
+        App.setRoot("VistaInfoContacto");
         
     }
     

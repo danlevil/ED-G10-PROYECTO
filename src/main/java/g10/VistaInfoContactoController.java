@@ -7,6 +7,7 @@ package g10;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -82,6 +83,18 @@ public class VistaInfoContactoController implements Initializable {
 
         // Cerrar la ventana actual
         stage.close();
+        
+        Platform.runLater(() -> {
+        try {
+            // Crear una nueva instancia de la aplicación
+            App nuevaInstancia = new App();
+
+            // Llamar al método start para iniciar la nueva instancia
+            nuevaInstancia.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         });
     }
 
 }
