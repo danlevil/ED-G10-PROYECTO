@@ -16,7 +16,6 @@ import java.time.LocalDate;
 
 public class Contacto implements Serializable {
     private static final long serialVersionUID=1L;
-    private static int contadorIds = 1;
     private int id;
 
     String nombre;
@@ -36,7 +35,7 @@ public class Contacto implements Serializable {
     
     
     public Contacto(String nombre, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
-        this.id = contadorIds++;
+        
         this.nombre = nombre;
         this.isEmpresa = isEmpresa;
         this.favorito = favorito;
@@ -47,6 +46,10 @@ public class Contacto implements Serializable {
         this.redesSociales= redesSociales;
         this.etiquetas= etiquetas;
         this.fechasImportantes= fechasImportantes;
+        
+        GeneradorID gID= new GeneradorID();
+        
+        this.id=gID.generar();
     }
     
     

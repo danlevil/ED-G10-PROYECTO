@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
  * @author Charlie
  */
 public class ContactoController implements Initializable {
+    private static final long serialVersionUID=1L;
 
     @FXML
     private HBox hboxContact1;

@@ -20,6 +20,7 @@ import java.time.LocalDate;
  * @author danlevil
  */
 public class ContactoPersona extends Contacto {
+    
     private static final long serialVersionUID=1L;
 
     //private String name;
