@@ -52,11 +52,61 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private Label lbEtiquetasCP;
     @FXML
-    private Button btVermasinfo;
-    @FXML
     private Button btContactAsoci;
     @FXML
     private Label LblDescrFecha;
+    @FXML
+    private ImageView editarFotosCP;
+    @FXML
+    private ImageView editarNombreCP;
+    @FXML
+    private ImageView editarCorreoCP;
+    @FXML
+    private ImageView nuevoCorreoCP;
+    @FXML
+    private ImageView verTodoslosCorreosCP;
+    @FXML
+    private ImageView editarCelularPCP;
+    @FXML
+    private ImageView nuevoCelularPCP;
+    @FXML
+    private ImageView verTodoslosCelularesPCP;
+    @FXML
+    private ImageView editarDireccionCCP;
+    @FXML
+    private ImageView nuevoDireccionCCP;
+    @FXML
+    private ImageView verTodaslasDireecionesCCP;
+    @FXML
+    private ImageView editarDireccionTCP;
+    @FXML
+    private ImageView nuevoDireccionTCP;
+    @FXML
+    private ImageView verTodasLasDireccionesTCP;
+    @FXML
+    private ImageView editarFechaICP;
+    @FXML
+    private ImageView nuevaFechaICP;
+    @FXML
+    private ImageView verTodaslasFechasICP;
+    @FXML
+    private ImageView editarCelularTCP;
+    @FXML
+    private ImageView nuevoCelularTCP;
+    @FXML
+    private ImageView verTodoslosCelularesTCP;
+    @FXML
+    private ImageView editarLinkCP;
+    @FXML
+    private ImageView editarEtiquetasCP;
+    @FXML
+    private ImageView nuevaEtiquetaCP;
+    @FXML
+    private ImageView verTodaslasEtiquetasCP;
+    @FXML
+    private ImageView eliminarCP;
+    @FXML
+    private Label contactoId;
     /**
      * Initializes the controller class.
      */
@@ -82,9 +132,6 @@ public class VistaInfoContactoController implements Initializable {
         System.out.println("Contacto Editado");
     }
 
-    @FXML
-    private void mostrarInfoExtra(ActionEvent event) {
-    }
 
     @FXML
     private void mostrarVentanAsociados(ActionEvent event) {
@@ -107,6 +154,106 @@ public class VistaInfoContactoController implements Initializable {
             e.printStackTrace();
         }
          });
+    }
+
+    @FXML
+    private void editarFotoDeContacto(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarNombre(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCorreo(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarNuevoCorreo(MouseEvent event) {
+    }
+
+    @FXML
+    private void verCorreos(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCelularPersonal(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarCelularPersonal(MouseEvent event) {
+    }
+
+    @FXML
+    private void mostrarCelularesPersonales(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarDireccionCasa(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarDireccionCasa(MouseEvent event) {
+    }
+
+    @FXML
+    private void verDireccionCasa(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarDireccionTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarDireccionTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void verDireccionTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarFechaImportante(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarFechaImportante(MouseEvent event) {
+    }
+
+    @FXML
+    private void VerFechasImportantes(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCelularTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarCelularTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void verCelularesTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarLinkDeGMaps(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarEtiqueta(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarEtiqueta(MouseEvent event) {
+    }
+
+    @FXML
+    private void verEtiquetas(MouseEvent event) {
+    }
+
+    @FXML
+    private void eliminarContacto(MouseEvent event) {
     }
 
 }
