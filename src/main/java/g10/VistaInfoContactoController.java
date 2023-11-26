@@ -8,15 +8,18 @@ import Modelo.Contacto;
 import Modelo.ContactoPersona;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -107,6 +110,8 @@ public class VistaInfoContactoController implements Initializable {
     private ImageView eliminarCP;
     @FXML
     private Label contactoId;
+    
+    private Contacto contacto;
     /**
      * Initializes the controller class.
      */
@@ -116,6 +121,7 @@ public class VistaInfoContactoController implements Initializable {
     }    
     
      public void configurar(ContactoPersona contacto) {
+        this.contacto=contacto;
         lbnombreCP.setText(contacto.getName());
         lbcorreoCP.setText(contacto.getCorreo().getDireccionCorreo());
         lbcelulerPCP.setText(contacto.getTelefonoPersonal().getNumero());
@@ -127,7 +133,13 @@ public class VistaInfoContactoController implements Initializable {
         //falta poner etiquetas y link para google maps   
       
      }
-    
+    private void avisarActualizacion(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacion");
+        alert.setHeaderText("Resultado de la operación");
+        alert.setContentText("Contacto actualizado exitosamente");
+        alert.showAndWait();
+    }
     private void editarContacto(MouseEvent event) {
         System.out.println("Contacto Editado");
     }
@@ -166,6 +178,16 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void editarCorreo(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nuevo  nombre");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getEmails().getStart().setDireccionCorreo(nuevoValor);
+        });
+        avisarActualizacion();
     }
 
     @FXML

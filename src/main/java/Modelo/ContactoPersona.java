@@ -24,67 +24,29 @@ public class ContactoPersona extends Contacto {
     private static final long serialVersionUID=1L;
 
     //private String name;
-    private LocalDate fechaCumpleaños;
-    private ArrayList<Direccion> direccionPersonal;
-    private ArrayList<Telefono> telefonoPersonal;
-    
+//    private LocalDate fechaCumpleaños;
+//    private ArrayList<Direccion> direccionPersonal;
+//    private ArrayList<Telefono> telefonoPersonal;
+//    
     
     
     //public ContactoPersona(){};
-    public ContactoPersona(String nombre,  boolean favorito, ArrayList<Direccion> direcciones,ArrayList<Direccion> direccionPersonal, ArrayList<Email> emails, ArrayList<Telefono> telefonos, ArrayList<Telefono> telefonoPersonal, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes, LocalDate fechaCumpleaños){
-        super(nombre,  favorito, direcciones, emails, telefonos, fotos, redesSociales, etiquetas, fechasImportantes);
-        this.nombre= nombre;
-        this.telefonoPersonal = telefonoPersonal;
-        this.fechaCumpleaños = fechaCumpleaños;
-        this.direccionPersonal = direccionPersonal;
+    public ContactoPersona(String nombre){
+        super(nombre);
+//        this.telefonoPersonal = telefonoPersonal;
+//        this.fechaCumpleaños = fechaCumpleaños;
+//        this.direccionPersonal = direccionPersonal;
         this.isEmpresa=false;
     }
     
     
-     @Override
+    /*@Override
     public String toString() {
         return super.toString() + ";" + fechaCumpleaños + ";"+direccionPersonal.get(0)+";"+ telefonoPersonal.get(0) ;
-    }
+    }*/
     
-    public String getEstadoFavorito(){
-        if(favorito){
-            return "S";
-        }else{
-            return "N";
-        }
-    }
-    public String getName() {
-        return nombre;
-    }
-
-    public void setName(String name) {
-        this.nombre = name;
-    }
-
-    public Telefono getTelefonoPersonal(){
-        return telefonoPersonal.get(0);
-    }
     
-    public Direccion getDireccionPersonal(){ 
-       return direccionPersonal.get(0); 
-    } 
-
-    public LocalDate getFechaCumpleaños() {
-        return fechaCumpleaños;
-    }
-
-    public void setFechaCumpleaños(LocalDate fechaCumpleaños) {
-        this.fechaCumpleaños = fechaCumpleaños;
-    }
-
-
-    public ArrayList<Direccion> getDireccionPersonales() {
-        return direccionPersonal;
-    }
-
-    public ArrayList<Telefono> getTelefonoPersonales() {
-        return telefonoPersonal;
-    }
+    
 
 
     

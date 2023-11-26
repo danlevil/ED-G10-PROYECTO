@@ -17,9 +17,7 @@ import java.time.LocalDate;
 public class Contacto implements Serializable {
     private static final long serialVersionUID=1L;
     private int id;
-
     String nombre;
-    
     boolean isEmpresa;
     boolean favorito;
     
@@ -34,70 +32,72 @@ public class Contacto implements Serializable {
     List<String> etiquetas;
     
     
-    public Contacto(String nombre, boolean favorito, ArrayList<Direccion> direcciones, ArrayList<Email> emails, ArrayList<Telefono> telefonos, LinkedCircularDE<Foto> fotos, ArrayList<RedSocial> redesSociales, ArrayList<String> etiquetas, LinkedCircularDE<Fecha> fechasImportantes){
+    public Contacto(String nombre){
         
         this.nombre = nombre;
-        this.isEmpresa = isEmpresa;
-        this.favorito = favorito;
-        this.direcciones= direcciones;
-        this.emails=emails;
-        this.telefonos= telefonos;
-        this.fotos= fotos;
-        this.redesSociales= redesSociales;
-        this.etiquetas= etiquetas;
-        this.fechasImportantes= fechasImportantes;
+        direcciones=new ArrayList();
+        emails=new ArrayList();
+        telefonos=new ArrayList();
+        redesSociales=new ArrayList();
+        etiquetas=new ArrayList();
+        fotos= new LinkedCircularDE();
+        contactosRelacionados= new LinkedCircularDE();
         
         GeneradorID gID= new GeneradorID();
-        
         this.id=gID.generar();
     }
     
-    
-   
-       @Override
+    /*@Override
     public String toString() {
         return id +";"+ nombre + ";" + isEmpresa + ";" + favorito + ";" + direcciones.get(0)+ ";"+emails.get(0)+";"+telefonos.get(0)+";"+fotos.getStart()+";"+redesSociales.get(0)+";"+etiquetas.get(0)+";"+fechasImportantes.getStart();
-    }
-
+    }*/
+    //Nombre
     public String getNombre() {
         return nombre;
     }
-
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    //ID
     public int getId() {
         return id;
     }
-    
-     public Email getCorreo() {
-        return emails.get(0);
+    //Emails
+     public Email getCorreoPrincipal() {
+        return emails.getStart();
     }
-     
-    public Telefono getTelefono(){
-        return telefonos.get(0);
+    //Telefono
+    public Telefono getTelefonoPrincipal(){
+        return telefonos.getStart();
     }
-    
-    public Direccion getDireccion(){
-        return direcciones.get(0);
+    //Direcciones
+    public Direccion getDireccionPrincipal(){
+        return direcciones.getStart();
     }
-    
-    public Fecha getFechaImportante(){
+    //Fechas
+    public Fecha getPrimeraFechaImportante(){
         return fechasImportantes.getStart();
     }
-
+    //Relacionado a Empresas
     public boolean isEmpresa() {
         return isEmpresa;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setIsEmpresa(boolean isEmpresa) {
-        this.isEmpresa = isEmpresa;
-    }
-
+    //Favorito
     public void setFavorito(boolean favorito) {
         this.favorito = favorito;
     }
+    public String getEstadoFavorito(){
+        if(favorito){
+            return "S";
+        }else{
+            return "N";
+        }
+    }
+    public boolean isFavorito() {
+        return favorito;
+    }
+    
 
     public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
@@ -163,11 +163,8 @@ public class Contacto implements Serializable {
         return etiquetas;
     }
 
-    public boolean isFavorito() {
-        return favorito;
-    }
-    
-    
+   
+
     
     public boolean agregarEmail(String descripcion, String cuenta){
         if(descripcion==null && cuenta == null){
