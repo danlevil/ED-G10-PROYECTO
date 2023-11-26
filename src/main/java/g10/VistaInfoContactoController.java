@@ -8,20 +8,31 @@ import Modelo.Contacto;
 import Modelo.ContactoPersona;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -112,6 +123,7 @@ public class VistaInfoContactoController implements Initializable {
     private Label contactoId;
     
     private Contacto contacto;
+    Stage momentarioStage= new Stage();
     /**
      * Initializes the controller class.
      */
@@ -174,6 +186,17 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void editarNombre(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nuevo  nombre");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.setNombre(nuevoValor);
+            avisarActualizacion();
+        });
+                
     }
 
     @FXML
@@ -185,11 +208,105 @@ public class VistaInfoContactoController implements Initializable {
         Optional<String> resultado = dialog.showAndWait();
 
         resultado.ifPresent(nuevoValor -> {
-            contacto.getEmails().getStart().setDireccionCorreo(nuevoValor);
+            contacto.getCorreoPrincipal().setDireccionCorreo(nuevoValor);
+            avisarActualizacion();
         });
-        avisarActualizacion();
+    }
+    @FXML
+    private void editarCelularPersonal(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nuevo  celular Personal");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getTelefonoPrincipal().setNumero(nuevoValor);
+            avisarActualizacion();
+        });
+        
+    }
+    @FXML
+    private void editarDireccionCasa(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nueva Direccion domicilio");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getDireccionPrincipal().setUbicacion(nuevoValor);
+            avisarActualizacion();
+        });
+        
+    }
+    @FXML
+    private void editarDireccionTrabajo(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nueva Direccion de trabajo");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getDirecciones().get(1).setUbicacion(nuevoValor);
+            avisarActualizacion();
+        });
+        
+    }
+       @FXML
+    private void editarFechaImportante(MouseEvent event) {
+        
+        DatePicker datePicker = new DatePicker();
+        TextField textField = new TextField();
+        
+        // Configurar el botón
+        Button guardarButton = new Button("Guardar");
+        guardarButton.setOnAction(e -> {
+            contacto.getPrimeraFechaImportante().setFecha(datePicker.getValue());
+            contacto.getPrimeraFechaImportante().setDescripcion(textField.getText());
+            momentarioStage.close();
+            avisarActualizacion();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Seleccione la fecha:"), 0, 0);
+        gridPane.add(datePicker, 1, 0);
+        gridPane.add(new Label("Ingrese un valor:"), 0, 1);
+        gridPane.add(textField, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 300, 200);
+
+        // Configurar y mostrar la ventana principal
+        momentarioStage.setScene(scene);
+        momentarioStage.show();
+    }
+    @FXML
+    private void editarCelularTrabajo(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nueva celular de trabajo");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getTelefonos().get(1).setNumero(nuevoValor);
+            avisarActualizacion();
+        });
+    }
+ 
+    @FXML
+    private void editarEtiqueta(MouseEvent event) {
     }
 
+    
     @FXML
     private void agregarNuevoCorreo(MouseEvent event) {
     }
@@ -198,9 +315,7 @@ public class VistaInfoContactoController implements Initializable {
     private void verCorreos(MouseEvent event) {
     }
 
-    @FXML
-    private void editarCelularPersonal(MouseEvent event) {
-    }
+   
 
     @FXML
     private void agregarCelularPersonal(MouseEvent event) {
@@ -210,10 +325,7 @@ public class VistaInfoContactoController implements Initializable {
     private void mostrarCelularesPersonales(MouseEvent event) {
     }
 
-    @FXML
-    private void editarDireccionCasa(MouseEvent event) {
-    }
-
+    
     @FXML
     private void agregarDireccionCasa(MouseEvent event) {
     }
@@ -222,9 +334,7 @@ public class VistaInfoContactoController implements Initializable {
     private void verDireccionCasa(MouseEvent event) {
     }
 
-    @FXML
-    private void editarDireccionTrabajo(MouseEvent event) {
-    }
+    
 
     @FXML
     private void agregarDireccionTrabajo(MouseEvent event) {
@@ -234,9 +344,7 @@ public class VistaInfoContactoController implements Initializable {
     private void verDireccionTrabajo(MouseEvent event) {
     }
 
-    @FXML
-    private void editarFechaImportante(MouseEvent event) {
-    }
+ 
 
     @FXML
     private void agregarFechaImportante(MouseEvent event) {
@@ -246,9 +354,7 @@ public class VistaInfoContactoController implements Initializable {
     private void VerFechasImportantes(MouseEvent event) {
     }
 
-    @FXML
-    private void editarCelularTrabajo(MouseEvent event) {
-    }
+
 
     @FXML
     private void agregarCelularTrabajo(MouseEvent event) {
@@ -262,9 +368,7 @@ public class VistaInfoContactoController implements Initializable {
     private void editarLinkDeGMaps(MouseEvent event) {
     }
 
-    @FXML
-    private void editarEtiqueta(MouseEvent event) {
-    }
+
 
     @FXML
     private void agregarEtiqueta(MouseEvent event) {
