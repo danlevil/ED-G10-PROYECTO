@@ -196,6 +196,8 @@ public class VistaInfoContactoController implements Initializable {
             contacto.setNombre(nuevoValor);
             avisarActualizacion();
         });
+        
+        
                 
     }
 

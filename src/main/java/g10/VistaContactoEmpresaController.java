@@ -42,8 +42,6 @@ public class VistaContactoEmpresaController implements Initializable {
     @FXML
     private Label lbEtiquetasCP;
     @FXML
-    private Button btVermasinfo;
-    @FXML
     private Button btContactAsoci;
     @FXML
     private Label lbcelularTCE;
@@ -53,6 +51,54 @@ public class VistaContactoEmpresaController implements Initializable {
     private Label lblTitulo;
     @FXML
     private Label LblDescrFecha;
+    @FXML
+    private ImageView editarFotosCE;
+    @FXML
+    private ImageView editarNombreCE;
+    @FXML
+    private ImageView editarCorreoCE;
+    @FXML
+    private ImageView nuevoCorreoCE;
+    @FXML
+    private ImageView verTodoslosCorreosCE;
+    @FXML
+    private ImageView editarCelularPCE;
+    @FXML
+    private ImageView nuevoCelularPCE;
+    @FXML
+    private ImageView verTodoslosCelularesPCE;
+    @FXML
+    private ImageView editarCargoCE;
+    @FXML
+    private ImageView editarLinkCE;
+    @FXML
+    private ImageView editarEtiquetasCE;
+    @FXML
+    private ImageView nuevaEtiquetaCE;
+    @FXML
+    private ImageView verTodaslasEtiquetasCE;
+    @FXML
+    private ImageView editarCelularTCE;
+    @FXML
+    private ImageView nuevoCelularTCE;
+    @FXML
+    private ImageView verTodoslosCelularesTCE;
+    @FXML
+    private ImageView editarDireccionTCE;
+    @FXML
+    private ImageView nuevoDireccionTCE;
+    @FXML
+    private ImageView verTodasLasDireccionesTCE;
+    @FXML
+    private ImageView editarTituloCE;
+    @FXML
+    private ImageView editarFechaICE;
+    @FXML
+    private ImageView nuevaFechaICE;
+    @FXML
+    private ImageView verTodaslasFechasICE;
+    @FXML
+    private ImageView eliminarCE;
 
     /**
      * Initializes the controller class.
@@ -78,16 +124,105 @@ public class VistaContactoEmpresaController implements Initializable {
     
     
 
-    /*private void editarContacto(MouseEvent event) {
-        System.out.println("Contacto Editado");
-    }*/
-
-    @FXML
-    private void mostrarInfoExtra(ActionEvent event) {
-    }
 
     @FXML
     private void mostrarVentanAsociados(ActionEvent event) {
+    }
+
+    @FXML
+    private void editarFotoDeContacto(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarNombreCE(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCorreo(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarNuevoCorreo(MouseEvent event) {
+    }
+
+    @FXML
+    private void verCorreos(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCelularPersonal(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarCelularPersonal(MouseEvent event) {
+    }
+
+    @FXML
+    private void mostrarCelularesPersonales(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCargoCEmpresa(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarLinkDeGMaps(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarEtiqueta(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarEtiqueta(MouseEvent event) {
+    }
+
+    @FXML
+    private void verEtiquetas(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarCelularTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarCelularTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void verCelularesTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarDireccionTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarDireccionTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void verDireccionTrabajo(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarTituloCE(MouseEvent event) {
+    }
+
+    @FXML
+    private void editarFechaImportante(MouseEvent event) {
+    }
+
+    @FXML
+    private void agregarFechaImportante(MouseEvent event) {
+    }
+
+    @FXML
+    private void VerFechasImportantes(MouseEvent event) {
+    }
+
+    @FXML
+    private void eliminarContacto(MouseEvent event) {
     }
     
 }
