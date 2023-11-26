@@ -57,7 +57,7 @@ public class ContactoController implements Initializable {
     
     public void configurar(Contacto contacto) {
         lbcontactonombre.setText(contacto.getNombre());
-        lbcontactocorreo.setText(contacto.getCorreo().getDireccionCorreo());
+        lbcontactocorreo.setText(contacto.getCorreoPrincipal().toString());
         Lblid.setText(String.valueOf(contacto.getId())); 
     }
     

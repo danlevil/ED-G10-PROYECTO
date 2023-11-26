@@ -87,64 +87,108 @@ public class AgregarContactoEmpresaController implements Initializable {
     @FXML
     private void guardarContactoEmpresa(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ArrayList<Direccion> direcciones = new ArrayList<>();
-        String textoDireccion = txtdirecciónEmpresa.getText();
-        Direccion direccionTrabajo = new Direccion("Dirección de empresa", textoDireccion);
-        direcciones.add(direccionTrabajo);
-        
-        
-        
-        ArrayList<Email> emails = new ArrayList<>();
-        String textoCorreo = TxtcorreoEmpresa.getText();
-        Email correo = new Email("Correo Principal", textoCorreo);
-        emails.add(correo);
-        
-        ArrayList<Telefono> telefonos = new ArrayList<>();
-        String textoTelefonoTrabajo = TxtcelTrabajoEmpresa.getText();
-        Telefono telefonoTrabajo = new Telefono("Celular de trabajo", textoTelefonoTrabajo);
-        telefonos.add(telefonoTrabajo);
-        
-        ArrayList<Telefono> telefonosPersonales = new ArrayList<>();
-        String telefonoPersonal = TxtcelularPEmpresa.getText();
-        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
-        telefonosPersonales.add(telefonoPersona);
-        
-        LinkedCircularDE<Foto> fotos = new LinkedCircularDE<>();
-        
-        
-        ArrayList<RedSocial> redesSociales = new ArrayList<>();
-
-        ArrayList<String> etiquetas = new ArrayList<>();
-
-        LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
-        String descripcionFecha = TxtfechaImpUsuario.getText();
-        LocalDate fecha = fechaImportante.getValue();
-        Fecha fechaImportante = new Fecha(descripcionFecha,fecha);
-        fechasImportantes.add(fechaImportante);
+//        ArrayList<Direccion> direcciones = new ArrayList<>();
+//        String textoDireccion = ;
+//        Direccion direccionTrabajo = new Direccion("Dirección de empresa", textoDireccion);
+//        direcciones.add(direccionTrabajo);
+//        
+//        
+//        
+//        ArrayList<Email> emails = new ArrayList<>();
+//        String textoCorreo = TxtcorreoEmpresa.getText();
+//        Email correo = new Email("Correo Principal", textoCorreo);
+//        emails.add(correo);
+//        
+//        ArrayList<Telefono> telefonos = new ArrayList<>();
+//        String textoTelefonoTrabajo = TxtcelTrabajoEmpresa.getText();
+//        Telefono telefonoTrabajo = new Telefono("Celular de trabajo", textoTelefonoTrabajo);
+//        telefonos.add(telefonoTrabajo);
+//        
+//        ArrayList<Telefono> telefonosPersonales = new ArrayList<>();
+//        String telefonoPersonal = TxtcelularPEmpresa.getText();
+//        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
+//        telefonosPersonales.add(telefonoPersona);
+//        
+//        LinkedCircularDE<Foto> fotos = new LinkedCircularDE<>();
+//        
+//        
+//        ArrayList<RedSocial> redesSociales = new ArrayList<>();
+//
+//        ArrayList<String> etiquetas = new ArrayList<>();
+//
+//        LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
+//        String descripcionFecha = TxtfechaImpUsuario.getText();
+//        LocalDate fecha = fechaImportante.getValue();
+//        Fecha fechaImportante = new Fecha(descripcionFecha,fecha);
+//        fechasImportantes.add(fechaImportante);
         
         //LocalDate cumpleaños = LocalDate.of(2023,01,01);
         
         
-        boolean favorito;
+
+        
+        ContactoEmpresa contactoEmpresaNuevo= new ContactoEmpresa(TxtnombreEmpresa.getText());
+        contactoEmpresaNuevo.agregarDireccion("Dirección de empresa",txtdirecciónEmpresa.getText());
+        contactoEmpresaNuevo.agregarEmail("Correo empresa", TxtcorreoEmpresa.getText());
+        contactoEmpresaNuevo.agregarTelefono("Celular de trabajo", TxtcelTrabajoEmpresa.getText());
+        contactoEmpresaNuevo.agregarTelefono("Celular personal", TxtcelularPEmpresa.getText());
+        contactoEmpresaNuevo.setTitulo(TxtTituloEnEmpresa.getText());
+        contactoEmpresaNuevo.setPuestoTrabajo(txtCargoEmpresa1.getText());
+//        String textoDireccion = TxtdirTrabajoUsuario.getText();
+//        Direccion direccionTrabajo = new Direccion("Dirección de trabajo", textoDireccion);
+//        direcciones.add(direccionTrabajo);
+//        
+//        ArrayList<Direccion> direccionPersonales = new ArrayList<>();
+//        String textoDireccionP = TxtdireccionUsuario.getText();
+//        Direccion direccionPersonal = new Direccion("Dirección de casa", textoDireccionP);
+//        direccionPersonales.add(direccionPersonal);
+        
+//        ArrayList<Email> emails = new ArrayList<>();
+//        String textoCorreo = TxtcorreoUsuario.getText();
+//        Email correo = new Email("Correo Principal", textoCorreo);
+//        emails.add(correo);
+//        
+//        ArrayList<Telefono> telefonos = new ArrayList<>();
+//        String textoTelefonoTrabajo = TxtcelTrabajoUsuario.getText();
+//        Telefono telefonoTrabajo = new Telefono("Celular de trabajo", textoTelefonoTrabajo);
+//        telefonos.add(telefonoTrabajo);
+//        
+//        ArrayList<Telefono> telefonosPersonales = new ArrayList<>();
+//        String telefonoPersonal = TxtcelularUsuario.getText();
+//        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
+//        telefonosPersonales.add(telefonoPersona);
+//        
+//        LinkedCircularDE<Foto> fotos = new LinkedCircularDE<>();
+//        
+//        
+//        ArrayList<RedSocial> redesSociales = new ArrayList<>();
+// 
+//        
+//        ArrayList<String> etiquetas = new ArrayList<>();
+        contactoEmpresaNuevo.agregarFechaImportante(TxtfechaImpUsuario.getText(), fechaImportante.getValue());
+//        LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
+//        String descripcionFecha = TxtfechaImpUsuario.getText();
+//        LocalDate fecha = fechaImportante.getValue();
+//        Fecha fechaImportante = new Fecha(descripcionFecha,fecha);
+//        fechasImportantes.add(fechaImportante);
+        
+        LocalDate cumpleaños = LocalDate.of(2023,01,01);
         String seleccion = CboxFav.getSelectionModel().getSelectedItem();
         if(seleccion.equals("S")){
-            favorito=true;
+            contactoEmpresaNuevo.setFavorito(true);
         }else{
-            favorito=false;
+            contactoEmpresaNuevo.setFavorito(false);
         }
-        ContactoEmpresa contactoEmpresaNuevo = new ContactoEmpresa(TxtnombreEmpresa.getText(),TxtTituloEnEmpresa.getText(),txtCargoEmpresa1.getText(),  favorito, direcciones, emails, telefonos, telefonosPersonales,fotos, redesSociales, etiquetas, fechasImportantes);
+        
         
         Agenda.agregarContactoEmpresa(contactoEmpresaNuevo); 
         Agenda.agregarGeneral(contactoEmpresaNuevo);
-        
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText("Resultado de la operación");
         alert.setContentText("Nuevo contacto agregado exitosamente");
         alert.showAndWait();
         stage.close();
-        
-
         Platform.runLater(() -> {
         try {
 

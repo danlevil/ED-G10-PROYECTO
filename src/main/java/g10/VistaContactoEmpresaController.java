@@ -64,12 +64,12 @@ public class VistaContactoEmpresaController implements Initializable {
 
     public void configurar(ContactoEmpresa contacto) {
         lbnombreCE.setText(contacto.getNombre());
-        lbcorreoCE.setText(contacto.getCorreo().getDireccionCorreo());
+        lbcorreoCE.setText(contacto.getCorreoPrincipal().toString());
         lbcelulerCE.setText(contacto.getTelefonoPersonal().getNumero());
-        lbDireccionTCE.setText (contacto.getDireccion().getUbicacion());
-        lbFechaCE.setText(contacto.getFechaImportante().getFecha());
-        LblDescrFecha.setText(contacto.getFechaImportante().getFechaDescripcion());
-        lbcelularTCE.setText(contacto.getTelefono().getNumero());
+        lbDireccionTCE.setText (contacto.getDireccionPrincipal().toString());
+        lbFechaCE.setText(contacto.getPrimeraFechaImportante().getFecha());
+        LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
+        lbcelularTCE.setText(contacto.getTelefonoPrincipal().getNumero());
         lblCargo.setText(contacto.getPuestoTrabajo());
         lblTitulo.setText(contacto.getTitulo());
         //falta poner etiquetas y link para google maps   

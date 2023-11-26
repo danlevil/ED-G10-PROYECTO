@@ -29,6 +29,14 @@ public class Direccion implements Serializable {
     public String getUbicacion() {
         return ubicacion;
     }
+
+    public void setNombreDireccion(String nombreDireccion) {
+        this.nombreDireccion = nombreDireccion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
     
     
     @Override

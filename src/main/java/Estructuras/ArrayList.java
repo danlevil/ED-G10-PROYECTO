@@ -107,7 +107,7 @@ public class ArrayList<E> extends List<E> {
    
     @Override
     public E getStart() {
-      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return elementos[0];
     }
 
     @Override

@@ -25,5 +25,21 @@ public class Foto implements Serializable{
         return archivo +": "+creacion;
     }
 
+    public String getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(String archivo) {
+        this.archivo = archivo;
+    }
+
+    public LocalDate getCreacion() {
+        return creacion;
+    }
+
+    public void setCreacion(LocalDate creacion) {
+        this.creacion = creacion;
+    }
+
     
 }

@@ -40,6 +40,7 @@ public class Contacto implements Serializable {
         telefonos=new ArrayList();
         redesSociales=new ArrayList();
         etiquetas=new ArrayList();
+        fechasImportantes=new ArrayList();
         fotos= new LinkedCircularDE();
         contactosRelacionados= new LinkedCircularDE();
         
@@ -66,17 +67,84 @@ public class Contacto implements Serializable {
      public Email getCorreoPrincipal() {
         return emails.getStart();
     }
+
+    public List<Email> getEmails() {
+        return emails;
+    }
+    public boolean agregarEmail(String descripcion, String cuenta){
+        if(descripcion==null && cuenta == null){
+            return false;
+        }
+        if(descripcion==null && cuenta !=null){
+            descripcion="Sin descripcion";
+        }
+        Email nuevo= new Email(descripcion, cuenta);
+        emails.add(nuevo);
+        if(nuevo!=null){return true;}
+        return false;
+    }
+
     //Telefono
     public Telefono getTelefonoPrincipal(){
         return telefonos.getStart();
+    }
+    public void setTelefonos(List<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+    public List<Telefono> getTelefonos() {
+        return telefonos;
+    }
+    public boolean agregarTelefono(String descripcion, String numero){
+        if(descripcion==null && numero == null){
+            return false;
+        }
+        if(descripcion==null && numero !=null){
+            descripcion="Sin descripcion";
+        }
+        Telefono nuevo= new Telefono(descripcion, numero);
+        telefonos.add(nuevo);
+        if(nuevo!=null){return true;}
+        return false;
     }
     //Direcciones
     public Direccion getDireccionPrincipal(){
         return direcciones.getStart();
     }
+
+    public List<Direccion> getDirecciones() {
+        return direcciones;
+    }
+    public boolean agregarDireccion(String descripcion, String ubicacion){
+        if(descripcion==null && ubicacion == null){
+            return false;
+        }
+        if(descripcion==null && ubicacion !=null){
+            descripcion="Sin descripcion";
+        }
+        Direccion nuevo= new Direccion(descripcion, ubicacion);
+        direcciones.add(nuevo);
+        if(nuevo!=null){return true;}
+        return false;
+    }
     //Fechas
     public Fecha getPrimeraFechaImportante(){
         return fechasImportantes.getStart();
+    }
+
+    public List<Fecha> getFechasImportantes() {
+        return fechasImportantes;
+    }
+    public boolean agregarFechaImportante(String descripcion, LocalDate fecha){
+        if(descripcion==null && fecha == null){
+            return false;
+        }
+        if(descripcion==null && fecha !=null){
+            descripcion="Sin descripcion";
+        }
+        Fecha nuevo= new Fecha(descripcion, fecha);
+        fechasImportantes.add(nuevo);
+        if(nuevo!=null){return true;}
+        return false;
     }
     //Relacionado a Empresas
     public boolean isEmpresa() {
@@ -97,125 +165,51 @@ public class Contacto implements Serializable {
     public boolean isFavorito() {
         return favorito;
     }
-    
-
-    public void setDirecciones(List<Direccion> direcciones) {
-        this.direcciones = direcciones;
-    }
-
-    public void setEmails(List<Email> emails) {
-        this.emails = emails;
-    }
-
-    public void setTelefonos(List<Telefono> telefonos) {
-        this.telefonos = telefonos;
-    }
-
-    public void setFotos(List<Foto> fotos) {
-        this.fotos = fotos;
-    }
-
-    public void setFechasImportantes(List<Fecha> fechasImportantes) {
-        this.fechasImportantes = fechasImportantes;
-    }
-
-    public void setContactosRelacionados(List<Contacto> contactosRelacionados) {
-        this.contactosRelacionados = contactosRelacionados;
-    }
-
-    public void setRedesSociales(List<RedSocial> redesSociales) {
-        this.redesSociales = redesSociales;
-    }
-
-    public void setEtiquetas(List<String> etiquetas) {
-        this.etiquetas = etiquetas;
-    }
-
-    public List<Direccion> getDirecciones() {
-        return direcciones;
-    }
-
-    public List<Email> getEmails() {
-        return emails;
-    }
-
-    public List<Telefono> getTelefonos() {
-        return telefonos;
-    }
+    //FOTOS
 
     public List<Foto> getFotos() {
         return fotos;
     }
-
-    public List<Fecha> getFechasImportantes() {
-        return fechasImportantes;
-    }
-
-    public List<Contacto> getContactosRelacionados() {
-        return contactosRelacionados;
-    }
-
-    public List<RedSocial> getRedesSociales() {
-        return redesSociales;
-    }
-
+    //public boolean añadirFoto(){};
+    
+    //Etiquetas
     public List<String> getEtiquetas() {
         return etiquetas;
     }
+    public boolean añadirEtiqueta(String etiquetaNueva){
+        return (etiquetaNueva!=null)?etiquetas.add(etiquetaNueva):false;
+    }
+
+    //Redes sociales
+ 
+    public List<RedSocial> getRedesSociales() {
+        return redesSociales;
+    }
+    public boolean añadirRedSocial(String descripcion,String red){
+        boolean valido1 = (descripcion!=null)?true:false;
+        boolean valido2 = (red!=null)?true:false;
+        if(valido1&&valido2){redesSociales.add(new RedSocial(descripcion,red));return true;}
+        
+        return false;
+    }
+     //Contactos relacionados
+ 
+    public List<Contacto> getContactosRelacionados() {
+        return contactosRelacionados;
+    }
+        //public boolean añadirContacto(){};
+
+   
 
    
 
     
-    public boolean agregarEmail(String descripcion, String cuenta){
-        if(descripcion==null && cuenta == null){
-            return false;
-        }
-        if(descripcion==null && cuenta !=null){
-            descripcion="Sin descripcion";
-        }
-        Email nuevo= new Email(descripcion, cuenta);
-        emails.add(nuevo);
-        if(nuevo!=null){return true;}
-        return false;
-    }
+
     
-    public boolean agregarTelefono(String descripcion, String numero){
-        if(descripcion==null && numero == null){
-            return false;
-        }
-        if(descripcion==null && numero !=null){
-            descripcion="Sin descripcion";
-        }
-        Telefono nuevo= new Telefono(descripcion, numero);
-        telefonos.add(nuevo);
-        if(nuevo!=null){return true;}
-        return false;
-    }
+
     
-    public boolean agregarFechaImportante(String descripcion, LocalDate fecha){
-        if(descripcion==null && fecha == null){
-            return false;
-        }
-        if(descripcion==null && fecha !=null){
-            descripcion="Sin descripcion";
-        }
-        Fecha nuevo= new Fecha(descripcion, fecha);
-        fechasImportantes.add(nuevo);
-        if(nuevo!=null){return true;}
-        return false;
-    }
-    public boolean agregarDireccion(String descripcion, String ubicacion){
-        if(descripcion==null && ubicacion == null){
-            return false;
-        }
-        if(descripcion==null && ubicacion !=null){
-            descripcion="Sin descripcion";
-        }
-        Direccion nuevo= new Direccion(descripcion, ubicacion);
-        direcciones.add(nuevo);
-        if(nuevo!=null){return true;}
-        return false;
-    }
+
+
     
     
     

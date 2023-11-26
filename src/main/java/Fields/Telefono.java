@@ -34,6 +34,14 @@ public class Telefono implements Serializable {
     public String getNumero() {
         return numero;
     }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
     
     
     

@@ -122,14 +122,14 @@ public class VistaInfoContactoController implements Initializable {
     
      public void configurar(ContactoPersona contacto) {
         this.contacto=contacto;
-        lbnombreCP.setText(contacto.getName());
-        lbcorreoCP.setText(contacto.getCorreo().getDireccionCorreo());
-        lbcelulerPCP.setText(contacto.getTelefonoPersonal().getNumero());
-        lbDireccionCP.setText (contacto.getDireccionPersonal().getUbicacion());
-        lbDireccionTCP.setText (contacto.getDireccion().getUbicacion());
-        lbFechaCP.setText(contacto.getFechaImportante().getFecha());
-        LblDescrFecha.setText(contacto.getFechaImportante().getFechaDescripcion());
-        lbcelularTCP.setText(contacto.getTelefono().getNumero());
+        lbnombreCP.setText(contacto.getNombre());
+        lbcorreoCP.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
+        lbcelulerPCP.setText(contacto.getTelefonoPrincipal().getNumero());
+        lbDireccionCP.setText (contacto.getDireccionPrincipal().getUbicacion());
+        lbDireccionTCP.setText (contacto.getDirecciones().get(1).getUbicacion());
+        lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
+        LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
+        lbcelularTCP.setText(contacto.getTelefonoPrincipal().getNumero());
         //falta poner etiquetas y link para google maps   
       
      }

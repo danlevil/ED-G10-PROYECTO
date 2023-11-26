@@ -37,5 +37,13 @@ public class Fecha implements Serializable {
     public String getFechaDescripcion(){
         return descripcion;
     }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
         
 }
