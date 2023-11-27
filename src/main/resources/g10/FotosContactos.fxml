@@ -40,7 +40,7 @@
                   <Font size="25.0" />
                </font>
                <HBox.margin>
-                  <Insets left="198.0" />
+                  <Insets left="198.0" top="25.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -74,6 +74,6 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="192.0" prefWidth="305.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="VboxFotos" alignment="CENTER" prefHeight="236.0" prefWidth="249.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

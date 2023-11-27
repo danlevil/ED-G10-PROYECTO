@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Fields.Foto;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
@@ -84,6 +85,7 @@ public class ContactoController implements Initializable {
                 // Abrir la vista de contacto para personas y pasar los datos
                 abrirVistaContactoPersona(contactoSeleccionado);
             }
+            
             
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
