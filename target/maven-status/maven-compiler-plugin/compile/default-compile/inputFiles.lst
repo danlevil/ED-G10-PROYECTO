@@ -6,7 +6,9 @@ C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Fields\Fecha.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Fields\Email.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Comparadores\ComparadorPersona.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\TipoContactoController.java
+C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\FotosContactosController.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Estructuras\List.java
+C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\FotoController.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Modelo\ContactoEmpresa.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Fields\Foto.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\AgregarContactoPersonaController.java
@@ -14,6 +16,7 @@ C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Modelo\Serializador.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Fields\Direccion.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\ContactoController.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\App.java
+C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\VerFotosContactosController.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Modelo\CargadorDeArchivos.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\g10\FiltroContactoController.java
 C:\Users\Charlie\Desktop\ED-G10-PROYECTO\src\main\java\Modelo\GeneradorID.java
