@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoPersona;
 import java.io.IOException;
@@ -123,7 +124,7 @@ public class VistaInfoContactoController implements Initializable {
     private Label contactoId;
     
     private Contacto contacto;
-    Stage momentarioStage= new Stage();
+    Stage momentaneoStage= new Stage();
     /**
      * Initializes the controller class.
      */
@@ -265,7 +266,7 @@ public class VistaInfoContactoController implements Initializable {
         guardarButton.setOnAction(e -> {
             contacto.getPrimeraFechaImportante().setFecha(datePicker.getValue());
             contacto.getPrimeraFechaImportante().setDescripcion(textField.getText());
-            momentarioStage.close();
+            momentaneoStage.close();
             avisarActualizacion();
         });
 
@@ -285,8 +286,8 @@ public class VistaInfoContactoController implements Initializable {
         Scene scene = new Scene(gridPane, 300, 200);
 
         // Configurar y mostrar la ventana principal
-        momentarioStage.setScene(scene);
-        momentarioStage.show();
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
     }
     @FXML
     private void editarCelularTrabajo(MouseEvent event) {
@@ -301,7 +302,19 @@ public class VistaInfoContactoController implements Initializable {
             avisarActualizacion();
         });
     }
- 
+    @FXML
+    private void editarLinkDeGMaps(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Editor");
+        dialog.setHeaderText("Ingrese un nueva direccion");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getDireccionPrincipal().setUbicacion(nuevoValor);
+            avisarActualizacion();
+        });
+    }
     @FXML
     private void editarEtiqueta(MouseEvent event) {
     }
@@ -309,25 +322,257 @@ public class VistaInfoContactoController implements Initializable {
     
     @FXML
     private void agregarNuevoCorreo(MouseEvent event) {
+        momentaneoStage = new Stage();
+        momentaneoStage.setTitle("Nuevo Correo");
+
+        // Crear los TextFields
+        TextField textField1 = new TextField();
+        TextField textField2 = new TextField();
+        textField1.setPromptText("Ingrese descripcion del correo");
+        textField1.setPromptText("Ingrese el correo");
+
+        // Configurar los botones
+        Button guardarButton = new Button("Guardar");
+        guardarButton.setOnAction(e -> {
+            // Obtener los valores de los TextFields
+            String valor1 = textField1.getText();
+            String valor2 = textField2.getText();
+
+            // Hacer algo con los valores (puedes imprimirlos, almacenarlos, etc.)
+            contacto.agregarEmail(valor1, valor2);
+
+            // Cerrar la ventana momentánea
+            momentaneoStage.close();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(textField1, 1, 0);
+        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(textField2, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 500, 300);
+
+        // Configurar y mostrar la ventana momentánea
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
     }
 
-    @FXML
-    private void verCorreos(MouseEvent event) {
-    }
+    
 
    
 
     @FXML
     private void agregarCelularPersonal(MouseEvent event) {
-    }
+        momentaneoStage = new Stage();
+        momentaneoStage.setTitle("Nuevo Correo");
 
+        // Crear los TextFields
+        TextField textField1 = new TextField();
+        TextField textField2 = new TextField();
+        textField1.setPromptText("Ingrese descripcion del celular");
+        textField1.setPromptText("Ingrese el celular");
+
+        // Configurar los botones
+        Button guardarButton = new Button("Guardar");
+        guardarButton.setOnAction(e -> {
+            // Obtener los valores de los TextFields
+            String valor1 = textField1.getText();
+            String valor2 = textField2.getText();
+
+            // Hacer algo con los valores (puedes imprimirlos, almacenarlos, etc.)
+            contacto.agregarTelefono(valor1, valor2);
+
+            // Cerrar la ventana momentánea
+            momentaneoStage.close();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(textField1, 1, 0);
+        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(textField2, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 500, 300);
+
+        // Configurar y mostrar la ventana momentánea
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
+    }
+    
     @FXML
-    private void mostrarCelularesPersonales(MouseEvent event) {
+    private void agregarFechaImportante(MouseEvent event) {
     }
-
     
     @FXML
     private void agregarDireccionCasa(MouseEvent event) {
+        momentaneoStage = new Stage();
+        momentaneoStage.setTitle("Nuevo Correo");
+
+        // Crear los TextFields
+        TextField textField1 = new TextField();
+        TextField textField2 = new TextField();
+        textField1.setPromptText("Ingrese descripcion de la direccion");
+        textField1.setPromptText("Ingrese la direccion");
+
+        // Configurar los botones
+        Button guardarButton = new Button("Guardar");
+        guardarButton.setOnAction(e -> {
+            // Obtener los valores de los TextFields
+            String valor1 = textField1.getText();
+            String valor2 = textField2.getText();
+
+            // Hacer algo con los valores (puedes imprimirlos, almacenarlos, etc.)
+            contacto.agregarDireccion(valor1, valor2);
+
+            // Cerrar la ventana momentánea
+            momentaneoStage.close();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(textField1, 1, 0);
+        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(textField2, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 500, 300);
+
+        // Configurar y mostrar la ventana momentánea
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
+    }
+    @FXML
+    private void agregarDireccionTrabajo(MouseEvent event) {
+        momentaneoStage = new Stage();
+        momentaneoStage.setTitle("Nuevo Correo");
+
+        // Crear los TextFields
+        TextField textField1 = new TextField();
+        TextField textField2 = new TextField();
+        textField1.setPromptText("Ingrese descripcion del trabajo");
+        textField1.setPromptText("Ingrese la direccion");
+
+        // Configurar los botones
+        Button guardarButton = new Button("Guardar");
+        guardarButton.setOnAction(e -> {
+            // Obtener los valores de los TextFields
+            String valor1 = textField1.getText();
+            String valor2 = textField2.getText();
+
+            // Hacer algo con los valores (puedes imprimirlos, almacenarlos, etc.)
+            contacto.agregarDireccion(valor1, valor2);
+
+            // Cerrar la ventana momentánea
+            momentaneoStage.close();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(textField1, 1, 0);
+        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(textField2, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 500, 300);
+
+        // Configurar y mostrar la ventana momentánea
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
+    }
+    
+
+    @FXML
+    private void agregarCelularTrabajo(MouseEvent event) {
+        momentaneoStage = new Stage();
+        momentaneoStage.setTitle("Nuevo Correo");
+
+        // Crear los TextFields
+        TextField textField1 = new TextField();
+        TextField textField2 = new TextField();
+        textField1.setPromptText("Ingrese descripcion del celular de trabajo");
+        textField1.setPromptText("Ingrese el celular");
+
+        // Configurar los botones
+        Button guardarButton = new Button("Guardar");
+        guardarButton.setOnAction(e -> {
+            // Obtener los valores de los TextFields
+            String valor1 = textField1.getText();
+            String valor2 = textField2.getText();
+
+            // Hacer algo con los valores (puedes imprimirlos, almacenarlos, etc.)
+            contacto.agregarTelefono(valor1, valor2);
+
+            // Cerrar la ventana momentánea
+            momentaneoStage.close();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(textField1, 1, 0);
+        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(textField2, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 500, 300);
+
+        // Configurar y mostrar la ventana momentánea
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
+    }
+    @FXML
+    private void agregarEtiqueta(MouseEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("ADD");
+        dialog.setHeaderText("Ingrese un nueva etiqueta");
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(nuevoValor -> {
+            contacto.getEtiquetas().add(nuevoValor);
+            avisarActualizacion();
+        });
+    }
+    @FXML
+    private void verCelularesTrabajo(MouseEvent event) {
+    }
+
+    
+
+@FXML
+    private void mostrarCelularesPersonales(MouseEvent event) {
     }
 
     @FXML
@@ -336,9 +581,7 @@ public class VistaInfoContactoController implements Initializable {
 
     
 
-    @FXML
-    private void agregarDireccionTrabajo(MouseEvent event) {
-    }
+    
 
     @FXML
     private void verDireccionTrabajo(MouseEvent event) {
@@ -346,9 +589,7 @@ public class VistaInfoContactoController implements Initializable {
 
  
 
-    @FXML
-    private void agregarFechaImportante(MouseEvent event) {
-    }
+    
 
     @FXML
     private void VerFechasImportantes(MouseEvent event) {
@@ -356,23 +597,7 @@ public class VistaInfoContactoController implements Initializable {
 
 
 
-    @FXML
-    private void agregarCelularTrabajo(MouseEvent event) {
-    }
 
-    @FXML
-    private void verCelularesTrabajo(MouseEvent event) {
-    }
-
-    @FXML
-    private void editarLinkDeGMaps(MouseEvent event) {
-    }
-
-
-
-    @FXML
-    private void agregarEtiqueta(MouseEvent event) {
-    }
 
     @FXML
     private void verEtiquetas(MouseEvent event) {
@@ -380,6 +605,13 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void eliminarContacto(MouseEvent event) {
+        Agenda.contactosMaster.remove(contacto);
+        Agenda.contactosPersonas.remove(contacto);
+        
+        
+    }
+    @FXML
+    private void verCorreos(MouseEvent event) {
     }
 
 }
