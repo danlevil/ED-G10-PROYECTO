@@ -127,13 +127,13 @@ public class VistaInfoContactoController implements Initializable {
     private Label contactoId;
     
     private Contacto contacto;
-<<<<<<< HEAD
+
     Stage momentarioStage= new Stage();
     @FXML
     private ImageView volverContactos;
-=======
+
     Stage momentaneoStage= new Stage();
->>>>>>> 2cb628a21867b8c4e4fda2f276c6faf23e0b016b
+
     /**
      * Initializes the controller class.
      */
@@ -162,6 +162,25 @@ public class VistaInfoContactoController implements Initializable {
         alert.setHeaderText("Resultado de la operación");
         alert.setContentText("Contacto actualizado exitosamente");
         alert.showAndWait();
+    }
+    private void reload(MouseEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        
+          
+        int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+            if (contactoSeleccionado.isEmpresa()) {
+                // Abrir la vista de contacto para empresas y pasar los datos
+                abrirVistaContactoEmpresa(contactoSeleccionado);
+            } else {
+                // Abrir la vista de contacto para personas y pasar los datos
+                abrirVistaContactoPersona(contactoSeleccionado);
+            }
     }
     private void editarContacto(MouseEvent event) {
         System.out.println("Contacto Editado");
@@ -210,24 +229,7 @@ public class VistaInfoContactoController implements Initializable {
             avisarActualizacion();
         });
         
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        // Cerrar la ventana actual
-        stage.close();
-        
-          
-        int id = Integer.parseInt(contactoId.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
-            if (contactoSeleccionado.isEmpresa()) {
-                // Abrir la vista de contacto para empresas y pasar los datos
-                abrirVistaContactoEmpresa(contactoSeleccionado);
-            } else {
-                // Abrir la vista de contacto para personas y pasar los datos
-                abrirVistaContactoPersona(contactoSeleccionado);
-            }
-        
+        reload(event);  
             
           
                 
@@ -237,7 +239,7 @@ public class VistaInfoContactoController implements Initializable {
     private void editarCorreo(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
-        dialog.setHeaderText("Ingrese un nuevo  nombre");
+        dialog.setHeaderText("Cambie la direccion de correo");
 
         Optional<String> resultado = dialog.showAndWait();
 
@@ -245,6 +247,7 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getCorreoPrincipal().setDireccionCorreo(nuevoValor);
             avisarActualizacion();
         });
+        reload(event);
     }
     @FXML
     private void editarCelularPersonal(MouseEvent event) {
@@ -258,7 +261,7 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getTelefonoPrincipal().setNumero(nuevoValor);
             avisarActualizacion();
         });
-        
+        reload(event);
     }
     @FXML
     private void editarDireccionCasa(MouseEvent event) {
@@ -272,13 +275,13 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getDireccionPrincipal().setUbicacion(nuevoValor);
             avisarActualizacion();
         });
-        
+        reload(event);
     }
     @FXML
     private void editarDireccionTrabajo(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
-        dialog.setHeaderText("Ingrese un nueva Direccion de trabajo");
+        dialog.setHeaderText("Cambie a un nueva Direccion de trabajo");
 
         Optional<String> resultado = dialog.showAndWait();
 
@@ -286,7 +289,7 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getDirecciones().get(1).setUbicacion(nuevoValor);
             avisarActualizacion();
         });
-        
+        reload(event);
     }
        @FXML
     private void editarFechaImportante(MouseEvent event) {
@@ -311,7 +314,7 @@ public class VistaInfoContactoController implements Initializable {
 
         gridPane.add(new Label("Seleccione la fecha:"), 0, 0);
         gridPane.add(datePicker, 1, 0);
-        gridPane.add(new Label("Ingrese un valor:"), 0, 1);
+        gridPane.add(new Label("Nueva descripcion de la fecha:"), 0, 1);
         gridPane.add(textField, 1, 1);
         gridPane.add(guardarButton, 0, 2, 2, 1);
 
@@ -326,7 +329,7 @@ public class VistaInfoContactoController implements Initializable {
     private void editarCelularTrabajo(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
-        dialog.setHeaderText("Ingrese un nueva celular de trabajo");
+        dialog.setHeaderText("Cambie el  celular de trabajo");
 
         Optional<String> resultado = dialog.showAndWait();
 
@@ -384,9 +387,9 @@ public class VistaInfoContactoController implements Initializable {
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
 
-        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(new Label("Ingrese descripcion del correo"), 0, 0);
         gridPane.add(textField1, 1, 0);
-        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(new Label("Ingrese el correo:"), 0, 1);
         gridPane.add(textField2, 1, 1);
         gridPane.add(guardarButton, 0, 2, 2, 1);
 
@@ -405,7 +408,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void agregarCelularPersonal(MouseEvent event) {
         momentaneoStage = new Stage();
-        momentaneoStage.setTitle("Nuevo Correo");
+        momentaneoStage.setTitle("Nuevo Celular personal");
 
         // Crear los TextFields
         TextField textField1 = new TextField();
@@ -433,9 +436,9 @@ public class VistaInfoContactoController implements Initializable {
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
 
-        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(new Label("Descripcion del celular"), 0, 0);
         gridPane.add(textField1, 1, 0);
-        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(new Label("numero celular"), 0, 1);
         gridPane.add(textField2, 1, 1);
         gridPane.add(guardarButton, 0, 2, 2, 1);
 
@@ -454,7 +457,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void agregarDireccionCasa(MouseEvent event) {
         momentaneoStage = new Stage();
-        momentaneoStage.setTitle("Nuevo Correo");
+        momentaneoStage.setTitle("Nueva direccion domicilio");
 
         // Crear los TextFields
         TextField textField1 = new TextField();
@@ -482,9 +485,9 @@ public class VistaInfoContactoController implements Initializable {
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
 
-        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(new Label("Descripcion de la direccion"), 0, 0);
         gridPane.add(textField1, 1, 0);
-        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(new Label("direccion"), 0, 1);
         gridPane.add(textField2, 1, 1);
         gridPane.add(guardarButton, 0, 2, 2, 1);
 
@@ -498,12 +501,12 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void agregarDireccionTrabajo(MouseEvent event) {
         momentaneoStage = new Stage();
-        momentaneoStage.setTitle("Nuevo Correo");
+        momentaneoStage.setTitle("Nueva Direccion de trabajo");
 
         // Crear los TextFields
         TextField textField1 = new TextField();
         TextField textField2 = new TextField();
-        textField1.setPromptText("Ingrese descripcion del trabajo");
+        textField1.setPromptText("Descripcion direccion trabajo");
         textField1.setPromptText("Ingrese la direccion");
 
         // Configurar los botones
@@ -526,9 +529,9 @@ public class VistaInfoContactoController implements Initializable {
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
 
-        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(new Label("Descripcion direccion trabajo"), 0, 0);
         gridPane.add(textField1, 1, 0);
-        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(new Label("direccion"), 0, 1);
         gridPane.add(textField2, 1, 1);
         gridPane.add(guardarButton, 0, 2, 2, 1);
 
@@ -544,7 +547,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void agregarCelularTrabajo(MouseEvent event) {
         momentaneoStage = new Stage();
-        momentaneoStage.setTitle("Nuevo Correo");
+        momentaneoStage.setTitle("Nuevo Celular de trabajo");
 
         // Crear los TextFields
         TextField textField1 = new TextField();
@@ -572,9 +575,9 @@ public class VistaInfoContactoController implements Initializable {
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
 
-        gridPane.add(new Label("Ingrese el valor 1:"), 0, 0);
+        gridPane.add(new Label("Descripcion celular"), 0, 0);
         gridPane.add(textField1, 1, 0);
-        gridPane.add(new Label("Ingrese el valor 2:"), 0, 1);
+        gridPane.add(new Label("celular trabajo"), 0, 1);
         gridPane.add(textField2, 1, 1);
         gridPane.add(guardarButton, 0, 2, 2, 1);
 
@@ -637,7 +640,21 @@ public class VistaInfoContactoController implements Initializable {
     }
 
     @FXML
-    private void eliminarContacto(MouseEvent event) {
+    private void eliminarContacto(MouseEvent event) throws IOException {
+        App.setRoot("ListaContactos.fxml");
+        /*Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        Platform.runLater(() -> {
+        try {
+
+            App nuevaInstancia = new App();
+            nuevaInstancia.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        });*/
         Agenda.contactosMaster.remove(contacto);
         Agenda.contactosPersonas.remove(contacto);
         
