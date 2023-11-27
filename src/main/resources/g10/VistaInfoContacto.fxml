@@ -19,10 +19,21 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                <children>
-                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="906.0" text="Contacto Persona" textAlignment="CENTER">
+                  <ImageView fx:id="volverContactos" fitHeight="59.0" fitWidth="60.0" onMouseClicked="#volverListContacts" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/Volver.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="844.0" text="Contacto Persona" textAlignment="CENTER">
                      <font>
                         <Font size="41.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>

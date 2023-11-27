@@ -7,13 +7,16 @@ package g10;
 import Modelo.ContactoEmpresa;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -99,6 +102,8 @@ public class VistaContactoEmpresaController implements Initializable {
     private ImageView verTodaslasFechasICE;
     @FXML
     private ImageView eliminarCE;
+    @FXML
+    private ImageView volverContactos;
 
     /**
      * Initializes the controller class.
@@ -223,6 +228,25 @@ public class VistaContactoEmpresaController implements Initializable {
 
     @FXML
     private void eliminarContacto(MouseEvent event) {
+    }
+
+    @FXML
+    private void volverListContacts(MouseEvent event) {
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage.close();
+        
+         Platform.runLater(() -> {
+        try {
+
+            App nuevaInstancia = new App();
+            nuevaInstancia.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         });
+        
     }
     
 }
