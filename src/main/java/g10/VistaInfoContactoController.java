@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
@@ -127,13 +128,13 @@ public class VistaInfoContactoController implements Initializable {
     private Label contactoId;
     
     private Contacto contacto;
-<<<<<<< HEAD
+
     Stage momentarioStage= new Stage();
     @FXML
     private ImageView volverContactos;
-=======
+
     Stage momentaneoStage= new Stage();
->>>>>>> 2cb628a21867b8c4e4fda2f276c6faf23e0b016b
+
     /**
      * Initializes the controller class.
      */
@@ -638,11 +639,56 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void eliminarContacto(MouseEvent event) {
-        Agenda.contactosMaster.remove(contacto);
-        Agenda.contactosPersonas.remove(contacto);
+        int id = Integer.parseInt(contactoId.getText());
         
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
         
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Confirmar Eliminación");
+        alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
+        alert.setContentText("Esta acción no se puede deshacer.");
+        ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+        
+        Optional<ButtonType> resultado = alert.showAndWait();
+        
+        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+           Agenda.contactosPersonas.remove(contactoSeleccionado);
+           Agenda.contactosMaster.remove(contactoSeleccionado);
+        
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Information Dialog");
+            alert1.setHeaderText("Resultado de la operación");
+            alert1.setContentText("Contacto eliminado exitosamente");
+            alert1.showAndWait();
+        
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cerrar la ventana actual
+            stage.close();
+        
+            Platform.runLater(() -> {
+            try {
+
+            App nuevaInstancia = new App();
+            nuevaInstancia.start(new Stage());
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+             });
+        } else {
+                // El usuario ha hecho clic en "Cancelar" o ha cerrado el Alert
+                // No realizar ninguna acción
+          }
+      
     }
+    
+    
+    
+    
+    
+    
     @FXML
     private void verCorreos(MouseEvent event) {
     }
