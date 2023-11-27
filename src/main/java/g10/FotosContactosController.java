@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Estructuras.List;
 import Fields.Foto;
 import Modelo.Agenda;
 import Modelo.Contacto;
@@ -49,11 +50,13 @@ public class FotosContactosController implements Initializable {
     @FXML
     private Label contacoId;
     private Contacto seleccionado;
+    private List<Foto>galeria;
+    
     @FXML
     private VBox VboxFotos;
     
     private static final int ELEMENTOS_POR_PAGINA=1;
-    private static int paginaActual=1;
+    private  int paginaActual=1;
 
     /**
      * Initializes the controller class.
@@ -65,7 +68,7 @@ public class FotosContactosController implements Initializable {
 
     } 
     
-    private void mostrarImg(Contacto contacto) {
+    private void mostrarImg(Foto foto) {
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Foto.fxml"));
@@ -74,7 +77,7 @@ public class FotosContactosController implements Initializable {
 
             // Configurar el controlador del HBox
             FotoController controller = loader.getController();
-            controller.configurar(contacto);
+            controller.configurar(foto);
 
             // Agregar el HBox al VBox
             VboxFotos.getChildren().add(imageView);
@@ -86,7 +89,8 @@ public class FotosContactosController implements Initializable {
     public void configurar(Contacto contacto){
         contacoId.setText(String.valueOf(contacto.getId()));
         seleccionado=contacto;
-        mostrarImg(contacto);
+        galeria=seleccionado.getFotos();
+        mostrarImg(galeria.getStart());
     }
     
 
@@ -170,17 +174,17 @@ public class FotosContactosController implements Initializable {
     
     
     private void mostrarElementos() {
-        int id = Integer.parseInt(contacoId.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
-        VboxFotos.getChildren().clear();
-        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contactoSeleccionado.getFotos().size());
-
-        for (int i = inicio; i < fin; i++) {
-            mostrarImg( contactoSeleccionado);
-        }
+//        int id = Integer.parseInt(contacoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(id);
+//        
+//        VboxFotos.getChildren().clear();
+//        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+//        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contactoSeleccionado.getFotos().size());
+//
+//        for (int i = inicio; i < fin; i++) {
+//            mostrarImg( contactoSeleccionado);
+//        }
 
         //lbnumpag.setText( String.valueOf(paginaActual));
     }  
@@ -198,42 +202,65 @@ public class FotosContactosController implements Initializable {
     
      @FXML
   private void siguiente(MouseEvent event) {
-        int id = Integer.parseInt(contacoId.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
-        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
-
-        if (paginaActual < totalPaginas) {
+          if(paginaActual<galeria.size()){
+              
+            mostrarImg(galeria.get(paginaActual));
             paginaActual++;
-        } else {
-            // Si llegamos al final, regresamos a la primera página
-            paginaActual = 1;
-        }
-
-        mostrarElementos();
+          }
+          if(paginaActual==galeria.size()){
+              
+            mostrarImg(galeria.getStart());
+            paginaActual=1;
+          }
+      
+//        int id = Integer.parseInt(contacoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(id);
+//        
+//        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
+//
+//        if (paginaActual < totalPaginas) {
+//            paginaActual++;
+//        } else {
+//            // Si llegamos al final, regresamos a la primera página
+//            paginaActual = 1;
+//        }
+//
+//        mostrarElementos();
        
     }
     
     
    @FXML
     private void anterior(MouseEvent event) {
-        
-        int id = Integer.parseInt(contacoId.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
-         int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
-
-        if (paginaActual > 1) {
-            paginaActual--;
-        } else {
-            // Si estamos en la primera página, vamos al final
-            paginaActual = totalPaginas;
+        //int retroceso=  galeria.size()-1;
+        if(paginaActual==1){
+            paginaActual=galeria.size()-1;
+            mostrarImg(galeria.get(paginaActual));
         }
-
-        mostrarElementos();
+        if(paginaActual<=galeria.size()-1){
+            paginaActual--;
+            mostrarImg(galeria.get(paginaActual));
+            
+        }
+            
     }
+        
+//        int id = Integer.parseInt(contacoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(id);
+//        
+//         int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
+//
+//        if (paginaActual > 1) {
+//            paginaActual--;
+//        } else {
+//            // Si estamos en la primera página, vamos al final
+//            paginaActual = totalPaginas;
+//        }
+//
+//        mostrarElementos();
+    
     
     
 

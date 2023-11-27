@@ -38,18 +38,18 @@ public class FotoController implements Initializable {
         // TODO
     } 
     
-    public void configurar(Contacto contacto) {
-        this.contactoSeleccionado = contacto;
+    public void configurar(Foto foto) {
+        //this.contactoSeleccionado = contacto;
          // Obtener la lista de fotos del contacto
-        List<Foto> fotos = contacto.getFotos();
+        //List<Foto> fotos = contacto.getFotos();
 
         // Verificar si hay al menos una foto en la lista
-        if (!fotos.isEmpty()) {
+        if (foto!=null) {
             // Obtener la primera foto de la lista
-            Foto primeraFoto = fotos.get(0);
+            //Foto primeraFoto = fotos.get(0);
 
             // Obtener la ruta de la foto desde la primera foto
-            String rutaFoto = primeraFoto.getArchivo();
+            String rutaFoto = foto.getArchivo();
 
             // Crear un objeto Image desde la ruta del archivo
             Image image = new Image("file:" + rutaFoto);
