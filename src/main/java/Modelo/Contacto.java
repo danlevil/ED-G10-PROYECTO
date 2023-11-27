@@ -170,6 +170,14 @@ public class Contacto implements Serializable {
     public List<Foto> getFotos() {
         return fotos;
     }
+    public boolean añadirFoto(Foto foto){
+        if(foto!=null){
+            
+            fotos.add(foto);
+            return true;
+        }
+        return false;
+    }
     //public boolean añadirFoto(){};
     
     //Etiquetas

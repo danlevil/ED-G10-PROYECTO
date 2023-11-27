@@ -46,6 +46,8 @@ public class ContactoController implements Initializable {
     private Label lbcontactocorreo;
     @FXML
     private Label Lblid;
+    
+    public Contacto contactoSeleccionado;
 
     /**
      * Initializes the controller class.
@@ -57,17 +59,23 @@ public class ContactoController implements Initializable {
     }
     
     public void configurar(Contacto contacto) {
+        this.contactoSeleccionado=contacto;
+
         lbcontactonombre.setText(contacto.getNombre());
         lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
         Lblid.setText(String.valueOf(contacto.getId())); 
+        System.out.println(Lblid.getText());
     }
     
-
+    public Contacto getSeleccionado(){
+        return contactoSeleccionado;
+    }
     @FXML
     private void abrirContactoInfo(MouseEvent event) throws IOException {
         int id = Integer.parseInt(Lblid.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
+        //this.contactoSeleccionado=contactoSeleccionado;
         
             if (contactoSeleccionado.isEmpresa()) {
                 // Abrir la vista de contacto para empresas y pasar los datos

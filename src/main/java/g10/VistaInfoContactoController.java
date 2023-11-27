@@ -128,6 +128,7 @@ public class VistaInfoContactoController implements Initializable {
     private Label contactoId;
     
     private Contacto contacto;
+    
 
     @FXML
     private ImageView volverContactos;
@@ -153,8 +154,12 @@ public class VistaInfoContactoController implements Initializable {
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
         lbcelularTCP.setText(contacto.getTelefonoPrincipal().getNumero());
         contactoId.setText(String.valueOf(contacto.getId()));
+        
         //falta poner etiquetas y link para google maps   
       
+     }
+     public Contacto getSeleccionado(){
+         return contacto;
      }
     private void avisarActualizacion(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -219,8 +224,8 @@ public class VistaInfoContactoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             FotosContactosController controller = loader.getController();
-           // controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
-
+            controller.configurar((Contacto) contacto); // Método para pasar los datos del contacto
+           
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);

@@ -4,15 +4,27 @@
  */
 package g10;
 
+import Fields.Foto;
+import Modelo.Contacto;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -33,6 +45,7 @@ public class FotosContactosController implements Initializable {
     private ImageView agregarFoto;
     @FXML
     private Label contacoId;
+    private Contacto seleccionado;
 
     /**
      * Initializes the controller class.
@@ -40,7 +53,15 @@ public class FotosContactosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        
+        
+        
+    } 
+    public void configurar(Contacto contacto){
+        contacoId.setText(String.valueOf(contacto.getId()));
+        seleccionado=contacto;
+    }
+    
 
     @FXML
     private void regresarPantalla(MouseEvent event) {
@@ -60,6 +81,67 @@ public class FotosContactosController implements Initializable {
 
     @FXML
     private void agregarNuevaFoto(MouseEvent event) {
+        //cargarContacto();
+        try {
+            // Obtener el ID del contacto
+            String idUsuario = contacoId.getText();
+
+            // Crear la ruta de la carpeta para el usuario
+            String carpetaUsuario = "files/images/" + idUsuario;
+            Path rutaCarpetaUsuario = Path.of(carpetaUsuario);
+
+            // Crear la carpeta si no existe
+            if (Files.notExists(rutaCarpetaUsuario)) {
+                Files.createDirectories(rutaCarpetaUsuario);
+            }
+
+            // Mostrar el FileChooser para seleccionar la foto
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Seleccionar foto");
+            FileChooser.ExtensionFilter extFilter =
+                    new FileChooser.ExtensionFilter("Archivos de imagen (*.jpg, *.png)", "*.jpg", "*.png");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            File archivoSeleccionado = fileChooser.showOpenDialog(new Stage());
+
+            // Verificar si se seleccionó un archivo
+            if (archivoSeleccionado != null) {
+                // Obtener el nombre del archivo y la extensión
+                String nombreArchivo = archivoSeleccionado.getName();
+                String extension = nombreArchivo.substring(nombreArchivo.lastIndexOf(".") + 1).toLowerCase();
+
+                // Verificar la extensión
+                if (extension.equals("jpg") || extension.equals("png")) {
+                    // Crear la ruta de destino para la foto
+                    String nombreFoto = "foto_" + System.currentTimeMillis() + "." + extension;
+                    Path rutaDestino = Path.of(carpetaUsuario, nombreFoto);
+
+                    // Copiar la foto al destino
+                    Files.copy(archivoSeleccionado.toPath(), rutaDestino, StandardCopyOption.REPLACE_EXISTING);
+
+                    // Obtener la ruta relativa de la foto
+                    String rutaRelativa = carpetaUsuario + "/" + nombreFoto;
+
+                    // Crear un objeto Foto y añadirlo a la lista de fotos del contacto
+                    Foto foto = new Foto( rutaRelativa);
+                    seleccionado.añadirFoto(foto);
+                    for(Foto f: seleccionado.getFotos()){
+                        System.out.println(f);
+                    }
+
+                    // Actualizar la interfaz de usuario, si es necesario
+                    // ...
+
+                    System.out.println("Foto añadida con éxito. Ruta: " + rutaRelativa);
+                } else {
+                    System.out.println("Error: Selecciona un archivo de tipo .jpg o .png");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Manejar la excepción según tus necesidades
+        }
+      
     }
     
 }

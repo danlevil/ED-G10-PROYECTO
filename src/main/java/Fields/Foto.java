@@ -18,6 +18,7 @@ public class Foto implements Serializable{
 
     public Foto(String archivo) {
         this.archivo = archivo;
+        creacion=LocalDate.now();
     }
     
     @Override
