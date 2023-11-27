@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.VerFotosContactosController">
+   <left>
+      <ImageView fx:id="izquierda" fitHeight="87.0" fitWidth="96.0" onMouseClicked="#anterior" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../imagenes/ant.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets left="40.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </left>
+   <right>
+      <ImageView fx:id="derecha" fitHeight="80.0" fitWidth="86.0" onMouseClicked="#siguiente" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../imagenes/sgte.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets right="40.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </right>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="idContacto" text="Label" visible="false" />
+         </children></HBox>
+   </bottom>
+   <top>
+      <HBox prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="regresar" fitHeight="64.0" fitWidth="78.0" onMouseClicked="#regresarPantalla" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Volver.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="454.0" text="Fotos de contacto" textAlignment="CENTER">
+               <font>
+                  <Font size="33.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="192.0" prefWidth="305.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

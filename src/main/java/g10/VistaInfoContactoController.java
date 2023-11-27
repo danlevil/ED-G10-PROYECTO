@@ -212,6 +212,26 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void editarFotoDeContacto(MouseEvent event) {
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FotosContactos.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            FotosContactosController controller = loader.getController();
+           // controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,600,400);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de fotos de Contactos");
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     
@@ -714,6 +734,30 @@ public class VistaInfoContactoController implements Initializable {
         
     }
     
+    @FXML
+    private void mostrarFotosContacto(MouseEvent event) {
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("verFotosContactos.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VerFotosContactosController controller = loader.getController();
+           // controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,600,400);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista fotos de Contactos");
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
     
     
     
@@ -775,6 +819,8 @@ public class VistaInfoContactoController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    
 
     
     
