@@ -215,7 +215,7 @@ private Nodo<E> start;
     @Override
     public E getStart() {
         if(start == null){
-            return (E) "[]";
+            return null;
         }
         return start.getContenido();
     }
@@ -270,7 +270,23 @@ private Nodo<E> start;
         return (encontrado!=null)?encontrado.getContenido():null;
     }
 
-    
+    @Override
+    public boolean remove(Object o) {
+        Nodo <E> n;
+        for(n=start;n!=null;n=n.getSiguiente()){
+            if(n.getContenido().equals(o)){
+                Nodo<E>previo=n.getPrevio();
+                Nodo<E>sig= n.getSiguiente();
+                previo.setSiguiente(sig);
+                sig.setPrevio(previo);
+                n.setPrevio(null);
+                n.setSiguiente(null);
+                tamaño--;
+                return true;
+            }
+        }
+        return false;
+    }
     @Override
     public Object[] toArray() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -281,10 +297,7 @@ private Nodo<E> start;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public boolean remove(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 
     @Override
     public boolean containsAll(Collection<?> c) {

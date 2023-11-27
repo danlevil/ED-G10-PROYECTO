@@ -35,12 +35,12 @@ public class Contacto implements Serializable {
     public Contacto(String nombre){
         
         this.nombre = nombre;
-        direcciones=new ArrayList();
-        emails=new ArrayList();
-        telefonos=new ArrayList();
-        redesSociales=new ArrayList();
-        etiquetas=new ArrayList();
-        fechasImportantes=new ArrayList();
+        direcciones=new LinkedCircularDE();
+        emails=new LinkedCircularDE();
+        telefonos=new LinkedCircularDE();
+        redesSociales=new LinkedCircularDE();
+        etiquetas=new LinkedCircularDE();
+        fechasImportantes=new LinkedCircularDE();
         fotos= new LinkedCircularDE();
         contactosRelacionados= new LinkedCircularDE();
         
@@ -198,6 +198,20 @@ public class Contacto implements Serializable {
         return contactosRelacionados;
     }
         //public boolean añadirContacto(){};
+
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contacto other = (Contacto) obj;
+        return this.id == other.id;
+    }
 
    
 
