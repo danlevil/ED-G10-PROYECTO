@@ -55,24 +55,88 @@ public class InfoDeDatosContactoController implements Initializable {
 
     
     //CONFIGURACIONES
+    
+     void configurarFechasI (Contacto contacto){
+         nombreDeDato.setText("Fechas importantes");
+         mostrarElementosFechasI(contacto);
+         
+     } 
+    
+     void configurarDireccionesP(Contacto contacto){
+         nombreDeDato.setText("Direcciones");
+         mostrarElementosDireccionesP(contacto);
+     }
+     
+     
      void configurarCelularPersonal(Contacto contacto) {
         nombreDeDato.setText("Celulares Personales");
         mostrarElementosCeluares(contacto);
        
-    }
+     }
      
-    void configurarCorreo(Contacto contacto) {
+     void configurarCorreo(Contacto contacto) {
         nombreDeDato.setText("Celulares");
         mostrarElementosCorreo(contacto);
        
-    }
+     }
     
     
     
     
     //AGREGAR HBOX
+     
+     private void agregarHBoxFechasI(Contacto contacto){
+         
+         lblnombreSeleccion.setText("verTodaslasFechasICP");
+        try {
+            // Cargar el FXML del HBox del archivo FXML respectivo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatos.fxml"));
+            Parent contactoNode = loader.load();
+            //HBox hbox = loader.load();
+
+            // Configurar el controlador del HBox
+            InfoDeDatosController controller = loader.getController();
+            // Obtener el índice de la lista de correos y configurar el correo correspondiente
+            int fechaIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
+            String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
+            controller.configurarFechasIm(contacto,contacto.getFechasImportantes().get(fechaIndex),fechaIndex, nombreDeDatoAvisualizar );
+
+
+            // Agregar el HBox al VBox
+            VboxInformacion.getChildren().add(contactoNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         
+         
+     }
+    
+     private void agregarHBoxDireccionesP(Contacto contacto){
+         lblnombreSeleccion.setText("verTodaslasDireecionesCCP");
+        try {
+            // Cargar el FXML del HBox del archivo FXML respectivo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatos.fxml"));
+            Parent contactoNode = loader.load();
+            //HBox hbox = loader.load();
+
+            // Configurar el controlador del HBox
+            InfoDeDatosController controller = loader.getController();
+            // Obtener el índice de la lista de correos y configurar el correo correspondiente
+            int direccionIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
+            String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
+            controller.configurarDireccionP(contacto,contacto.getDirecciones().get(direccionIndex),direccionIndex, nombreDeDatoAvisualizar );
+
+
+            // Agregar el HBox al VBox
+            VboxInformacion.getChildren().add(contactoNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         
+     }
+    
      private void agregarHBoxCelular(Contacto contacto) {
-         lblnombreSeleccion.setText("verTodoslosCelularesPCP");
+        lblnombreSeleccion.setText("verTodoslosCelularesPCP");
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatos.fxml"));
@@ -120,6 +184,34 @@ public class InfoDeDatosContactoController implements Initializable {
      
      
     //MOSTRAR ELEMENTOS 
+     
+     private void mostrarElementosFechasI(Contacto contacto){
+         
+         VboxInformacion.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contacto.getFechasImportantes().size());
+
+        for (int i = inicio; i < fin; i++) {
+            agregarHBoxFechasI(contacto);
+        }
+
+        lbnumpag.setText( String.valueOf(paginaActual));
+     }
+     
+    private void mostrarElementosDireccionesP(Contacto contacto){
+        
+        VboxInformacion.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contacto.getDirecciones().size());
+
+        for (int i = inicio; i < fin; i++) {
+            agregarHBoxDireccionesP(contacto);
+        }
+
+        lbnumpag.setText( String.valueOf(paginaActual));
+        
+    } 
+    
     private void mostrarElementosCorreo(Contacto contacto) {
        
         VboxInformacion.getChildren().clear();

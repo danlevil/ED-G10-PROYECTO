@@ -34,6 +34,14 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="idContacto" text="Label" visible="false" />
+            <Label fx:id="lbnumpag" alignment="CENTER" prefHeight="43.0" prefWidth="553.0" text="1">
+               <font>
+                  <Font size="29.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </Label>
          </children></HBox>
    </bottom>
    <top>
@@ -56,6 +64,6 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="192.0" prefWidth="305.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="vboxFotos" prefHeight="192.0" prefWidth="305.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

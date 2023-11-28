@@ -66,11 +66,17 @@ public class FotosContactosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-         //mostrarImg(galeria.getStart());
+         
 
     } 
     
-    /*private void mostrarImg(Contacto c) {
+    private void configurarFotosContactos(){
+        
+    }
+    
+        void mostrarImg(Contacto c) {
+            
+        contacoId.setText(String.valueOf(c.getId()));
         VboxFotos.getChildren().clear();
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
@@ -80,14 +86,15 @@ public class FotosContactosController implements Initializable {
 
             // Configurar el controlador del HBox
             FotoController controllerFoto = loader.getController();
-            controllerFoto.configurar(c);
+            
+            controllerFoto.configurar(c.getFotos().get(paginaActual));
 
             // Agregar el HBox al VBox
             VboxFotos.getChildren().add(imageView);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
     /*private void mostrarImg(Foto foto) {
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
@@ -105,7 +112,7 @@ public class FotosContactosController implements Initializable {
             e.printStackTrace();
         }
     }*/
-    public void configurar(Contacto contacto){
+   /* public void configurar(Contacto contacto){
         contacoId.setText(String.valueOf(contacto.getId()));
         seleccionado=contacto;
         galeria=seleccionado.getFotos();
@@ -114,7 +121,7 @@ public class FotosContactosController implements Initializable {
         imagenesContacto.setImage(new Image(galeria.getStart().getArchivo()));
         VboxFotos.getChildren().add(imagenesContacto);
         //mostrarImg(galeria.getStart());
-    }
+    }*/
     
 
     @FXML

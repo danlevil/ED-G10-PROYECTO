@@ -4,7 +4,9 @@
  */
 package g10;
 
+import Fields.Direccion;
 import Fields.Email;
+import Fields.Fecha;
 import Fields.Telefono;
 import Modelo.Agenda;
 import Modelo.Contacto;
@@ -61,6 +63,25 @@ public class InfoDeDatosController implements Initializable {
     
     
     //CONFIGURACIONES
+    public void configurarFechasIm(Contacto contacto, Fecha fecha, int idFecha, String datoAvisualizar){
+        
+        lbdescripcion.setText(fecha.getFechaDescripcion());
+        lbdato.setText(fecha.getFecha());
+        Lblid.setText(String.valueOf(contacto.getId())); 
+        System.out.println(Lblid.getText());
+        lbIdDato.setText(String.valueOf(idFecha));
+        lblnombreSeleccion.setText(datoAvisualizar);
+        
+    }
+    public void configurarDireccionP(Contacto contacto, Direccion direccion, int idDireccion, String datoAvisualizar) {
+        
+        lbdescripcion.setText(direccion.getNombreDireccion());
+        lbdato.setText(direccion.getUbicacion());
+        Lblid.setText(String.valueOf(contacto.getId())); 
+        System.out.println(Lblid.getText());
+        lbIdDato.setText(String.valueOf(idDireccion));
+        lblnombreSeleccion.setText(datoAvisualizar);
+    }
     
     public void configurarCelularPersonal(Contacto contacto, Telefono telefono, int idTelefono, String datoAvisualizar) {
         
@@ -89,6 +110,22 @@ public class InfoDeDatosController implements Initializable {
     
     
     //RELOADS
+    
+    private void reloadDireccion (MouseEvent event){
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        
+        int id = Integer.parseInt(Lblid.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        abrirVistaDireccionesP(contactoSeleccionado);
+        
+        
+    }
     
     private void reloadCorreo(MouseEvent event){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -119,6 +156,29 @@ public class InfoDeDatosController implements Initializable {
     }
     
     //ABRIR VISTAS
+    
+    private void abrirVistaDireccionesP(Contacto contacto){
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarDireccionesP(contacto); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de direcciones de contacto: "+contacto.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
     
     private void abrirVistaCorreo(Contacto contacto) {
         
@@ -176,8 +236,48 @@ public class InfoDeDatosController implements Initializable {
        }else if(lblnombreSeleccion.getText().equals("verTodoslosCelularesPCP")){
          eliminarCelular(event);
         
-        }         
+       }else if(lblnombreSeleccion.getText().equals("verTodaslasDireecionesCCP")){
+           eliminarDireccion(event);
+           
+       }        
    
+    }
+    
+    
+    private void eliminarDireccion (MouseEvent event){
+        
+        int id = Integer.parseInt(Lblid.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        int correoIndex = Integer.parseInt(lbIdDato.getText());
+        
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Confirmar Eliminación de Dirección");
+        alert.setHeaderText("¿Está seguro que desea eliminar este Dato?");
+        alert.setContentText("Esta acción no se puede deshacer.");
+        ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+        
+        Optional<ButtonType> resultado = alert.showAndWait();
+        
+        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+            contactoSeleccionado.getDirecciones().remove(correoIndex);
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Information Dialog");
+            alert1.setHeaderText("Resultado de la operación");
+            alert1.setContentText("Dirección eliminada exitosamente");
+            alert1.showAndWait();
+        
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cerrar la ventana actual
+            stage.close();
+            reloadDireccion(event);
+        }
+        
+        
     }
     
     
@@ -215,8 +315,6 @@ public class InfoDeDatosController implements Initializable {
             reloadCorreo(event);
         }
         
-        
-        
     }
     
     
@@ -252,9 +350,7 @@ public class InfoDeDatosController implements Initializable {
             stage.close();
             reloadCelular(event);
         }
-        
-        
-        
+   
     }
     
     

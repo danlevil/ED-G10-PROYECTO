@@ -195,6 +195,8 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void mostrarVentanAsociados(ActionEvent event) {
+        
+        
     }
 
     private void regresarAListaContactos(MouseEvent event) throws IOException {
@@ -225,7 +227,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             FotosContactosController controller = loader.getController();
-            controller.configurar((Contacto) contacto); // Método para pasar los datos del contacto
+            controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
            
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
@@ -405,6 +407,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Cerrar la ventana momentánea
             momentaneoStage.close();
+            avisarActualizacion();
         });
 
         // Crear la disposición del diseño
@@ -454,6 +457,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Cerrar la ventana momentánea
             momentaneoStage.close();
+            avisarActualizacion();
         });
 
         // Crear la disposición del diseño
@@ -478,6 +482,47 @@ public class VistaInfoContactoController implements Initializable {
     
     @FXML
     private void agregarFechaImportante(MouseEvent event) {
+        
+        DatePicker datePicker = new DatePicker();
+        TextField textField = new TextField();
+        
+        // Configurar el botón
+        Button guardarButton = new Button("Agregar");
+        guardarButton.setOnAction(e -> {
+            
+            // Obtener los valores de los TextFields
+            LocalDate valor1 = datePicker.getValue();
+            String valor2 = textField.getText();
+
+            // Hacer algo con los valores (puedes imprimirlos, almacenarlos, etc.)
+            contacto.agregarFechaImportante(valor2,valor1 );
+
+            // Cerrar la ventana momentánea
+            momentaneoStage.close();
+            avisarActualizacion();
+        });
+
+        // Crear la disposición del diseño
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
+        gridPane.add(new Label("Seleccione la fecha:"), 0, 0);
+        gridPane.add(datePicker, 1, 0);
+        gridPane.add(new Label("Nueva descripcion de la fecha:"), 0, 1);
+        gridPane.add(textField, 1, 1);
+        gridPane.add(guardarButton, 0, 2, 2, 1);
+
+        // Configurar la escena
+        Scene scene = new Scene(gridPane, 300, 200);
+
+        // Configurar y mostrar la ventana principal
+        momentaneoStage.setScene(scene);
+        momentaneoStage.show();
+        
+        
+        
     }
     
     @FXML
@@ -503,6 +548,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Cerrar la ventana momentánea
             momentaneoStage.close();
+            avisarActualizacion();
         });
 
         // Crear la disposición del diseño
@@ -547,6 +593,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Cerrar la ventana momentánea
             momentaneoStage.close();
+            avisarActualizacion();
         });
 
         // Crear la disposición del diseño
@@ -593,6 +640,8 @@ public class VistaInfoContactoController implements Initializable {
 
             // Cerrar la ventana momentánea
             momentaneoStage.close();
+            avisarActualizacion();  
+            
         });
 
         // Crear la disposición del diseño
@@ -629,11 +678,35 @@ public class VistaInfoContactoController implements Initializable {
     }
     @FXML
     private void verCelularesTrabajo(MouseEvent event) {
+        
+         int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarCelularPersonal(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         
     }
 
     
 
-@FXML
+    @FXML
     private void mostrarCelularesPersonales(MouseEvent event) {
          int id = Integer.parseInt(contactoId.getText());
         
@@ -657,14 +730,35 @@ public class VistaInfoContactoController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
-        
-        
+           
     }
 
     @FXML
     private void verDireccionCasa(MouseEvent event) {
+        int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarDireccionesP(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 
     
@@ -673,6 +767,30 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void verDireccionTrabajo(MouseEvent event) {
+        
+        int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarDireccionesP(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
  
@@ -681,6 +799,32 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void VerFechasImportantes(MouseEvent event) {
+        
+         int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarFechasI(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de fechas importantes de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+      
+        
+        
     }
 
 
@@ -791,6 +935,10 @@ public class VistaInfoContactoController implements Initializable {
     
     @FXML
     private void mostrarFotosContacto(MouseEvent event) {
+        
+        int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id); 
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("verFotosContactos.fxml"));
@@ -798,7 +946,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VerFotosContactosController controller = loader.getController();
-           // controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
+            controller.configurarFotosContactos(contactoSeleccionado);
 
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
