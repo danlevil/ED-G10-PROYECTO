@@ -168,6 +168,7 @@ public class VistaInfoContactoController implements Initializable {
         alert.setContentText("Contacto actualizado exitosamente");
         alert.showAndWait();
     }
+    
     private void reload(MouseEvent event){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -634,6 +635,32 @@ public class VistaInfoContactoController implements Initializable {
 
 @FXML
     private void mostrarCelularesPersonales(MouseEvent event) {
+         int id = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarCelularPersonal(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        
+        
     }
 
     @FXML
@@ -714,10 +741,9 @@ public class VistaInfoContactoController implements Initializable {
     
     
     
-    
-    
     @FXML
     private void verCorreos(MouseEvent event) {
+        
         int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -742,6 +768,7 @@ public class VistaInfoContactoController implements Initializable {
         }
         
     }
+    
     
     @FXML
     private void volverListContacts(MouseEvent event) {

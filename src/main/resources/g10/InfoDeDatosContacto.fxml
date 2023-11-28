@@ -34,21 +34,38 @@
       <VBox fx:id="VboxInformacion" prefHeight="700.0" prefWidth="900.0" />
       <HBox alignment="CENTER" prefHeight="43.0" prefWidth="900.0">
          <children>
-            <ImageView fx:id="imgBotonant" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#avanzarIzquierda" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/anterior.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lbnumpag" alignment="CENTER" prefHeight="43.0" prefWidth="294.0" text="1">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="imgBotonsig" fitHeight="33.0" fitWidth="30.0" onMouseClicked="#avanzarDerecha" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/siguiente.png" />
-               </image>
-            </ImageView>
+            <VBox alignment="CENTER" prefHeight="61.0" prefWidth="898.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="214.0">
+                     <children>
+                        <ImageView fx:id="imgBotonant" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#avanzarIzquierda" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/anterior.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbnumpag" alignment="CENTER" prefHeight="43.0" prefWidth="294.0" text="1">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgBotonsig" fitHeight="33.0" fitWidth="30.0" onMouseClicked="#avanzarDerecha" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/siguiente.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="43.0" prefWidth="205.0">
+                     <children>
+                        <Label fx:id="lblnombreSeleccion" prefHeight="18.0" prefWidth="718.0" text="Label" visible="false">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </children>

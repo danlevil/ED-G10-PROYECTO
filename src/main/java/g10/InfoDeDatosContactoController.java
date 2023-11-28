@@ -6,6 +6,7 @@ package g10;
 
 import Modelo.Agenda;
 import Modelo.Contacto;
+import Modelo.ContactoPersona;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +39,8 @@ public class InfoDeDatosContactoController implements Initializable {
     
     private static final int ELEMENTOS_POR_PAGINA=6;
     private static int paginaActual=1;
+    @FXML
+    private Label lblnombreSeleccion;
     
     
 
@@ -47,16 +50,52 @@ public class InfoDeDatosContactoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //lblnombreSeleccion.setText("verTodoslosCorreosCP");
     }    
 
     
+    //CONFIGURACIONES
+     void configurarCelularPersonal(Contacto contacto) {
+        nombreDeDato.setText("Celulares Personales");
+        mostrarElementosCeluares(contacto);
+       
+    }
+     
     void configurarCorreo(Contacto contacto) {
-        nombreDeDato.setText("Correos");
+        nombreDeDato.setText("Celulares");
         mostrarElementosCorreo(contacto);
+       
     }
     
     
+    
+    
+    //AGREGAR HBOX
+     private void agregarHBoxCelular(Contacto contacto) {
+         lblnombreSeleccion.setText("verTodoslosCelularesPCP");
+        try {
+            // Cargar el FXML del HBox del archivo FXML respectivo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatos.fxml"));
+            Parent contactoNode = loader.load();
+            //HBox hbox = loader.load();
+
+            // Configurar el controlador del HBox
+            InfoDeDatosController controller = loader.getController();
+            // Obtener el índice de la lista de correos y configurar el correo correspondiente
+            int celularIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
+            String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
+            controller.configurarCelularPersonal(contacto,contacto.getTelefonos().get(celularIndex),celularIndex, nombreDeDatoAvisualizar );
+
+
+            // Agregar el HBox al VBox
+            VboxInformacion.getChildren().add(contactoNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
      private void agregarHBoxCorreo(Contacto contacto) {
+         lblnombreSeleccion.setText("verTodoslosCorreosCP");
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatos.fxml"));
@@ -67,7 +106,8 @@ public class InfoDeDatosContactoController implements Initializable {
             InfoDeDatosController controller = loader.getController();
             // Obtener el índice de la lista de correos y configurar el correo correspondiente
             int correoIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
-            controller.configurarCorreo(contacto,contacto.getEmails().get(correoIndex));
+            String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
+            controller.configurarCorreo(contacto,contacto.getEmails().get(correoIndex),correoIndex, nombreDeDatoAvisualizar );
 
 
             // Agregar el HBox al VBox
@@ -78,6 +118,8 @@ public class InfoDeDatosContactoController implements Initializable {
     }
     
      
+     
+    //MOSTRAR ELEMENTOS 
     private void mostrarElementosCorreo(Contacto contacto) {
        
         VboxInformacion.getChildren().clear();
@@ -89,7 +131,25 @@ public class InfoDeDatosContactoController implements Initializable {
         }
 
         lbnumpag.setText( String.valueOf(paginaActual));
-    }     
+    } 
+
+    private void mostrarElementosCeluares(Contacto contacto) {
+       
+        VboxInformacion.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contacto.getTelefonos().size());
+
+        for (int i = inicio; i < fin; i++) {
+            agregarHBoxCelular(contacto);
+        }
+
+        lbnumpag.setText( String.valueOf(paginaActual));
+    }    
+
+
+
+
+    
      
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
