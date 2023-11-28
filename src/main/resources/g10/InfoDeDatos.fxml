@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="hboxContact1" prefHeight="100.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.InfoDeDatosController">
+   <children>
+      <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="574.0">
+         <children>
+            <Label fx:id="lbdescripcion" text="Label">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbdato" text="Label">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
+      </VBox>
+      <Label fx:id="Lblid" text="Label" visible="false" />
+   </children>
+</HBox>

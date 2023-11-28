@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Modelo/ContactoPersona.class
 Fields/Foto.class
 Fields/Direccion.class
@@ -17,6 +18,30 @@ Comparadores/ComparadorPersona.class
 g10/VistaInfoContactoController.class
 Estructuras/List.class
 g10/AgregarContactoPersonaController.class
+=======
+Estructuras\ArrayList.class
+Fields\Telefono.class
+Estructuras\List.class
+g10\VistaContactoEmpresaController.class
+Modelo\ContactoPersona.class
+g10\ListaContactosController.class
+g10\VistaInfoContactoController.class
+Estructuras\LinkedCircularDE$Nodo.class
+g10\FiltroContactoController.class
+Fields\Direccion.class
+Modelo\ContactoEmpresa.class
+g10\AgregarContactoEmpresaController.class
+g10\InfoDeDatosContactoController.class
+g10\VerFotosContactosController.class
+Comparadores\ComparadorPersona.class
+Estructuras\LinkedCircularDE$1.class
+g10\InfoDeDatosController.class
+Fields\Foto.class
+Estructuras\LinkedCircularDE.class
+Fields\RedSocial.class
+g10\FotosContactosController.class
+Modelo\GeneradorID.class
+>>>>>>> 8e1826906d5840229a8b8b311f9599f9f446a3f6
 module-info.class
 g10/FotoController.class
 g10/VistaContactoEmpresaController.class

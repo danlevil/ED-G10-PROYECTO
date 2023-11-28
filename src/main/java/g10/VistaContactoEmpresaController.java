@@ -114,6 +114,7 @@ public class VistaContactoEmpresaController implements Initializable {
     private ImageView eliminarCE;
     @FXML
     private ImageView volverContactos;
+    @FXML
     private Label contactoId;
 
     private Contacto seleccionado;

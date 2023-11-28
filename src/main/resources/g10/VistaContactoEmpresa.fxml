@@ -56,6 +56,7 @@
                   <Image url="@../imagenes/empresa.png" />
                </image>
             </ImageView>
+            <Label fx:id="contactoId" text="Label" visible="false" />
          </children>
       </VBox>
    </left>
