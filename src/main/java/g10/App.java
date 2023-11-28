@@ -67,7 +67,9 @@ public class App extends Application {
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
                 Agenda.contactosPersonas);
-
+        System.out.println(Agenda.contactosEmpresas.size());
         
+        System.out.println(Agenda.contactosPersonas.size());
+        System.out.println(Agenda.contactosMaster.size());
     }
 }

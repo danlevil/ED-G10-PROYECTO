@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  * @author Charlie
  */
 public class FotosContactosController implements Initializable {
-
+    private static final long serialVersionUID=1L;
     @FXML
     private ImageView regresar;
     @FXML
@@ -68,7 +68,7 @@ public class FotosContactosController implements Initializable {
 
     } 
     
-    private void mostrarImg(Foto foto) {
+    private void mostrarImg(Contacto c) {
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Foto.fxml"));
@@ -76,8 +76,8 @@ public class FotosContactosController implements Initializable {
             //HBox hbox = loader.load();
 
             // Configurar el controlador del HBox
-            FotoController controller = loader.getController();
-            controller.configurar(foto);
+            FotoController controllerFoto = loader.getController();
+            controllerFoto.configurar(c);
 
             // Agregar el HBox al VBox
             VboxFotos.getChildren().add(imageView);
@@ -90,7 +90,8 @@ public class FotosContactosController implements Initializable {
         contacoId.setText(String.valueOf(contacto.getId()));
         seleccionado=contacto;
         galeria=seleccionado.getFotos();
-        mostrarImg(galeria.getStart());
+        System.out.println(galeria.getStart().getArchivo());
+        mostrarImg(contacto);
     }
     
 
@@ -126,7 +127,7 @@ public class FotosContactosController implements Initializable {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Seleccionar foto");
             FileChooser.ExtensionFilter extFilter =
-                    new FileChooser.ExtensionFilter("Archivos de imagen (*.jpg, *.png)", "*.jpg", "*.png");
+                    new FileChooser.ExtensionFilter("Archivos de imagen (*.jpg, *.png, *.avif) ", "*.jpg", "*.png","*avif");
             fileChooser.getExtensionFilters().add(extFilter);
 
             File archivoSeleccionado = fileChooser.showOpenDialog(new Stage());
@@ -138,7 +139,7 @@ public class FotosContactosController implements Initializable {
                 String extension = nombreArchivo.substring(nombreArchivo.lastIndexOf(".") + 1).toLowerCase();
 
                 // Verificar la extensión
-                if (extension.equals("jpg") || extension.equals("png")) {
+                if (extension.equals("jpg") || extension.equals("png") || extension.equals("avif")) {
                     // Crear la ruta de destino para la foto
                     String nombreFoto = "foto_" + System.currentTimeMillis() + "." + extension;
                     Path rutaDestino = Path.of(carpetaUsuario, nombreFoto);
@@ -202,16 +203,17 @@ public class FotosContactosController implements Initializable {
     
      @FXML
   private void siguiente(MouseEvent event) {
-          if(paginaActual<galeria.size()){
-              
-            mostrarImg(galeria.get(paginaActual));
-            paginaActual++;
-          }
-          if(paginaActual==galeria.size()){
-              
-            mostrarImg(galeria.getStart());
-            paginaActual=1;
-          }
+//          if(paginaActual<galeria.size()){
+//            VboxFotos.getChildren().clear();
+//            mostrarImg(galeria.get(paginaActual));
+//            paginaActual++;
+//            
+//          }
+//          if(paginaActual==galeria.size()){
+//            VboxFotos.getChildren().clear();  
+//            mostrarImg(galeria.getStart());
+//            paginaActual=1;
+//          }
       
 //        int id = Integer.parseInt(contacoId.getText());
 //        
@@ -234,15 +236,17 @@ public class FotosContactosController implements Initializable {
    @FXML
     private void anterior(MouseEvent event) {
         //int retroceso=  galeria.size()-1;
-        if(paginaActual==1){
-            paginaActual=galeria.size()-1;
-            mostrarImg(galeria.get(paginaActual));
-        }
-        if(paginaActual<=galeria.size()-1){
-            paginaActual--;
-            mostrarImg(galeria.get(paginaActual));
+//        if(paginaActual==1){
+//            VboxFotos.getChildren().clear();
+//            paginaActual=galeria.size()-1;
+//            mostrarImg(galeria.get(paginaActual));
+//        }
+//        if(paginaActual<=galeria.size()-1){
+//            VboxFotos.getChildren().clear();
+//            paginaActual--;
+//            mostrarImg(galeria.get(paginaActual));
             
-        }
+        //}
             
     }
         

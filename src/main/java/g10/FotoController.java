@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
  * @author Charlie
  */
 public class FotoController implements Initializable {
-
+    private static final long serialVersionUID=1L;
     @FXML
     private ImageView imagen;
     
@@ -38,18 +38,18 @@ public class FotoController implements Initializable {
         // TODO
     } 
     
-    public void configurar(Foto foto) {
-        //this.contactoSeleccionado = contacto;
-         // Obtener la lista de fotos del contacto
-        //List<Foto> fotos = contacto.getFotos();
+    public void configurar(Contacto contacto) {
+        this.contactoSeleccionado = contacto;
+        //Obtener la lista de fotos del contacto
+        List<Foto> fotos = contacto.getFotos();
 
         // Verificar si hay al menos una foto en la lista
-        if (foto!=null) {
+        if (fotos!=null) {
             // Obtener la primera foto de la lista
-            //Foto primeraFoto = fotos.get(0);
+            Foto primeraFoto = fotos.get(0);
 
             // Obtener la ruta de la foto desde la primera foto
-            String rutaFoto = foto.getArchivo();
+            String rutaFoto = primeraFoto.getArchivo();
 
             // Crear un objeto Image desde la ruta del archivo
             Image image = new Image("file:" + rutaFoto);

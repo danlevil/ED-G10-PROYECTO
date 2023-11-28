@@ -80,6 +80,7 @@ public class ContactoController implements Initializable {
         
             if (contactoSeleccionado.isEmpresa()) {
                 // Abrir la vista de contacto para empresas y pasar los datos
+                System.out.println("soy de empresa "+contactoSeleccionado.getId());
                 abrirVistaContactoEmpresa(contactoSeleccionado);
             } else {
                 // Abrir la vista de contacto para personas y pasar los datos

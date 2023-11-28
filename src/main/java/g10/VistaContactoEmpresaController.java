@@ -116,7 +116,7 @@ public class VistaContactoEmpresaController implements Initializable {
     private ImageView volverContactos;
     private Label contactoId;
 
-    private Contacto contacto;
+    private Contacto seleccionado;
     Stage momentaneoStage= new Stage();
     /**
      * Initializes the controller class.
@@ -127,10 +127,10 @@ public class VistaContactoEmpresaController implements Initializable {
     }    
 
     public void configurar(ContactoEmpresa contacto) {
-        this.contacto=contacto;
+        this.seleccionado=contacto;
         lbnombreCE.setText(contacto.getNombre());
         lbcorreoCE.setText(contacto.getCorreoPrincipal().toString());
-        lbcelulerCE.setText(contacto.getTelefonoPersonal().getNumero());
+        lbcelulerCE.setText(String.valueOf(contacto.getTelefonos().get(1)));
         lbDireccionTCE.setText (contacto.getDireccionPrincipal().toString());
         lbFechaCE.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
@@ -306,7 +306,7 @@ public class VistaContactoEmpresaController implements Initializable {
          });
         
     }
-        private Contacto buscarContactoPorId(int id) {
+    private Contacto buscarContactoPorId(int id) {
          for (Contacto contacto : Agenda.contactosMaster){
              if (contacto.getId() == id){
                  return contacto; 

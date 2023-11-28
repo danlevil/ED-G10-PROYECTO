@@ -18,7 +18,7 @@ import javafx.scene.input.MouseEvent;
  * @author Charlie
  */
 public class VerFotosContactosController implements Initializable {
-
+    private static final long serialVersionUID=1L;
     @FXML
     private ImageView regresar;
     @FXML
