@@ -10,9 +10,11 @@ g10\FiltroContactoController.class
 Fields\Direccion.class
 Modelo\ContactoEmpresa.class
 g10\AgregarContactoEmpresaController.class
+g10\InfoDeDatosContactoController.class
 g10\VerFotosContactosController.class
 Comparadores\ComparadorPersona.class
 Estructuras\LinkedCircularDE$1.class
+g10\InfoDeDatosController.class
 Fields\Foto.class
 Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
