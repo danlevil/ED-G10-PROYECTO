@@ -31,6 +31,9 @@ public abstract class List<E> implements Serializable, Collection<E>, Iterable<E
     public abstract int encontrarElemento();
     public abstract E get(int i);
     public abstract boolean isEmpty();
+    //agregado
+    public abstract boolean addLast(E e); // inserta el elemento element al final
+
     
 
     

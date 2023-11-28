@@ -22,6 +22,13 @@ private Nodo<E> start;
         start=null;
     }
 
+    @Override
+    public boolean addLast(E e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+
     public class Nodo<E> implements Serializable{
         E contenido;
         Nodo<E> siguiente;
@@ -153,6 +160,26 @@ private Nodo<E> start;
     public boolean addFirst(E e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    //Agregado
+    
+    /*
+    @Override
+    public boolean addLast(E e) {
+        if (contenido == null) {
+            return false;
+        }
+        Nodo<E> nuevo = new Nodo<>(e);
+        if (this.isEmpty()) {
+            this.previo = nuevo;
+        } else {
+            this.siguiente.setNext(nuevo);
+        }
+        this.last = nuevo;
+        return true;
+    }
+    */
+    //Agregado
 
     @Override
     public E remove(int index) {
