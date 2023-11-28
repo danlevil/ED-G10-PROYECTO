@@ -24,7 +24,7 @@ import javafx.scene.image.ImageView;
 public class FotoController implements Initializable {
     private static final long serialVersionUID=1L;
     @FXML
-    private ImageView imagen;
+    public ImageView imagen;
     
     public Contacto contactoSeleccionado;
     
@@ -61,6 +61,15 @@ public class FotoController implements Initializable {
             System.out.println("El contacto no tiene fotos.");
         }
         
+    }
+    public void configurar(Foto foto){
+        if(foto!=null){
+            String rutaFoto= foto.getArchivo();
+            Image image=new Image("file:"+rutaFoto);
+            imagen.setImage(image);
+        }else {
+            System.out.println("El usuario no tiene fotos");
+        }
     }
     
 }

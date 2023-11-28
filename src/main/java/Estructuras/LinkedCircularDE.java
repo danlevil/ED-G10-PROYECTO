@@ -16,12 +16,32 @@ import java.util.Iterator;
 public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
     private static final long serialVersionUID=1L;
 
-private Nodo<E> start;
+    private Nodo<E> start;
+    private Nodo<E> viajero;
     private int tamaño=0;
     public LinkedCircularDE(){
         start=null;
     }
 
+    @Override
+    public void avanzar() {
+        if(start!=null){
+            viajero=start.getSiguiente();
+        }
+    }
+
+    @Override
+    public void retroceder() {
+        if(start!=null){
+            viajero=start.getPrevio();
+        }
+    }
+
+    @Override
+    public E obtenerActual() {
+        return viajero!=null? viajero.getContenido(): null;
+    }
+    
     public class Nodo<E> implements Serializable{
         E contenido;
         Nodo<E> siguiente;

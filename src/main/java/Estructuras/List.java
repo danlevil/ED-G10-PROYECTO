@@ -31,6 +31,9 @@ public abstract class List<E> implements Serializable, Collection<E>, Iterable<E
     public abstract int encontrarElemento();
     public abstract E get(int i);
     public abstract boolean isEmpty();
+    public abstract void avanzar();
+    public abstract void retroceder();
+    public abstract E obtenerActual();
     
 
     

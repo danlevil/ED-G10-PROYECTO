@@ -51,7 +51,7 @@ public class FotosContactosController implements Initializable {
     private Label contacoId;
     private Contacto seleccionado;
     private List<Foto>galeria;
-    
+    private ImageView imagenesContacto;
     @FXML
     private VBox VboxFotos;
     
@@ -64,11 +64,13 @@ public class FotosContactosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         mostrarElementos();
+        
+         //mostrarImg(galeria.getStart());
 
     } 
     
-    private void mostrarImg(Contacto c) {
+    /*private void mostrarImg(Contacto c) {
+        VboxFotos.getChildren().clear();
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Foto.fxml"));
@@ -84,14 +86,33 @@ public class FotosContactosController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    
+    }*/
+    /*private void mostrarImg(Foto foto) {
+        try {
+            // Cargar el FXML del HBox del archivo FXML respectivo
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Foto.fxml"));
+            Node  imageView = loader.load();
+            //HBox hbox = loader.load();
+
+            // Configurar el controlador del HBox
+            FotoController controllerFoto = loader.getController();
+            controllerFoto.configurar(foto);
+
+            // Agregar el HBox al VBox
+            VboxFotos.getChildren().add(controllerFoto.imagen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
     public void configurar(Contacto contacto){
         contacoId.setText(String.valueOf(contacto.getId()));
         seleccionado=contacto;
         galeria=seleccionado.getFotos();
         System.out.println(galeria.getStart().getArchivo());
-        mostrarImg(contacto);
+        System.out.println(seleccionado.getId());
+        imagenesContacto.setImage(new Image(galeria.getStart().getArchivo()));
+        VboxFotos.getChildren().add(imagenesContacto);
+        //mostrarImg(galeria.getStart());
     }
     
 
@@ -175,6 +196,9 @@ public class FotosContactosController implements Initializable {
     
     
     private void mostrarElementos() {
+        
+        //VboxFotos.getChildren().add(imageView);
+
 //        int id = Integer.parseInt(contacoId.getText());
 //        
 //        Contacto contactoSeleccionado = buscarContactoPorId(id);
