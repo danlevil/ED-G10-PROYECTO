@@ -71,6 +71,13 @@ public class InfoDeDatosController implements Initializable {
      
         return null;
     }
+    
+    @FXML
+    private void eliminar(MouseEvent event) {
+        
+        
+        
+    }
 
     private void setMouseEvent(HBox hboxContact) {
          // Manejador para el evento de ratón al entrar en la sección
@@ -83,6 +90,8 @@ public class InfoDeDatosController implements Initializable {
         hboxContact.setStyle("-fx-background-color: ;");
         });
     }
+
+    
     
     
 }

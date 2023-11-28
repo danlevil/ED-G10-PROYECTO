@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hboxContact1" prefHeight="100.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.InfoDeDatosController">
+<HBox fx:id="hboxContact1" onMouseClicked="#eliminar" prefHeight="100.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.InfoDeDatosController">
    <children>
       <VBox fx:id="contacto1Vbox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="574.0">
          <children>

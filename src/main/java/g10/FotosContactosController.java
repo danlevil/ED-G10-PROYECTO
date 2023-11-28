@@ -57,8 +57,7 @@ public class FotosContactosController implements Initializable {
     
     private static final int ELEMENTOS_POR_PAGINA=1;
     private  int paginaActual=1;
-    @FXML
-    private ImageView imagenesContacto;
+    
 
     /**
      * Initializes the controller class.

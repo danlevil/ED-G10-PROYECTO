@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-Modelo/ContactoPersona.class
-Fields/Foto.class
-Fields/Direccion.class
-Estructuras/LinkedCircularDE$Nodo.class
-Estructuras/LinkedCircularDE.class
-Fields/Email.class
-g10/TipoContactoController.class
-g10/InfoDeDatosContactoController.class
-g10/ListaContactosController.class
-Modelo/ContactoEmpresa.class
-g10/App.class
-Modelo/Agenda.class
-g10/AgregarContactoEmpresaController.class
-Estructuras/ArrayList.class
-Modelo/CargadorDeArchivos.class
-g10/InfoDeDatosController.class
-g10/VerFotosContactosController.class
-Comparadores/ComparadorPersona.class
-g10/VistaInfoContactoController.class
-Estructuras/List.class
-g10/AgregarContactoPersonaController.class
-=======
 Estructuras\ArrayList.class
 Fields\Telefono.class
 Estructuras\List.class
@@ -43,7 +20,6 @@ Estructuras\LinkedCircularDE.class
 Fields\RedSocial.class
 g10\FotosContactosController.class
 Modelo\GeneradorID.class
->>>>>>> fea4ff1e0e792a33130ccd15ad24266e0c32ab1d
 module-info.class
 Modelo\Agenda.class
 Modelo\CargadorDeArchivos.class
