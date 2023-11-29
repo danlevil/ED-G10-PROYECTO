@@ -119,17 +119,17 @@ public class VerFotosContactosController implements Initializable {
     @FXML
     private void siguiente(MouseEvent event) {
         
-          int id = Integer.parseInt(idContacto.getText());
+        int id = Integer.parseInt(idContacto.getText());
         
-          Contacto contactoSeleccionado = buscarContactoPorId(id);    
+        Contacto contactoSeleccionado = buscarContactoPorId(id);    
 
         int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
 
-        if (paginaActual < 1) {
+        if (paginaActual < totalPaginas) {
             paginaActual++;
         } else {
             // Si estamos en la primera página, vamos al final
-            paginaActual = totalPaginas;
+            paginaActual = 1;
         }
 
         mostrarImg(contactoSeleccionado);
