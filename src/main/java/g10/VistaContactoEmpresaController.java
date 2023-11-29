@@ -56,8 +56,7 @@ public class VistaContactoEmpresaController implements Initializable {
     private Label lbEtiquetasCP;
     @FXML
     private Button btContactAsoci;
-    @FXML
-    private Label lbcelularTCE;
+    
     @FXML
     private Label lbDireccionTCE;
     @FXML
@@ -90,12 +89,6 @@ public class VistaContactoEmpresaController implements Initializable {
     private ImageView nuevaEtiquetaCE;
     @FXML
     private ImageView verTodaslasEtiquetasCE;
-    @FXML
-    private ImageView editarCelularTCE;
-    @FXML
-    private ImageView nuevoCelularTCE;
-    @FXML
-    private ImageView verTodoslosCelularesTCE;
     @FXML
     private ImageView editarDireccionTCE;
     @FXML
@@ -135,7 +128,6 @@ public class VistaContactoEmpresaController implements Initializable {
         lbDireccionTCE.setText (contacto.getDireccionPrincipal().toString());
         lbFechaCE.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
-        lbcelularTCE.setText(contacto.getTelefonoPrincipal().getNumero());
         lblCargo.setText(contacto.getPuestoTrabajo());
         lblTitulo.setText(contacto.getTitulo());
         contactoId.setText(String.valueOf(contacto.getId()));
@@ -203,17 +195,6 @@ public class VistaContactoEmpresaController implements Initializable {
     private void verEtiquetas(MouseEvent event) {
     }
 
-    @FXML
-    private void editarCelularTrabajo(MouseEvent event) {
-    }
-
-    @FXML
-    private void agregarCelularTrabajo(MouseEvent event) {
-    }
-
-    @FXML
-    private void verCelularesTrabajo(MouseEvent event) {
-    }
 
     @FXML
     private void editarDireccionTrabajo(MouseEvent event) {

@@ -60,11 +60,9 @@ public class VistaInfoContactoController implements Initializable {
     private Label lbcelulerPCP;
     @FXML
     private Label lbDireccionCP;
-    @FXML
     private Label lbDireccionTCP;
     @FXML
     private Label lbFechaCP;
-    @FXML
     private Label lbcelularTCP;
     @FXML
     private ImageView imgGM;
@@ -97,23 +95,11 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private ImageView verTodaslasDireecionesCCP;
     @FXML
-    private ImageView editarDireccionTCP;
-    @FXML
-    private ImageView nuevoDireccionTCP;
-    @FXML
-    private ImageView verTodasLasDireccionesTCP;
-    @FXML
     private ImageView editarFechaICP;
     @FXML
     private ImageView nuevaFechaICP;
     @FXML
     private ImageView verTodaslasFechasICP;
-    @FXML
-    private ImageView editarCelularTCP;
-    @FXML
-    private ImageView nuevoCelularTCP;
-    @FXML
-    private ImageView verTodoslosCelularesTCP;
     @FXML
     private ImageView editarLinkCP;
     @FXML
@@ -149,10 +135,8 @@ public class VistaInfoContactoController implements Initializable {
         lbcorreoCP.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
         lbcelulerPCP.setText(contacto.getTelefonoPrincipal().getNumero());
         lbDireccionCP.setText (contacto.getDireccionPrincipal().getUbicacion());
-        lbDireccionTCP.setText (contacto.getDirecciones().get(1).getUbicacion());
         lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
-        lbcelularTCP.setText(contacto.getTelefonoPrincipal().getNumero());
         contactoId.setText(String.valueOf(contacto.getId()));
         
         //falta poner etiquetas y link para google maps   
@@ -305,7 +289,6 @@ public class VistaInfoContactoController implements Initializable {
         });
         reload(event);
     }
-    @FXML
     private void editarDireccionTrabajo(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
@@ -353,7 +336,6 @@ public class VistaInfoContactoController implements Initializable {
         momentaneoStage.setScene(scene);
         momentaneoStage.show();
     }
-    @FXML
     private void editarCelularTrabajo(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
@@ -570,7 +552,6 @@ public class VistaInfoContactoController implements Initializable {
         momentaneoStage.setScene(scene);
         momentaneoStage.show();
     }
-    @FXML
     private void agregarDireccionTrabajo(MouseEvent event) {
         momentaneoStage = new Stage();
         momentaneoStage.setTitle("Nueva Direccion de trabajo");
@@ -617,7 +598,6 @@ public class VistaInfoContactoController implements Initializable {
     }
     
 
-    @FXML
     private void agregarCelularTrabajo(MouseEvent event) {
         momentaneoStage = new Stage();
         momentaneoStage.setTitle("Nuevo Celular de trabajo");
@@ -676,7 +656,6 @@ public class VistaInfoContactoController implements Initializable {
             avisarActualizacion();
         });
     }
-    @FXML
     private void verCelularesTrabajo(MouseEvent event) {
         
          int id = Integer.parseInt(contactoId.getText());
@@ -778,7 +757,6 @@ public class VistaInfoContactoController implements Initializable {
 
     
 
-    @FXML
     private void verDireccionTrabajo(MouseEvent event) {
         
         int id = Integer.parseInt(contactoId.getText());

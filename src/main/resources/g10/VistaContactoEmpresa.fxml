@@ -149,7 +149,7 @@
                <children>
                   <HBox prefHeight="14.0" prefWidth="262.0">
                      <children>
-                        <Label text="Celular personal">
+                        <Label text="Celulares">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -191,36 +191,6 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="6.0" prefWidth="274.0">
-                           <children>
-                              <Label text="Cargo">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fx:id="editarCargoCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarCargoCEmpresa" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../imagenes/editar.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <Label fx:id="lblCargo" text="Label">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
                         <HBox prefHeight="25.0" prefWidth="274.0">
                            <children>
                               <Label text="Google maps">
@@ -247,100 +217,57 @@
                   </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <HBox prefHeight="18.0" prefWidth="274.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="Etiquetas">
+                        <HBox prefHeight="18.0" prefWidth="274.0">
+                           <children>
+                              <Label text="Etiquetas">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="editarEtiquetasCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarEtiqueta" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imagenes/editar.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="8.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="nuevaEtiquetaCE" fitHeight="32.0" fitWidth="23.0" onMouseClicked="#agregarEtiqueta" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imagenes/crear.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="verTodaslasEtiquetasCE" fitHeight="25.0" fitWidth="27.0" onMouseClicked="#verEtiquetas" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imagenes/notas.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label fx:id="lbEtiquetasCP" text="Label">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="16.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="editarEtiquetasCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarEtiqueta" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/editar.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="nuevaEtiquetaCE" fitHeight="32.0" fitWidth="23.0" onMouseClicked="#agregarEtiqueta" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/crear.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="verTodaslasEtiquetasCE" fitHeight="25.0" fitWidth="27.0" onMouseClicked="#verEtiquetas" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/notas.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
-                  </HBox>
-                  <Label fx:id="lbEtiquetasCP" text="Label">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  </VBox>
                </children>
             </VBox>
-            <Button fx:id="btContactAsoci" mnemonicParsing="false" onAction="#mostrarVentanAsociados" text="Mostrar Contactos asociados" GridPane.rowIndex="5">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
-               <children>
-                  <HBox prefHeight="21.0" prefWidth="262.0">
-                     <children>
-                        <Label text="Celular de trabajo">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <ImageView fx:id="editarCelularTCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarCelularTrabajo" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/editar.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="nuevoCelularTCE" fitHeight="32.0" fitWidth="23.0" onMouseClicked="#agregarCelularTrabajo" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/crear.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="verTodoslosCelularesTCE" fitHeight="25.0" fitWidth="27.0" onMouseClicked="#verCelularesTrabajo" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/notas.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Label fx:id="lbcelularTCE" text="Label">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
                <children>
                   <HBox prefHeight="19.0" prefWidth="274.0">
                      <children>
-                        <Label text="Dirección de Empresa">
+                        <Label text="Direcciónes">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -404,7 +331,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                <children>
                   <HBox prefHeight="19.0" prefWidth="262.0">
                      <children>
@@ -468,6 +395,37 @@
                   <Image url="@../imagenes/borrar.png" />
                </image>
             </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <HBox prefHeight="6.0" prefWidth="274.0">
+                     <children>
+                        <Label text="Cargo">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="editarCargoCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarCargoCEmpresa" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/editar.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Label fx:id="lblCargo" text="Label">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Button fx:id="btContactAsoci" mnemonicParsing="false" onAction="#mostrarVentanAsociados" text="Mostrar Contactos asociados" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </GridPane>
    </center>
