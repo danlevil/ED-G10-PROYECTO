@@ -697,6 +697,11 @@ public class VistaInfoContactoController implements Initializable {
             stage.setResizable(false);
             stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
+            
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -726,6 +731,10 @@ public class VistaInfoContactoController implements Initializable {
             stage.setResizable(false);
             stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -753,6 +762,10 @@ public class VistaInfoContactoController implements Initializable {
             stage.setResizable(false);
             stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -786,6 +799,10 @@ public class VistaInfoContactoController implements Initializable {
             stage.setResizable(false);
             stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -818,6 +835,12 @@ public class VistaInfoContactoController implements Initializable {
             stage.setResizable(false);
             stage.setTitle("Vista de fechas importantes de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
+            
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
+          
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -888,6 +911,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void verCorreos(MouseEvent event) {
         
+        
         int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -906,11 +930,15 @@ public class VistaInfoContactoController implements Initializable {
             stage.setResizable(false);
             stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
-           
+           Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+           stage1.close();
+             
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+       
     }
     
     

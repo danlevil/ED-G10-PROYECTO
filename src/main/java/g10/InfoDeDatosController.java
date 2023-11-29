@@ -11,6 +11,7 @@ import Fields.Telefono;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
+import Modelo.ContactoPersona;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -111,6 +112,79 @@ public class InfoDeDatosController implements Initializable {
     
     //RELOADS
     
+    private void reload(MouseEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        
+          
+        int id = Integer.parseInt(Lblid.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+            if (contactoSeleccionado.isEmpresa()) {
+                // Abrir la vista de contacto para empresas y pasar los datos
+                abrirVistaContactoEmpresa(contactoSeleccionado);
+            } else {
+                // Abrir la vista de contacto para personas y pasar los datos
+                abrirVistaContactoPersona(contactoSeleccionado);
+            }
+    }
+    
+    
+    
+    
+    private void abrirVistaContactoEmpresa(Contacto contacto) {
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaContactoEmpresa.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VistaContactoEmpresaController controller = loader.getController();
+            controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de Contacto para Empresas");
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    private void abrirVistaContactoPersona(Contacto contacto) {
+        
+    
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VistaInfoContactoController controller = loader.getController();
+            controller.configurar((ContactoPersona) contacto); // Método para pasar los datos del contacto
+            
+            
+            
+            Scene scene = new Scene(root, 900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Vista de Contacto para Personas");
+            
+            stage.setResizable(false);
+          
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     private void reloadFechaIm(MouseEvent event){
          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -387,7 +461,9 @@ public class InfoDeDatosController implements Initializable {
 
             // Cerrar la ventana actual
             stage.close();
-            reloadCorreo(event);
+            reload(event);
+            
+            
         }
         
     }

@@ -42,10 +42,14 @@ public class FiltroContactoController implements Initializable {
 
     @FXML
     private void filtrarEmpresas(ActionEvent event) {
+        
+        
     }
 
     @FXML
     private void filtrarFavoritos(ActionEvent event) {
+        
+        
     }
 
     @FXML

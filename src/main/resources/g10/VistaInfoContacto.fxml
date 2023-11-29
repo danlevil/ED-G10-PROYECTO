@@ -19,7 +19,7 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="900.0">
                <children>
-                  <ImageView fx:id="volverContactos" fitHeight="59.0" fitWidth="60.0" onMouseClicked="#volverListContacts" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="volverContactos" fitHeight="59.0" fitWidth="105.0" onMouseClicked="#volverListContacts" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/Volver.png" />
                      </image>
@@ -27,7 +27,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="844.0" text="Contacto Persona" textAlignment="CENTER">
+                  <Label fx:id="labelRegistarContacto" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="825.0" text="Contacto Persona" textAlignment="CENTER">
                      <font>
                         <Font size="41.0" />
                      </font>
@@ -453,7 +453,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fx:id="eliminarCP" fitHeight="70.0" fitWidth="69.0" onMouseClicked="#eliminarContacto" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <ImageView fx:id="eliminarCP" fitHeight="70.0" fitWidth="69.0" onMouseClicked="#eliminarContacto" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <image>
                   <Image url="@../imagenes/borrar.png" />
                </image>

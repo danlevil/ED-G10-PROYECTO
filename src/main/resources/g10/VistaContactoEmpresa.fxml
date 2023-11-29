@@ -463,7 +463,7 @@
                   </HBox>
                </children>
             </VBox>
-            <ImageView fx:id="eliminarCE" fitHeight="70.0" fitWidth="69.0" onMouseClicked="#eliminarContacto" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <ImageView fx:id="eliminarCE" fitHeight="70.0" fitWidth="69.0" onMouseClicked="#eliminarContacto" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <image>
                   <Image url="@../imagenes/borrar.png" />
                </image>
