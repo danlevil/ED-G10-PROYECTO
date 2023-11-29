@@ -68,11 +68,10 @@ public class App extends Application {
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
                 Agenda.contactosPersonas);
-        System.out.println(Agenda.contactosEmpresas.size());
+        System.out.println("Lista de empresas: "+Agenda.contactosEmpresas.size());
         
-        System.out.println(Agenda.contactosPersonas.size());
-        System.out.println(Agenda.contactosMaster.size());
+        System.out.println("Lista de personas: "+Agenda.contactosPersonas.size());
+        System.out.println("Lista general: "+Agenda.contactosMaster.size());
         
-        System.out.println(Agenda.contactosPersonas.size());
     }
 }

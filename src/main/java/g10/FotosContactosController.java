@@ -124,9 +124,7 @@ public class FotosContactosController implements Initializable {
     }*/
     
 
-    @FXML
-    private void regresarPantalla(MouseEvent event) {
-    }
+    
 
     
 
@@ -223,7 +221,17 @@ public class FotosContactosController implements Initializable {
 //
 //        //lbnumpag.setText( String.valueOf(paginaActual));
 //    }  
-    
+    @FXML
+    private void regresarPantalla(MouseEvent event) {
+        reload(event);
+    }
+    private void reload(MouseEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        //MOMENTANEO, ESTA LOGICA NO FUNCIONA,ABRE UNA NUEVA VENTANA
+    }
     private Contacto buscarContactoPorId(int id) {
          for (Contacto contacto : Agenda.contactosMaster){
              if (contacto.getId() == id){

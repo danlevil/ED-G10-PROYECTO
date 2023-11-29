@@ -963,13 +963,14 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             VerFotosContactosController controller = loader.getController(); 
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
-           
+            
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
             stage.setTitle("Vista de fotos de Contactos");
             stage.show();
+            
            
         } catch (Exception e) {
             e.printStackTrace();

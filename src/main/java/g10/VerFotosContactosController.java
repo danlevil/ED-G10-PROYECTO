@@ -6,6 +6,8 @@ package g10;
 
 import Modelo.Agenda;
 import Modelo.Contacto;
+import Modelo.ContactoEmpresa;
+import Modelo.ContactoPersona;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,10 +16,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,7 +31,7 @@ import javafx.scene.layout.VBox;
 public class VerFotosContactosController implements Initializable {
     private static final long serialVersionUID=1L;
     @FXML
-    private ImageView regresar;
+    public ImageView regresar;
     @FXML
     private ImageView izquierda;
     @FXML
@@ -91,10 +95,7 @@ public class VerFotosContactosController implements Initializable {
     
      
      
-    @FXML
-    private void regresarPantalla(MouseEvent event) {
-    }
-
+    
     @FXML
     private void anterior(MouseEvent event) {
         
@@ -134,6 +135,18 @@ public class VerFotosContactosController implements Initializable {
 
         mostrarImg(contactoSeleccionado);
         
+    }
+    @FXML
+    private void regresarPantalla(MouseEvent event) {
+        reload(event);
+    }
+    
+    private void reload(MouseEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        //MOMENTANEO, ESTA LOGICA NO FUNCIONA,ABRE UNA NUEVA VENTANA
     }
     
     private Contacto buscarContactoPorId(int id) {
