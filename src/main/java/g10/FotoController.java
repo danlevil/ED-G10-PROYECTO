@@ -45,7 +45,7 @@ public class FotoController implements Initializable {
     } 
     
     public void configurarFechasIm(Contacto contacto, Foto foto, int idFoto) {
-       /* this.contactoSeleccionado = contacto;
+        /* this.contactoSeleccionado = contacto;
         //Obtener la lista de fotos del contacto
         List<Foto> fotos = contacto.getFotos();
 
@@ -70,10 +70,13 @@ public class FotoController implements Initializable {
        if(foto!=null){
             String rutaFoto= foto.getArchivo();
             Image image=new Image("file:"+rutaFoto);
+            imgID.setText(String.valueOf(idFoto));
+
             imagen.setImage(image);
         }else {
             System.out.println("El usuario no tiene fotos");
         }
+       
     }
     
     public void configurar(Foto foto){
@@ -82,6 +85,8 @@ public class FotoController implements Initializable {
             String rutaFoto= foto.getArchivo();
             Image image=new Image("file:"+rutaFoto);
             imagen.setImage(image);
+            System.out.println(imgID.getText());
+
         }else {
             System.out.println("El usuario no tiene fotos");
         }

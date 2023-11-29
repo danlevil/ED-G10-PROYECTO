@@ -41,7 +41,7 @@ public class InfoDeDatosContactoController implements Initializable {
     private static int paginaActual=1;
     @FXML
     private Label lblnombreSeleccion;
-    
+    private Contacto contactoSelecto;
     
 
     /**
@@ -57,6 +57,7 @@ public class InfoDeDatosContactoController implements Initializable {
     //CONFIGURACIONES
     
      void configurarFechasI (Contacto contacto){
+         contactoSelecto=contacto;
          nombreDeDato.setText("Fechas importantes");
          mostrarElementosFechasI(contacto);
          
@@ -245,24 +246,47 @@ public class InfoDeDatosContactoController implements Initializable {
      
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
+        int totalPaginas = (int) Math.ceil((double) Agenda.contactosMaster.size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual > 1) {
+            paginaActual--;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+        seleccionadorCaso(nombreDeDato.getText(), contactoSelecto);
     }
 
     @FXML
     private void avanzarDerecha(MouseEvent event) {
         
-        
-//         int totalPaginas = (int) Math.ceil((double) .getEmails().size() / ELEMENTOS_POR_PAGINA);
-//
-//        if (paginaActual < totalPaginas) {
-//            paginaActual++;
-//        } else {
-//            // Si llegamos al final, regresamos a la primera página
-//            paginaActual = 1;
-//        }
-//
-//        mostrarElementosCorreo();
-    }
+        int totalPaginas = (int) Math.ceil((double) Agenda.contactosMaster.size() / ELEMENTOS_POR_PAGINA);
 
+        if (paginaActual < totalPaginas) {
+            paginaActual--;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = 1;
+        }
+
+        seleccionadorCaso(nombreDeDato.getText(), contactoSelecto);
+
+    }
+    private void seleccionadorCaso(String tipoDato, Contacto contacto){
+        switch(tipoDato){
+            case "Correo":
+                mostrarElementosCorreo(contacto);
+                break;
+            case "Fechas Importantes":
+                mostrarElementosFechasI(contacto);
+                break;
+            case "default":
+                System.out.println("caso default mostrar info extra");
+                break;
+                        
+        }
+    }
     
     
     
