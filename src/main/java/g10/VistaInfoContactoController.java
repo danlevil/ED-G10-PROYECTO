@@ -840,7 +840,6 @@ public class VistaInfoContactoController implements Initializable {
         int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Confirmar Eliminación");
         alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
@@ -852,9 +851,10 @@ public class VistaInfoContactoController implements Initializable {
         Optional<ButtonType> resultado = alert.showAndWait();
         
         if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
-           Agenda.contactosPersonas.remove(contactoSeleccionado);
+           
+           Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
            Agenda.contactosMaster.remove(contactoSeleccionado);
-        
+
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
             alert1.setTitle("Information Dialog");
             alert1.setHeaderText("Resultado de la operación");

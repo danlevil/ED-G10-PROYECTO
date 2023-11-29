@@ -105,6 +105,7 @@ public class ListaContactosController implements Initializable {
 
         for (int i = inicio; i < fin; i++) {
             agregarHBox(Agenda.contactosMaster.get(i));
+            
         }
 
         lbnumpag.setText( String.valueOf(paginaActual));

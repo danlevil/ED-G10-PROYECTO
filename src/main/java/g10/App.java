@@ -62,7 +62,8 @@ public class App extends Application {
     }
     @Override
     public void stop() throws Exception{
-        
+        Agenda.contactosPersonas.clear();
+        Agenda.contactosMaster.clear();
         Serializador.serializarTodosLosContactos(
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
@@ -71,5 +72,7 @@ public class App extends Application {
         
         System.out.println(Agenda.contactosPersonas.size());
         System.out.println(Agenda.contactosMaster.size());
+        
+        System.out.println(Agenda.contactosPersonas.size());
     }
 }

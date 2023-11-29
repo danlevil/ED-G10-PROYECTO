@@ -56,8 +56,8 @@ public class Agenda implements Serializable{
         
     }
     
-    public void eliminarContacto(Contacto c){
-        //contactos.remove(c, cmp);
+    public static void eliminarPersona(ContactoPersona c){
+       contactosPersonas.remove(c);
     }
     
     public void editarContacto(){}

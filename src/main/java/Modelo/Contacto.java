@@ -209,16 +209,24 @@ public class Contacto implements Serializable {
 
 
     @Override
-    public boolean equals(Object obj) {
-        
+    public boolean equals(Object o) {
+        Contacto obj=(Contacto)o;
+        boolean bandera=true;
         if (obj == null) {
-            return false;
+            bandera= false;
         }
         if (getClass() != obj.getClass()) {
-            return false;
+            bandera= false;
         }
-        final Contacto other = (Contacto) obj;
-        return this.id == other.id;
+        
+        /*if (!(obj instanceof Contacto)) {
+            bandera= false;
+        }*/
+        if(bandera){
+            final Contacto other = (Contacto) obj;
+            return this.id == other.id;
+        }
+        return bandera;
     }
 
    

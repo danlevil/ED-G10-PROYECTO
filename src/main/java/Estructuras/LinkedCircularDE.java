@@ -299,6 +299,9 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
                 Nodo<E>sig= n.getSiguiente();
                 previo.setSiguiente(sig);
                 sig.setPrevio(previo);
+                if(n==start){
+                    start=sig;
+                }
                 n.setPrevio(null);
                 n.setSiguiente(null);
                 tamaño--;
@@ -340,7 +343,10 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
     }
         @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        tamaño=0;
+        start.previo=null;
+        start.siguiente=null;
+        start=null;
     }
 
     @Override
