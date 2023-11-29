@@ -52,6 +52,7 @@ public class FotosContactosController implements Initializable {
     private Contacto seleccionado;
     private List<Foto>galeria;
     private ImageView imagenesContacto;
+    public Image fotoPerfil;
     @FXML
     private VBox VboxFotos;
     
@@ -69,6 +70,10 @@ public class FotosContactosController implements Initializable {
          
 
     } 
+
+    public Button getBtSeleccionar() {
+        return btSeleccionar;
+    }
     
     private void configurarFotosContactos(){
         
@@ -88,51 +93,21 @@ public class FotosContactosController implements Initializable {
             FotoController controllerFoto = loader.getController();
             
             controllerFoto.configurar(c.getFotos().get(paginaActual));
-
+            fotoPerfil=controllerFoto.fotoSeleccionada;
             // Agregar el HBox al VBox
             VboxFotos.getChildren().add(imageView);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    /*private void mostrarImg(Foto foto) {
-        try {
-            // Cargar el FXML del HBox del archivo FXML respectivo
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Foto.fxml"));
-            Node  imageView = loader.load();
-            //HBox hbox = loader.load();
 
-            // Configurar el controlador del HBox
-            FotoController controllerFoto = loader.getController();
-            controllerFoto.configurar(foto);
-
-            // Agregar el HBox al VBox
-            VboxFotos.getChildren().add(controllerFoto.imagen);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-   /* public void configurar(Contacto contacto){
-        contacoId.setText(String.valueOf(contacto.getId()));
-        seleccionado=contacto;
-        galeria=seleccionado.getFotos();
-        System.out.println(galeria.getStart().getArchivo());
-        System.out.println(seleccionado.getId());
-        imagenesContacto.setImage(new Image(galeria.getStart().getArchivo()));
-        VboxFotos.getChildren().add(imagenesContacto);
-        //mostrarImg(galeria.getStart());
-    }*/
-    
-
-    
-
-    
 
     @FXML
     private void seleccionarFoto(ActionEvent event) {
+        
     }
 
-   
+    
 
     @FXML
     private void agregarNuevaFoto(MouseEvent event) {
@@ -201,26 +176,7 @@ public class FotosContactosController implements Initializable {
       
     }
     
-    
-    
-//    private void mostrarElementos() {
-//        
-//        //VboxFotos.getChildren().add(imageView);
-//
-////        int id = Integer.parseInt(contacoId.getText());
-////        
-////        Contacto contactoSeleccionado = buscarContactoPorId(id);
-////        
-////        VboxFotos.getChildren().clear();
-////        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-////        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contactoSeleccionado.getFotos().size());
-////
-////        for (int i = inicio; i < fin; i++) {
-////            mostrarImg( contactoSeleccionado);
-////        }
-//
-//        //lbnumpag.setText( String.valueOf(paginaActual));
-//    }  
+
     @FXML
     private void regresarPantalla(MouseEvent event) {
         reload(event);

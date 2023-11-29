@@ -13,6 +13,8 @@ import java.nio.file.Path;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,7 +37,7 @@ public class FotoController implements Initializable {
     private Label imgID;
     @FXML
     private HBox HboxImg;
-
+    public Image fotoSeleccionada;
     /**
      * Initializes the controller class.
      */
@@ -70,6 +72,7 @@ public class FotoController implements Initializable {
        if(foto!=null){
             String rutaFoto= foto.getArchivo();
             Image image=new Image("file:"+rutaFoto);
+            fotoSeleccionada=image;
             imgID.setText(String.valueOf(idFoto));
 
             imagen.setImage(image);
@@ -88,7 +91,11 @@ public class FotoController implements Initializable {
             System.out.println(imgID.getText());
 
         }else {
-            System.out.println("El usuario no tiene fotos");
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Sin Fotos");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El usuario no tiene fotos para mostrar. Empiece agregando una.");
+            alerta.showAndWait();
         }
     }
     

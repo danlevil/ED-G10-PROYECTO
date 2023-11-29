@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Fields.Foto;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
@@ -32,6 +33,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -212,7 +214,11 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             FotosContactosController controller = loader.getController(); 
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
-           
+            controller.getBtSeleccionar().setOnAction(e->{
+                Image f= controller.fotoPerfil;
+                imgFotoContacto.setImage(f);
+                System.out.println("me estoy seleccionando");
+            });
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);
