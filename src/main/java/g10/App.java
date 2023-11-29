@@ -62,8 +62,8 @@ public class App extends Application {
     }
     @Override
     public void stop() throws Exception{
-        Agenda.contactosPersonas.clear();
-        Agenda.contactosMaster.clear();
+        //Agenda.contactosPersonas.clear();
+        //genda.contactosMaster.clear();
         Serializador.serializarTodosLosContactos(
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
