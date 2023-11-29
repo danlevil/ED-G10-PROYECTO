@@ -45,15 +45,12 @@ public class InfoDeDatosContactoController implements Initializable {
     private static int paginaActual=1;
     @FXML
     private Label lblnombreSeleccion;
-<<<<<<< HEAD
     private Contacto contactoSelecto;
-=======
     @FXML
     private ImageView imVolver;
     @FXML
     private Label idContacto;
     
->>>>>>> 856d949fd5dffeb64a5c9243b21fdcfe81731e6b
     
 
     /**
@@ -276,7 +273,6 @@ public class InfoDeDatosContactoController implements Initializable {
         
         int totalPaginas = (int) Math.ceil((double) Agenda.contactosMaster.size() / ELEMENTOS_POR_PAGINA);
 
-<<<<<<< HEAD
         if (paginaActual < totalPaginas) {
             paginaActual--;
         } else {
@@ -301,7 +297,7 @@ public class InfoDeDatosContactoController implements Initializable {
                         
         }
     }
-=======
+
     @FXML
     private void volverContacto(MouseEvent event) {
         
@@ -396,8 +392,6 @@ public class InfoDeDatosContactoController implements Initializable {
      
         return null;
     }
-
->>>>>>> 856d949fd5dffeb64a5c9243b21fdcfe81731e6b
     
     
     
