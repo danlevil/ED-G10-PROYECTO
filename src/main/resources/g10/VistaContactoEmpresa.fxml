@@ -51,7 +51,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </ImageView>
-            <ImageView fx:id="imgFotoContactoE" fitHeight="164.0" fitWidth="179.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgFotoContactoE" fitHeight="164.0" fitWidth="179.0" onMouseClicked="#verFotosContactoEm" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/empresa.png" />
                </image>

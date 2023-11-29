@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +32,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -73,6 +75,10 @@ public class AgregarContactoPersonaController implements Initializable {
     private TextField TxtfechaImpUsuario;
     @FXML
     private ComboBox<String> CboxFav;
+    @FXML
+    private Button btVerListadeAsociados;
+    @FXML
+    private Button btAgregarContactoAsociado;
 
     /**
      * Initializes the controller class.
@@ -82,6 +88,7 @@ public class AgregarContactoPersonaController implements Initializable {
         // TODO
         ObservableList<String> list = FXCollections.observableArrayList("S", "N");
         CboxFav.setItems(list);
+        
         
     }    
     
@@ -94,51 +101,21 @@ public class AgregarContactoPersonaController implements Initializable {
 
     @FXML
     private void agregarContacto(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
-        ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText());
+        
+      if (guardarContacto(TxtnombreUsuario, TxtcelularUsuario, TxtcorreoUsuario, TxtcelTrabajoUsuario, TxtdireccionUsuario, TxtdirTrabajoUsuario, fechaImportante, TxtfechaImpUsuario, CboxFav) == false){
+          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText());
         contactoPersonaNuevo.agregarDireccion("Dirección de casa",TxtdireccionUsuario.getText());
         contactoPersonaNuevo.agregarDireccion("Dirección de trabajo",TxtdirTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarEmail("Correo Principal", TxtcorreoUsuario.getText());
         contactoPersonaNuevo.agregarTelefono("Celular personal", TxtcelTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarTelefono("Celular de trabajo", TxtcelTrabajoUsuario.getText());
-//        String textoDireccion = TxtdirTrabajoUsuario.getText();
-//        Direccion direccionTrabajo = new Direccion("Dirección de trabajo", textoDireccion);
-//        direcciones.add(direccionTrabajo);
-//        
-//        ArrayList<Direccion> direccionPersonales = new ArrayList<>();
-//        String textoDireccionP = TxtdireccionUsuario.getText();
-//        Direccion direccionPersonal = new Direccion("Dirección de casa", textoDireccionP);
-//        direccionPersonales.add(direccionPersonal);
-        
-//        ArrayList<Email> emails = new ArrayList<>();
-//        String textoCorreo = TxtcorreoUsuario.getText();
-//        Email correo = new Email("Correo Principal", textoCorreo);
-//        emails.add(correo);
-//        
-//        ArrayList<Telefono> telefonos = new ArrayList<>();
-//        String textoTelefonoTrabajo = TxtcelTrabajoUsuario.getText();
-//        Telefono telefonoTrabajo = new Telefono("Celular de trabajo", textoTelefonoTrabajo);
-//        telefonos.add(telefonoTrabajo);
-//        
-//        ArrayList<Telefono> telefonosPersonales = new ArrayList<>();
-//        String telefonoPersonal = TxtcelularUsuario.getText();
-//        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
-//        telefonosPersonales.add(telefonoPersona);
-//        
-//        LinkedCircularDE<Foto> fotos = new LinkedCircularDE<>();
-//        
-//        
-//        ArrayList<RedSocial> redesSociales = new ArrayList<>();
-// 
-//        
-//        ArrayList<String> etiquetas = new ArrayList<>();
         contactoPersonaNuevo.agregarFechaImportante(TxtfechaImpUsuario.getText(), fechaImportante.getValue());
-//        LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
-//        String descripcionFecha = TxtfechaImpUsuario.getText();
-//        LocalDate fecha = fechaImportante.getValue();
-//        Fecha fechaImportante = new Fecha(descripcionFecha,fecha);
-//        fechasImportantes.add(fechaImportante);
+        
+        
+        
+
         
         LocalDate cumpleaños = LocalDate.of(2023,01,01);
         String seleccion = CboxFav.getSelectionModel().getSelectedItem();
@@ -169,8 +146,39 @@ public class AgregarContactoPersonaController implements Initializable {
             e.printStackTrace();
         }
          });
+            
+     }else{
+          
+      }
 
+    }
+    
+    
+    private boolean guardarContacto(TextField TxtnombreUsuario, TextField TxtcelularUsuario, TextField TxtcorreoUsuario, TextField TxtcelTrabajoUsuario,TextField TxtdireccionUsuario, TextField TxtdirTrabajoUsuario, DatePicker fechaImportante ,TextField TxtfechaImpUsuario, ComboBox<String> CboxFav ) {
+        // Verificar que los campos no estén vacíos
+        if (TxtnombreUsuario.getText().isEmpty() || TxtcelularUsuario.getText().isEmpty() || TxtcorreoUsuario.getText().isEmpty() || TxtcelTrabajoUsuario.getText().isEmpty() || TxtdireccionUsuario.getText().isEmpty() || TxtdirTrabajoUsuario.getText().isEmpty() || fechaImportante.getValue() == null || TxtfechaImpUsuario.getText().isEmpty() || CboxFav.getSelectionModel().isEmpty()) {
+            // Mostrar un mensaje de error si algún campo está vacío
+            mostrarError("Todos los campos son obligatorios", "Por favor, complete todos los campos.");
+            return true;
+        } 
+            return false;
+        
+    }
+    
+    private void mostrarError(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
 
+    @FXML
+    private void VerListadeAsociados(ActionEvent event) {
+    }
+
+    @FXML
+    private void AgregarContactoAsociado(ActionEvent event) {
     }
     
     

@@ -86,47 +86,10 @@ public class AgregarContactoEmpresaController implements Initializable {
 
     @FXML
     private void guardarContactoEmpresa(MouseEvent event) throws IOException {
+        
+      if(guardarContacto(TxtnombreEmpresa, TxtcelularPEmpresa, TxtcorreoEmpresa, TxtcelTrabajoEmpresa, TxtTituloEnEmpresa, txtdirecciónEmpresa,  txtCargoEmpresa1, fechaImportante , TxtfechaImpUsuario, CboxFav ) == false){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        ArrayList<Direccion> direcciones = new ArrayList<>();
-//        String textoDireccion = ;
-//        Direccion direccionTrabajo = new Direccion("Dirección de empresa", textoDireccion);
-//        direcciones.add(direccionTrabajo);
-//        
-//        
-//        
-//        ArrayList<Email> emails = new ArrayList<>();
-//        String textoCorreo = TxtcorreoEmpresa.getText();
-//        Email correo = new Email("Correo Principal", textoCorreo);
-//        emails.add(correo);
-//        
-//        ArrayList<Telefono> telefonos = new ArrayList<>();
-//        String textoTelefonoTrabajo = TxtcelTrabajoEmpresa.getText();
-//        Telefono telefonoTrabajo = new Telefono("Celular de trabajo", textoTelefonoTrabajo);
-//        telefonos.add(telefonoTrabajo);
-//        
-//        ArrayList<Telefono> telefonosPersonales = new ArrayList<>();
-//        String telefonoPersonal = TxtcelularPEmpresa.getText();
-//        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
-//        telefonosPersonales.add(telefonoPersona);
-//        
-//        LinkedCircularDE<Foto> fotos = new LinkedCircularDE<>();
-//        
-//        
-//        ArrayList<RedSocial> redesSociales = new ArrayList<>();
-//
-//        ArrayList<String> etiquetas = new ArrayList<>();
-//
-//        LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
-//        String descripcionFecha = TxtfechaImpUsuario.getText();
-//        LocalDate fecha = fechaImportante.getValue();
-//        Fecha fechaImportante = new Fecha(descripcionFecha,fecha);
-//        fechasImportantes.add(fechaImportante);
-        
-        //LocalDate cumpleaños = LocalDate.of(2023,01,01);
-        
-        
 
-        
         ContactoEmpresa contactoEmpresaNuevo= new ContactoEmpresa(TxtnombreEmpresa.getText());
         contactoEmpresaNuevo.agregarDireccion("Dirección de empresa",txtdirecciónEmpresa.getText());
         contactoEmpresaNuevo.agregarEmail("Correo empresa", TxtcorreoEmpresa.getText());
@@ -134,43 +97,8 @@ public class AgregarContactoEmpresaController implements Initializable {
         contactoEmpresaNuevo.agregarTelefono("Celular personal", TxtcelularPEmpresa.getText());
         contactoEmpresaNuevo.setTitulo(TxtTituloEnEmpresa.getText());
         contactoEmpresaNuevo.setPuestoTrabajo(txtCargoEmpresa1.getText());
-//        String textoDireccion = TxtdirTrabajoUsuario.getText();
-//        Direccion direccionTrabajo = new Direccion("Dirección de trabajo", textoDireccion);
-//        direcciones.add(direccionTrabajo);
-//        
-//        ArrayList<Direccion> direccionPersonales = new ArrayList<>();
-//        String textoDireccionP = TxtdireccionUsuario.getText();
-//        Direccion direccionPersonal = new Direccion("Dirección de casa", textoDireccionP);
-//        direccionPersonales.add(direccionPersonal);
-        
-//        ArrayList<Email> emails = new ArrayList<>();
-//        String textoCorreo = TxtcorreoUsuario.getText();
-//        Email correo = new Email("Correo Principal", textoCorreo);
-//        emails.add(correo);
-//        
-//        ArrayList<Telefono> telefonos = new ArrayList<>();
-//        String textoTelefonoTrabajo = TxtcelTrabajoUsuario.getText();
-//        Telefono telefonoTrabajo = new Telefono("Celular de trabajo", textoTelefonoTrabajo);
-//        telefonos.add(telefonoTrabajo);
-//        
-//        ArrayList<Telefono> telefonosPersonales = new ArrayList<>();
-//        String telefonoPersonal = TxtcelularUsuario.getText();
-//        Telefono telefonoPersona = new Telefono("Celular personal", telefonoPersonal);
-//        telefonosPersonales.add(telefonoPersona);
-//        
-//        LinkedCircularDE<Foto> fotos = new LinkedCircularDE<>();
-//        
-//        
-//        ArrayList<RedSocial> redesSociales = new ArrayList<>();
-// 
-//        
-//        ArrayList<String> etiquetas = new ArrayList<>();
+
         contactoEmpresaNuevo.agregarFechaImportante(TxtfechaImpUsuario.getText(), fechaImportante.getValue());
-//        LinkedCircularDE<Fecha> fechasImportantes = new LinkedCircularDE<>();
-//        String descripcionFecha = TxtfechaImpUsuario.getText();
-//        LocalDate fecha = fechaImportante.getValue();
-//        Fecha fechaImportante = new Fecha(descripcionFecha,fecha);
-//        fechasImportantes.add(fechaImportante);
         
         LocalDate cumpleaños = LocalDate.of(2023,01,01);
         String seleccion = CboxFav.getSelectionModel().getSelectedItem();
@@ -200,8 +128,30 @@ public class AgregarContactoEmpresaController implements Initializable {
             e.printStackTrace();
         }
          });
+      }
+        
 
     
     }
+    
+    private boolean guardarContacto(TextField TxtnombreEmpresa, TextField TxtcelularPEmpresa, TextField TxtcorreoEmpresa, TextField TxtcelTrabajoEmpresa,TextField TxtTituloEnEmpresa,TextField txtdirecciónEmpresa, TextField txtCargoEmpresa1,DatePicker fechaImportante ,TextField TxtfechaImpUsuario, ComboBox<String> CboxFav ) {
+        // Verificar que los campos no estén vacíos
+        if (TxtnombreEmpresa.getText().isEmpty() || TxtcelularPEmpresa.getText().isEmpty() || TxtcorreoEmpresa.getText().isEmpty() || TxtcelTrabajoEmpresa.getText().isEmpty()||TxtTituloEnEmpresa.getText().isEmpty() || txtdirecciónEmpresa.getText().isEmpty() || txtCargoEmpresa1.getText().isEmpty() || fechaImportante.getValue() == null || TxtfechaImpUsuario.getText().isEmpty() || CboxFav.getSelectionModel().isEmpty()) {
+            // Mostrar un mensaje de error si algún campo está vacío
+            mostrarError("Todos los campos son obligatorios", "Por favor, complete todos los campos.");
+            return true;
+        } 
+            return false;
+        
+    }
+    
+    private void mostrarError(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    
 
 }

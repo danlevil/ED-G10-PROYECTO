@@ -315,7 +315,10 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getPrimeraFechaImportante().setDescripcion(textField.getText());
             momentaneoStage.close();
             avisarActualizacion();
+            reload(event);
         });
+        
+        
 
         // Crear la disposición del diseño
         GridPane gridPane = new GridPane();
@@ -335,7 +338,11 @@ public class VistaInfoContactoController implements Initializable {
         // Configurar y mostrar la ventana principal
         momentaneoStage.setScene(scene);
         momentaneoStage.show();
+        
+        
     }
+    
+    
     private void editarCelularTrabajo(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
@@ -348,6 +355,7 @@ public class VistaInfoContactoController implements Initializable {
             avisarActualizacion();
         });
     }
+    
     @FXML
     private void editarLinkDeGMaps(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
@@ -360,6 +368,7 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getDireccionPrincipal().setUbicacion(nuevoValor);
             avisarActualizacion();
         });
+         reload(event); 
     }
     @FXML
     private void editarEtiqueta(MouseEvent event) {
@@ -510,7 +519,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void agregarDireccionCasa(MouseEvent event) {
         momentaneoStage = new Stage();
-        momentaneoStage.setTitle("Nueva direccion domicilio");
+        momentaneoStage.setTitle("Nueva direccion");
 
         // Crear los TextFields
         TextField textField1 = new TextField();
@@ -643,6 +652,8 @@ public class VistaInfoContactoController implements Initializable {
         momentaneoStage.setScene(scene);
         momentaneoStage.show();
     }
+    
+    
     @FXML
     private void agregarEtiqueta(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog();
@@ -656,37 +667,39 @@ public class VistaInfoContactoController implements Initializable {
             avisarActualizacion();
         });
     }
-    private void verCelularesTrabajo(MouseEvent event) {
-        
-         int id = Integer.parseInt(contactoId.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-         try {
-            // Cargar el archivo FXML de la vista de contacto para personas
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
-            Parent root = loader.load();
-
-            // Configurar el controlador de la vista de contacto para personas
-            InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarCelularPersonal(contactoSeleccionado); // Método para pasar los datos del contacto
-
-            Scene scene = new Scene(root,900,700);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
-            stage.show();
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-          // Cerrar la ventana actual
-          stage1.close();
-            
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         
-    }
+    
+    
+//    private void verCelularesTrabajo(MouseEvent event) {
+//        
+//         int id = Integer.parseInt(contactoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(id);
+//         try {
+//            // Cargar el archivo FXML de la vista de contacto para personas
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+//            Parent root = loader.load();
+//
+//            // Configurar el controlador de la vista de contacto para personas
+//            InfoDeDatosContactoController controller = loader.getController();
+//            controller.configurarCelularPersonal(contactoSeleccionado); // Método para pasar los datos del contacto
+//
+//            Scene scene = new Scene(root,900,700);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setResizable(false);
+//            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
+//            stage.show();
+//            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//          // Cerrar la ventana actual
+//          stage1.close();
+//            
+//           
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//         
+//    }
 
     
 
@@ -739,7 +752,7 @@ public class VistaInfoContactoController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
+            stage.setTitle("Vista de dirección de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -757,36 +770,36 @@ public class VistaInfoContactoController implements Initializable {
 
     
 
-    private void verDireccionTrabajo(MouseEvent event) {
-        
-        int id = Integer.parseInt(contactoId.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-         try {
-            // Cargar el archivo FXML de la vista de contacto para personas
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
-            Parent root = loader.load();
-
-            // Configurar el controlador de la vista de contacto para personas
-            InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarDireccionesP(contactoSeleccionado); // Método para pasar los datos del contacto
-
-            Scene scene = new Scene(root,900,700);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
-            stage.show();
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-          // Cerrar la ventana actual
-          stage1.close();
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-    }
+//    private void verDireccionTrabajo(MouseEvent event) {
+//        
+//        int id = Integer.parseInt(contactoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(id);
+//         try {
+//            // Cargar el archivo FXML de la vista de contacto para personas
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+//            Parent root = loader.load();
+//
+//            // Configurar el controlador de la vista de contacto para personas
+//            InfoDeDatosContactoController controller = loader.getController();
+//            controller.configurarDireccionesP(contactoSeleccionado); // Método para pasar los datos del contacto
+//
+//            Scene scene = new Scene(root,900,700);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setResizable(false);
+//            stage.setTitle("Vista de correos de contacto: "+contactoSeleccionado.getNombre());
+//            stage.show();
+//            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//          // Cerrar la ventana actual
+//          stage1.close();
+//           
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        
+//    }
 
  
 
@@ -987,7 +1000,7 @@ public class VistaInfoContactoController implements Initializable {
             VistaContactoEmpresaController controller = loader.getController();
             controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
 
-            Scene scene = new Scene(root,780,700);
+            Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
@@ -1012,7 +1025,7 @@ public class VistaInfoContactoController implements Initializable {
             
             
             
-            Scene scene = new Scene(root, 780,700);
+            Scene scene = new Scene(root, 900,700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Vista de Contacto para Personas");
