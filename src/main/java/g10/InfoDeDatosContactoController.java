@@ -6,6 +6,7 @@ package g10;
 
 import Modelo.Agenda;
 import Modelo.Contacto;
+import Modelo.ContactoEmpresa;
 import Modelo.ContactoPersona;
 import java.io.IOException;
 import java.net.URL;
@@ -13,11 +14,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -41,7 +45,15 @@ public class InfoDeDatosContactoController implements Initializable {
     private static int paginaActual=1;
     @FXML
     private Label lblnombreSeleccion;
+<<<<<<< HEAD
     private Contacto contactoSelecto;
+=======
+    @FXML
+    private ImageView imVolver;
+    @FXML
+    private Label idContacto;
+    
+>>>>>>> 856d949fd5dffeb64a5c9243b21fdcfe81731e6b
     
 
     /**
@@ -60,25 +72,26 @@ public class InfoDeDatosContactoController implements Initializable {
          contactoSelecto=contacto;
          nombreDeDato.setText("Fechas importantes");
          mostrarElementosFechasI(contacto);
-         
+         idContacto.setText(String.valueOf(contacto.getId())); 
      } 
     
      void configurarDireccionesP(Contacto contacto){
          nombreDeDato.setText("Direcciones");
          mostrarElementosDireccionesP(contacto);
+         idContacto.setText(String.valueOf(contacto.getId()));
      }
      
      
      void configurarCelularPersonal(Contacto contacto) {
         nombreDeDato.setText("Celulares Personales");
         mostrarElementosCeluares(contacto);
-       
+        idContacto.setText(String.valueOf(contacto.getId()));
      }
      
      void configurarCorreo(Contacto contacto) {
-        nombreDeDato.setText("Celulares");
+        nombreDeDato.setText("Correo");
         mostrarElementosCorreo(contacto);
-       
+        idContacto.setText(String.valueOf(contacto.getId()));
      }
     
     
@@ -263,6 +276,7 @@ public class InfoDeDatosContactoController implements Initializable {
         
         int totalPaginas = (int) Math.ceil((double) Agenda.contactosMaster.size() / ELEMENTOS_POR_PAGINA);
 
+<<<<<<< HEAD
         if (paginaActual < totalPaginas) {
             paginaActual--;
         } else {
@@ -287,6 +301,103 @@ public class InfoDeDatosContactoController implements Initializable {
                         
         }
     }
+=======
+    @FXML
+    private void volverContacto(MouseEvent event) {
+        
+        reload(event);
+        
+    }
+    
+    
+     private void reload(MouseEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        
+          
+        int id = Integer.parseInt(idContacto.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+            if (contactoSeleccionado.isEmpresa()) {
+                // Abrir la vista de contacto para empresas y pasar los datos
+                abrirVistaContactoEmpresa(contactoSeleccionado);
+            } else {
+                // Abrir la vista de contacto para personas y pasar los datos
+                abrirVistaContactoPersona(contactoSeleccionado);
+            }
+    }
+    
+    
+    
+    
+    private void abrirVistaContactoEmpresa(Contacto contacto) {
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaContactoEmpresa.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VistaContactoEmpresaController controller = loader.getController();
+            controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de Contacto para Empresas");
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    private void abrirVistaContactoPersona(Contacto contacto) {
+        
+    
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VistaInfoContactoController controller = loader.getController();
+            controller.configurar((ContactoPersona) contacto); // Método para pasar los datos del contacto
+            
+            
+            
+            Scene scene = new Scene(root, 900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Vista de Contacto para Personas");
+            
+            stage.setResizable(false);
+          
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+     private Contacto buscarContactoPorId(int id) {
+         for (Contacto contacto : Agenda.contactosMaster){
+             if (contacto.getId() == id){
+                 return contacto; 
+             }
+         }
+     
+        return null;
+    }
+
+>>>>>>> 856d949fd5dffeb64a5c9243b21fdcfe81731e6b
     
     
     

@@ -14,6 +14,14 @@
          <children>
             <HBox prefHeight="84.0" prefWidth="900.0">
                <children>
+                  <ImageView fx:id="imVolver" fitHeight="65.0" fitWidth="68.0" onMouseClicked="#volverContacto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/Volver.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
                   <Label prefHeight="46.0" prefWidth="354.0" text="Información de todos los:">
                      <font>
                         <Font size="31.0" />
@@ -57,6 +65,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="43.0" prefWidth="205.0">
                      <children>
+                        <Label fx:id="idContacto" text="Label" visible="false" />
                         <Label fx:id="lblnombreSeleccion" prefHeight="18.0" prefWidth="718.0" text="Label" visible="false">
                            <HBox.margin>
                               <Insets />
