@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Modelo.Agenda;
 import Modelo.Contacto;
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +37,7 @@ public class VerFotosContactosController implements Initializable {
     @FXML
     private VBox vboxFotos;
     
-    private static final int ELEMENTOS_POR_PAGINA=6;
+    private static final int ELEMENTOS_POR_PAGINA=1;
     
     private static int paginaActual=1;
     @FXML
@@ -50,52 +51,44 @@ public class VerFotosContactosController implements Initializable {
     }
 
     void configurarFotosContactos(Contacto contacto){
-        idContacto.setText(String.valueOf(contacto.getId()));
-        mostrarElementosFotos(contacto);
+        
+        
     }    
 
     
     
     
-    private void agregarHBoxFoto(Contacto contacto){
-         
-        try {
+    void mostrarImg(Contacto c) {
             
+        idContacto.setText(String.valueOf(c.getId()));
+        vboxFotos.getChildren().clear();  
+        try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Foto.fxml"));
             Node  imageView = loader.load();
             //HBox hbox = loader.load();
 
             // Configurar el controlador del HBox
-            FotoController controller = loader.getController();
-            // Obtener el índice de la lista de correos y configurar el correo correspondiente
-            int fotoIndex = vboxFotos.getChildren().size();  // Usar el índice actual del VBox
-            //String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
-            controller.configurarFechasIm(contacto,contacto.getFotos().get(fotoIndex), fotoIndex);
-
+            FotoController controllerFoto = loader.getController();
+            
+            controllerFoto.configurar(c.getFotos().get(paginaActual));
 
             // Agregar el HBox al VBox
-            vboxFotos.getChildren().add(imageView);
+            
+            int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+            int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, c.getFotos().size());
+     
+             for (int i = inicio; i < fin; i++) {
+              vboxFotos.getChildren().add(imageView);
+            }
+   
+            lbnumpag.setText( String.valueOf(paginaActual));
         } catch (IOException e) {
             e.printStackTrace();
         }
-         
-         
-     }
+    }
     
     
-     private void mostrarElementosFotos(Contacto contacto){
-         
-         vboxFotos.getChildren().clear();
-        int inicio = (paginaActual) * ELEMENTOS_POR_PAGINA;
-        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contacto.getFechasImportantes().size());
-
-        for (int i = inicio; i < fin; i++) {
-            agregarHBoxFoto(contacto);
-        }
-
-        lbnumpag.setText( String.valueOf(paginaActual));
-     }
      
      
     @FXML
@@ -104,10 +97,54 @@ public class VerFotosContactosController implements Initializable {
 
     @FXML
     private void anterior(MouseEvent event) {
+        
+        int id = Integer.parseInt(idContacto.getText());
+        
+          Contacto contactoSeleccionado = buscarContactoPorId(id);    
+
+        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual > 1) {
+            paginaActual--;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+        mostrarImg(contactoSeleccionado);
+            
+        
     }
 
     @FXML
     private void siguiente(MouseEvent event) {
+        
+          int id = Integer.parseInt(idContacto.getText());
+        
+          Contacto contactoSeleccionado = buscarContactoPorId(id);    
+
+        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual < 1) {
+            paginaActual++;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+        mostrarImg(contactoSeleccionado);
+        
     }
+    
+    private Contacto buscarContactoPorId(int id) {
+         for (Contacto contacto : Agenda.contactosMaster){
+             if (contacto.getId() == id){
+                 return contacto; 
+             }
+         }
+     
+        return null;
+    }
+    
     
 }

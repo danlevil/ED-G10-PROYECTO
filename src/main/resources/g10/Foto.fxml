@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 
-
-<ImageView fx:id="imagen" fitHeight="236.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.FotoController" />
+<HBox fx:id="HboxImg" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.FotoController">
+   <children>
+      <ImageView fx:id="imagen" fitHeight="236.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="imgID" text="Label" visible="false" />
+   </children>
+</HBox>

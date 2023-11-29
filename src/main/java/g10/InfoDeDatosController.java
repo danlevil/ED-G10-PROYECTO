@@ -111,6 +111,22 @@ public class InfoDeDatosController implements Initializable {
     
     //RELOADS
     
+    
+    private void reloadFechaIm(MouseEvent event){
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        
+        int id = Integer.parseInt(Lblid.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        abrirVistaFechasImp(contactoSeleccionado);
+        
+        
+    }
+    
     private void reloadDireccion (MouseEvent event){
         
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -156,6 +172,30 @@ public class InfoDeDatosController implements Initializable {
     }
     
     //ABRIR VISTAS
+    
+    
+    private void abrirVistaFechasImp(Contacto contacto){
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatosContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            InfoDeDatosContactoController controller = loader.getController();
+            controller.configurarFechasI(contacto); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de Fechas de contacto: "+contacto.getNombre());
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
     
     private void abrirVistaDireccionesP(Contacto contacto){
         try {
@@ -239,10 +279,45 @@ public class InfoDeDatosController implements Initializable {
        }else if(lblnombreSeleccion.getText().equals("verTodaslasDireecionesCCP")){
            eliminarDireccion(event);
            
-       }        
+       } else if(lblnombreSeleccion.getText().equals("verTodaslasFechasICP")){
+           eliminarFecha(event);
+       }       
    
     }
     
+    private void eliminarFecha (MouseEvent event){
+        int id = Integer.parseInt(Lblid.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        int fechaIndex = Integer.parseInt(lbIdDato.getText());
+        
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Confirmar Eliminación de Fecha");
+        alert.setHeaderText("¿Está seguro que desea eliminar este Dato?");
+        alert.setContentText("Esta acción no se puede deshacer.");
+        ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+        
+        Optional<ButtonType> resultado = alert.showAndWait();
+        
+        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+            contactoSeleccionado.getFechasImportantes().remove(fechaIndex);
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Information Dialog");
+            alert1.setHeaderText("Resultado de la operación");
+            alert1.setContentText("Dirección eliminada exitosamente");
+            alert1.showAndWait();
+        
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cerrar la ventana actual
+            stage.close();
+            reloadFechaIm(event);
+        }
+        
+    }
     
     private void eliminarDireccion (MouseEvent event){
         

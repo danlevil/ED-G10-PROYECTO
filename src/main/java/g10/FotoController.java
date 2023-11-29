@@ -13,8 +13,10 @@ import java.nio.file.Path;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -29,6 +31,10 @@ public class FotoController implements Initializable {
     public Contacto contactoSeleccionado;
     
     private int id;
+    @FXML
+    private Label imgID;
+    @FXML
+    private HBox HboxImg;
 
     /**
      * Initializes the controller class.

@@ -74,9 +74,6 @@
       </HBox>
    </top>
    <center>
-      <VBox fx:id="VboxFotos" alignment="CENTER" prefHeight="236.0" prefWidth="249.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="imagenesContacto" fitHeight="184.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" />
-         </children></VBox>
+      <VBox fx:id="VboxFotos" alignment="CENTER" prefHeight="236.0" prefWidth="249.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

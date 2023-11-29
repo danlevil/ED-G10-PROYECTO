@@ -140,6 +140,8 @@ public class FotosContactosController implements Initializable {
     private void agregarNuevaFoto(MouseEvent event) {
         //cargarContacto();
         try {
+            int id = Integer.parseInt(contacoId.getText());
+            Contacto contactoSeleccionado = buscarContactoPorId(id);
             // Obtener el ID del contacto
             String idUsuario = contacoId.getText();
 
@@ -181,8 +183,8 @@ public class FotosContactosController implements Initializable {
 
                     // Crear un objeto Foto y añadirlo a la lista de fotos del contacto
                     Foto foto = new Foto( rutaRelativa);
-                    seleccionado.añadirFoto(foto);
-                    for(Foto f: seleccionado.getFotos()){
+                    contactoSeleccionado.añadirFoto(foto);
+                    for(Foto f: contactoSeleccionado.getFotos()){
                         System.out.println(f);
                     }
 
@@ -203,24 +205,24 @@ public class FotosContactosController implements Initializable {
     
     
     
-    private void mostrarElementos() {
-        
-        //VboxFotos.getChildren().add(imageView);
-
-//        int id = Integer.parseInt(contacoId.getText());
+//    private void mostrarElementos() {
 //        
-//        Contacto contactoSeleccionado = buscarContactoPorId(id);
-//        
-//        VboxFotos.getChildren().clear();
-//        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-//        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contactoSeleccionado.getFotos().size());
+//        //VboxFotos.getChildren().add(imageView);
 //
-//        for (int i = inicio; i < fin; i++) {
-//            mostrarImg( contactoSeleccionado);
-//        }
-
-        //lbnumpag.setText( String.valueOf(paginaActual));
-    }  
+////        int id = Integer.parseInt(contacoId.getText());
+////        
+////        Contacto contactoSeleccionado = buscarContactoPorId(id);
+////        
+////        VboxFotos.getChildren().clear();
+////        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+////        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contactoSeleccionado.getFotos().size());
+////
+////        for (int i = inicio; i < fin; i++) {
+////            mostrarImg( contactoSeleccionado);
+////        }
+//
+//        //lbnumpag.setText( String.valueOf(paginaActual));
+//    }  
     
     private Contacto buscarContactoPorId(int id) {
          for (Contacto contacto : Agenda.contactosMaster){
@@ -235,50 +237,41 @@ public class FotosContactosController implements Initializable {
     
      @FXML
   private void siguiente(MouseEvent event) {
-//          if(paginaActual<galeria.size()){
-//            VboxFotos.getChildren().clear();
-//            mostrarImg(galeria.get(paginaActual));
-//            paginaActual++;
-//            
-//          }
-//          if(paginaActual==galeria.size()){
-//            VboxFotos.getChildren().clear();  
-//            mostrarImg(galeria.getStart());
-//            paginaActual=1;
-//          }
       
-//        int id = Integer.parseInt(contacoId.getText());
-//        
-//        Contacto contactoSeleccionado = buscarContactoPorId(id);
-//        
-//        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
-//
-//        if (paginaActual < totalPaginas) {
-//            paginaActual++;
-//        } else {
-//            // Si llegamos al final, regresamos a la primera página
-//            paginaActual = 1;
-//        }
-//
-//        mostrarElementos();
+         int id = Integer.parseInt(contacoId.getText());
+        
+          Contacto contactoSeleccionado = buscarContactoPorId(id);    
+
+        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual > 1) {
+            paginaActual++;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+        mostrarImg(contactoSeleccionado);
        
     }
     
     
    @FXML
     private void anterior(MouseEvent event) {
-        //int retroceso=  galeria.size()-1;
-//        if(paginaActual==1){
-//            VboxFotos.getChildren().clear();
-//            paginaActual=galeria.size()-1;
-//            mostrarImg(galeria.get(paginaActual));
-//        }
-//        if(paginaActual<=galeria.size()-1){
-//            VboxFotos.getChildren().clear();
-//            paginaActual--;
-//            mostrarImg(galeria.get(paginaActual));
-            
-        //}
+         int id = Integer.parseInt(contacoId.getText());
+        
+          Contacto contactoSeleccionado = buscarContactoPorId(id);    
+
+        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getFotos().size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual > 1) {
+            paginaActual--;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+        mostrarImg(contactoSeleccionado);
             
     }
         
