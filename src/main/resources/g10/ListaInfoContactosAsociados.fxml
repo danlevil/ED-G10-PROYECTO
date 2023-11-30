@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.ListaInfoContactosAsociadosController">
+   <children>
+      <VBox prefHeight="67.0" prefWidth="900.0">
+         <children>
+            <HBox prefHeight="84.0" prefWidth="900.0">
+               <children>
+                  <ImageView fx:id="ImgvolverAcontacto" fitHeight="65.0" fitWidth="76.0" onMouseClicked="#volverAcontactoPadre" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/Volver.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="46.0" prefWidth="420.0" text="Contactos Asociados de: ">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="lblNombreContacto" prefHeight="46.0" prefWidth="465.0" text="Label">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgFiltro" fitHeight="30.0" fitWidth="43.0" onMouseClicked="#filtrar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/filtro.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgBotonAgregar" fitHeight="29.0" fitWidth="28.0" onMouseClicked="#añadirContacto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/crear.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Label text="Todos los contactos:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="txtFiltro" text="Label">
+               <VBox.margin>
+                  <Insets left="12.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="VboxContactos" prefHeight="700.0" prefWidth="900.0" />
+      <HBox alignment="CENTER" prefHeight="43.0" prefWidth="900.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="60.0" prefWidth="899.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="29.0" prefWidth="899.0">
+                     <children>
+                        <ImageView fx:id="imgBotonant" fitHeight="30.0" fitWidth="36.0" onMouseClicked="#avanzarIzquierda" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/anterior.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbnumpag" alignment="CENTER" prefHeight="43.0" prefWidth="294.0" text="1">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgBotonsig" fitHeight="33.0" fitWidth="30.0" onMouseClicked="#avanzarDerecha" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/siguiente.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Label fx:id="IdContacto" prefHeight="17.0" prefWidth="878.0" text="label" visible="false" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

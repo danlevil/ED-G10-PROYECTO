@@ -57,6 +57,8 @@
                </image>
             </ImageView>
             <Label fx:id="contactoId" text="Label" visible="false" />
+            <Label fx:id="contactoAsociadoID" text="Label" visible="false" />
+            <Label fx:id="IdContactoAenLaListaDeCP" text="Label" visible="false" />
          </children>
       </VBox>
    </left>

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoPersonaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoAsociadoEmpresaController">
    <top>
       <VBox prefHeight="71.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,12 +26,12 @@
                         <Image url="@../imagenes/Volver.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="778.0" text="Registrar Contacto" textAlignment="CENTER">
+                  <Label fx:id="labelRegistarContacto" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="778.0" text="Registrar Contacto Empresa" textAlignment="CENTER">
                      <font>
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="guardarContacto" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#agregarContacto" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="guardarEmpresa" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#guardarContactoEmpresa" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/guardar.png" />
                      </image>
@@ -46,7 +46,7 @@
          <children>
             <ImageView fitHeight="164.0" fitWidth="179.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/usuario.png" />
+                  <Image url="@../imagenes/empresa.png" />
                </image>
             </ImageView>
          </children>
@@ -76,7 +76,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtnombreUsuario" prefHeight="25.0" prefWidth="88.0" />
+                  <TextField fx:id="TxtnombreEmpresa" prefHeight="25.0" prefWidth="88.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -86,7 +86,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtcorreoUsuario" />
+                  <TextField fx:id="TxtcorreoEmpresa" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
@@ -96,7 +96,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtcelularUsuario" />
+                  <TextField fx:id="TxtcelularPEmpresa" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
@@ -106,41 +106,20 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtcelTrabajoUsuario" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
-               <children>
-                  <Label text="Dirección de casa">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="TxtdireccionUsuario" promptText="Enlace google maps" />
+                  <TextField fx:id="TxtcelTrabajoEmpresa" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
-                  <Label fx:id="Direccion" text="Dirección de trabajo">
+                  <Label text="Titulo">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TxtdirTrabajoUsuario" promptText="Enlace google maps" />
+                  <TextField fx:id="TxtTituloEnEmpresa" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <children>
-                  <Label text="Fecha importante">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="fechaImportante" />
-                  <TextField fx:id="TxtfechaImpUsuario" promptText="Label" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -153,8 +132,48 @@
                         <ComboBox fx:id="CboxFav" prefWidth="150.0" />
                      </children>
                   </VBox>
-               </children></VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Dirección de empresa">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtdirecciónEmpresa" promptText="Enlace google maps" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Cargo">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtCargoEmpresa1" promptText="Enlace google maps" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+               <children>
+                  <Label text="Fecha importante">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="fechaImportante" />
+                  <TextField fx:id="TxtfechaImpUsuario" promptText="Label" />
+               </children>
+            </VBox>
+            <Label fx:id="idContactoPadre" text="Label" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </center>

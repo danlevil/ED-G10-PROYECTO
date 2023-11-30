@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoPersonaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="g10.AgregarContactoAsociadoPersonaController">
    <top>
       <VBox prefHeight="71.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -153,8 +153,10 @@
                         <ComboBox fx:id="CboxFav" prefWidth="150.0" />
                      </children>
                   </VBox>
-               </children></VBox>
+               </children>
+            </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="IdContactoPadre" text="Label" visible="false" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </center>

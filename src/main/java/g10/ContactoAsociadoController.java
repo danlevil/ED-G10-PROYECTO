@@ -4,14 +4,11 @@
  */
 package g10;
 
-import Fields.Foto;
+import Fields.Fecha;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
 import Modelo.ContactoPersona;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -32,8 +29,7 @@ import javafx.stage.Stage;
  *
  * @author Charlie
  */
-public class ContactoController implements Initializable {
-    private static final long serialVersionUID=1L;
+public class ContactoAsociadoController implements Initializable {
 
     @FXML
     private HBox hboxContact1;
@@ -46,13 +42,11 @@ public class ContactoController implements Initializable {
     @FXML
     private Label lbcontactocorreo;
     @FXML
-    private Label Lblid;
-    
-    public Contacto contactoSeleccionado;
+    private Label LblidContactoPadre;
     @FXML
-    private Label idContactoEnListaDeC;
+    private Label IdDeContactoAsociadoGeneral;
     @FXML
-    private Label idContactoPadre;
+    private Label IdContactoEnLista;
 
     /**
      * Initializes the controller class.
@@ -60,38 +54,22 @@ public class ContactoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       setMouseEvent(hboxContact1);
+        setMouseEvent(hboxContact1);
+    }    
+    
+    void configurar(Contacto contacto,  Contacto contactoAsociado, int idContactoAsociado){
+        lbcontactonombre.setText(contactoAsociado.getNombre());
+        lbcontactocorreo.setText(contactoAsociado.getCorreoPrincipal().getDireccionCorreo());
+        LblidContactoPadre.setText(String.valueOf(contacto.getId())); 
+        IdDeContactoAsociadoGeneral.setText(String.valueOf(contactoAsociado.getId())); 
+        IdContactoEnLista.setText(String.valueOf(idContactoAsociado)); 
     }
-    
-    
-    
-    public void configurar(Contacto contacto) {
-        this.contactoSeleccionado=contacto;
 
-        lbcontactonombre.setText(contacto.getNombre());
-        lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
-        Lblid.setText(String.valueOf(contacto.getId())); 
-        System.out.println(Lblid.getText());
-    }
-    
-    public void configuararAsociado(Contacto contacto, int idPadre, int idHijo){
-        this.contactoSeleccionado=contacto;
-
-        lbcontactonombre.setText(contacto.getNombre());
-        lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
-        Lblid.setText(String.valueOf(contacto.getId())); 
-        idContactoPadre.setText(String.valueOf(idPadre));
-        idContactoEnListaDeC.setText(String.valueOf(idHijo));
-      //System.out.println(Lblid.getText());
-        
-    }
-    
-    public Contacto getSeleccionado(){
-        return contactoSeleccionado;
-    }
     @FXML
-    private void abrirContactoInfo(MouseEvent event) throws IOException {
-        int id = Integer.parseInt(Lblid.getText());
+    private void abrirContactoInfo(MouseEvent event) {
+        int idHijo = Integer.parseInt(IdContactoEnLista.getText());
+        int idPadre = Integer.parseInt(LblidContactoPadre.getText());
+        int id = Integer.parseInt(IdDeContactoAsociadoGeneral.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
         //this.contactoSeleccionado=contactoSeleccionado;
@@ -102,7 +80,7 @@ public class ContactoController implements Initializable {
                 abrirVistaContactoEmpresa(contactoSeleccionado);
             } else {
                 // Abrir la vista de contacto para personas y pasar los datos
-                abrirVistaContactoPersona(contactoSeleccionado);
+                abrirVistaContactoPersona(contactoSeleccionado, idPadre, idHijo);
             }
             
             
@@ -110,10 +88,17 @@ public class ContactoController implements Initializable {
 
             // Cerrar la ventana actual
             stage.close();
-                
+            
+            
     }
+        
+        
     
-    private Contacto buscarContactoPorId(int id) {
+        
+    
+    
+    
+     private Contacto buscarContactoPorId(int id) {
          for (Contacto contacto : Agenda.contactosMaster){
              if (contacto.getId() == id){
                  return contacto; 
@@ -146,7 +131,8 @@ public class ContactoController implements Initializable {
         
     }
 
-    private void abrirVistaContactoPersona(Contacto contacto) {
+    private void abrirVistaContactoPersona(Contacto contacto, int idPadre, int idHijo) {
+        //coger el label e insertarlo 
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
@@ -154,7 +140,7 @@ public class ContactoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VistaInfoContactoController controller = loader.getController();
-            controller.configurar((ContactoPersona) contacto); // Método para pasar los datos del contacto
+            controller.configurarAsociado((ContactoPersona) contacto, idPadre); // Método para pasar los datos del contacto
             
             
             
@@ -166,6 +152,9 @@ public class ContactoController implements Initializable {
             stage.setResizable(false);
           
             stage.show();
+            System.out.println(idPadre);
+            System.out.println(contacto.getId());
+            System.out.println(idHijo);
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -174,8 +163,11 @@ public class ContactoController implements Initializable {
     
     
     
-      private void setMouseEvent(HBox hboxContact) {
-         // Manejador para el evento de ratón al entrar en la sección
+    
+    
+     private void setMouseEvent(HBox hboxContact) {
+         
+          // Manejador para el evento de ratón al entrar en la sección
         hboxContact.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             hboxContact.setStyle("-fx-background-color: lightblue;");
         });
@@ -184,6 +176,9 @@ public class ContactoController implements Initializable {
         hboxContact.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
             hboxContact.setStyle("-fx-background-color: ;");
         });
-    }
+    
+         
+     }
+        
     
 }

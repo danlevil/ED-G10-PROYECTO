@@ -4,20 +4,9 @@
  */
 package g10;
 
-import Estructuras.ArrayList;
-import Estructuras.LinkedCircularDE;
-import Fields.Direccion;
-import Fields.Email;
-import Fields.Fecha;
-import Fields.Foto;
-import Fields.RedSocial;
-import Fields.Telefono;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoPersona;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -32,7 +21,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -46,8 +34,7 @@ import javafx.stage.Stage;
  *
  * @author Charlie
  */
-public class AgregarContactoPersonaController implements Initializable {
-    private static final long serialVersionUID=1L;
+public class AgregarContactoAsociadoPersonaController implements Initializable {
 
     @FXML
     private ImageView iconoRegresar;
@@ -75,6 +62,8 @@ public class AgregarContactoPersonaController implements Initializable {
     private TextField TxtfechaImpUsuario;
     @FXML
     private ComboBox<String> CboxFav;
+    @FXML
+    private Label IdContactoPadre;
 
     /**
      * Initializes the controller class.
@@ -84,22 +73,25 @@ public class AgregarContactoPersonaController implements Initializable {
         // TODO
         ObservableList<String> list = FXCollections.observableArrayList("S", "N");
         CboxFav.setItems(list);
-        
-        
     }    
     
-    
+
+    void configurarACAP(Contacto contacto){
+        IdContactoPadre.setText(String.valueOf(contacto.getId()));
+        
+    }
     
     @FXML
-    private void regresar(MouseEvent event) throws IOException {
-        App.setRoot("TipoContacto");
+    private void regresar(MouseEvent event) {
     }
 
     @FXML
-    private void agregarContacto(MouseEvent event) throws IOException {
+    private void agregarContacto(MouseEvent event) {
+        int id = Integer.parseInt(IdContactoPadre.getText());
         
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
         
-      if (guardarContacto(TxtnombreUsuario, TxtcelularUsuario, TxtcorreoUsuario, TxtcelTrabajoUsuario, TxtdireccionUsuario, TxtdirTrabajoUsuario, fechaImportante, TxtfechaImpUsuario, CboxFav) == false){
+         if (guardarContacto(TxtnombreUsuario, TxtcelularUsuario, TxtcorreoUsuario, TxtcelTrabajoUsuario, TxtdireccionUsuario, TxtdirTrabajoUsuario, fechaImportante, TxtfechaImpUsuario, CboxFav) == false){
           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText());
         contactoPersonaNuevo.agregarDireccion("Dirección de casa",TxtdireccionUsuario.getText());
@@ -108,6 +100,8 @@ public class AgregarContactoPersonaController implements Initializable {
         contactoPersonaNuevo.agregarTelefono("Celular personal", TxtcelTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarTelefono("Celular de trabajo", TxtcelTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarFechaImportante(TxtfechaImpUsuario.getText(), fechaImportante.getValue());
+        
+        contactoSeleccionado.getContactosRelacionados().add(contactoPersonaNuevo);
         
         
         
@@ -130,23 +124,51 @@ public class AgregarContactoPersonaController implements Initializable {
         alert.setContentText("Nuevo contacto agregado exitosamente");
         alert.showAndWait();
         stage.close();
+        
+        abrirListaContactoPadre(event);
          
-       
-
-        Platform.runLater(() -> {
-        try {
-
-            App nuevaInstancia = new App();
-            nuevaInstancia.start(new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         });
             
      }else{
           
       }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    void abrirListaContactoPadre(MouseEvent event){
+        int id = Integer.parseInt(IdContactoPadre.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaInfoContactosAsociados.fxml"));
+            Parent root = loader.load();
 
+            // Configurar el controlador de la vista de contacto para personas
+            ListaInfoContactosAsociadosController controller = loader.getController();
+            controller.configurarContactosAsociados(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de contactos asociados de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     
@@ -168,7 +190,17 @@ public class AgregarContactoPersonaController implements Initializable {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
-
+    
+    
+     private Contacto buscarContactoPorId(int id) {
+         for (Contacto contacto : Agenda.contactosMaster){
+             if (contacto.getId() == id){
+                 return contacto; 
+             }
+         }
+     
+        return null;
+    }
     
     
 }
