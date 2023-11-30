@@ -20,7 +20,8 @@ public class Contacto implements Serializable {
     String nombre;
     boolean isEmpresa;
     boolean favorito;
-    
+    String idContactoPadre;
+    String idcontactoEnListaDePadre;
     
     List<Direccion> direcciones;
     List<Email> emails;
@@ -32,7 +33,7 @@ public class Contacto implements Serializable {
     List<String> etiquetas;
     
     
-    public Contacto(String nombre){
+    public Contacto(String nombre, String idContactoPadre, String idcontactoEnListaDePadre  ){
         
         this.nombre = nombre;
         direcciones=new LinkedCircularDE();
@@ -43,9 +44,28 @@ public class Contacto implements Serializable {
         fechasImportantes=new LinkedCircularDE();
         fotos= new LinkedCircularDE();
         contactosRelacionados= new LinkedCircularDE();
+        this.idContactoPadre = idContactoPadre;
+        this.idcontactoEnListaDePadre = idcontactoEnListaDePadre;
+        
         
         GeneradorID gID= new GeneradorID();
         this.id=gID.generar();
+    }
+
+    public String getIdContactoPadre() {
+        return idContactoPadre;
+    }
+
+    public String getIdcontactoEnListaDePadre() {
+        return idcontactoEnListaDePadre;
+    }
+
+    public void setIdContactoPadre(String idContactoPadre) {
+        this.idContactoPadre = idContactoPadre;
+    }
+
+    public void setIdcontactoEnListaDePadre(String idcontactoEnListaDePadre) {
+        this.idcontactoEnListaDePadre = idcontactoEnListaDePadre;
     }
     
     /*@Override

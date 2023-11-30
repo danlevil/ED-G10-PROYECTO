@@ -68,6 +68,9 @@ public class ListaContactosController implements Initializable {
         mostrarElementos();
         
     }
+
+    
+    
     
     private void agregarHBox(Contacto contacto) {
         try {
@@ -87,6 +90,10 @@ public class ListaContactosController implements Initializable {
         }
     }
  
+    
+    
+    
+    
     
     @FXML
     private void filtrar(MouseEvent event) throws IOException {
@@ -110,6 +117,8 @@ public class ListaContactosController implements Initializable {
 
         lbnumpag.setText( String.valueOf(paginaActual));
     }    
+    
+    
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
 

@@ -47,5 +47,6 @@
          </children>
       </VBox>
       <Label fx:id="IdContactoPadre" text="Label" visible="false" />
+      <Label fx:id="indiceNuevo" text="Label" visible="false" />
    </children>
 </VBox>

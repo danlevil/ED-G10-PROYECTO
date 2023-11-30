@@ -56,9 +56,18 @@
                   <Image url="@../imagenes/usuario.png" />
                </image>
             </ImageView>
-            <Label fx:id="contactoId" text="Label" visible="false" />
-            <Label fx:id="contactoAsociadoID" text="Label" visible="false" />
-            <Label fx:id="IdContactoAenLaListaDeCP" text="Label" visible="false" />
+            <Label fx:id="contactoId" text="Label">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <Label fx:id="idContactoPadre" text="Label">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <Label fx:id="IdContactoAenLaListaDeCP" text="Label">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
          </children>
       </VBox>
    </left>

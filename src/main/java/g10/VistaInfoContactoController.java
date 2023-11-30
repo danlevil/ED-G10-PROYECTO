@@ -123,9 +123,9 @@ public class VistaInfoContactoController implements Initializable {
 
     Stage momentaneoStage= new Stage();
     @FXML
-    private Label contactoAsociadoID;
-    @FXML
     private Label IdContactoAenLaListaDeCP;
+    @FXML
+    private Label idContactoPadre;
 
     /**
      * Initializes the controller class.
@@ -145,12 +145,30 @@ public class VistaInfoContactoController implements Initializable {
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
         contactoId.setText(String.valueOf(contacto.getId()));
         
+        
+        //falta poner etiquetas y link para google maps   
+      
+     }
+     
+     //ver cómo ocupar este método para que salga la vista con los dos labeles llenos
+     public void configurarCompleto(ContactoPersona contacto, String idPadre, String indiceListaDePadre) {
+        this.contacto=contacto;
+        lbnombreCP.setText(contacto.getNombre());
+        lbcorreoCP.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
+        lbcelulerPCP.setText(contacto.getTelefonoPrincipal().getNumero());
+        lbDireccionCP.setText (contacto.getDireccionPrincipal().getUbicacion());
+        lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
+        LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
+        contactoId.setText(String.valueOf(contacto.getId()));
+        idContactoPadre.setText(idPadre); 
+        IdContactoAenLaListaDeCP.setText(indiceListaDePadre);
+        
         //falta poner etiquetas y link para google maps   
       
      }
      
      
-     public void configurarAsociado(ContactoPersona contacto, int idPadre) {
+     public void configurarAsociado(ContactoPersona contacto, int idPadre, int indiceListaDePadre) {
          this.contacto=contacto;
         lbnombreCP.setText(contacto.getNombre());
         lbcorreoCP.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
@@ -159,8 +177,8 @@ public class VistaInfoContactoController implements Initializable {
         lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
         contactoId.setText(String.valueOf(contacto.getId()));
-        contactoAsociadoID.setText(String.valueOf(idPadre));
-        
+        idContactoPadre.setText(String.valueOf(idPadre)); 
+        IdContactoAenLaListaDeCP.setText(String.valueOf(indiceListaDePadre));
      }
      
      public Contacto getSeleccionado(){
@@ -175,6 +193,8 @@ public class VistaInfoContactoController implements Initializable {
     }
     
     private void reload(MouseEvent event){
+        String idHijo =IdContactoAenLaListaDeCP.getText();
+        String idPadre = idContactoPadre.getText();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         // Cerrar la ventana actual
@@ -190,7 +210,7 @@ public class VistaInfoContactoController implements Initializable {
                 abrirVistaContactoEmpresa(contactoSeleccionado);
             } else {
                 // Abrir la vista de contacto para personas y pasar los datos
-                abrirVistaContactoPersona(contactoSeleccionado);
+                abrirVistaContactoPersona(contactoSeleccionado,idPadre, idHijo);
             }
     }
     private void editarContacto(MouseEvent event) {
@@ -239,7 +259,7 @@ public class VistaInfoContactoController implements Initializable {
     
       @FXML
     private void volverListContacts(MouseEvent event) throws IOException {
-        if (contactoAsociadoID.getText().equals("Label") == true){
+        if (idContactoPadre.getText().equals("Label") == true){
             regresarAListaContactosOriginal(event);
        }
           regresarAListaContactosAsociados(event);
@@ -269,7 +289,7 @@ public class VistaInfoContactoController implements Initializable {
  
   private void regresarAListaContactosAsociados(MouseEvent event) throws IOException {
       
-       int id = Integer.parseInt(contactoAsociadoID.getText());
+       int id = Integer.parseInt(idContactoPadre.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
          try {
@@ -958,64 +978,295 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void eliminarContacto(MouseEvent event) {
         
-        if (IdContactoAenLaListaDeCP.getText().equals("Label") == true){
-            eliminarContactoOriginal(event);
-       }
+//        if (IdContactoAenLaListaDeCP.getText().equals("Label") == true){
+//            eliminarContactoOriginal(event);
+//       }
           
+        int idDeContactoAEliminar =Integer.parseInt(contactoId.getText());
         
+        Contacto contactoSeleccionado = buscarContactoPorId(idDeContactoAEliminar);
         
-      
-    }
-    
-    private void eliminarContactoOriginal(MouseEvent event){
-        int id = Integer.parseInt(contactoId.getText());
+        String idDeContactoPadre = contactoSeleccionado.getIdContactoPadre();
+        String IndiceEnListaDeContactoPadre = contactoSeleccionado.getIdcontactoEnListaDePadre();
+        int idContactoPadre;
+        int indiceEnListaDeCP;
         
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Confirmar Eliminación");
-        alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
-        alert.setContentText("Esta acción no se puede deshacer.");
-        ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
-        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+        if (idDeContactoPadre.equals("Label") == false && IndiceEnListaDeContactoPadre.equals("Label") == false ){
+            
+            idContactoPadre = Integer.parseInt(idDeContactoPadre);
+            Contacto ContactoPadre = buscarContactoPorId(idContactoPadre);
+            indiceEnListaDeCP = Integer.parseInt(IndiceEnListaDeContactoPadre);
+            
+            
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirmar Eliminación");
+            alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
+            alert.setContentText("Esta acción no se puede deshacer.");
+            ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+            ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+            Optional<ButtonType> resultado = alert.showAndWait();
         
-        Optional<ButtonType> resultado = alert.showAndWait();
-        
-        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+            if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+                
+                if(contactoSeleccionado.getContactosRelacionados().size()>=1){
+                         for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
+                             contactoSeleccionado.getContactosRelacionados().remove(contacto);
+                             Agenda.eliminarPersona((ContactoPersona)contacto);
+                             Agenda.contactosMaster.remove(contacto);
+                        
+                         }
+                         
+                }
            
-           Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
-           Agenda.contactosMaster.remove(contactoSeleccionado);
+                Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
+                Agenda.contactosMaster.remove(contactoSeleccionado);
+                ContactoPadre.getContactosRelacionados().remove(indiceEnListaDeCP);
 
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setTitle("Information Dialog");
-            alert1.setHeaderText("Resultado de la operación");
-            alert1.setContentText("Contacto eliminado exitosamente");
-            alert1.showAndWait();
-        
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                 alert1.setTitle("Information Dialog");
+                 alert1.setHeaderText("Resultado de la operación");
+                 alert1.setContentText("Contacto eliminado exitosamente");
+                 alert1.showAndWait();
 
-            // Cerrar la ventana actual
-            stage.close();
-        
-            Platform.runLater(() -> {
-            try {
+                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            App nuevaInstancia = new App();
-            nuevaInstancia.start(new Stage());
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-             });
-        } else {
-                // El usuario ha hecho clic en "Cancelar" o ha cerrado el Alert
-                // No realizar ninguna acción
-          }
+                 // Cerrar la ventana actual
+                 stage.close();
+
+                 Platform.runLater(() -> {
+                 try {
+
+                 App nuevaInstancia = new App();
+                 nuevaInstancia.start(new Stage());
+                 } catch (Exception e) {
+                 e.printStackTrace();
+                 }
+                  });
+              }
+
+            }else if(idDeContactoPadre.equals("Label") == true && IndiceEnListaDeContactoPadre.equals("Label") == true) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                 alert.setTitle("Confirmar Eliminación");
+                 alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
+                 alert.setContentText("Esta acción no se puede deshacer.");
+                 ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+                 ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+                 alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+
+                 Optional<ButtonType> resultado = alert.showAndWait();
+
+                 if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+                     int id;
+                     if(contactoSeleccionado.getContactosRelacionados().size()>=1){
+                         for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
+                             contactoSeleccionado.getContactosRelacionados().remove(contacto);
+                             Agenda.eliminarPersona((ContactoPersona)contacto);
+                             Agenda.contactosMaster.remove(contacto);
+
+                         }
+                             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                         alert1.setTitle("Information Dialog");
+                         alert1.setHeaderText("Resultado de la operación");
+                         alert1.setContentText("Contacto eliminado exitosamente");
+                         alert1.showAndWait();
+
+                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                         // Cerrar la ventana actual
+                         stage.close();
+
+                         Platform.runLater(() -> {
+                         try {
+
+                         App nuevaInstancia = new App();
+                         nuevaInstancia.start(new Stage());
+                         } catch (Exception e) {
+                         e.printStackTrace();
+                         }
+                          });
+                     }
+
+                    Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
+                    Agenda.contactosMaster.remove(contactoSeleccionado);
+
+                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                     alert1.setTitle("Information Dialog");
+                     alert1.setHeaderText("Resultado de la operación");
+                     alert1.setContentText("Contacto eliminado exitosamente");
+                     alert1.showAndWait();
+
+                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                     // Cerrar la ventana actual
+                     stage.close();
+
+                     Platform.runLater(() -> {
+                     try {
+
+                     App nuevaInstancia = new App();
+                     nuevaInstancia.start(new Stage());
+                     } catch (Exception e) {
+                     e.printStackTrace();
+                     }
+                      });
+                 } else {
+                         // El usuario ha hecho clic en "Cancelar" o ha cerrado el Alert
+                         // No realizar ninguna acción
+                   }
+            
+            }else{
+
+           }
+
     }
     
-    
-    private void eliminarContactoAsociado(MouseEvent event){
-        
-    }
+//    private void eliminarContactoOriginal(MouseEvent event){
+//        int id = Integer.parseInt(contactoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(id);
+//        Alert alert = new Alert(Alert.AlertType.WARNING);
+//        alert.setTitle("Confirmar Eliminación");
+//        alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
+//        alert.setContentText("Esta acción no se puede deshacer.");
+//        ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+//        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+//        
+//        Optional<ButtonType> resultado = alert.showAndWait();
+//        
+//        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+//           
+//           Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
+//           Agenda.contactosMaster.remove(contactoSeleccionado);
+//
+//            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+//            alert1.setTitle("Information Dialog");
+//            alert1.setHeaderText("Resultado de la operación");
+//            alert1.setContentText("Contacto eliminado exitosamente");
+//            alert1.showAndWait();
+//        
+//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//            // Cerrar la ventana actual
+//            stage.close();
+//        
+//            Platform.runLater(() -> {
+//            try {
+//
+//            App nuevaInstancia = new App();
+//            nuevaInstancia.start(new Stage());
+//            } catch (Exception e) {
+//            e.printStackTrace();
+//            }
+//             });
+//        } else {
+//                // El usuario ha hecho clic en "Cancelar" o ha cerrado el Alert
+//                // No realizar ninguna acción
+//          }
+//    }
+//    
+//    
+//    private void eliminarContactoAsociado(MouseEvent event){
+//        int idDeContactoAEliminar =Integer.parseInt(contactoId.getText());
+//        
+//        Contacto contactoSeleccionado = buscarContactoPorId(idDeContactoAEliminar);
+//        
+//        String idDeContactoPadre = contactoSeleccionado.getIdContactoPadre();
+//        String IndiceEnListaDeContactoPadre = contactoSeleccionado.getIdcontactoEnListaDePadre();
+//        int idContactoPadre;
+//        int indiceEnListaDeCP;
+//        
+//        if (idDeContactoPadre.equals("Label") == false && IndiceEnListaDeContactoPadre.equals("Label") == false ){
+//            
+//            idContactoPadre = Integer.parseInt(idDeContactoPadre);
+//            Contacto ContactoPadre = buscarContactoPorId(idContactoPadre);
+//            indiceEnListaDeCP = Integer.parseInt(IndiceEnListaDeContactoPadre);
+//            
+//            
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Confirmar Eliminación");
+//            alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
+//            alert.setContentText("Esta acción no se puede deshacer.");
+//            ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+//            ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+//            alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+//            Optional<ButtonType> resultado = alert.showAndWait();
+//        
+//        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+//           
+//           Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
+//           Agenda.contactosMaster.remove(contactoSeleccionado);
+//           ContactoPadre.getContactosRelacionados().remove(indiceEnListaDeCP);
+//
+//            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+//            alert1.setTitle("Information Dialog");
+//            alert1.setHeaderText("Resultado de la operación");
+//            alert1.setContentText("Contacto eliminado exitosamente");
+//            alert1.showAndWait();
+//        
+//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//            // Cerrar la ventana actual
+//            stage.close();
+//        
+//            Platform.runLater(() -> {
+//            try {
+//
+//            App nuevaInstancia = new App();
+//            nuevaInstancia.start(new Stage());
+//            } catch (Exception e) {
+//            e.printStackTrace();
+//            }
+//             });
+//         }
+//        
+//       }else if(idDeContactoPadre.equals("Label") == true && IndiceEnListaDeContactoPadre.equals("Label") == true) {
+//           
+//            
+//        }else{
+//        Alert alert = new Alert(Alert.AlertType.WARNING);
+//        alert.setTitle("Confirmar Eliminación");
+//        alert.setHeaderText("¿Está seguro que desea eliminar este contacto?");
+//        alert.setContentText("Esta acción no se puede deshacer.");
+//        ButtonType buttonTypeAceptar = new ButtonType("Aceptar");
+//        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        alert.getButtonTypes().setAll(buttonTypeAceptar, buttonTypeCancelar);
+//        
+//        Optional<ButtonType> resultado = alert.showAndWait();
+//        
+//        if (resultado.isPresent() && resultado.get() == buttonTypeAceptar) {
+//           
+//           Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
+//           Agenda.contactosMaster.remove(contactoSeleccionado);
+//
+//            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+//            alert1.setTitle("Information Dialog");
+//            alert1.setHeaderText("Resultado de la operación");
+//            alert1.setContentText("Contacto eliminado exitosamente");
+//            alert1.showAndWait();
+//        
+//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//            // Cerrar la ventana actual
+//            stage.close();
+//        
+//            Platform.runLater(() -> {
+//            try {
+//
+//            App nuevaInstancia = new App();
+//            nuevaInstancia.start(new Stage());
+//            } catch (Exception e) {
+//            e.printStackTrace();
+//            }
+//             });
+//        } else {
+//                // El usuario ha hecho clic en "Cancelar" o ha cerrado el Alert
+//                // No realizar ninguna acción
+//          }
+//       }
+//       
+//    }
     
     
     
@@ -1124,7 +1375,7 @@ public class VistaInfoContactoController implements Initializable {
         
     }
 
-    private void abrirVistaContactoPersona(Contacto contacto) {
+    private void abrirVistaContactoPersona(Contacto contacto, String idPadre, String indiceListaDePadre) {
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));

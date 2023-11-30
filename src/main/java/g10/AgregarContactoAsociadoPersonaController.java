@@ -64,6 +64,8 @@ public class AgregarContactoAsociadoPersonaController implements Initializable {
     private ComboBox<String> CboxFav;
     @FXML
     private Label IdContactoPadre;
+    @FXML
+    private Label IdListaDeContactoPadre;
 
     /**
      * Initializes the controller class.
@@ -76,8 +78,9 @@ public class AgregarContactoAsociadoPersonaController implements Initializable {
     }    
     
 
-    void configurarACAP(Contacto contacto){
+    void configurarACAP(Contacto contacto, int listaindex){
         IdContactoPadre.setText(String.valueOf(contacto.getId()));
+        IdListaDeContactoPadre.setText(String.valueOf(listaindex));
         
     }
     
@@ -93,13 +96,16 @@ public class AgregarContactoAsociadoPersonaController implements Initializable {
         
          if (guardarContacto(TxtnombreUsuario, TxtcelularUsuario, TxtcorreoUsuario, TxtcelTrabajoUsuario, TxtdireccionUsuario, TxtdirTrabajoUsuario, fechaImportante, TxtfechaImpUsuario, CboxFav) == false){
           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText());
+          ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText(),IdContactoPadre.getText(),IdListaDeContactoPadre.getText());
         contactoPersonaNuevo.agregarDireccion("Dirección de casa",TxtdireccionUsuario.getText());
         contactoPersonaNuevo.agregarDireccion("Dirección de trabajo",TxtdirTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarEmail("Correo Principal", TxtcorreoUsuario.getText());
         contactoPersonaNuevo.agregarTelefono("Celular personal", TxtcelTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarTelefono("Celular de trabajo", TxtcelTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarFechaImportante(TxtfechaImpUsuario.getText(), fechaImportante.getValue());
+        
+        //contactoPersonaNuevo.setIdPadre(idPadre)
+        //contactoPersonaNuevo.setIndiceListaPadre(IndiceListaPadre)
         
         contactoSeleccionado.getContactosRelacionados().add(contactoPersonaNuevo);
         

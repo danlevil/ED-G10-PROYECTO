@@ -140,7 +140,7 @@ public class ContactoAsociadoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VistaInfoContactoController controller = loader.getController();
-            controller.configurarAsociado((ContactoPersona) contacto, idPadre); // Método para pasar los datos del contacto
+            controller.configurarAsociado((ContactoPersona) contacto, idPadre,idHijo ); // Método para pasar los datos del contacto
             
             
             

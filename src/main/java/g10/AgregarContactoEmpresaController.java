@@ -90,7 +90,7 @@ public class AgregarContactoEmpresaController implements Initializable {
       if(guardarContacto(TxtnombreEmpresa, TxtcelularPEmpresa, TxtcorreoEmpresa, TxtcelTrabajoEmpresa, TxtTituloEnEmpresa, txtdirecciónEmpresa,  txtCargoEmpresa1, fechaImportante , TxtfechaImpUsuario, CboxFav ) == false){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        ContactoEmpresa contactoEmpresaNuevo= new ContactoEmpresa(TxtnombreEmpresa.getText());
+        ContactoEmpresa contactoEmpresaNuevo= new ContactoEmpresa(TxtnombreEmpresa.getText(),"Label","Label");
         contactoEmpresaNuevo.agregarDireccion("Dirección de empresa",txtdirecciónEmpresa.getText());
         contactoEmpresaNuevo.agregarEmail("Correo empresa", TxtcorreoEmpresa.getText());
         contactoEmpresaNuevo.agregarTelefono("Celular de trabajo", TxtcelTrabajoEmpresa.getText());

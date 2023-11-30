@@ -25,8 +25,8 @@ public class ContactoEmpresa extends Contacto{
     String puestoTrabajo;
     private ArrayList<Telefono> telefonoPersonal;
     
-    public ContactoEmpresa(String nombre){
-        super(nombre);
+    public ContactoEmpresa(String nombre, String idContactoPadre, String idcontactoEnListaDePadre){
+        super(nombre, idContactoPadre, idcontactoEnListaDePadre );
 //        this. Titulo= Titulo;
 //        this.telefonoPersonal = telefonoPersonal;
 //        this.puestoTrabajo=puestoTrabajo;

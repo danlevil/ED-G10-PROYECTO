@@ -155,8 +155,11 @@
                   </VBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="IdContactoPadre" text="Label" visible="false" GridPane.rowIndex="5" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="IdContactoPadre" text="Label" />
+                  <Label fx:id="IdListaDeContactoPadre" text="Label" />
+               </children></VBox>
          </children>
       </GridPane>
    </center>

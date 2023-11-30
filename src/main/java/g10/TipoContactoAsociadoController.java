@@ -36,6 +36,8 @@ public class TipoContactoAsociadoController implements Initializable {
     private Button btContactEmpresa;
     @FXML
     private Label IdContactoPadre;
+    @FXML
+    private Label indiceNuevo;
 
     /**
      * Initializes the controller class.
@@ -45,8 +47,9 @@ public class TipoContactoAsociadoController implements Initializable {
         // TODO
     }    
 
-    void configurarTipoContactoAs (Contacto contacto){
+    void configurarTipoContactoAs (Contacto contacto, int IndiceNuevo){
        IdContactoPadre.setText(String.valueOf(contacto.getId()));
+       indiceNuevo.setText(String.valueOf(IndiceNuevo));
         
     }
     @FXML
@@ -58,6 +61,7 @@ public class TipoContactoAsociadoController implements Initializable {
         int id = Integer.parseInt(IdContactoPadre.getText());//  se toma el id del contacto padre 
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
+        int indiceLista = Integer.parseInt(indiceNuevo.getText());
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarContactoAsociadoPersona.fxml"));
@@ -65,7 +69,7 @@ public class TipoContactoAsociadoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             AgregarContactoAsociadoPersonaController controller = loader.getController();
-            controller.configurarACAP(contactoSeleccionado); // Método para pasar los datos del contacto
+            controller.configurarACAP(contactoSeleccionado,indiceLista ); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();

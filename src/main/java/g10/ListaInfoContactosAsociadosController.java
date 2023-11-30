@@ -111,9 +111,13 @@ public class ListaInfoContactosAsociadosController implements Initializable {
 
     @FXML
     private void añadirContacto(MouseEvent event) throws IOException {
+        
         int id = Integer.parseInt(IdContacto.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        int numeroDeContactoNuevo = contactoSeleccionado.getContactosRelacionados().size();
+        System.out.println(numeroDeContactoNuevo);
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TipoContactoAsociado.fxml"));
@@ -121,7 +125,7 @@ public class ListaInfoContactosAsociadosController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             TipoContactoAsociadoController controller = loader.getController();
-            controller.configurarTipoContactoAs(contactoSeleccionado); // Método para pasar los datos del contacto
+            controller.configurarTipoContactoAs(contactoSeleccionado, numeroDeContactoNuevo); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();

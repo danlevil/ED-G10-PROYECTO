@@ -101,7 +101,7 @@ public class AgregarContactoPersonaController implements Initializable {
         
       if (guardarContacto(TxtnombreUsuario, TxtcelularUsuario, TxtcorreoUsuario, TxtcelTrabajoUsuario, TxtdireccionUsuario, TxtdirTrabajoUsuario, fechaImportante, TxtfechaImpUsuario, CboxFav) == false){
           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText());
+          ContactoPersona contactoPersonaNuevo= new ContactoPersona(TxtnombreUsuario.getText(),"Label","Label");
         contactoPersonaNuevo.agregarDireccion("Dirección de casa",TxtdireccionUsuario.getText());
         contactoPersonaNuevo.agregarDireccion("Dirección de trabajo",TxtdirTrabajoUsuario.getText());
         contactoPersonaNuevo.agregarEmail("Correo Principal", TxtcorreoUsuario.getText());

@@ -31,8 +31,8 @@ public class ContactoPersona extends Contacto {
     
     
     //public ContactoPersona(){};
-    public ContactoPersona(String nombre){
-        super(nombre);
+    public ContactoPersona(String nombre, String idContactoPadre, String idcontactoEnListaDePadre){
+        super(nombre, idContactoPadre, idcontactoEnListaDePadre);
 //        this.telefonoPersonal = telefonoPersonal;
 //        this.fechaCumpleaños = fechaCumpleaños;
 //        this.direccionPersonal = direccionPersonal;

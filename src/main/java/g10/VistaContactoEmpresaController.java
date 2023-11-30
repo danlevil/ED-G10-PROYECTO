@@ -118,6 +118,10 @@ public class VistaContactoEmpresaController implements Initializable {
 
     private Contacto seleccionado;
     Stage momentaneoStage= new Stage();
+    @FXML
+    private Label idContactoPadre;
+    @FXML
+    private Label IdContactoAenLaListaDeCP;
     /**
      * Initializes the controller class.
      */
@@ -155,6 +159,8 @@ public class VistaContactoEmpresaController implements Initializable {
     }
     
     private void reload(MouseEvent event){
+        String idHijo =IdContactoAenLaListaDeCP.getText();
+        String idPadre = idContactoPadre.getText();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         // Cerrar la ventana actual
@@ -170,7 +176,7 @@ public class VistaContactoEmpresaController implements Initializable {
                 abrirVistaContactoEmpresa(contactoSeleccionado);
             } else {
                 // Abrir la vista de contacto para personas y pasar los datos
-                abrirVistaContactoPersona(contactoSeleccionado);
+                 abrirVistaContactoPersona(contactoSeleccionado,idPadre, idHijo);
             }
     }
     
@@ -869,7 +875,7 @@ public class VistaContactoEmpresaController implements Initializable {
         
     }
 
-    private void abrirVistaContactoPersona(Contacto contacto) {
+    private void abrirVistaContactoPersona(Contacto contacto, String idPadre, String indiceListaDePadre) {
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
@@ -877,7 +883,7 @@ public class VistaContactoEmpresaController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VistaInfoContactoController controller = loader.getController();
-            controller.configurar((ContactoPersona) contacto); // Método para pasar los datos del contacto
+           controller.configurar((ContactoPersona) contacto); // Método para pasar los datos del contacto
             
             
             

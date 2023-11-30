@@ -72,25 +72,27 @@ public class ContactoController implements Initializable {
         lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
         Lblid.setText(String.valueOf(contacto.getId())); 
         System.out.println(Lblid.getText());
+        idContactoPadre.setText(String.valueOf(contacto.getIdContactoPadre()));
+        idContactoEnListaDeC.setText(String.valueOf(contacto.getIdcontactoEnListaDePadre()));
     }
     
-    public void configuararAsociado(Contacto contacto, int idPadre, int idHijo){
-        this.contactoSeleccionado=contacto;
-
-        lbcontactonombre.setText(contacto.getNombre());
-        lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
-        Lblid.setText(String.valueOf(contacto.getId())); 
-        idContactoPadre.setText(String.valueOf(idPadre));
-        idContactoEnListaDeC.setText(String.valueOf(idHijo));
-      //System.out.println(Lblid.getText());
-        
-    }
+//    public void configuararAsociado(Contacto contacto){
+//        this.contactoSeleccionado=contacto;
+//
+//        lbcontactonombre.setText(contacto.getNombre());
+//        lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
+//        Lblid.setText(String.valueOf(contacto.getId())); 
+//        
+//      //System.out.println(Lblid.getText());
+//        
+//    }
     
     public Contacto getSeleccionado(){
         return contactoSeleccionado;
     }
     @FXML
     private void abrirContactoInfo(MouseEvent event) throws IOException {
+        
         int id = Integer.parseInt(Lblid.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -110,6 +112,9 @@ public class ContactoController implements Initializable {
 
             // Cerrar la ventana actual
             stage.close();
+            
+            System.out.println(idContactoPadre.getText());
+            System.out.println(idContactoEnListaDeC.getText());
                 
     }
     
