@@ -72,7 +72,7 @@ public class FotoController implements Initializable {
        if(foto!=null){
             String rutaFoto= foto.getArchivo();
             Image image=new Image("file:"+rutaFoto);
-            fotoSeleccionada=image;
+            //fotoSeleccionada=image;
             imgID.setText(String.valueOf(idFoto));
 
             imagen.setImage(image);
@@ -83,13 +83,12 @@ public class FotoController implements Initializable {
     }
     
     public void configurar(Foto foto){
-        
         if(foto!=null){
             String rutaFoto= foto.getArchivo();
             Image image=new Image("file:"+rutaFoto);
             imagen.setImage(image);
+            fotoSeleccionada=image;
             System.out.println(imgID.getText());
-
         }else {
             Alert alerta = new Alert(AlertType.INFORMATION);
             alerta.setTitle("Sin Fotos");

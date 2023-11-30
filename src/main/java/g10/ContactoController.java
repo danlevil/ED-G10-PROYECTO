@@ -77,7 +77,6 @@ public class ContactoController implements Initializable {
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
         //this.contactoSeleccionado=contactoSeleccionado;
-        
             if (contactoSeleccionado.isEmpresa()) {
                 // Abrir la vista de contacto para empresas y pasar los datos
                 System.out.println("soy de empresa "+contactoSeleccionado.getId());

@@ -217,6 +217,7 @@ public class VistaInfoContactoController implements Initializable {
             controller.getBtSeleccionar().setOnAction(e->{
                 Image f= controller.fotoPerfil;
                 imgFotoContacto.setImage(f);
+                
                 System.out.println("me estoy seleccionando");
             });
             Scene scene = new Scene(root,600,400);
@@ -248,9 +249,7 @@ public class VistaInfoContactoController implements Initializable {
         });
         
         reload(event);  
-            
-          
-                
+         
     }
 
     @FXML
