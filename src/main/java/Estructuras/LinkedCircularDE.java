@@ -150,23 +150,41 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
     
     @Override
     public boolean add(E e) {
-        if(start==null){
-            start= new Nodo(e);
-            start.setSiguiente(this.start);
-            start.setPrevio(this.start);
-            tamaño++;
-            return true;
-        }
-        Nodo<E> nuevoNodo= new Nodo(e);
-        Nodo<E> inicio= this.start;
-        Nodo<E> prevInicio=inicio.getPrevio();
-        nuevoNodo.setPrevio(prevInicio);
-        nuevoNodo.setSiguiente(inicio);
-        inicio.setPrevio(nuevoNodo);
-        prevInicio.setSiguiente(nuevoNodo);
- 
-        tamaño++;
-        return true;
+//        if(start==null){
+//            start= new Nodo(e);
+//            start.setSiguiente(this.start);
+//            start.setPrevio(this.start);
+//            tamaño++;
+//            return true;
+//        }
+//        Nodo<E> nuevoNodo= new Nodo(e);
+//        Nodo<E> inicio= this.start;
+//        Nodo<E> prevInicio=inicio.getPrevio();
+//        nuevoNodo.setPrevio(prevInicio);
+//        nuevoNodo.setSiguiente(inicio);
+//        inicio.setPrevio(nuevoNodo);
+//        prevInicio.setSiguiente(nuevoNodo);
+// 
+//        tamaño++;
+//        return true;
+
+
+        Nodo <E> nuevoNodo = new Nodo(e);
+       if (start == null){
+           start = new Nodo(e);
+           start.siguiente = start;
+           start.previo = start;
+
+       }else{
+           Nodo<E> ultimo = start.previo;
+           ultimo.siguiente = nuevoNodo;
+           nuevoNodo.previo = ultimo;
+           nuevoNodo.siguiente = start;
+           start.previo = nuevoNodo;
+           
+       }
+           tamaño++;
+           return true;
 
     }
     @Override
@@ -292,23 +310,32 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
 
     @Override
     public boolean remove(Object o) {
-        Nodo <E> n;
-        for(n=start;n!=null;n=n.getSiguiente()){
-            if(n.getContenido().equals(o)){
-                Nodo<E>previo=n.getPrevio();
-                Nodo<E>sig= n.getSiguiente();
-                previo.setSiguiente(sig);
-                sig.setPrevio(previo);
-                if(n==start){
-                    start=sig;
+         //La lista está vacía o el objeto es nulo, no se puede eliminar
+        if (start == null || o == null) {
+        return false; 
+        }
+        Nodo<E> actual = start;
+        
+        do{
+            if (o.equals(actual.contenido)){
+                if (tamaño== 1){
+                  start = null; 
+                }else{
+                    actual.previo.siguiente = actual.siguiente;
+                    actual.siguiente.previo = actual.previo;
+                    if(actual == start){
+                        start = actual.siguiente;
+                        
+                    } 
                 }
-                n.setPrevio(null);
-                n.setSiguiente(null);
-                tamaño--;
+                tamaño --;
                 return true;
             }
-        }
+            actual = actual.siguiente;   
+        }while(actual != start);
         return false;
+        
+
     }
     @Override
     public Object[] toArray() {
