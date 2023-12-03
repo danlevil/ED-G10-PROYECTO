@@ -1211,15 +1211,15 @@ public class VistaInfoContactoController implements Initializable {
                                       alert1.setContentText("Elimine los contactos asociados para eliminar este" );
                                       alert1.showAndWait();
                             
-                               int id = 0;
-                                    //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-                                       while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-                                          Contacto contactoEncontrado = buscarContactoPorId(id);
-                                          contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-                                           Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-                                           Agenda.contactosMaster.remove(contactoEncontrado); 
-                                           id++;
-                                         }
+//                               int id = 0;
+//                                    //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
+//                                       while (id < contactoSeleccionado.getContactosRelacionados().size()) {
+//                                          Contacto contactoEncontrado = buscarContactoPorId(id);
+//                                          contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
+//                                           Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
+//                                           Agenda.contactosMaster.remove(contactoEncontrado); 
+//                                           id++;
+//                                         }
                                         //contactoSeleccionado.getContactosRelacionados().remove(contacto);
                                        // Agenda.eliminarPersona((ContactoPersona)contacto);
                                        // Agenda.contactosMaster.remove(contacto);                      
@@ -1283,15 +1283,15 @@ public class VistaInfoContactoController implements Initializable {
                                       alert1.setHeaderText("Este contacto tiene " +contactoSeleccionado.getContactosRelacionados().size()+" contactos asociados" );
                                       alert1.setContentText("Elimine los contactos asociados para eliminar este" );
                                       alert1.showAndWait();
-                                       int id = 0;
-                                            //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-                                               while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-                                                  Contacto contactoEncontrado = buscarContactoPorId(id);
-                                                  contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-                                                  Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-                                                   Agenda.contactosMaster.remove(contactoEncontrado); 
-                                                   id++;
-                                                 }
+//                                       int id = 0;
+//                                            //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
+//                                               while (id < contactoSeleccionado.getContactosRelacionados().size()) {
+//                                                  Contacto contactoEncontrado = buscarContactoPorId(id);
+//                                                  contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
+//                                                  Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
+//                                                   Agenda.contactosMaster.remove(contactoEncontrado); 
+//                                                   id++;
+//                                                 }
                                                 //contactoSeleccionado.getContactosRelacionados().remove(contacto);
                                                // Agenda.eliminarPersona((ContactoPersona)contacto);
                                                // Agenda.contactosMaster.remove(contacto);                      
@@ -1366,15 +1366,15 @@ public class VistaInfoContactoController implements Initializable {
                                       alert1.setHeaderText("Este contacto tiene " +contactoSeleccionado.getContactosRelacionados().size()+" contactos asociados" );
                                       alert1.setContentText("Elimine los contactos asociados para eliminar este" );
                                       alert1.showAndWait();
-                                       int id = 0;
-                                            //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-                                               while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-                                                  Contacto contactoEncontrado = buscarContactoPorId(id);
-                                                  contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-                                                  Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-                                                   Agenda.contactosMaster.remove(contactoEncontrado); 
-                                                   id++;
-                                                 }
+//                                       int id = 0;
+//                                            //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
+//                                               while (id < contactoSeleccionado.getContactosRelacionados().size()) {
+//                                                  Contacto contactoEncontrado = buscarContactoPorId(id);
+//                                                  contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
+//                                                  Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
+//                                                   Agenda.contactosMaster.remove(contactoEncontrado); 
+//                                                   id++;
+//                                                 }
                                                 //contactoSeleccionado.getContactosRelacionados().remove(contacto);
                                                // Agenda.eliminarPersona((ContactoPersona)contacto);
                                                // Agenda.contactosMaster.remove(contacto);                      

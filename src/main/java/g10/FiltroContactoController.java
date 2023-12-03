@@ -52,13 +52,14 @@ public class FiltroContactoController implements Initializable {
         
     }
 
-    @FXML
-    private void filtrarFechaCumpleaños(ActionEvent event) {
-    }
     
     @FXML
     private void irVentanaContactos(MouseEvent event) throws IOException {
         App.setRoot("ListaContactos");
+    }
+
+    @FXML
+    private void filtrarPorPersonas(ActionEvent event) {
     }
 
 }
