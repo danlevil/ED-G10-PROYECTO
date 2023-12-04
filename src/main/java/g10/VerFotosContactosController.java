@@ -74,9 +74,11 @@ public class VerFotosContactosController implements Initializable {
 
             // Configurar el controlador del HBox
             FotoController controllerFoto = loader.getController();
-            
+            if(c.getFotos().size()!=0){
+            controllerFoto.configurar(c.getFotos().get(paginaActual-1));
+            }
             controllerFoto.configurar(c.getFotos().get(paginaActual));
-
+            
             // Agregar el HBox al VBox
             
             int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;

@@ -124,6 +124,7 @@ public class ListaContactosController implements Initializable {
         List<Contacto> nombreEspecifico= f3.filtrarTexto(Agenda.contactosMaster, "sss");
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
         //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, nombreEspecifico.size());
+        //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, soloEmpresas.size());
         for (int i = inicio; i < fin; i++) {
             agregarHBox(Agenda.contactosMaster.get(i));
             //agregarHBox(alfabetica.get(i));

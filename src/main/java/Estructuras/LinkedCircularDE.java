@@ -61,6 +61,11 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
         return ordenada;
     }
 
+    @Override
+    public boolean moverPrincipio(E e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
     
     public class Nodo<E> implements Serializable{
@@ -370,10 +375,7 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
         start=null;
     }
 
-    @Override
-    public void moverFavorito() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 
     @Override
     public void recorrer() {

@@ -91,7 +91,9 @@ public class FotosContactosController implements Initializable {
 
             // Configurar el controlador del HBox
             FotoController controllerFoto = loader.getController();
-            
+            if(c.getFotos().size()!=0){
+                controllerFoto.configurar(c.getFotos().get(paginaActual-1));
+            }
             controllerFoto.configurar(c.getFotos().get(paginaActual));
             fotoPerfil=controllerFoto.fotoSeleccionada;
             // Agregar el HBox al VBox
