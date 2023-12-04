@@ -11,6 +11,9 @@ Modelo/ContactoEmpresa.class
 g10/App.class
 Modelo/Agenda.class
 g10/AgregarContactoEmpresaController.class
+FIltradores/FiltradorEmpresas.class
+FIltradores/FiltradorNombre.class
+Comparadores/ComparadorText.class
 Comparadores/ComparadorNombreContacto.class
 Estructuras/ArrayList.class
 Modelo/CargadorDeArchivos.class
@@ -20,14 +23,17 @@ Comparadores/ComparadorFavoritos.class
 g10/VistaInfoContactoController.class
 Estructuras/List.class
 g10/AgregarContactoPersonaController.class
+FIltradores/FiltradorFavoritos.class
 module-info.class
 g10/FotoController.class
+FIltradores/FiltroEmpresas.class
 g10/VistaContactoEmpresaController.class
 Estructuras/LinkedCircularDE$1.class
 g10/ContactoController.class
 Modelo/Serializador.class
 Fields/Fecha.class
 Comparadores/ComparadorEmpresa.class
+FIltradores/FiltroFavoritos.class
 Fields/RedSocial.class
 g10/FiltroContactoController.class
 Fields/Telefono.class

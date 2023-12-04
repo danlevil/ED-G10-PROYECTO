@@ -4,6 +4,7 @@
  */
 package Estructuras;
 
+import Comparadores.ComparadorNombreContacto;
 import Modelo.Contacto;
 import java.io.Serializable;
 import java.util.Collection;
@@ -59,6 +60,8 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
         }
         return ordenada;
     }
+
+
     
     public class Nodo<E> implements Serializable{
         E contenido;

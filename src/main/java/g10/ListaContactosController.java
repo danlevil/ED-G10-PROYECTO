@@ -9,6 +9,9 @@ import Comparadores.ComparadorFavoritos;
 import Comparadores.ComparadorNombreContacto;
 import Estructuras.LinkedCircularDE;
 import Estructuras.List;
+import FIltradores.FiltradorEmpresas;
+import FIltradores.FiltradorFavoritos;
+import FIltradores.FiltradorNombre;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import java.io.FileInputStream;
@@ -104,19 +107,32 @@ public class ListaContactosController implements Initializable {
     private void mostrarElementos() {
         VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
         ComparadorNombreContacto cmp1= new ComparadorNombreContacto();
         ComparadorEmpresa cmp2= new ComparadorEmpresa();
         ComparadorFavoritos cmp3= new ComparadorFavoritos();
+        //ORDENAMIENTO
         List<Contacto> alfabetica= Agenda.contactosMaster.ordenar(cmp1);
         List<Contacto> empresasFirst=Agenda.contactosMaster.ordenar(cmp2);
         List<Contacto> favFirst=Agenda.contactosMaster.ordenar(cmp3);
-                
+        
+        //FILTRADO
+        FiltradorEmpresas f1= new FiltradorEmpresas();
+        FiltradorFavoritos f2= new FiltradorFavoritos();
+        FiltradorNombre f3= new FiltradorNombre();
+        List<Contacto> soloEmpresas= f1.filtrarSoloEmpresas(Agenda.contactosMaster);
+        List<Contacto> solofavs= f2.filtrarSoloFavoritos(Agenda.contactosMaster);
+        List<Contacto> nombreEspecifico= f3.filtrarTexto(Agenda.contactosMaster, "sss");
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, nombreEspecifico.size());
         for (int i = inicio; i < fin; i++) {
-            //agregarHBox(Agenda.contactosMaster.get(i));
+            agregarHBox(Agenda.contactosMaster.get(i));
             //agregarHBox(alfabetica.get(i));
             //agregarHBox(empresasFirst.get(i));
-            agregarHBox(favFirst.get(i));
+            //agregarHBox(favFirst.get(i));
+            //agregarHBox(soloEmpresas.get(i));
+            //agregarHBox(solofavs.get(i));
+            //agregarHBox(nombreEspecifico.get(i));
+            
             
         }
 
