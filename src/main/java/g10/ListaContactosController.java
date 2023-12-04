@@ -4,6 +4,9 @@
  */
 package g10;
 
+import Comparadores.ComparadorEmpresa;
+import Comparadores.ComparadorFavoritos;
+import Comparadores.ComparadorNombreContacto;
 import Estructuras.LinkedCircularDE;
 import Estructuras.List;
 import Modelo.Agenda;
@@ -102,9 +105,18 @@ public class ListaContactosController implements Initializable {
         VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
-
+        ComparadorNombreContacto cmp1= new ComparadorNombreContacto();
+        ComparadorEmpresa cmp2= new ComparadorEmpresa();
+        ComparadorFavoritos cmp3= new ComparadorFavoritos();
+        List<Contacto> alfabetica= Agenda.contactosMaster.ordenar(cmp1);
+        List<Contacto> empresasFirst=Agenda.contactosMaster.ordenar(cmp2);
+        List<Contacto> favFirst=Agenda.contactosMaster.ordenar(cmp3);
+                
         for (int i = inicio; i < fin; i++) {
-            agregarHBox(Agenda.contactosMaster.get(i));
+            //agregarHBox(Agenda.contactosMaster.get(i));
+            //agregarHBox(alfabetica.get(i));
+            //agregarHBox(empresasFirst.get(i));
+            agregarHBox(favFirst.get(i));
             
         }
 

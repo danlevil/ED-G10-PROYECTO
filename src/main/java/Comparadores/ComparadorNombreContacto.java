@@ -5,24 +5,17 @@
 package Comparadores;
 
 import Modelo.Contacto;
-import Modelo.ContactoPersona;
 import java.util.Comparator;
 
 /**
  *
  * @author danlevil
  */
-public class ComparadorPersona implements Comparator<ContactoPersona> {
+public class ComparadorNombreContacto implements Comparator<Contacto>{
 
     @Override
-    public int compare(ContactoPersona o1, ContactoPersona o2) {
-        int verificador=0;
-        //if(o.)
-        return 0;
-
+    public int compare(Contacto o1, Contacto o2) {
+        return o1.getNombre().compareToIgnoreCase(o2.getNombre());
     }
-
-
-
     
 }

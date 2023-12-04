@@ -1,6 +1,5 @@
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/VerFotosContactosController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Modelo/Serializador.java
-/home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Comparadores/ComparadorPersona.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/FiltroContactoController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/FotosContactosController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/VistaInfoContactoController.java
@@ -17,6 +16,7 @@
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Fields/Email.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/TipoContactoController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/ContactoController.java
+/home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Comparadores/ComparadorFavoritos.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Fields/Foto.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/FotoController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Modelo/Agenda.java
@@ -26,7 +26,9 @@
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/App.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/AgregarContactoEmpresaController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Modelo/GeneradorID.java
+/home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Comparadores/ComparadorEmpresa.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Modelo/Contacto.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/AgregarContactoPersonaController.java
+/home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Comparadores/ComparadorNombreContacto.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/VistaContactoEmpresaController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/InfoDeDatosContactoController.java

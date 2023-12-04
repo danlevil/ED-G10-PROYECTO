@@ -4,10 +4,12 @@
  */
 package Estructuras;
 
+import Modelo.Contacto;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -40,6 +42,22 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
     @Override
     public E obtenerActual() {
         return viajero!=null? viajero.getContenido(): null;
+    }
+
+    @Override
+    public List<E> ordenar(Comparator cmp) {
+        List<E> ordenada= new LinkedCircularDE();
+        PriorityQueue<E> cola= new PriorityQueue(cmp);
+        Nodo<E> n=this.start;
+        while(this.size()!=cola.size()){
+            E contenido=n.getContenido();
+            cola.offer(contenido);
+            n= n.getSiguiente();
+        }
+        while(!cola.isEmpty()){
+            ordenada.add(cola.poll());
+        }
+        return ordenada;
     }
     
     public class Nodo<E> implements Serializable{

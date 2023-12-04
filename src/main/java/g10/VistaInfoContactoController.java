@@ -214,6 +214,8 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             FotosContactosController controller = loader.getController(); 
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
+            System.out.println("contacto id: "+contacto.getId());
+
             controller.getBtSeleccionar().setOnAction(e->{
                 Image f= controller.fotoPerfil;
                 imgFotoContacto.setImage(f);
@@ -968,7 +970,7 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             VerFotosContactosController controller = loader.getController(); 
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
-            
+             System.out.println("contacto id: "+contacto.getId());
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);
