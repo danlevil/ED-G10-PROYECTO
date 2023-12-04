@@ -60,6 +60,8 @@ public class FiltroContactoController implements Initializable {
 
     @FXML
     private void filtrarPorPersonas(ActionEvent event) {
+        
+        
     }
 
 }

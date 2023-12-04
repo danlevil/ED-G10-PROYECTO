@@ -68,10 +68,7 @@ public class Contacto implements Serializable {
         this.idcontactoEnListaDePadre = idcontactoEnListaDePadre;
     }
     
-    /*@Override
-    public String toString() {
-        return id +";"+ nombre + ";" + isEmpresa + ";" + favorito + ";" + direcciones.get(0)+ ";"+emails.get(0)+";"+telefonos.get(0)+";"+fotos.getStart()+";"+redesSociales.get(0)+";"+etiquetas.get(0)+";"+fechasImportantes.getStart();
-    }*/
+    
     //Nombre
     public String getNombre() {
         return nombre;
@@ -251,7 +248,10 @@ public class Contacto implements Serializable {
 
    
 
-   
+   @Override
+    public String toString() {
+        return id +";"+ nombre + ";" + isEmpresa + ";" + favorito + ";" + direcciones.get(0)+ ";"+emails.get(0)+";"+telefonos.get(0)+";"+fotos.getStart()+";"+redesSociales.get(0)+";"+etiquetas.get(0)+";"+fechasImportantes.getStart();
+    }
 
     
 

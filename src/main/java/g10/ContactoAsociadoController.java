@@ -57,12 +57,12 @@ public class ContactoAsociadoController implements Initializable {
         setMouseEvent(hboxContact1);
     }    
     
-    void configurar(Contacto contacto,  Contacto contactoAsociado, int idContactoAsociado){
+    void configurar(/*Contacto contacto,*/  Contacto contactoAsociado/*, int idContactoAsociado*/){
         lbcontactonombre.setText(contactoAsociado.getNombre());
         lbcontactocorreo.setText(contactoAsociado.getCorreoPrincipal().getDireccionCorreo());
-        LblidContactoPadre.setText(String.valueOf(contacto.getId())); 
+        LblidContactoPadre.setText(String.valueOf(contactoAsociado.getIdContactoPadre())); //contacto.getId()
         IdDeContactoAsociadoGeneral.setText(String.valueOf(contactoAsociado.getId())); 
-        IdContactoEnLista.setText(String.valueOf(idContactoAsociado)); 
+        IdContactoEnLista.setText(String.valueOf(contactoAsociado.getIdcontactoEnListaDePadre())); //idContactoAsociado
     }
 
     @FXML

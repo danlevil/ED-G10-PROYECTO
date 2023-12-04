@@ -6,6 +6,7 @@ package g10;
 
 import Modelo.Agenda;
 import Modelo.Contacto;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -53,7 +54,34 @@ public class TipoContactoAsociadoController implements Initializable {
         
     }
     @FXML
-    private void irVentanaContactos(MouseEvent event) {
+    private void irVentanaContactos(MouseEvent event) throws IOException {
+        int id = Integer.parseInt(IdContactoPadre.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+         try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaInfoContactosAsociados.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            ListaInfoContactosAsociadosController controller = loader.getController();
+            controller.configurarContactosAsociados(contactoSeleccionado); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de contactos asociados de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
     }
 
     @FXML

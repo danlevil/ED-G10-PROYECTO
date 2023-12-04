@@ -40,10 +40,10 @@ public class ContactoPersona extends Contacto {
     }
     
     
-    /*@Override
+    @Override
     public String toString() {
-        return super.toString() + ";" + fechaCumpleaños + ";"+direccionPersonal.get(0)+";"+ telefonoPersonal.get(0) ;
-    }*/
+        return super.toString();
+    }
     
     
     

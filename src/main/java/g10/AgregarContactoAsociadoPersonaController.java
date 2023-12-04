@@ -86,6 +86,37 @@ public class AgregarContactoAsociadoPersonaController implements Initializable {
     
     @FXML
     private void regresar(MouseEvent event) {
+        
+        int id = Integer.parseInt(IdContactoPadre.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        int numeroDeContactoNuevo = contactoSeleccionado.getContactosRelacionados().size();
+        System.out.println(numeroDeContactoNuevo);
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TipoContactoAsociado.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            TipoContactoAsociadoController controller = loader.getController();
+            controller.configurarTipoContactoAs(contactoSeleccionado, numeroDeContactoNuevo); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @FXML

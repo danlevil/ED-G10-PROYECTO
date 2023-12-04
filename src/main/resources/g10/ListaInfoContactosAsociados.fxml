@@ -89,7 +89,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <Label fx:id="IdContacto" prefHeight="17.0" prefWidth="878.0" text="label" visible="false" />
+                  <Label fx:id="IdContacto" prefHeight="17.0" prefWidth="878.0" text="label" />
                </children>
             </VBox>
          </children>

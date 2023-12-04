@@ -126,6 +126,8 @@ public class VistaInfoContactoController implements Initializable {
     private Label IdContactoAenLaListaDeCP;
     @FXML
     private Label idContactoPadre;
+    @FXML
+    private Label AyO;
 
     /**
      * Initializes the controller class.
@@ -144,7 +146,7 @@ public class VistaInfoContactoController implements Initializable {
         lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
         contactoId.setText(String.valueOf(contacto.getId()));
-        
+        AyO.setText("O");
         
         //falta poner etiquetas y link para google maps   
       
@@ -179,6 +181,7 @@ public class VistaInfoContactoController implements Initializable {
         contactoId.setText(String.valueOf(contacto.getId()));
         idContactoPadre.setText(String.valueOf(idPadre)); 
         IdContactoAenLaListaDeCP.setText(String.valueOf(indiceListaDePadre));
+        AyO.setText("A");
      }
      
      public Contacto getSeleccionado(){
@@ -191,6 +194,16 @@ public class VistaInfoContactoController implements Initializable {
         alert.setContentText("Contacto actualizado exitosamente");
         alert.showAndWait();
     }
+    
+    
+    
+    private Contacto encontrarContacto(){
+       int id = Integer.parseInt(contactoId.getText());
+        
+       Contacto contactoSeleccionado = buscarContactoPorId(id);
+       return contactoSeleccionado;
+    }
+    
     
     private void reload(MouseEvent event){
         String idHijo =IdContactoAenLaListaDeCP.getText();
@@ -213,6 +226,36 @@ public class VistaInfoContactoController implements Initializable {
                 abrirVistaContactoPersona(contactoSeleccionado,idPadre, idHijo);
             }
     }
+    
+    
+    
+    private void reloadAsociado(MouseEvent event, Contacto contacto){
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                    // Cerrar la ventana actual
+                    stage.close();
+
+                        if (contacto.isEmpresa()) {
+                            // Abrir la vista de contacto para empresas y pasar los datos
+                            abrirVistaContactoEmpresa(contacto);
+                        } else {
+                            // Abrir la vista de contacto para personas y pasar los datos
+                            abrirVistaContactoPersonaAsociada(contacto,Integer.parseInt(contacto.getIdContactoPadre()), Integer.parseInt(contacto.getIdcontactoEnListaDePadre()));
+                        }
+        
+    }
+    
+     private void reloadAsociadoOOriginal(MouseEvent event, Contacto contactoSeleccionado){
+        if (!IdContactoAenLaListaDeCP.getText().equals("Label")){
+                    
+                 reloadAsociado(event, contactoSeleccionado);
+            }else{
+                 reload(event); 
+                 
+             }
+    }
+    
+    
     private void editarContacto(MouseEvent event) {
         System.out.println("Contacto Editado");
     }
@@ -221,7 +264,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void mostrarVentanAsociados(ActionEvent event) {
         
-         int id = Integer.parseInt(contactoId.getText());
+        int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
          try {
@@ -259,6 +302,16 @@ public class VistaInfoContactoController implements Initializable {
     
       @FXML
     private void volverListContacts(MouseEvent event) throws IOException {
+        /*int idContacto = Integer.parseInt(contactoId.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(idContacto);
+        
+        if (AyO.getText().equals("A")){
+          regresarAListaContactosAsociados(event, contactoSeleccionado);  
+        }else if (AyO.getText().equals("O")){
+            regresarAListaContactosOriginal(event);
+            System.out.println(idContactoPadre.getText());
+        }*/
         if ("Label".equals(idContactoPadre.getText()) == true){
             regresarAListaContactosOriginal(event);
             System.out.println(idContactoPadre.getText());
@@ -355,6 +408,10 @@ public class VistaInfoContactoController implements Initializable {
     
     @FXML
     private void editarNombre(MouseEvent event) {
+        
+        Contacto contactoSeleccionado = encontrarContacto();
+        
+        
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
         dialog.setHeaderText("Ingrese un nuevo  nombre");
@@ -371,23 +428,39 @@ public class VistaInfoContactoController implements Initializable {
           
                 
     }
-
+    
+   
+    
     @FXML
     private void editarCorreo(MouseEvent event) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Editor");
-        dialog.setHeaderText("Cambie la direccion de correo");
+           Contacto contactoSeleccionado = encontrarContacto();
+            /*  private Label IdContactoAenLaListaDeCP;
+    @FXML
+    private Label idContactoPadre;*/
+           
+            
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Editor");
+            dialog.setHeaderText("Cambie la direccion de correo");
 
-        Optional<String> resultado = dialog.showAndWait();
+            Optional<String> resultado = dialog.showAndWait();
 
-        resultado.ifPresent(nuevoValor -> {
-            contacto.getCorreoPrincipal().setDireccionCorreo(nuevoValor);
-            avisarActualizacion();
-        });
-        reload(event);
+            resultado.ifPresent(nuevoValor -> {
+                contacto.getCorreoPrincipal().setDireccionCorreo(nuevoValor);
+                avisarActualizacion();
+            });
+            
+            reloadAsociadoOOriginal(event, contactoSeleccionado);
+  
     }
+    
+    
+    
     @FXML
     private void editarCelularPersonal(MouseEvent event) {
+        Contacto contactoSeleccionado = encontrarContacto();
+        
+        
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
         dialog.setHeaderText("Ingrese un nuevo  celular Personal");
@@ -398,10 +471,18 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getTelefonoPrincipal().setNumero(nuevoValor);
             avisarActualizacion();
         });
-        reload(event);
+        
+        reloadAsociadoOOriginal(event, contactoSeleccionado);
+        
+        
+        
     }
     @FXML
     private void editarDireccionCasa(MouseEvent event) {
+        
+        Contacto contactoSeleccionado = encontrarContacto();
+        
+        
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
         dialog.setHeaderText("Ingrese un nueva Direccion domicilio");
@@ -412,9 +493,13 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getDireccionPrincipal().setUbicacion(nuevoValor);
             avisarActualizacion();
         });
-        reload(event);
+         reloadAsociadoOOriginal(event, contactoSeleccionado);
+  
+ 
     }
     private void editarDireccionTrabajo(MouseEvent event) {
+        Contacto contactoSeleccionado = encontrarContacto();
+        
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
         dialog.setHeaderText("Cambie a un nueva Direccion de trabajo");
@@ -425,11 +510,17 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getDirecciones().get(1).setUbicacion(nuevoValor);
             avisarActualizacion();
         });
-        reload(event);
+        reloadAsociadoOOriginal(event, contactoSeleccionado);
+        
+        
+        
+        
     }
        @FXML
     private void editarFechaImportante(MouseEvent event) {
-        
+ 
+        Contacto contactoSeleccionado = encontrarContacto();
+ 
         DatePicker datePicker = new DatePicker();
         TextField textField = new TextField();
         
@@ -440,7 +531,7 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getPrimeraFechaImportante().setDescripcion(textField.getText());
             momentaneoStage.close();
             avisarActualizacion();
-            reload(event);
+            reloadAsociadoOOriginal(event, contactoSeleccionado);
         });
         
         
@@ -465,10 +556,22 @@ public class VistaInfoContactoController implements Initializable {
         momentaneoStage.show();
         
         
+        
+        
+        
+        
+        
+        
+        
     }
     
     
     private void editarCelularTrabajo(MouseEvent event) {
+        
+        Contacto contactoSeleccionado = encontrarContacto();
+        
+        
+        
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
         dialog.setHeaderText("Cambie el  celular de trabajo");
@@ -479,10 +582,19 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getTelefonos().get(1).setNumero(nuevoValor);
             avisarActualizacion();
         });
+        
+        reloadAsociadoOOriginal(event, contactoSeleccionado);
+   
+        
     }
     
     @FXML
     private void editarLinkDeGMaps(MouseEvent event) {
+        
+        
+        Contacto contactoSeleccionado = encontrarContacto();
+        
+        
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Editor");
         dialog.setHeaderText("Ingrese un nueva direccion");
@@ -493,7 +605,13 @@ public class VistaInfoContactoController implements Initializable {
             contacto.getDireccionPrincipal().setUbicacion(nuevoValor);
             avisarActualizacion();
         });
-         reload(event); 
+        reloadAsociadoOOriginal(event, contactoSeleccionado); 
+         
+         
+         
+         
+         
+         
     }
     @FXML
     private void editarEtiqueta(MouseEvent event) {
@@ -502,6 +620,9 @@ public class VistaInfoContactoController implements Initializable {
     
     @FXML
     private void agregarNuevoCorreo(MouseEvent event) {
+        
+        
+        
         momentaneoStage = new Stage();
         momentaneoStage.setTitle("Nuevo Correo");
 
@@ -1298,6 +1419,7 @@ public class VistaInfoContactoController implements Initializable {
                                             //}
 
                                    }else{    
+                                             
                                              contactoSeleccionado.setIdContactoPadre("Label");
                                              contactoSeleccionado.setIdcontactoEnListaDePadre("Label");
                                              contactoPadre.getContactosRelacionados().remove(contactoSeleccionado);
@@ -1312,8 +1434,38 @@ public class VistaInfoContactoController implements Initializable {
                                               alert1.setHeaderText("Resultado de la operación");
                                               alert1.setContentText("Contacto eliminado exitosamente");
                                               alert1.showAndWait();
+                                              
+                                              
+                                                    int idP = idContactoPadre;
+        
+                                                    Contacto cp = buscarContactoPorId(idP);
+                                                     try {
+                                                        // Cargar el archivo FXML de la vista de contacto para personas
+                                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaInfoContactosAsociados.fxml"));
+                                                        Parent root = loader.load();
 
-                                              Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                                        // Configurar el controlador de la vista de contacto para personas
+                                                        ListaInfoContactosAsociadosController controller = loader.getController();
+                                                        controller.configurarContactosAsociados(cp); // Método para pasar los datos del contacto
+
+                                                        Scene scene = new Scene(root,900,700);
+                                                        Stage stage = new Stage();
+                                                        stage.setScene(scene);
+                                                        stage.setResizable(false);
+                                                        stage.setTitle("Vista de contactos asociados de contacto: "+cp.getNombre());
+                                                        stage.show();
+                                                        Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                                                      // Cerrar la ventana actual
+                                                      stage1.close();
+
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                              
+                                              
+
+                                             /* Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                                               // Cerrar la ventana actual
                                               stage.close();
@@ -1326,7 +1478,7 @@ public class VistaInfoContactoController implements Initializable {
                                               } catch (Exception e) {
                                               e.printStackTrace();
                                               }
-                                               });
+                                               });*/
 
 
                                    }
@@ -1610,6 +1762,34 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             VistaInfoContactoController controller = loader.getController();
             controller.configurar((ContactoPersona) contacto); // Método para pasar los datos del contacto
+            
+            
+            
+            Scene scene = new Scene(root, 900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Vista de Contacto para Personas");
+            
+            stage.setResizable(false);
+          
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+      
+    private void abrirVistaContactoPersonaAsociada(Contacto contacto, int idPadre, int indiceListaDePadre) {
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VistaInfoContactoController controller = loader.getController();
+            controller.configurarAsociado((ContactoPersona) contacto, idPadre, indiceListaDePadre); // Método para pasar los datos del contacto
             
             
             

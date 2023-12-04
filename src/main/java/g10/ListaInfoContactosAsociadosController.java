@@ -74,15 +74,19 @@ public class ListaInfoContactosAsociadosController implements Initializable {
          VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, contacto.getContactosRelacionados().size());
-
+        System.out.println(inicio);
+        System.out.println(fin);
+       
         for (int i = inicio; i < fin; i++) {
-            agregarHBoxContactos(contacto);
+            
+            agregarHBoxContactos(contacto.getContactosRelacionados().get(i));
+            
         }
 
         lbnumpag.setText( String.valueOf(paginaActual));
      }
     
-     private void agregarHBoxContactos(Contacto contacto){
+     private void agregarHBoxContactos(Contacto contactoHijo){
     
            try {
             // Cargar el FXML del HBox del archivo FXML respectivo
@@ -92,8 +96,8 @@ public class ListaInfoContactosAsociadosController implements Initializable {
 
             // Configurar el controlador del HBox
             ContactoAsociadoController controller = loader.getController();
-            int contactoAsociadoIndex = VboxContactos.getChildren().size();
-            controller.configurar(contacto,  contacto.getContactosRelacionados().get(contactoAsociadoIndex),contactoAsociadoIndex);
+            //int contactoAsociadoIndex = VboxContactos.getChildren().size();
+            controller.configurar(contactoHijo/*contacto,  contacto.getContactosRelacionados().get(contactoAsociadoIndex),contactoAsociadoIndex*/);
 
             // Agregar el HBox al VBox
             VboxContactos.getChildren().add(contactoNode);
@@ -230,10 +234,43 @@ public class ListaInfoContactosAsociadosController implements Initializable {
 
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
+        
+         int id = Integer.parseInt(IdContacto.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getContactosRelacionados().size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual > 1) {
+            paginaActual--;
+        } else {
+            // Si estamos en la primera página, vamos al final
+            paginaActual = totalPaginas;
+        }
+
+         mostrarElementosContactosAsociados(contactoSeleccionado);
+  
+        
+        
     }
 
     @FXML
     private void avanzarDerecha(MouseEvent event) {
+        int id = Integer.parseInt(IdContacto.getText());
+        
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
+        
+        int totalPaginas = (int) Math.ceil((double) contactoSeleccionado.getContactosRelacionados().size() / ELEMENTOS_POR_PAGINA);
+
+        if (paginaActual < totalPaginas) {
+            paginaActual++;
+        } else {
+            // Si llegamos al final, regresamos a la primera página
+            paginaActual = 1;
+        }
+
+        mostrarElementosContactosAsociados(contactoSeleccionado);
+   
     }
 
     
