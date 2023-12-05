@@ -106,7 +106,7 @@ public class AgregarContactoAsociadoPersonaController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
+            stage.setTitle("Vista de tipo de contacto: "+contactoSeleccionado.getNombre());
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

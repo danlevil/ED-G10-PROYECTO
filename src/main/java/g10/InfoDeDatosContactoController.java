@@ -69,24 +69,30 @@ public class InfoDeDatosContactoController implements Initializable {
     
     //CONFIGURACIONES
     
-     void configurarFechasI (Contacto contacto){
+     void configurarFechasI (Contacto contacto, String idPadre, String indiceEnListaPadre){
          contactoSelecto=contacto;
          nombreDeDato.setText("Fechas importantes");
-         mostrarElementosFechasI(contacto);
          idContacto.setText(String.valueOf(contacto.getId())); 
+         IdPadre.setText(idPadre);
+         indiceEnListPadre.setText(indiceEnListaPadre);
+         mostrarElementosFechasI(contacto);
      } 
     
-     void configurarDireccionesP(Contacto contacto){
+     void configurarDireccionesP(Contacto contacto, String idPadre, String indiceEnListaPadre){
          nombreDeDato.setText("Direcciones");
-         mostrarElementosDireccionesP(contacto);
          idContacto.setText(String.valueOf(contacto.getId()));
+         IdPadre.setText(idPadre);
+         indiceEnListPadre.setText(indiceEnListaPadre);
+         mostrarElementosDireccionesP(contacto);
      }
      
      
-     void configurarCelularPersonal(Contacto contacto) {
+     void configurarCelularPersonal(Contacto contacto, String idPadre, String indiceEnListaPadre) {
         nombreDeDato.setText("Celulares Personales");
-        mostrarElementosCeluares(contacto);
         idContacto.setText(String.valueOf(contacto.getId()));
+        IdPadre.setText(idPadre);
+        indiceEnListPadre.setText(indiceEnListaPadre);
+         mostrarElementosCeluares(contacto);
      }
      
      void configurarCorreo(Contacto contacto, String idPadre, String indiceEnListaPadre) {
@@ -116,7 +122,8 @@ public class InfoDeDatosContactoController implements Initializable {
             // Obtener el índice de la lista de correos y configurar el correo correspondiente
             int fechaIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
             String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
-            controller.configurarFechasIm(contacto,contacto.getFechasImportantes().get(fechaIndex),fechaIndex, nombreDeDatoAvisualizar );
+            String idPapa = IdPadre.getText();
+            controller.configurarFechasIm(contacto,contacto.getFechasImportantes().get(fechaIndex),fechaIndex, nombreDeDatoAvisualizar, idPapa );
 
 
             // Agregar el HBox al VBox
@@ -141,7 +148,8 @@ public class InfoDeDatosContactoController implements Initializable {
             // Obtener el índice de la lista de correos y configurar el correo correspondiente
             int direccionIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
             String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
-            controller.configurarDireccionP(contacto,contacto.getDirecciones().get(direccionIndex),direccionIndex, nombreDeDatoAvisualizar );
+            String idPapa = IdPadre.getText();
+            controller.configurarDireccionP(contacto,contacto.getDirecciones().get(direccionIndex),direccionIndex, nombreDeDatoAvisualizar, idPapa );
 
 
             // Agregar el HBox al VBox
@@ -165,7 +173,8 @@ public class InfoDeDatosContactoController implements Initializable {
             // Obtener el índice de la lista de correos y configurar el correo correspondiente
             int celularIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
             String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
-            controller.configurarCelularPersonal(contacto,contacto.getTelefonos().get(celularIndex),celularIndex, nombreDeDatoAvisualizar );
+            String idPapa = IdPadre.getText();
+            controller.configurarCelularPersonal(contacto,contacto.getTelefonos().get(celularIndex),celularIndex, nombreDeDatoAvisualizar, idPapa );
 
 
             // Agregar el HBox al VBox
