@@ -2,27 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Comparadores;
+package FIltradores;
 
 import Modelo.Contacto;
-import Modelo.ContactoPersona;
 import java.util.Comparator;
 
 /**
  *
  * @author danlevil
  */
-public class ComparadorPersona implements Comparator<ContactoPersona> {
+public class FiltroEmpresas implements Comparator<Contacto>{
 
     @Override
-    public int compare(ContactoPersona o1, ContactoPersona o2) {
-        int verificador=0;
-        //if(o.)
-        return 0;
-
+    public int compare(Contacto o1, Contacto o2) {
+        return Boolean.compare(o1.isEmpresa(), true);
     }
-
-
-
+    
     
 }

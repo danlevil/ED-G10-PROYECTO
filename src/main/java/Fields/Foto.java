@@ -6,6 +6,7 @@ package Fields;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -42,5 +43,25 @@ public class Foto implements Serializable{
         this.creacion = creacion;
     }
 
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Foto other = (Foto) obj;
+        if(this.getArchivo().equals(other.getArchivo())){
+            return true;
+        }
+        return false;
+    }
+    
     
 }

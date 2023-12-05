@@ -4,6 +4,7 @@
  */
 package g10;
 
+import Fields.Foto;
 import Modelo.Agenda;
 import Modelo.Contacto;
 import Modelo.ContactoEmpresa;
@@ -40,6 +41,7 @@ public class VerFotosContactosController implements Initializable {
     private Label idContacto;
     @FXML
     private VBox vboxFotos;
+    public Foto fotoPrimera;
     
     private static final int ELEMENTOS_POR_PAGINA=1;
     
@@ -75,8 +77,11 @@ public class VerFotosContactosController implements Initializable {
             // Configurar el controlador del HBox
             FotoController controllerFoto = loader.getController();
             
+            if(c.getFotos().size()!=0){
+            controllerFoto.configurar(c.getFotos().get(paginaActual-1));
+            }
             controllerFoto.configurar(c.getFotos().get(paginaActual));
-
+            
             // Agregar el HBox al VBox
             
             int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;

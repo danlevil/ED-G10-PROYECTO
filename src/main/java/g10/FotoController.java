@@ -38,6 +38,7 @@ public class FotoController implements Initializable {
     @FXML
     private HBox HboxImg;
     public Image fotoSeleccionada;
+    public Foto fotoPerfil;
     /**
      * Initializes the controller class.
      */
@@ -46,50 +47,15 @@ public class FotoController implements Initializable {
         // TODO
     } 
     
-    public void configurarFechasIm(Contacto contacto, Foto foto, int idFoto) {
-        /* this.contactoSeleccionado = contacto;
-        //Obtener la lista de fotos del contacto
-        List<Foto> fotos = contacto.getFotos();
-
-        // Verificar si hay al menos una foto en la lista
-        if (fotos!=null) {
-            // Obtener la primera foto de la lista
-            Foto primeraFoto = fotos.get(0);
-
-            // Obtener la ruta de la foto desde la primera foto
-            String rutaFoto = primeraFoto.getArchivo();
-
-            // Crear un objeto Image desde la ruta del archivo
-            Image image = new Image("file:" + rutaFoto);
-
-            // Establecer la imagen en el ImageView
-            imagen.setImage(image);
-        } else {
-            // Manejar el caso en el que no hay fotos disponibles
-            System.out.println("El contacto no tiene fotos.");
-        }*/
-       
-       if(foto!=null){
-            String rutaFoto= foto.getArchivo();
-            Image image=new Image("file:"+rutaFoto);
-            fotoSeleccionada=image;
-            imgID.setText(String.valueOf(idFoto));
-
-            imagen.setImage(image);
-        }else {
-            System.out.println("El usuario no tiene fotos");
-        }
-       
-    }
     
     public void configurar(Foto foto){
-        
         if(foto!=null){
             String rutaFoto= foto.getArchivo();
             Image image=new Image("file:"+rutaFoto);
             imagen.setImage(image);
+            fotoSeleccionada=image;
             System.out.println(imgID.getText());
-
+            fotoPerfil=foto;
         }else {
             Alert alerta = new Alert(AlertType.INFORMATION);
             alerta.setTitle("Sin Fotos");

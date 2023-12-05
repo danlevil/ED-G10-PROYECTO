@@ -141,6 +141,7 @@ public class VistaContactoEmpresaController implements Initializable {
         lblCargo.setText(contacto.getPuestoTrabajo());
         lblTitulo.setText(contacto.getTitulo());
         contactoId.setText(String.valueOf(contacto.getId()));
+        //configurar el imageview de empresa
 
         //falta poner etiquetas y link para google maps   
       

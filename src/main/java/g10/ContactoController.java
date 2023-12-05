@@ -21,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -72,8 +73,14 @@ public class ContactoController implements Initializable {
         lbcontactocorreo.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
         Lblid.setText(String.valueOf(contacto.getId())); 
         System.out.println(Lblid.getText());
+
         idContactoPadre.setText(String.valueOf(contacto.getIdContactoPadre()));
         idContactoEnListaDeC.setText(String.valueOf(contacto.getIdcontactoEnListaDePadre()));
+
+        if (contacto.getFotos().size()!=0){
+            imgcontacto.setImage(new Image("file:"+contacto.getFotos().getStart().getArchivo()));
+        }
+
     }
     
 //    public void configuararAsociado(Contacto contacto){
@@ -97,7 +104,6 @@ public class ContactoController implements Initializable {
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
         //this.contactoSeleccionado=contactoSeleccionado;
-        
             if (contactoSeleccionado.isEmpresa()) {
                 // Abrir la vista de contacto para empresas y pasar los datos
                 System.out.println("soy de empresa "+contactoSeleccionado.getId());

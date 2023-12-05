@@ -146,8 +146,14 @@ public class VistaInfoContactoController implements Initializable {
         lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
         contactoId.setText(String.valueOf(contacto.getId()));
+
         AyO.setText("O");
         
+
+        if (contacto.getFotos().size()!=0){
+            imgFotoContacto.setImage(new Image("file:"+contacto.getFotos().getStart().getArchivo()));
+        }
+
         //falta poner etiquetas y link para google maps   
       
      }
@@ -386,9 +392,16 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             FotosContactosController controller = loader.getController(); 
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
+            System.out.println("contacto id: "+contacto.getId());
+
             controller.getBtSeleccionar().setOnAction(e->{
                 Image f= controller.fotoPerfil;
                 imgFotoContacto.setImage(f);
+                contacto.getFotos().moverPrincipio(controller.fotoPrimera);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+                stage.close();
                 System.out.println("me estoy seleccionando");
             });
             Scene scene = new Scene(root,600,400);
@@ -424,9 +437,7 @@ public class VistaInfoContactoController implements Initializable {
         });
         
         reload(event);  
-            
-          
-                
+         
     }
     
    
@@ -1715,7 +1726,7 @@ public class VistaInfoContactoController implements Initializable {
             // Configurar el controlador de la vista de contacto para personas
             VerFotosContactosController controller = loader.getController(); 
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
-            
+             System.out.println("contacto id: "+contacto.getId());
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);

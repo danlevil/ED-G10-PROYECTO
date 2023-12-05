@@ -26,7 +26,6 @@ public abstract class List<E> implements Serializable, Collection<E>, Iterable<E
     public abstract E removeLast();
     public abstract int size();
     public abstract void clear();
-    public abstract void moverFavorito();
     public abstract void recorrer();
     public abstract int encontrarElemento();
     public abstract E get(int i);
@@ -34,7 +33,10 @@ public abstract class List<E> implements Serializable, Collection<E>, Iterable<E
     public abstract void avanzar();
     public abstract void retroceder();
     public abstract E obtenerActual();
+    public abstract List<E> ordenar(Comparator cmp);
+    public abstract boolean moverPrincipio(E e);
     
+   
 
     
     

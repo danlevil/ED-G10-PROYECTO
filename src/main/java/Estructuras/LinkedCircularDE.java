@@ -4,10 +4,13 @@
  */
 package Estructuras;
 
+import Comparadores.ComparadorNombreContacto;
+import Modelo.Contacto;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -41,6 +44,51 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
     public E obtenerActual() {
         return viajero!=null? viajero.getContenido(): null;
     }
+
+    @Override
+    public List<E> ordenar(Comparator cmp) {
+        List<E> ordenada= new LinkedCircularDE();
+        PriorityQueue<E> cola= new PriorityQueue(cmp);
+        Nodo<E> n=this.start;
+        while(this.size()!=cola.size()){
+            E contenido=n.getContenido();
+            cola.offer(contenido);
+            n= n.getSiguiente();
+        }
+        while(!cola.isEmpty()){
+            ordenada.add(cola.poll());
+        }
+        return ordenada;
+    }
+
+    @Override
+    public boolean moverPrincipio(E e) {
+        Nodo<E> nuevoPrincipio= new Nodo(e);
+        Nodo<E> n;
+        for (n=this.start;n!=null; n=n.getSiguiente()){
+            if(n.getContenido().equals(e)){
+                if(n==this.start){
+                    return true;
+                }
+                Nodo<E>previoObjetivo=n.getPrevio();
+                Nodo<E>sigObjetivo=n.getSiguiente();
+                previoObjetivo.setSiguiente(sigObjetivo);
+                sigObjetivo.setPrevio(previoObjetivo);
+                Nodo<E> fin=this.start.getPrevio();
+                n.setSiguiente(null);
+                n.setPrevio(null);
+                fin.setSiguiente(nuevoPrincipio);
+                nuevoPrincipio.setPrevio(fin);
+                nuevoPrincipio.setSiguiente(this.start);
+                this.start.setPrevio(nuevoPrincipio);
+                this.start=nuevoPrincipio;
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     
     public class Nodo<E> implements Serializable{
         E contenido;
@@ -385,10 +433,7 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
         start=null;
     }
 
-    @Override
-    public void moverFavorito() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 
     @Override
     public void recorrer() {
