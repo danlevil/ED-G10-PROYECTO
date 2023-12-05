@@ -7,6 +7,7 @@ package g10;
 import Comparadores.ComparadorEmpresa;
 import Comparadores.ComparadorFavoritos;
 import Comparadores.ComparadorNombreContacto;
+import Comparadores.ComparadorPersona;
 import Estructuras.LinkedCircularDE;
 import Estructuras.List;
 import FIltradores.FiltradorEmpresas;
@@ -76,6 +77,7 @@ public class ListaContactosController implements Initializable {
     private ComboBox<String> cbOrden;
     @FXML
     private Button btOrdenar;
+    private String codigo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -144,7 +146,10 @@ public class ListaContactosController implements Initializable {
         //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, nombreEspecifico.size());
         //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, soloEmpresas.size());
         for (int i = inicio; i < fin; i++) {
+            
+                
             agregarHBox(Agenda.contactosMaster.get(i));
+            
             //agregarHBox(alfabetica.get(i));
             //agregarHBox(empresasFirst.get(i));
             //agregarHBox(favFirst.get(i));
@@ -157,8 +162,50 @@ public class ListaContactosController implements Initializable {
 
         lbnumpag.setText( String.valueOf(paginaActual));
     }    
-    
-    
+    private void mostrarElementoAlfabeticamente(){
+        VboxContactos.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        ComparadorNombreContacto cmp1= new ComparadorNombreContacto();
+        List<Contacto> alfabetica= Agenda.contactosMaster.ordenar(cmp1);
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        for (int i = inicio; i < fin; i++) {
+            agregarHBox(alfabetica.get(i));
+
+        }
+    }
+    private void mostrarEmpresasPrimero(){
+        VboxContactos.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        ComparadorEmpresa cmp2= new ComparadorEmpresa();
+        List<Contacto> empresasFirst=Agenda.contactosMaster.ordenar(cmp2);
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        for (int i = inicio; i < fin; i++) {
+            agregarHBox(empresasFirst.get(i));
+
+        }
+    }
+    private void mostrarFavoritosPrimero(){
+        VboxContactos.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        ComparadorFavoritos cmp3= new ComparadorFavoritos();
+        List<Contacto> favFirst=Agenda.contactosMaster.ordenar(cmp3);
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        for (int i = inicio; i < fin; i++) {
+            agregarHBox(favFirst.get(i));
+
+        }
+    }
+    private void mostrarPersonasPrimero(){
+        VboxContactos.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        ComparadorPersona cmp4= new ComparadorPersona();
+        List<Contacto> personasFirst=Agenda.contactosMaster.ordenar(cmp4);
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        for (int i = inicio; i < fin; i++) {
+            agregarHBox(personasFirst.get(i));
+
+        }
+    }
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
 
@@ -209,19 +256,132 @@ public class ListaContactosController implements Initializable {
 
     @FXML
     private void ordenarPor(ActionEvent event) {
-        String seleccion = cbOrden.getSelectionModel().getSelectedItem();
+       String seleccion = cbOrden.getSelectionModel().getSelectedItem();
+       String codigo="ninguno";
        if (seleccion.equals("Orden alfabético")){
-           //mostrarListaOrdenadaEnOrdenAlfabetico();
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+            Parent root = loader.load();
+            ListaContactosController controllerAlfab = loader.getController();
+            controllerAlfab.mostrarElementoAlfabeticamente();
+            // Configurar el controlador de la vista de contacto para personas
+            
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+            stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            //mostrarListaOrdenadaEnOrdenAlfabetico();
        }else if(seleccion.equals("Favoritos")){
+            try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+            Parent root = loader.load();
+            ListaContactosController controllerAlfab = loader.getController();
+            controllerAlfab.mostrarFavoritosPrimero();
+            // Configurar el controlador de la vista de contacto para personas
+            
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+            stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+           
            //mostrarListaOrdenadaPorFavoritos();
        }else if(seleccion.equals("Personas")){
+            try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+            Parent root = loader.load();
+            ListaContactosController controllerAlfab = loader.getController();
+            controllerAlfab.mostrarPersonasPrimero();
+            // Configurar el controlador de la vista de contacto para personas
+            
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+            stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+           
            //mostrarListaOrdenadaPorPersonas();
        }else if(seleccion.equals("Empresas")){
-           //mostrarListaOrdenadaPorEmpresa();
+            try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+            Parent root = loader.load();
+            ListaContactosController controllerAlfab = loader.getController();
+            controllerAlfab.mostrarEmpresasPrimero();
+            // Configurar el controlador de la vista de contacto para personas
+            
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+            stage1.close();
            
-       }else{
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+           //mostrarListaOrdenadaPorEmpresa();
            //aquí le metes algún metodo llamado mostrarlistaoriginal() que reinicie la app con la lista original
+       }else{
+            try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+            Parent root = loader.load();
+            ListaContactosController controllerAlfab = loader.getController();
+            controllerAlfab.mostrarElementos();
+            // Configurar el controlador de la vista de contacto para personas
+            
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+            stage1.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }           
        }
+       
         
         
         

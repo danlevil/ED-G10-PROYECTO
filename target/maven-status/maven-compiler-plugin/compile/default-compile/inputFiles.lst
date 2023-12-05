@@ -23,6 +23,7 @@
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/AgregarContactoEmpresaController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Modelo/GeneradorID.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Modelo/Serializador.java
+/home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Comparadores/ComparadorPersona.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/FiltroContactoController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/g10/VistaInfoContactoController.java
 /home/danlevil/Escritorio/ED-G10-PROYECTO/src/main/java/Fields/Direccion.java
