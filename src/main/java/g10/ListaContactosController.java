@@ -33,6 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -78,6 +79,10 @@ public class ListaContactosController implements Initializable {
     @FXML
     private Button btOrdenar;
     private String codigo;
+    @FXML
+    private TextField txtBuscarContacto;
+    @FXML
+    private Button btBusquedaDeContacto;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -385,6 +390,10 @@ public class ListaContactosController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void buscarContactoOLetra(ActionEvent event) {
     }
 
 
