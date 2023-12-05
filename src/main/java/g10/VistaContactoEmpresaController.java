@@ -433,6 +433,8 @@ public class VistaContactoEmpresaController implements Initializable {
 
     @FXML
     private void mostrarCelularesPersonales(MouseEvent event) {
+        String idPadre = idContactoPadre.getText();
+        String indiceEnListaPadre = IdContactoAenLaListaDeCP.getText();
         int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -443,7 +445,7 @@ public class VistaContactoEmpresaController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarCelularPersonal(contactoSeleccionado); // Método para pasar los datos del contacto
+            controller.configurarCelularPersonal(contactoSeleccionado, idPadre, indiceEnListaPadre); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -614,6 +616,9 @@ public class VistaContactoEmpresaController implements Initializable {
     @FXML
     private void verDireccionTrabajo(MouseEvent event) {
         
+        String idPadre = idContactoPadre.getText();
+        String indiceEnListaPadre = IdContactoAenLaListaDeCP.getText();
+        
         int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -624,7 +629,7 @@ public class VistaContactoEmpresaController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarDireccionesP(contactoSeleccionado); // Método para pasar los datos del contacto
+            controller.configurarDireccionesP(contactoSeleccionado, idPadre, indiceEnListaPadre); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -749,6 +754,8 @@ public class VistaContactoEmpresaController implements Initializable {
 
     @FXML
     private void VerFechasImportantes(MouseEvent event) {
+        String idPadre = idContactoPadre.getText();
+        String indiceEnListaPadre = IdContactoAenLaListaDeCP.getText();
         
          int id = Integer.parseInt(contactoId.getText());
         
@@ -760,7 +767,7 @@ public class VistaContactoEmpresaController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarFechasI(contactoSeleccionado); // Método para pasar los datos del contacto
+            controller.configurarFechasI(contactoSeleccionado, idPadre,indiceEnListaPadre ); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();

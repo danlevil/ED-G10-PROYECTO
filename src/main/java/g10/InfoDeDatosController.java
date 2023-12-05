@@ -66,7 +66,7 @@ public class InfoDeDatosController implements Initializable {
     
     
     //CONFIGURACIONES
-    public void configurarFechasIm(Contacto contacto, Fecha fecha, int idFecha, String datoAvisualizar){
+    public void configurarFechasIm(Contacto contacto, Fecha fecha, int idFecha, String datoAvisualizar, String idPadre){
         
         lbdescripcion.setText(fecha.getFechaDescripcion());
         lbdato.setText(fecha.getFecha());
@@ -74,9 +74,10 @@ public class InfoDeDatosController implements Initializable {
         System.out.println(Lblid.getText());
         lbIdDato.setText(String.valueOf(idFecha));
         lblnombreSeleccion.setText(datoAvisualizar);
+        IdContactoPadre.setText(idPadre);
         
     }
-    public void configurarDireccionP(Contacto contacto, Direccion direccion, int idDireccion, String datoAvisualizar) {
+    public void configurarDireccionP(Contacto contacto, Direccion direccion, int idDireccion, String datoAvisualizar, String idPadre) {
         
         lbdescripcion.setText(direccion.getNombreDireccion());
         lbdato.setText(direccion.getUbicacion());
@@ -84,9 +85,10 @@ public class InfoDeDatosController implements Initializable {
         System.out.println(Lblid.getText());
         lbIdDato.setText(String.valueOf(idDireccion));
         lblnombreSeleccion.setText(datoAvisualizar);
+        IdContactoPadre.setText(idPadre);
     }
     
-    public void configurarCelularPersonal(Contacto contacto, Telefono telefono, int idTelefono, String datoAvisualizar) {
+    public void configurarCelularPersonal(Contacto contacto, Telefono telefono, int idTelefono, String datoAvisualizar, String idPadre) {
         
         lbdescripcion.setText(telefono.getDescripcion());
         lbdato.setText(telefono.getNumero());
@@ -94,6 +96,7 @@ public class InfoDeDatosController implements Initializable {
         System.out.println(Lblid.getText());
         lbIdDato.setText(String.valueOf(idTelefono));
         lblnombreSeleccion.setText(datoAvisualizar);
+        IdContactoPadre.setText(idPadre);
     }
     
     
@@ -114,55 +117,7 @@ public class InfoDeDatosController implements Initializable {
     
     
     //RELOADS
-    
-    private void reload(MouseEvent event){
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        // Cerrar la ventana actual
-        stage.close();
-        
-          
-        int id = Integer.parseInt(Lblid.getText());
-        
-        Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
-            if (contactoSeleccionado.isEmpresa()) {
-                // Abrir la vista de contacto para empresas y pasar los datos
-                abrirVistaContactoEmpresa(contactoSeleccionado);
-            } else {
-                // Abrir la vista de contacto para personas y pasar los datos
-                abrirVistaContactoPersona(contactoSeleccionado);
-            }
-    }
-    
-     private void reloadAsociado(MouseEvent event, Contacto contacto){
-         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                    // Cerrar la ventana actual
-                    stage.close();
-
-                        if (contacto.isEmpresa()) {
-                            // Abrir la vista de contacto para empresas y pasar los datos
-                            abrirVistaContactoEmpresa(contacto);
-                        } else {
-                            // Abrir la vista de contacto para personas y pasar los datos
-                            abrirVistaContactoPersonaAsociada(contacto,Integer.parseInt(contacto.getIdContactoPadre()), Integer.parseInt(contacto.getIdcontactoEnListaDePadre()));
-                        }
-        
-    }
-    
-     private void reloadAsociadoOOriginal(MouseEvent event, Contacto contactoSeleccionado){
-        if (!IdContactoPadre.getText().equals("Label")){
-                    
-                 reloadAsociado(event, contactoSeleccionado);
-            }else{
-                 reload(event); 
-                 
-             }
-    }
-    
-    
-    
     private void abrirVistaContactoEmpresa(Contacto contacto) {
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
@@ -281,7 +236,7 @@ public class InfoDeDatosController implements Initializable {
         int id = Integer.parseInt(Lblid.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
-        
+        /*if */
         abrirVistaCorreo(contactoSeleccionado);
         
     }
@@ -311,7 +266,12 @@ public class InfoDeDatosController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarFechasI(contacto); // Método para pasar los datos del contacto
+            if(IdContactoPadre.getText().equals("Label")){
+              controller.configurarFechasI(contacto,"Label","Label" ); // Método para pasar los datos del contacto
+
+            }else{
+              controller.configurarFechasI(contacto,contacto.getIdContactoPadre(),contacto.getIdcontactoEnListaDePadre() ); // Método para pasar los datos del contacto
+            }
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -334,7 +294,13 @@ public class InfoDeDatosController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarDireccionesP(contacto); // Método para pasar los datos del contacto
+            if(IdContactoPadre.getText().equals("Label")){
+               controller.configurarDireccionesP(contacto,"Label","Label" ); // Método para pasar los datos del contacto
+
+            }else{
+              controller.configurarDireccionesP(contacto,contacto.getIdContactoPadre(),contacto.getIdcontactoEnListaDePadre() ); // Método para pasar los datos del contacto
+
+            }
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -358,7 +324,13 @@ public class InfoDeDatosController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarCorreo(contacto, contacto.getIdContactoPadre(), contacto.getIdcontactoEnListaDePadre()); // Método para pasar los datos del contacto
+            if(IdContactoPadre.getText().equals("Label")){
+                controller.configurarCorreo(contacto, "Label", "Label");  
+            }else{
+                controller.configurarCorreo(contacto, contacto.getIdContactoPadre(), contacto.getIdcontactoEnListaDePadre()); // Método para pasar los datos del contacto
+               
+            }
+            
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -382,7 +354,14 @@ public class InfoDeDatosController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarCelularPersonal(contacto); // Método para pasar los datos del contacto
+            
+            if(IdContactoPadre.getText().equals("Label")){
+                controller.configurarCelularPersonal(contacto,"Label","Label" ); // Método para pasar los datos del contacto
+
+            }else{
+                controller.configurarCelularPersonal(contacto,contacto.getIdContactoPadre(),contacto.getIdcontactoEnListaDePadre() ); // Método para pasar los datos del contacto
+
+            }
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -516,7 +495,8 @@ public class InfoDeDatosController implements Initializable {
 
             // Cerrar la ventana actual
             stage.close();
-            reloadAsociadoOOriginal(event, contactoSeleccionado );
+            reloadCorreo(event);
+           // reloadAsociadoOOriginal(event, contactoSeleccionado );
             
             
         }
