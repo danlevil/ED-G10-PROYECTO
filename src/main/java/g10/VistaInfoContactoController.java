@@ -140,7 +140,9 @@ public class VistaInfoContactoController implements Initializable {
         lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
         LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
         contactoId.setText(String.valueOf(contacto.getId()));
-        
+        if (contacto.getFotos().size()!=0){
+            imgFotoContacto.setImage(new Image("file:"+contacto.getFotos().getStart().getArchivo()));
+        }
         //falta poner etiquetas y link para google maps   
       
      }
@@ -219,7 +221,7 @@ public class VistaInfoContactoController implements Initializable {
             controller.getBtSeleccionar().setOnAction(e->{
                 Image f= controller.fotoPerfil;
                 imgFotoContacto.setImage(f);
-                
+                contacto.getFotos().moverPrincipio(controller.fotoPrimera);
                 System.out.println("me estoy seleccionando");
             });
             Scene scene = new Scene(root,600,400);

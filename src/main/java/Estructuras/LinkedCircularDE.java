@@ -63,7 +63,29 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
 
     @Override
     public boolean moverPrincipio(E e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Nodo<E> nuevoPrincipio= new Nodo(e);
+        Nodo<E> n;
+        for (n=this.start;n!=null; n=n.getSiguiente()){
+            if(n.getContenido().equals(e)){
+                if(n==this.start){
+                    return true;
+                }
+                Nodo<E>previoObjetivo=n.getPrevio();
+                Nodo<E>sigObjetivo=n.getSiguiente();
+                previoObjetivo.setSiguiente(sigObjetivo);
+                sigObjetivo.setPrevio(previoObjetivo);
+                Nodo<E> fin=this.start.getPrevio();
+                n.setSiguiente(null);
+                n.setPrevio(null);
+                fin.setSiguiente(nuevoPrincipio);
+                nuevoPrincipio.setPrevio(fin);
+                nuevoPrincipio.setSiguiente(this.start);
+                this.start.setPrevio(nuevoPrincipio);
+                this.start=nuevoPrincipio;
+                return true;
+            }
+        }
+        return false;
     }
 
 

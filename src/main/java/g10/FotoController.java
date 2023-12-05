@@ -38,6 +38,7 @@ public class FotoController implements Initializable {
     @FXML
     private HBox HboxImg;
     public Image fotoSeleccionada;
+    public Foto fotoPerfil;
     /**
      * Initializes the controller class.
      */
@@ -54,6 +55,7 @@ public class FotoController implements Initializable {
             imagen.setImage(image);
             fotoSeleccionada=image;
             System.out.println(imgID.getText());
+            fotoPerfil=foto;
         }else {
             Alert alerta = new Alert(AlertType.INFORMATION);
             alerta.setTitle("Sin Fotos");

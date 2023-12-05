@@ -52,7 +52,9 @@ public class FotosContactosController implements Initializable {
     private Contacto seleccionado;
     private List<Foto>galeria;
     private ImageView imagenesContacto;
+    
     public Image fotoPerfil;
+    public Foto fotoPrimera;
     @FXML
     private VBox VboxFotos;
     
@@ -95,6 +97,7 @@ public class FotosContactosController implements Initializable {
                 controllerFoto.configurar(c.getFotos().get(paginaActual-1));
             }
             controllerFoto.configurar(c.getFotos().get(paginaActual));
+            fotoPrimera=controllerFoto.fotoPerfil;
             fotoPerfil=controllerFoto.fotoSeleccionada;
             // Agregar el HBox al VBox
             VboxFotos.getChildren().add(imageView);
