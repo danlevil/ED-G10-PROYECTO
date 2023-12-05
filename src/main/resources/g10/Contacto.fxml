@@ -35,17 +35,17 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label fx:id="Lblid" text="Label">
+            <Label fx:id="Lblid" text="Label" visible="false">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="idContactoPadre" text="Label">
+            <Label fx:id="idContactoPadre" text="Label" visible="false">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="idContactoEnListaDeC" text="Label">
+            <Label fx:id="idContactoEnListaDeC" text="Label" visible="false">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>

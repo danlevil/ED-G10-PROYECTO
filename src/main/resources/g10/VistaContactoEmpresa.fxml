@@ -56,10 +56,10 @@
                   <Image url="@../imagenes/empresa.png" />
                </image>
             </ImageView>
-            <Label fx:id="contactoId" text="Label" />
-            <Label fx:id="idContactoPadre" text="Label" />
-            <Label fx:id="IdContactoAenLaListaDeCP" text="Label" />
-            <Label fx:id="AyO" text="Label" />
+            <Label fx:id="contactoId" text="Label" visible="false" />
+            <Label fx:id="idContactoPadre" text="Label" visible="false" />
+            <Label fx:id="IdContactoAenLaListaDeCP" text="Label" visible="false" />
+            <Label fx:id="AyO" text="Label" visible="false" />
          </children>
       </VBox>
    </left>
@@ -196,12 +196,12 @@
                      <children>
                         <HBox prefHeight="25.0" prefWidth="274.0">
                            <children>
-                              <Label text="Google maps">
+                              <Label text="Google maps" visible="false">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <ImageView fx:id="editarLinkCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarLinkDeGMaps" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="editarLinkCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarLinkDeGMaps" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../imagenes/editar.png" />
                                  </image>
@@ -211,7 +211,7 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <ImageView fx:id="imgGM" fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgGM" fitHeight="65.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../imagenes/maps.png" />
                            </image>
@@ -226,12 +226,12 @@
                      <children>
                         <HBox prefHeight="18.0" prefWidth="274.0">
                            <children>
-                              <Label text="Etiquetas">
+                              <Label text="Etiquetas" visible="false">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <ImageView fx:id="editarEtiquetasCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarEtiqueta" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="editarEtiquetasCE" fitHeight="24.0" fitWidth="25.0" onMouseClicked="#editarEtiqueta" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../imagenes/editar.png" />
                                  </image>
@@ -239,7 +239,7 @@
                                     <Insets left="8.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <ImageView fx:id="nuevaEtiquetaCE" fitHeight="32.0" fitWidth="23.0" onMouseClicked="#agregarEtiqueta" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="nuevaEtiquetaCE" fitHeight="32.0" fitWidth="23.0" onMouseClicked="#agregarEtiqueta" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../imagenes/crear.png" />
                                  </image>
@@ -247,7 +247,7 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <ImageView fx:id="verTodaslasEtiquetasCE" fitHeight="25.0" fitWidth="27.0" onMouseClicked="#verEtiquetas" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="verTodaslasEtiquetasCE" fitHeight="25.0" fitWidth="27.0" onMouseClicked="#verEtiquetas" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../imagenes/notas.png" />
                                  </image>
@@ -257,7 +257,7 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <Label fx:id="lbEtiquetasCP" text="Label">
+                        <Label fx:id="lbEtiquetasCP" text="Label" visible="false">
                            <font>
                               <Font size="16.0" />
                            </font>

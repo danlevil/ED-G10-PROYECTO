@@ -65,15 +65,15 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="43.0" prefWidth="205.0">
                      <children>
-                        <Label fx:id="idContacto" text="Label">
+                        <Label fx:id="idContacto" text="Label" visible="false">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin></Label>
-                        <Label fx:id="IdPadre" text="Label">
+                        <Label fx:id="IdPadre" text="Label" visible="false">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin></Label>
-                        <Label fx:id="indiceEnListPadre" text="Label">
+                        <Label fx:id="indiceEnListPadre" text="Label" visible="false">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin></Label>

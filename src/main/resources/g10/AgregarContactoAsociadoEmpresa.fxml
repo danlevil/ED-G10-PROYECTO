@@ -175,8 +175,8 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
                <children>
-                  <Label fx:id="IdContactoPadre" text="Label" />
-                  <Label fx:id="IdListaDeContactoPadre" text="Label" />
+                  <Label fx:id="IdContactoPadre" text="Label" visible="false" />
+                  <Label fx:id="IdListaDeContactoPadre" text="Label" visible="false" />
                </children>
             </VBox>
          </children>
