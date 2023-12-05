@@ -15,7 +15,7 @@ public class ComparadorText implements Comparator<String>{
     @Override
     public int compare(String o1, String o2) {
         int bandera=-1;
-        if(o1.contains(o2)){
+        if(o1.toLowerCase().contains(o2.toLowerCase())){
             bandera=0;
         }
         return bandera;

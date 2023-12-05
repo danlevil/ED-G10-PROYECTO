@@ -211,6 +211,15 @@ public class ListaContactosController implements Initializable {
 
         }
     }
+    private void busquedaAvanzada(List<Contacto> lista){
+        VboxContactos.getChildren().clear();
+        int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, lista.size());
+        for (int i = inicio; i < fin; i++) {
+            agregarHBox(lista.get(i));
+
+        }
+    }
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
 
@@ -394,6 +403,31 @@ public class ListaContactosController implements Initializable {
 
     @FXML
     private void buscarContactoOLetra(ActionEvent event) {
+        FiltradorNombre f3= new FiltradorNombre();
+        List<Contacto> nombreEspecifico= f3.filtrarTexto(Agenda.contactosMaster, 
+                txtBuscarContacto.getText());
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+            Parent root = loader.load();
+            ListaContactosController controllerBusqueda = loader.getController();
+            controllerBusqueda.busquedaAvanzada(nombreEspecifico);
+            // Configurar el controlador de la vista de contacto para personas
+            
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+            stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
     }
 
 
