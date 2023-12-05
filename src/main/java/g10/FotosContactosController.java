@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -159,15 +160,13 @@ public class FotosContactosController implements Initializable {
                     // Obtener la ruta relativa de la foto
                     String rutaRelativa = carpetaUsuario + "/" + nombreFoto;
 
-                    // Crear un objeto Foto y añadirlo a la lista de fotos del contacto
                     Foto foto = new Foto( rutaRelativa);
                     contactoSeleccionado.añadirFoto(foto);
                     for(Foto f: contactoSeleccionado.getFotos()){
                         System.out.println(f);
                     }
 
-                    // Actualizar la interfaz de usuario, si es necesario
-                    // ...
+                    
 
                     System.out.println("Foto añadida con éxito. Ruta: " + rutaRelativa);
                 } else {
@@ -176,14 +175,19 @@ public class FotosContactosController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Manejar la excepción según tus necesidades
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Carga de archivo Correcta");
+        alert.setHeaderText(null);
+        alert.setContentText("La foto se ha subido correctamente");
+        alert.showAndWait();
+        reload(event);
       
     }
     
 
     @FXML
-    private void regresarPantalla(MouseEvent event) {
+    public void regresarPantalla(MouseEvent event) {
         reload(event);
     }
     private void reload(MouseEvent event){

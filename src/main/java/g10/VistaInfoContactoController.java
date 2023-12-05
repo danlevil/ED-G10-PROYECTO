@@ -222,6 +222,10 @@ public class VistaInfoContactoController implements Initializable {
                 Image f= controller.fotoPerfil;
                 imgFotoContacto.setImage(f);
                 contacto.getFotos().moverPrincipio(controller.fotoPrimera);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+                stage.close();
                 System.out.println("me estoy seleccionando");
             });
             Scene scene = new Scene(root,600,400);
