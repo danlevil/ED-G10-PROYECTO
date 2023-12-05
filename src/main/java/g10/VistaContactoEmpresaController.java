@@ -30,6 +30,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -125,6 +126,7 @@ public class VistaContactoEmpresaController implements Initializable {
     private Label IdContactoAenLaListaDeCP;
     @FXML
     private Label AyO;
+    private Contacto contacto;
     /**
      * Initializes the controller class.
      */
@@ -134,7 +136,7 @@ public class VistaContactoEmpresaController implements Initializable {
     }    
 
     public void configurar(ContactoEmpresa contacto) {
-        this.seleccionado=contacto;
+        this.contacto=contacto;
         lbnombreCE.setText(contacto.getNombre());
         lbcorreoCE.setText(contacto.getCorreoPrincipal().toString());
         lbcelulerCE.setText(String.valueOf(contacto.getTelefonoPrincipal().getNumero()));
@@ -149,7 +151,9 @@ public class VistaContactoEmpresaController implements Initializable {
 
 
         AyO.setText("O");
-
+        if (contacto.getFotos().size()!=0){
+            imgFotoContactoE.setImage(new Image("file:"+contacto.getFotos().getStart().getArchivo()));
+        }
         //falta poner etiquetas y link para google maps   
       
      }
@@ -359,8 +363,17 @@ public class VistaContactoEmpresaController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             FotosContactosController controller = loader.getController(); 
-            controller.mostrarImg((Contacto) seleccionado); // Método para pasar los datos del contacto
-           
+            controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
+            controller.getBtSeleccionar().setOnAction(e->{
+                Image f= controller.fotoPerfil;
+                imgFotoContactoE.setImage(f);
+                contacto.getFotos().moverPrincipio(controller.fotoPrimera);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+                stage.close();
+                System.out.println("me estoy seleccionando");
+            });
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -383,7 +396,7 @@ public class VistaContactoEmpresaController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VerFotosContactosController controller = loader.getController(); 
-            controller.mostrarImg((Contacto) seleccionado); // Método para pasar los datos del contacto
+            controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
            
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();

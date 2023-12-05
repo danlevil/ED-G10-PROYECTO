@@ -82,7 +82,7 @@ public class VerFotosContactosController implements Initializable {
                 
                 controllerFoto.configurar(c.getFotos().get(paginaActual-1));
             }
-            controllerFoto.configurar(c.getFotos().get(paginaActual));
+            //controllerFoto.configurar(c.getFotos().get(paginaActual));
 
             //controllerFoto.configurar(c.getFotos().get(paginaActual));
             
