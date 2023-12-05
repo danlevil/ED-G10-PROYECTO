@@ -31,7 +31,7 @@
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="guardarEmpresa" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#guardarContactoEmpresa" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="guardarEmpresa" fitHeight="65.0" fitWidth="75.0" onMouseClicked="#agregarContacto" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/guardar.png" />
                      </image>
@@ -173,7 +173,12 @@
                   <TextField fx:id="TxtfechaImpUsuario" promptText="Label" />
                </children>
             </VBox>
-            <Label fx:id="idContactoPadre" text="Label" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="IdContactoPadre" text="Label" />
+                  <Label fx:id="IdListaDeContactoPadre" text="Label" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </center>

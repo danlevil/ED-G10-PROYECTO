@@ -77,7 +77,7 @@ public class ContactoAsociadoController implements Initializable {
             if (contactoSeleccionado.isEmpresa()) {
                 // Abrir la vista de contacto para empresas y pasar los datos
                 System.out.println("soy de empresa "+contactoSeleccionado.getId());
-                abrirVistaContactoEmpresa(contactoSeleccionado);
+                abrirVistaContactoEmpresa(contactoSeleccionado, idPadre, idHijo);
             } else {
                 // Abrir la vista de contacto para personas y pasar los datos
                 abrirVistaContactoPersona(contactoSeleccionado, idPadre, idHijo);
@@ -108,7 +108,7 @@ public class ContactoAsociadoController implements Initializable {
         return null;
     }
     
-    private void abrirVistaContactoEmpresa(Contacto contacto) {
+    private void abrirVistaContactoEmpresa(Contacto contacto, int idPadre, int idHijo) {
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaContactoEmpresa.fxml"));
@@ -116,7 +116,7 @@ public class ContactoAsociadoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VistaContactoEmpresaController controller = loader.getController();
-            controller.configurar((ContactoEmpresa) contacto); // Método para pasar los datos del contacto
+            controller.configurarAsociado((ContactoEmpresa) contacto, idPadre,idHijo); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();

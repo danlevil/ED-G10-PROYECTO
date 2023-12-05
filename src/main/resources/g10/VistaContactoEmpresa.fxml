@@ -59,6 +59,7 @@
             <Label fx:id="contactoId" text="Label" />
             <Label fx:id="idContactoPadre" text="Label" />
             <Label fx:id="IdContactoAenLaListaDeCP" text="Label" />
+            <Label fx:id="AyO" text="Label" />
          </children>
       </VBox>
    </left>

@@ -60,6 +60,11 @@ public class Agenda implements Serializable{
        contactosPersonas.remove(c);
     }
     
+    public static void eliminarEmpresa(ContactoEmpresa c){
+       contactosEmpresas.remove(c);
+    }
+    
+    
     public void editarContacto(){}
     
     public void mostrarAsociados(){}

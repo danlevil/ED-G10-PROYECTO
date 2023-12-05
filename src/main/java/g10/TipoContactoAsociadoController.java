@@ -53,6 +53,10 @@ public class TipoContactoAsociadoController implements Initializable {
        indiceNuevo.setText(String.valueOf(IndiceNuevo));
         
     }
+    
+
+    
+    
     @FXML
     private void irVentanaContactos(MouseEvent event) throws IOException {
         int id = Integer.parseInt(IdContactoPadre.getText());
@@ -71,7 +75,7 @@ public class TipoContactoAsociadoController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.setTitle("Vista de contactos asociados de contacto: "+contactoSeleccionado.getNombre());
+            stage.setTitle("Vista  contacto: "+contactoSeleccionado.getNombre());
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -84,6 +88,44 @@ public class TipoContactoAsociadoController implements Initializable {
        
     }
 
+    
+     @FXML
+    private void irVentanEmpresas(ActionEvent event) {
+        
+        int idp = Integer.parseInt(IdContactoPadre.getText());//  se toma el id del contacto padre 
+        
+        Contacto contactoSeleccionadop = buscarContactoPorId(idp);
+        
+        int indiceLista = Integer.parseInt(indiceNuevo.getText());
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarContactoAsociadoEmpresa.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            AgregarContactoAsociadoEmpresaController controller = loader.getController();
+            controller.configurarACAE(contactoSeleccionadop,indiceLista ); // Método para pasar los datos del contacto
+
+            Scene scene = new Scene(root,900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Vista de ventana de empresa: "+contactoSeleccionadop.getNombre());
+            stage.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+          // Cerrar la ventana actual
+          stage1.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        
+        
+    }
+    
+    
+    
     @FXML
     private void irVentanPersonas(ActionEvent event) {
         int id = Integer.parseInt(IdContactoPadre.getText());//  se toma el id del contacto padre 
@@ -103,7 +145,7 @@ public class TipoContactoAsociadoController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.setTitle("Vista de celulares de contacto: "+contactoSeleccionado.getNombre());
+            stage.setTitle("Vista de ventana de persona: "+contactoSeleccionado.getNombre());
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -116,9 +158,7 @@ public class TipoContactoAsociadoController implements Initializable {
         
     }
 
-    @FXML
-    private void irVentanEmpresas(ActionEvent event) {
-    }
+   
     
     
     private Contacto buscarContactoPorId(int id) {

@@ -153,21 +153,21 @@ public class VistaInfoContactoController implements Initializable {
      }
      
      //ver cómo ocupar este método para que salga la vista con los dos labeles llenos
-     public void configurarCompleto(ContactoPersona contacto, String idPadre, String indiceListaDePadre) {
-        this.contacto=contacto;
-        lbnombreCP.setText(contacto.getNombre());
-        lbcorreoCP.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
-        lbcelulerPCP.setText(contacto.getTelefonoPrincipal().getNumero());
-        lbDireccionCP.setText (contacto.getDireccionPrincipal().getUbicacion());
-        lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
-        LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
-        contactoId.setText(String.valueOf(contacto.getId()));
-        idContactoPadre.setText(idPadre); 
-        IdContactoAenLaListaDeCP.setText(indiceListaDePadre);
-        
-        //falta poner etiquetas y link para google maps   
-      
-     }
+//     public void configurarCompleto(ContactoPersona contacto, String idPadre, String indiceListaDePadre) {
+//        this.contacto=contacto;
+//        lbnombreCP.setText(contacto.getNombre());
+//        lbcorreoCP.setText(contacto.getCorreoPrincipal().getDireccionCorreo());
+//        lbcelulerPCP.setText(contacto.getTelefonoPrincipal().getNumero());
+//        lbDireccionCP.setText (contacto.getDireccionPrincipal().getUbicacion());
+//        lbFechaCP.setText(contacto.getPrimeraFechaImportante().getFecha());
+//        LblDescrFecha.setText(contacto.getPrimeraFechaImportante().getFechaDescripcion());
+//        contactoId.setText(String.valueOf(contacto.getId()));
+//        idContactoPadre.setText(idPadre); 
+//        IdContactoAenLaListaDeCP.setText(indiceListaDePadre);
+//        
+//        //falta poner etiquetas y link para google maps   
+//      
+//     }
      
      
      public void configurarAsociado(ContactoPersona contacto, int idPadre, int indiceListaDePadre) {
@@ -205,6 +205,8 @@ public class VistaInfoContactoController implements Initializable {
     }
     
     
+    
+    
     private void reload(MouseEvent event){
         String idHijo =IdContactoAenLaListaDeCP.getText();
         String idPadre = idContactoPadre.getText();
@@ -223,7 +225,7 @@ public class VistaInfoContactoController implements Initializable {
                 abrirVistaContactoEmpresa(contactoSeleccionado);
             } else {
                 // Abrir la vista de contacto para personas y pasar los datos
-                abrirVistaContactoPersona(contactoSeleccionado,idPadre, idHijo);
+                abrirVistaContactoPersona(contactoSeleccionado);
             }
     }
     
@@ -422,10 +424,7 @@ public class VistaInfoContactoController implements Initializable {
     @FXML
     private void editarCorreo(MouseEvent event) {
            Contacto contactoSeleccionado = encontrarContacto();
-            /*  private Label IdContactoAenLaListaDeCP;
-    @FXML
-    private Label idContactoPadre;*/
-           
+
             
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Editor");
@@ -1119,20 +1118,6 @@ public class VistaInfoContactoController implements Initializable {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 //    
 //    private void eliminarContactoOriginalPrincipal(MouseEvent event){
 //        int idDeContactoAEliminar =Integer.parseInt(contactoId.getText());
@@ -1322,19 +1307,7 @@ public class VistaInfoContactoController implements Initializable {
                                       alert1.setContentText("Elimine los contactos asociados para eliminar este" );
                                       alert1.showAndWait();
                             
-//                               int id = 0;
-//                                    //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-//                                       while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-//                                          Contacto contactoEncontrado = buscarContactoPorId(id);
-//                                          contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-//                                           Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-//                                           Agenda.contactosMaster.remove(contactoEncontrado); 
-//                                           id++;
-//                                         }
-                                        //contactoSeleccionado.getContactosRelacionados().remove(contacto);
-                                       // Agenda.eliminarPersona((ContactoPersona)contacto);
-                                       // Agenda.contactosMaster.remove(contacto);                      
-                                    //}
+
 
                            }else {
                                     
@@ -1394,30 +1367,14 @@ public class VistaInfoContactoController implements Initializable {
                                       alert1.setHeaderText("Este contacto tiene " +contactoSeleccionado.getContactosRelacionados().size()+" contactos asociados" );
                                       alert1.setContentText("Elimine los contactos asociados para eliminar este" );
                                       alert1.showAndWait();
-//                                       int id = 0;
-//                                            //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-//                                               while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-//                                                  Contacto contactoEncontrado = buscarContactoPorId(id);
-//                                                  contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-//                                                  Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-//                                                   Agenda.contactosMaster.remove(contactoEncontrado); 
-//                                                   id++;
-//                                                 }
-                                                //contactoSeleccionado.getContactosRelacionados().remove(contacto);
-                                               // Agenda.eliminarPersona((ContactoPersona)contacto);
-                                               // Agenda.contactosMaster.remove(contacto);                      
-                                            //}
+//
 
                                    }else{    
                                              
                                              contactoSeleccionado.setIdContactoPadre("Label");
                                              contactoSeleccionado.setIdcontactoEnListaDePadre("Label");
                                              contactoPadre.getContactosRelacionados().remove(contactoSeleccionado);
-                                             
-                                             
-                                             //eliminarContactosPrincipalyAsociados(event);
-        //                                     Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
-        //                                     Agenda.contactosMaster.remove(contactoSeleccionado);
+                                            
 
                                               Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                                               alert1.setTitle("Information Dialog");
@@ -1453,23 +1410,6 @@ public class VistaInfoContactoController implements Initializable {
                                                         e.printStackTrace();
                                                     }
                                               
-                                              
-
-                                             /* Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                                              // Cerrar la ventana actual
-                                              stage.close();
-
-                                              Platform.runLater(() -> {
-                                              try {
-
-                                              App nuevaInstancia = new App();
-                                              nuevaInstancia.start(new Stage());
-                                              } catch (Exception e) {
-                                              e.printStackTrace();
-                                              }
-                                               });*/
-
 
                                    }
 
@@ -1508,20 +1448,7 @@ public class VistaInfoContactoController implements Initializable {
                                       alert1.setHeaderText("Este contacto tiene " +contactoSeleccionado.getContactosRelacionados().size()+" contactos asociados" );
                                       alert1.setContentText("Elimine los contactos asociados para eliminar este" );
                                       alert1.showAndWait();
-//                                       int id = 0;
-//                                            //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-//                                               while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-//                                                  Contacto contactoEncontrado = buscarContactoPorId(id);
-//                                                  contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-//                                                  Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-//                                                   Agenda.contactosMaster.remove(contactoEncontrado); 
-//                                                   id++;
-//                                                 }
-                                                //contactoSeleccionado.getContactosRelacionados().remove(contacto);
-                                               // Agenda.eliminarPersona((ContactoPersona)contacto);
-                                               // Agenda.contactosMaster.remove(contacto);                      
-                                            //}
-
+//                                     
                                    }else{    
                                             
                                             contactoPadre.getContactosRelacionados().remove(contactoSeleccionado);
@@ -1573,70 +1500,7 @@ public class VistaInfoContactoController implements Initializable {
       
     }
     
-//    private void eliminarDesdeListaPrincipalUnContactoAsociado(MouseEvent event){
-//           int idDeContactoAEliminar =Integer.parseInt(contactoId.getText());
-//        
-//        Contacto contactoSeleccionado = buscarContactoPorId(idDeContactoAEliminar);
-//    
-//        if(contactoSeleccionado.getIdContactoPadre().equals("Label") && contactoSeleccionado.getIdcontactoEnListaDePadre().equals("Label")){
-//                        if(contactoSeleccionado.getContactosRelacionados().size()>=1){
-//                            
-//                             Alert alert1 = new Alert(Alert.AlertType.ERROR);
-//                                      alert1.setTitle("Contacto con contactos Asociados");
-//                                      alert1.setHeaderText("Este contacto tiene " +contactoSeleccionado.getContactosRelacionados().size()+" contactos asociados" );
-//                                      alert1.setContentText("Elimine los contactos asociados para eliminar este" );
-//                                      alert1.showAndWait();
-//                            
-//                               int id = 0;
-//                                    //for (Contacto contacto : contactoSeleccionado.getContactosRelacionados()){
-//                                       while (id < contactoSeleccionado.getContactosRelacionados().size()) {
-//                                          Contacto contactoEncontrado = buscarContactoPorId(id);
-//                                          contactoSeleccionado.getContactosRelacionados().remove(contactoEncontrado);
-//                                           Agenda.eliminarPersona((ContactoPersona)contactoEncontrado);
-//                                           Agenda.contactosMaster.remove(contactoEncontrado); 
-//                                           id++;
-//                                         }
-//                                        //contactoSeleccionado.getContactosRelacionados().remove(contacto);
-//                                       // Agenda.eliminarPersona((ContactoPersona)contacto);
-//                                       // Agenda.contactosMaster.remove(contacto);                      
-//                                    //}
-//
-//                           }else {
-//                                    
-//                                     Agenda.eliminarPersona((ContactoPersona)contactoSeleccionado);
-//                                     Agenda.contactosMaster.remove(contactoSeleccionado);
-//
-//                                      Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-//                                      alert1.setTitle("Information Dialog");
-//                                      alert1.setHeaderText("Resultado de la operación");
-//                                      alert1.setContentText("Contacto eliminado exitosamente");
-//                                      alert1.showAndWait();
-//
-//                                      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//
-//                                      // Cerrar la ventana actual
-//                                      stage.close();
-//
-//                                      Platform.runLater(() -> {
-//                                      try {
-//
-//                                      App nuevaInstancia = new App();
-//                                      nuevaInstancia.start(new Stage());
-//                                      } catch (Exception e) {
-//                                      e.printStackTrace();
-//                                      }
-//                                       });
-//                            
-//
-//                             }
-//                        
-//                
-//        }
-//          
-//    
-//    
-//    }
-//    
+
     
     
     
@@ -1749,7 +1613,7 @@ public class VistaInfoContactoController implements Initializable {
         
     }
 
-    private void abrirVistaContactoPersona(Contacto contacto, String idPadre, String indiceListaDePadre) {
+    private void abrirVistaContactoPersona(Contacto contacto) {
         try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
