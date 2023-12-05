@@ -29,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
@@ -268,166 +269,214 @@ public class ListaContactosController implements Initializable {
         });
     }
 
-    @FXML
+@FXML
     private void ordenarPor(ActionEvent event) {
        String seleccion = cbOrden.getSelectionModel().getSelectedItem();
        String codigo="ninguno";
-       if (seleccion.equals("Orden alfabético")){
-        try {
-            // Cargar el archivo FXML de la vista de contacto para personas
+       
+       if(cbOrden.getSelectionModel().isEmpty() == true){
+           mostrarError("El cuadro de ordenar está vacío", "Por favor, ingrese un tipo de orden.");   
+       }else{
+                    if (seleccion.equals("Orden alfabético")){
+                         ordenarAlfebaticamente(event);
+                   }else if(seleccion.equals("Favoritos")){
+                      ordenarPorFavoritos(event);
+                       //mostrarListaOrdenadaPorFavoritos();
+                   }else if(seleccion.equals("Personas")){
+                       ordenarPorPersonas(event);
+
+                       //mostrarListaOrdenadaPorPersonas();
+                   }else if(seleccion.equals("Empresas")){
+                      ordenarPorEmpresa(event);  
+               }else{
+                    ordenarOriginal(event);
+               }
+       
+       }
+       
+        
+    }
+    private void mostrarError(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    
+    private void ordenarAlfebaticamente(ActionEvent event){
+         try {
+                       // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
             Parent root = loader.load();
             ListaContactosController controllerAlfab = loader.getController();
             controllerAlfab.mostrarElementoAlfabeticamente();
             // Configurar el controlador de la vista de contacto para personas
-            
-            Scene scene = new Scene(root,900,700);
+
+            Scene scene = new Scene(root, 900, 700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            
+
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-          // Cerrar la ventana actual
+            // Cerrar la ventana actual
             stage1.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-            //mostrarListaOrdenadaEnOrdenAlfabetico();
-       }else if(seleccion.equals("Favoritos")){
-            try {
+        //mostrarListaOrdenadaEnOrdenAlfabetico();   
+
+
+    }
+
+    
+    
+    private void ordenarPorFavoritos(ActionEvent event) {
+        try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
             Parent root = loader.load();
             ListaContactosController controllerAlfab = loader.getController();
             controllerAlfab.mostrarFavoritosPrimero();
             // Configurar el controlador de la vista de contacto para personas
-            
-            Scene scene = new Scene(root,900,700);
+
+            Scene scene = new Scene(root, 900, 700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            
+
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-          // Cerrar la ventana actual
+            // Cerrar la ventana actual
             stage1.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-           
-           //mostrarListaOrdenadaPorFavoritos();
-       }else if(seleccion.equals("Personas")){
-            try {
+
+    }
+    
+    
+    private void ordenarPorPersonas(ActionEvent event) {
+
+        try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
             Parent root = loader.load();
             ListaContactosController controllerAlfab = loader.getController();
             controllerAlfab.mostrarPersonasPrimero();
             // Configurar el controlador de la vista de contacto para personas
-            
-            Scene scene = new Scene(root,900,700);
+
+            Scene scene = new Scene(root, 900, 700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            
+
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-          // Cerrar la ventana actual
+            // Cerrar la ventana actual
             stage1.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-           
-           //mostrarListaOrdenadaPorPersonas();
-       }else if(seleccion.equals("Empresas")){
-            try {
+
+    }
+    
+    
+     private void ordenarPorEmpresa(ActionEvent event) {
+
+        try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
             Parent root = loader.load();
             ListaContactosController controllerAlfab = loader.getController();
             controllerAlfab.mostrarEmpresasPrimero();
             // Configurar el controlador de la vista de contacto para personas
-            
-            Scene scene = new Scene(root,900,700);
+
+            Scene scene = new Scene(root, 900, 700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            
+
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-          // Cerrar la ventana actual
+            // Cerrar la ventana actual
             stage1.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-           //mostrarListaOrdenadaPorEmpresa();
-           //aquí le metes algún metodo llamado mostrarlistaoriginal() que reinicie la app con la lista original
-       }else{
-            try {
+        //mostrarListaOrdenadaPorEmpresa();
+        //aquí le metes algún metodo llamado mostrarlistaoriginal() que reinicie la app con la lista original
+
+    }
+    
+     
+     private void ordenarOriginal(ActionEvent event) {
+        try {
             // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
             Parent root = loader.load();
             ListaContactosController controllerAlfab = loader.getController();
             controllerAlfab.mostrarElementos();
             // Configurar el controlador de la vista de contacto para personas
-            
-            Scene scene = new Scene(root,900,700);
+
+            Scene scene = new Scene(root, 900, 700);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(false);
-            
+
             stage.show();
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-          // Cerrar la ventana actual
+            // Cerrar la ventana actual
             stage1.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
-        }           
-       }
-       
-        
-        
-        
+        }
     }
 
     @FXML
     private void buscarContactoOLetra(ActionEvent event) {
-        FiltradorNombre f3= new FiltradorNombre();
-        List<Contacto> nombreEspecifico= f3.filtrarTexto(Agenda.contactosMaster, 
-                txtBuscarContacto.getText());
-        try {
-            // Cargar el archivo FXML de la vista de contacto para personas
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
-            Parent root = loader.load();
-            ListaContactosController controllerBusqueda = loader.getController();
-            controllerBusqueda.busquedaAvanzada(nombreEspecifico);
-            // Configurar el controlador de la vista de contacto para personas
-            
-            Scene scene = new Scene(root,900,700);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            
-            stage.show();
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-          // Cerrar la ventana actual
-            stage1.close();
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }        
+        if (txtBuscarContacto.getText().isEmpty()) {
+            mostrarError("El cuadro de busqueda está vacío", "Por favor, escriba un nombre o una letra.");
+        } else {
+            FiltradorNombre f3 = new FiltradorNombre();
+            List<Contacto> nombreEspecifico = f3.filtrarTexto(Agenda.contactosMaster,
+                    txtBuscarContacto.getText());
+            try {
+                // Cargar el archivo FXML de la vista de contacto para personas
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+                Parent root = loader.load();
+                ListaContactosController controllerBusqueda = loader.getController();
+                controllerBusqueda.busquedaAvanzada(nombreEspecifico);
+                // Configurar el controlador de la vista de contacto para personas
+
+                Scene scene = new Scene(root, 900, 700);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setResizable(false);
+
+                stage.show();
+                Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                // Cerrar la ventana actual
+                stage1.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 
