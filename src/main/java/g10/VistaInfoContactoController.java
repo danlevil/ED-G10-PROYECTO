@@ -951,6 +951,8 @@ public class VistaInfoContactoController implements Initializable {
 
     @FXML
     private void mostrarCelularesPersonales(MouseEvent event) {
+        
+        
          int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -1654,6 +1656,14 @@ public class VistaInfoContactoController implements Initializable {
     private void verCorreos(MouseEvent event) {
         
         
+        /*  private Label IdContactoAenLaListaDeCP;
+            @FXML
+            private Label idContactoPadre;*/
+        
+        String idPadre = idContactoPadre.getText();
+        String indiceEnListaPadre = IdContactoAenLaListaDeCP.getText();
+        
+        
         int id = Integer.parseInt(contactoId.getText());
         
         Contacto contactoSeleccionado = buscarContactoPorId(id);
@@ -1664,7 +1674,7 @@ public class VistaInfoContactoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             InfoDeDatosContactoController controller = loader.getController();
-            controller.configurarCorreo(contactoSeleccionado); // Método para pasar los datos del contacto
+            controller.configurarCorreo(contactoSeleccionado,idPadre, indiceEnListaPadre); // Método para pasar los datos del contacto
 
             Scene scene = new Scene(root,900,700);
             Stage stage = new Stage();
@@ -1680,6 +1690,9 @@ public class VistaInfoContactoController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+         
+         
+         
        
     }
     

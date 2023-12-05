@@ -50,6 +50,10 @@ public class InfoDeDatosContactoController implements Initializable {
     private ImageView imVolver;
     @FXML
     private Label idContacto;
+    @FXML
+    private Label IdPadre;
+    @FXML
+    private Label indiceEnListPadre;
     
     
 
@@ -85,10 +89,12 @@ public class InfoDeDatosContactoController implements Initializable {
         idContacto.setText(String.valueOf(contacto.getId()));
      }
      
-     void configurarCorreo(Contacto contacto) {
+     void configurarCorreo(Contacto contacto, String idPadre, String indiceEnListaPadre) {
         nombreDeDato.setText("Correo");
-        mostrarElementosCorreo(contacto);
         idContacto.setText(String.valueOf(contacto.getId()));
+        IdPadre.setText(idPadre);
+        indiceEnListPadre.setText(indiceEnListaPadre);
+        mostrarElementosCorreo(contacto);
      }
     
     
@@ -170,7 +176,8 @@ public class InfoDeDatosContactoController implements Initializable {
     }
     
      private void agregarHBoxCorreo(Contacto contacto) {
-         lblnombreSeleccion.setText("verTodoslosCorreosCP");
+         lblnombreSeleccion.setText("verTodoslosCorreosCP");        
+         
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoDeDatos.fxml"));
@@ -182,7 +189,8 @@ public class InfoDeDatosContactoController implements Initializable {
             // Obtener el índice de la lista de correos y configurar el correo correspondiente
             int correoIndex = VboxInformacion.getChildren().size();  // Usar el índice actual del VBox
             String nombreDeDatoAvisualizar = lblnombreSeleccion.getText();
-            controller.configurarCorreo(contacto,contacto.getEmails().get(correoIndex),correoIndex, nombreDeDatoAvisualizar );
+            String idPapa = IdPadre.getText();
+            controller.configurarCorreo(contacto,contacto.getEmails().get(correoIndex),correoIndex, nombreDeDatoAvisualizar, idPapa );
 
 
             // Agregar el HBox al VBox
@@ -298,12 +306,38 @@ public class InfoDeDatosContactoController implements Initializable {
         }
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private void volverContacto(MouseEvent event) {
+        int id = Integer.parseInt(idContacto.getText());
+        Contacto contactoSeleccionado = buscarContactoPorId(id);
         
-        reload(event);
+        reloadAsociadoOOriginal(event,contactoSeleccionado);
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
      private void reload(MouseEvent event){
@@ -326,6 +360,31 @@ public class InfoDeDatosContactoController implements Initializable {
             }
     }
     
+     private void reloadAsociado(MouseEvent event, Contacto contacto){
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                    // Cerrar la ventana actual
+                    stage.close();
+
+                        if (contacto.isEmpresa()) {
+                            // Abrir la vista de contacto para empresas y pasar los datos
+                            abrirVistaContactoEmpresa(contacto);
+                        } else {
+                            // Abrir la vista de contacto para personas y pasar los datos
+                            abrirVistaContactoPersonaAsociada(contacto,Integer.parseInt(contacto.getIdContactoPadre()), Integer.parseInt(contacto.getIdcontactoEnListaDePadre()));
+                        }
+        
+    }
+    
+     private void reloadAsociadoOOriginal(MouseEvent event, Contacto contactoSeleccionado){
+        if (!indiceEnListPadre.getText().equals("Label")){
+                    
+                 reloadAsociado(event, contactoSeleccionado);
+            }else{
+                 reload(event); 
+                 
+             }
+    }
     
     
     
@@ -381,7 +440,31 @@ public class InfoDeDatosContactoController implements Initializable {
     }
     
     
-    
+     private void abrirVistaContactoPersonaAsociada(Contacto contacto, int idPadre, int indiceListaDePadre) {
+        try {
+            // Cargar el archivo FXML de la vista de contacto para personas
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInfoContacto.fxml"));
+            Parent root = loader.load();
+
+            // Configurar el controlador de la vista de contacto para personas
+            VistaInfoContactoController controller = loader.getController();
+            controller.configurarAsociado((ContactoPersona) contacto, idPadre, indiceListaDePadre); // Método para pasar los datos del contacto
+            
+            
+            
+            Scene scene = new Scene(root, 900,700);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Vista de Contacto para Personas");
+            
+            stage.setResizable(false);
+          
+            stage.show();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
      private Contacto buscarContactoPorId(int id) {
          for (Contacto contacto : Agenda.contactosMaster){

@@ -13,12 +13,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -61,11 +66,17 @@ public class ListaContactosController implements Initializable {
     
     private static final int ELEMENTOS_POR_PAGINA=6;
     private static int paginaActual=1;
+    @FXML
+    private ComboBox<String> cbOrden;
+    @FXML
+    private Button btOrdenar;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         mostrarElementos();
+        ObservableList<String> list = FXCollections.observableArrayList("Orden alfabético","Favoritos", "Personas", "Empresas", "Original");
+        cbOrden.setItems(list);
         
     }
 
@@ -166,6 +177,27 @@ public class ListaContactosController implements Initializable {
             hboxContact.setStyle("-fx-background-color: ;");
         });
     }
+
+    @FXML
+    private void ordenarPor(ActionEvent event) {
+        String seleccion = cbOrden.getSelectionModel().getSelectedItem();
+       if (seleccion.equals("Orden alfabético")){
+           //mostrarListaOrdenadaEnOrdenAlfabetico();
+       }else if(seleccion.equals("Favoritos")){
+           //mostrarListaOrdenadaPorFavoritos();
+       }else if(seleccion.equals("Personas")){
+           //mostrarListaOrdenadaPorPersonas();
+       }else if(seleccion.equals("Empresas")){
+           //mostrarListaOrdenadaPorEmpresa();
+           
+       }else{
+           //aquí le metes algún metodo llamado mostrarlistaoriginal() que reinicie la app con la lista original
+       }
+        
+        
+        
+    }
+
 
 
 }

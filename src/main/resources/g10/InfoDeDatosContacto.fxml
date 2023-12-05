@@ -22,7 +22,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="46.0" prefWidth="354.0" text="Información de todos los:">
+                  <Label prefHeight="46.0" prefWidth="430.0" text="Información de todos los:">
                      <font>
                         <Font size="31.0" />
                      </font>
@@ -65,7 +65,18 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="43.0" prefWidth="205.0">
                      <children>
-                        <Label fx:id="idContacto" text="Label" visible="false" />
+                        <Label fx:id="idContacto" text="Label">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="IdPadre" text="Label">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="indiceEnListPadre" text="Label">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin></Label>
                         <Label fx:id="lblnombreSeleccion" prefHeight="18.0" prefWidth="718.0" text="Label" visible="false">
                            <HBox.margin>
                               <Insets />
