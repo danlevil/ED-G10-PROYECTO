@@ -1,4 +1,5 @@
 Fields/Foto.class
+FIltradores/FiltroPersonas.class
 Estructuras/LinkedCircularDE$Nodo.class
 Fields/Email.class
 g10/TipoContactoController.class
@@ -20,6 +21,7 @@ module-info.class
 g10/FotoController.class
 g10/VistaContactoEmpresaController.class
 Estructuras/LinkedCircularDE$1.class
+FIltradores/FiltradorPersonas.class
 Modelo/Serializador.class
 FIltradores/FiltroFavoritos.class
 Fields/RedSocial.class

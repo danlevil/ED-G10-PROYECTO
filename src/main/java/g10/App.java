@@ -13,6 +13,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -68,6 +71,43 @@ public class App extends Application {
                 Agenda.contactosMaster,
                 Agenda.contactosEmpresas,
                 Agenda.contactosPersonas);
+        
+        if(Agenda.contactosMaster.size()==0){
+            String rutaMaster= "src/main/resources/Contactos/listaGeneral.ser";
+            String rutaPersonas= "src/main/resources/Contactos/listaContactosComunes.ser";
+            String rutaEmpresas= "src/main/resources/Contactos/listaContactosEmpresas.ser";
+            Path pathArchivo1= Paths.get(rutaMaster);
+            Path pathArchivo2= Paths.get(rutaPersonas);
+            Path pathArchivo3= Paths.get(rutaEmpresas);
+            
+            if(Files.exists(pathArchivo1)){
+                try {
+                // Intentar eliminar el archivo
+                Files.delete(pathArchivo1);
+                System.out.println("Archivo eliminado con éxito.");
+                }catch (IOException e) {
+                System.out.println("No se pudo eliminar el archivo. Error: " + e.getMessage());
+                }
+            }
+            if(Files.exists(pathArchivo2)){
+                try {
+                // Intentar eliminar el archivo
+                Files.delete(pathArchivo2);
+                System.out.println("Archivo eliminado con éxito.");
+                }catch (IOException e) {
+                System.out.println("No se pudo eliminar el archivo. Error: " + e.getMessage());
+                }
+            }
+            if(Files.exists(pathArchivo3)){
+                try {
+                // Intentar eliminar el archivo
+                Files.delete(pathArchivo3);
+                System.out.println("Archivo eliminado con éxito.");
+                }catch (IOException e) {
+                System.out.println("No se pudo eliminar el archivo. Error: " + e.getMessage());
+                }
+            }
+        }
         System.out.println("Lista de empresas: "+Agenda.contactosEmpresas.size());
         
         System.out.println("Lista de personas: "+Agenda.contactosPersonas.size());
