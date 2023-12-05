@@ -78,16 +78,19 @@ public class ListaContactosController implements Initializable {
     private ComboBox<String> cbOrden;
     @FXML
     private Button btOrdenar;
-    private String codigo;
+    
+    String seleccion;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         mostrarElementos();
         ObservableList<String> list = FXCollections.observableArrayList("Orden alfabético","Favoritos", "Personas", "Empresas", "Original");
         cbOrden.setItems(list);
         
     }
+    
+    
 
     
     
@@ -125,17 +128,38 @@ public class ListaContactosController implements Initializable {
        App.setRoot("TipoContacto");
     }
     
+    
+    
+    
     private void mostrarElementos() {
+        seleccion = "Orden alfabético";
+        
+        
+        if (seleccion.equals("Orden alfabético")){
+            mostrarElementoAlfabeticamente();
+        
+        }else if(seleccion.equals("Favoritos")){
+            mostrarPersonasPrimero();
+        
+        
+        }else if(seleccion.equals("Personas")){
+            mostrarFavoritosPrimero();
+        
+        
+        }else if(seleccion.equals("Empresas")){
+            mostrarEmpresasPrimero();
+        
+        }else{
+            
          VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
-
         for (int i = inicio; i < fin; i++) {
-            agregarHBox(Agenda.contactosMaster.get(i));
-            
+            agregarHBox(Agenda.contactosMaster.get(i));    
         }
-
-        lbnumpag.setText( String.valueOf(paginaActual));
+         lbnumpag.setText( String.valueOf(paginaActual));
+        }
+        
 
     }
 
@@ -145,25 +169,30 @@ public class ListaContactosController implements Initializable {
     private void mostrarElementoAlfabeticamente(){
         VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-        ComparadorNombreContacto cmp1= new ComparadorNombreContacto();
-        List<Contacto> alfabetica= Agenda.contactosMaster.ordenar(cmp1);
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        ComparadorNombreContacto cmp1= new ComparadorNombreContacto();
+        List<Contacto> alfabetica= Agenda.contactosMaster.ordenar(cmp1);     
         for (int i = inicio; i < fin; i++) {
             agregarHBox(alfabetica.get(i));
 
         }
+        lbnumpag.setText( String.valueOf(paginaActual));
     }
+    
+    
     private void mostrarEmpresasPrimero(){
         VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-        ComparadorEmpresa cmp2= new ComparadorEmpresa();
-        List<Contacto> empresasFirst=Agenda.contactosMaster.ordenar(cmp2);
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        ComparadorEmpresa cmp2= new ComparadorEmpresa();
+        List<Contacto> empresasFirst=Agenda.contactosMaster.ordenar(cmp2);  
         for (int i = inicio; i < fin; i++) {
             agregarHBox(empresasFirst.get(i));
-
         }
+        lbnumpag.setText( String.valueOf(paginaActual));
     }
+    
+    
     private void mostrarFavoritosPrimero(){
         VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
@@ -172,19 +201,21 @@ public class ListaContactosController implements Initializable {
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
         for (int i = inicio; i < fin; i++) {
             agregarHBox(favFirst.get(i));
-
         }
+        lbnumpag.setText( String.valueOf(paginaActual));
     }
+    
+    
     private void mostrarPersonasPrimero(){
         VboxContactos.getChildren().clear();
         int inicio = (paginaActual - 1) * ELEMENTOS_POR_PAGINA;
-        ComparadorPersona cmp4= new ComparadorPersona();
-        List<Contacto> personasFirst=Agenda.contactosMaster.ordenar(cmp4);
         int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        ComparadorPersona cmp4= new ComparadorPersona();
+        List<Contacto> personasFirst=Agenda.contactosMaster.ordenar(cmp4);   
         for (int i = inicio; i < fin; i++) {
             agregarHBox(personasFirst.get(i));
-
         }
+        lbnumpag.setText( String.valueOf(paginaActual));
     }
     @FXML
     private void avanzarIzquierda(MouseEvent event) {
@@ -235,26 +266,28 @@ public class ListaContactosController implements Initializable {
     }
 
     @FXML
-    private void ordenarPor(ActionEvent event) {
-       String seleccion = cbOrden.getSelectionModel().getSelectedItem();
-       String codigo="ninguno";
+    private void ordenarPor(ActionEvent event) throws IOException {
+       String seleccion2 = cbOrden.getSelectionModel().getSelectedItem();
        
        if(cbOrden.getSelectionModel().isEmpty() == true){
            mostrarError("El cuadro de ordenar está vacío", "Por favor, ingrese un tipo de orden.");   
        }else{
-                    if (seleccion.equals("Orden alfabético")){
-                         ordenarAlfebaticamente(event);
-                   }else if(seleccion.equals("Favoritos")){
-                      ordenarPorFavoritos(event);
+                    if (seleccion2.equals("Orden alfabético")){
+                         seleccion = "Orden alfabético";
+                         reload(event);
+                   }else if(seleccion2.equals("Favoritos")){
+                         seleccion = "Favoritos";
+                         reload(event);
                        //mostrarListaOrdenadaPorFavoritos();
-                   }else if(seleccion.equals("Personas")){
-                       ordenarPorPersonas(event);
-
+                   }else if(seleccion2.equals("Personas")){
+                         seleccion = "Personas";
+                         reload(event);
+                     
                        //mostrarListaOrdenadaPorPersonas();
-                   }else if(seleccion.equals("Empresas")){
-                      ordenarPorEmpresa(event);  
+                   }else if(seleccion2.equals("Empresas")){
+                      seleccion = "Empresas"; 
                }else{
-                    ordenarOriginal(event);
+                    seleccion = "Original";
                }
        
        }
@@ -264,6 +297,40 @@ public class ListaContactosController implements Initializable {
         
         
     }
+    
+    
+    private void reload(ActionEvent event) throws IOException{
+        try {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cerrar la ventana actual
+        stage.close();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
+        Parent root = loader.load();
+        ListaContactosController controllerList = loader.getController(); 
+        controllerList. mostrarElementos();
+        
+        
+         Scene scene = new Scene(root, 900, 700);
+            Stage stage2 = new Stage();
+            stage2.setScene(scene);
+            stage2.setResizable(false);
+
+            stage2.show();
+            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cerrar la ventana actual
+            stage1.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
+    }
+    
+    
+    
+    
     
     private void ordenarAlfebaticamente(ActionEvent event){
          try {
