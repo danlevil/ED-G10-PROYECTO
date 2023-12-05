@@ -1725,8 +1725,9 @@ public class VistaInfoContactoController implements Initializable {
 
             // Configurar el controlador de la vista de contacto para personas
             VerFotosContactosController controller = loader.getController(); 
+            System.out.println(contacto);
             controller.mostrarImg((Contacto) contacto); // Método para pasar los datos del contacto
-             System.out.println("contacto id: "+contacto.getId());
+            System.out.println("contacto id: "+contacto.getId());
             Scene scene = new Scene(root,600,400);
             Stage stage = new Stage();
             stage.setScene(scene);

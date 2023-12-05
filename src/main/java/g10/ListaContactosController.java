@@ -140,15 +140,15 @@ public class ListaContactosController implements Initializable {
         List<Contacto> soloEmpresas= f1.filtrarSoloEmpresas(Agenda.contactosMaster);
         List<Contacto> solofavs= f2.filtrarSoloFavoritos(Agenda.contactosMaster);
         List<Contacto> nombreEspecifico= f3.filtrarTexto(Agenda.contactosMaster, "sss");
-        //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
+        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, Agenda.contactosMaster.size());
         //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, nombreEspecifico.size());
-        int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, soloEmpresas.size());
+        //int fin = Math.min(inicio + ELEMENTOS_POR_PAGINA, soloEmpresas.size());
         for (int i = inicio; i < fin; i++) {
-            //agregarHBox(Agenda.contactosMaster.get(i));
+            agregarHBox(Agenda.contactosMaster.get(i));
             //agregarHBox(alfabetica.get(i));
             //agregarHBox(empresasFirst.get(i));
             //agregarHBox(favFirst.get(i));
-            agregarHBox(soloEmpresas.get(i));
+            //agregarHBox(soloEmpresas.get(i));
             //agregarHBox(solofavs.get(i));
             //agregarHBox(nombreEspecifico.get(i));
             

@@ -246,12 +246,14 @@ public class Contacto implements Serializable {
         return bandera;
     }
 
+    @Override
+    public String toString() {
+        return "Contacto{" + "id=" + id + ", nombre=" + nombre + ", isEmpresa=" + isEmpresa + '}';
+    }
+
    
 
-   @Override
-    public String toString() {
-        return id +";"+ nombre + ";" + isEmpresa + ";" + favorito + ";" + direcciones.get(0)+ ";"+emails.get(0)+";"+telefonos.get(0)+";"+fotos.getStart()+";"+redesSociales.get(0)+";"+etiquetas.get(0)+";"+fechasImportantes.getStart();
-    }
+   
 
     
 

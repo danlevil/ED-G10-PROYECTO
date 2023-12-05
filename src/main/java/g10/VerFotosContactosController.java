@@ -67,6 +67,7 @@ public class VerFotosContactosController implements Initializable {
     void mostrarImg(Contacto c) {
             
         idContacto.setText(String.valueOf(c.getId()));
+        System.out.println("ide del usuario:"+c.getId());
         vboxFotos.getChildren().clear();  
         try {
             // Cargar el FXML del HBox del archivo FXML respectivo
@@ -78,9 +79,12 @@ public class VerFotosContactosController implements Initializable {
             FotoController controllerFoto = loader.getController();
             
             if(c.getFotos().size()!=0){
-            controllerFoto.configurar(c.getFotos().get(paginaActual-1));
+                
+                controllerFoto.configurar(c.getFotos().get(paginaActual-1));
             }
             controllerFoto.configurar(c.getFotos().get(paginaActual));
+
+            //controllerFoto.configurar(c.getFotos().get(paginaActual));
             
             // Agregar el HBox al VBox
             

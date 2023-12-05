@@ -348,21 +348,21 @@ public class LinkedCircularDE<E> extends List<E> implements Iterable<E>{
     @Override
     public E get(int index) {
         
-        if (index < 0 || index >= tamaño) {
-            throw new IndexOutOfBoundsException("Índice fuera de rango");
-        }
-        Nodo<E> actual = start;
-        for (int i = 0; i < index; i++) {
-            actual = actual.siguiente;
-        }
-        return actual.contenido;     
-//        if(index==0){return this.start.contenido;}
-//        else if (index<0){
-//            throw new IndexOutOfBoundsException(
-//                    "Indice fuera de los límites del LinkedLIst");
+//        if (index < 0 || index >= tamaño) {
+//            throw new IndexOutOfBoundsException("Índice fuera de rango");
 //        }
-//        Nodo <E> encontrado=findNode(index);
-//        return (encontrado!=null)?encontrado.getContenido():null;
+//        Nodo<E> actual = start;
+//        for (int i = 0; i < index; i++) {
+//            actual = actual.siguiente;
+//        }
+//        return actual.contenido;     
+        if(index==0){return this.start.contenido;}
+        else if (index<0){
+            throw new IndexOutOfBoundsException(
+                    "Indice fuera de los límites del LinkedLIst");
+        }
+        Nodo <E> encontrado=findNode(index);
+        return (encontrado!=null)?encontrado.getContenido():null;
     }
 
     @Override
