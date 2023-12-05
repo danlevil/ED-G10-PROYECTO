@@ -68,7 +68,7 @@
             </Label>
             <HBox prefHeight="34.0" prefWidth="900.0">
                <children>
-                  <Label fx:id="txtFiltro" prefHeight="18.0" prefWidth="31.0" text="Label">
+                  <Label fx:id="txtFiltro" prefHeight="18.0" prefWidth="31.0" text="Label" visible="false">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -79,7 +80,7 @@ public class ListaContactosController implements Initializable {
     private ComboBox<String> cbOrden;
     @FXML
     private Button btOrdenar;
-    private String codigo;
+    
     @FXML
     private TextField txtBuscarContacto;
     @FXML
@@ -279,6 +280,7 @@ public class ListaContactosController implements Initializable {
        }else{
                     if (seleccion.equals("Orden alfabético")){
                          ordenarAlfebaticamente(event);
+                          
                    }else if(seleccion.equals("Favoritos")){
                       ordenarPorFavoritos(event);
                        //mostrarListaOrdenadaPorFavoritos();
@@ -305,6 +307,7 @@ public class ListaContactosController implements Initializable {
     }
     
     private void ordenarAlfebaticamente(ActionEvent event){
+       
          try {
                        // Cargar el archivo FXML de la vista de contacto para personas
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
@@ -421,23 +424,20 @@ public class ListaContactosController implements Initializable {
      
      private void ordenarOriginal(ActionEvent event) {
         try {
-            // Cargar el archivo FXML de la vista de contacto para personas
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaContactos.fxml"));
-            Parent root = loader.load();
-            ListaContactosController controllerAlfab = loader.getController();
-            controllerAlfab.mostrarElementos();
-            // Configurar el controlador de la vista de contacto para personas
-
-            Scene scene = new Scene(root, 900, 700);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-
-            stage.show();
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Cerrar la ventana actual
-            stage1.close();
+            stage.close();
+        
+            Platform.runLater(() -> {
+            try {
+
+            App nuevaInstancia = new App();
+            nuevaInstancia.start(new Stage());
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+             });
 
         } catch (Exception e) {
             e.printStackTrace();
